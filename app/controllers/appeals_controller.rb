@@ -84,6 +84,23 @@ class AppealsController < ApplicationController
     end
   end
 
+  def comment
+    @appeal = @conference.appeals.find(params[:id])
+
+    @comment = @appeal.comments.build(params[:comment])
+    @comment.user = current_user
+
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to [@conference, @appeal], notice: "your comment successfully created"}
+      else
+        format.html { render :action => 'show' }
+      end
+      format.js
+    end
+
+  end
+
   private
   def set_conference
     @conference = Conference.find(params[:conference_id])

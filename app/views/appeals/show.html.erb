@@ -2,14 +2,34 @@
 
 <p>
   <b>Conference:</b>
-  <%= @appeal.conference_id %>
+  <%= @appeal.conference.name %>
 </p>
 
 <p>
   <b>Topic:</b>
-  <%= @appeal.topic_id %>
+  <%= @appeal.topic.subject %>
 </p>
 
+<p>
+  <b>Speakers:</b>
+  <% @appeal.topic.speakers.each do |speaker| %>
+    <%= link_to speaker.name, speaker_path(speaker) %>
+  <% end %>
+</p>
+
+<p>
+  <b>Comments:</b>
+  <ul id="comments">
+    <% @appeal.comments.each do |comment| %>
+      <li><%= comment.comment %> <span>by <%= comment.user.email %></span></li>
+    <% end %>
+  </ul>
+  <%= form_for(Comment.new, url: comment_conference_appeal_path(@conference, @appeal), remote: true) do |f| %>
+    <%= f.label :comment %>
+    <%= f.text_area :comment %>
+    <%= f.submit %>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_conference_appeal_path([@conference, @appeal]) %> |
 <%= link_to 'Back', conference_appeals_path(@conference) %>

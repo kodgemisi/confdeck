@@ -10,7 +10,11 @@ Confman::Application.routes.draw do
   resources :conferences do
     resources :addresses
     resources :sponsors
-    resources :appeals
+    resources :appeals do
+      member do
+        post 'comment'
+      end
+    end
     member do
      get 'schedule'
     end
