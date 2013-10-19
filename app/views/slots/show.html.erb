@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Start hour:</b>
+  <%= @slot.start_hour %>
+</p>
+
+<p>
+  <b>Duration:</b>
+  <%= @slot.duration %>
+</p>
+
+<p>
+  <b>Conference:</b>
+  <%= @slot.conference_id %>
+</p>
+
+<p>
+  <b>Day:</b>
+  <%= @slot.day_id %>
+</p>
+
+<p>
+  <b>Room:</b>
+  <%= @slot.room_id %>
+</p>
+
+<p>
+  <b>Topic:</b>
+  <%= @slot.topic_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_slot_path(@slot) %> |
+<%= link_to 'Back', slots_path %>

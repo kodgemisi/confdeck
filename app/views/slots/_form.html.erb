@@ -1,0 +1,41 @@
+<%= form_for(@slot) do |f| %>
+  <% if @slot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@slot.errors.count, "error") %> prohibited this slot from being saved:</h2>
+
+      <ul>
+      <% @slot.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :start_hour %><br />
+    <%= f.time_select :start_hour %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br />
+    <%= f.number_field :duration %>
+  </div>
+  <div class="field">
+    <%= f.label :conference_id %><br />
+    <%= f.number_field :conference_id %>
+  </div>
+  <div class="field">
+    <%= f.label :day_id %><br />
+    <%= f.number_field :day_id %>
+  </div>
+  <div class="field">
+    <%= f.label :room_id %><br />
+    <%= f.number_field :room_id %>
+  </div>
+  <div class="field">
+    <%= f.label :topic_id %><br />
+    <%= f.number_field :topic_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
