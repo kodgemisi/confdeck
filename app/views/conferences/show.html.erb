@@ -176,9 +176,30 @@
         <h2>Location</h2>
         <%=@conference.address.info%>
       </div>
-      <div class="col-lg-6 col-md-6 col-sm-6">
-        <img class="img-responsive" src="http://placehold.it/700x450/ffffff/cccccc&text=Map Will Be Here">
+      <div class="col-lg-6 col-md-6 col-sm-6" id="address_map">
+
       </div>
+
+      <script type="text/javascript">
+
+          function initialize() {
+              var myLatlng = new google.maps.LatLng(<%=@conference.address.lat%>, <%=@conference.address.lon%>);
+              var mapOptions = {
+                  zoom: 4,
+                  center: myLatlng,
+                  mapTypeId: google.maps.MapTypeId.ROADMAP
+              }
+              var map = new google.maps.Map(document.getElementById('address_map'), mapOptions);
+
+              var marker = new google.maps.Marker({
+                  position: myLatlng,
+                  map: map,
+                  title: '<%=@conference.name%>'
+              });
+          }
+
+          google.maps.event.addDomListener(window, 'load', initialize);
+      </script>
     </div>
     <!-- /.row -->
 
