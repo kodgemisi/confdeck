@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131019021944) do
+ActiveRecord::Schema.define(:version => 20131019082346) do
 
   create_table "addresses", :force => true do |t|
     t.text     "info"
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(:version => 20131019021944) do
 
   create_table "conferences_days", :id => false, :force => true do |t|
     t.integer "conference_id"
-    t.integer "day_id"
+    t.integer "organization_id"
   end
 
   create_table "conferences_organizations", :id => false, :force => true do |t|
@@ -67,8 +67,12 @@ ActiveRecord::Schema.define(:version => 20131019021944) do
     t.string   "name"
     t.string   "website"
     t.integer  "conference_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   create_table "users", :force => true do |t|
