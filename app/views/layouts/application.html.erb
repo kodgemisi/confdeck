@@ -40,6 +40,10 @@
           </ul>
         </li>
       </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= current_user ? link_to("Çıkış Yap", destroy_user_session_path, :method => :delete) : link_to("Giriş Yap", new_user_session_path) %></li>
+        <li><%= current_user ? "" : link_to("Kayıt Ol", new_user_registration_path) %></li>
+      </ul>
     </div>
     <!--/.nav-collapse -->
   </div>
