@@ -8,6 +8,7 @@ gem 'rails', '3.2.15'
 gem 'sqlite3'
 gem 'devise'
 gem 'paperclip'
+gem 'devise_invitable'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -23,7 +24,7 @@ gem 'jquery-rails'
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
-# gem 'jbuilder'
+# gem 'jbuilder'm
 
 # Use unicorn as the app server
 # gem 'unicorn'
