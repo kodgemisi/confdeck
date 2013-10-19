@@ -17,5 +17,13 @@
   <% end %>
 </p>
 
+<h3>Invite users to organization</h3>
+<%= form_for Invitation.new, url: invite_organization_path(@organization) do |f| %>
+  <%= f.hidden_field :organization_id, value: @organization.id %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+  <%= f.submit %>
+<% end %>
+
 <%= link_to 'Edit', edit_organization_path(@organization) %> |
 <%= link_to 'Back', organizations_path %>

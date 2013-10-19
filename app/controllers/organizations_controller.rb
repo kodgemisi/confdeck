@@ -4,7 +4,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = Organization.all
+    @organizations = current_user.organizations
 
     respond_to do |format|
       format.html # index.html.erb
@@ -82,6 +82,16 @@ class OrganizationsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to organizations_url }
       format.json { head :no_content }
+    end
+  end
+
+  def invite
+    @invitation = Invitation.new(params[:invitation])
+    respond_to do |format|
+      if @invitation.save
+        InvitationMailer.invite_email(@invitation).deliver
+        format.js
+      end
     end
   end
 end

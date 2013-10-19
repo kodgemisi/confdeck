@@ -60,6 +60,15 @@ ActiveRecord::Schema.define(:version => 20131019111024) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "invitations", :force => true do |t|
+    t.string   "email"
+    t.integer  "organization_id"
+    t.string   "token"
+    t.boolean  "active",          :default => true
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
+
   create_table "organizations", :force => true do |t|
     t.string   "name"
     t.string   "website"
