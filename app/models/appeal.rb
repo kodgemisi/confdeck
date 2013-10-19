@@ -10,4 +10,13 @@ class Appeal < ActiveRecord::Base
 
   acts_as_commentable
   acts_as_votable
+
+   state_machine :state, :initial => :waiting_review do
+     event :accept do
+       transition :waiting_review => :accepted
+     end
+     event :reject do
+       transition :waiting_review => :rejected
+     end
+   end
 end

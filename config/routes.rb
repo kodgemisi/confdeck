@@ -15,6 +15,8 @@ Confman::Application.routes.draw do
         post 'comment'
         get 'upvote'
         get 'downvote'
+        get 'accept'
+        get 'reject'
       end
     end
     member do

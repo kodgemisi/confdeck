@@ -1,6 +1,6 @@
 class AppealsController < ApplicationController
   before_filter :set_conference
-  before_filter :set_appeal, only: [:show, :edit, :update, :destroy, :comment, :upvote, :downvote]
+  before_filter :set_appeal, only: [:show, :edit, :update, :destroy, :comment, :upvote, :downvote, :accept, :reject]
   # GET /appeals
   # GET /appeals.json
   def index
@@ -103,6 +103,20 @@ class AppealsController < ApplicationController
 
   def downvote
     @appeal.downvote_from current_user
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def accept
+    @appeal.accept
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def reject
+    @appeal.reject
     respond_to do |format|
       format.js
     end
