@@ -18,6 +18,7 @@
 
 <% @conferences.each do |conference| %>
   <tr>
+    <td><%= image_tag conference.logo.url(:thumb) %></td>
     <td><%= conference.name %></td>
     <td><%= conference.summary %></td>
     <td><%= conference.description %></td>

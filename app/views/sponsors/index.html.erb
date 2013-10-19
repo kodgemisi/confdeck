@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Logo</th>
     <th>Name</th>
     <th>Website</th>
     <th>Conference</th>
@@ -12,6 +13,7 @@
 
 <% @sponsors.each do |sponsor| %>
   <tr>
+    <td><%= image_tag sponsor.logo.url(:thumb) %></td>
     <td><%= sponsor.name %></td>
     <td><%= sponsor.website %></td>
     <td><%= sponsor.conference_id %></td>

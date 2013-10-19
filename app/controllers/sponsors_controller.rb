@@ -15,7 +15,7 @@ class SponsorsController < ApplicationController
   # GET /sponsors/1
   # GET /sponsors/1.json
   def show
-    @sponsor = Sponsor.find(params[:id])
+    @sponsor = @conference.sponsors.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,7 +26,7 @@ class SponsorsController < ApplicationController
   # GET /sponsors/new
   # GET /sponsors/new.json
   def new
-    @sponsor = Sponsor.new
+    @sponsor = @conference.sponsors.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,7 +36,7 @@ class SponsorsController < ApplicationController
 
   # GET /sponsors/1/edit
   def edit
-    @sponsor = Sponsor.find(params[:id])
+    @sponsor = @conference.sponsors.find(params[:id])
   end
 
   # POST /sponsors
