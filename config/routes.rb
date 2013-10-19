@@ -1,9 +1,9 @@
 Confman::Application.routes.draw do
-  resources :conferences
-
+  resources :conferences do
+    resources :sponsors
+  end
 
   resources :organizations
-
 
   get "home/index"
 

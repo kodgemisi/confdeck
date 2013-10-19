@@ -4,6 +4,7 @@ class Conference < ActiveRecord::Base
   has_one :address
   has_and_belongs_to_many :organizations
   has_and_belongs_to_many :days
+  has_many :sponsors
 
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :organizations

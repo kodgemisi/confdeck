@@ -23,6 +23,15 @@
 </p>
 
 <p>
+  <b>Sponsors:</b>
+  <% @conference.sponsors.each do |sponsor| %>
+    <%= sponsor.name %>
+  <% end %>
+  <br>
+  <%= link_to "manage sponsors", conference_sponsors_path(@conference) %>
+</p>
+
+<p>
   <b>Website:</b>
   <%= @conference.website %>
 </p>
