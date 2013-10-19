@@ -1,5 +1,5 @@
 $("#newOrg").modal("hide");
-$("#conference_organization_ids").append("<option value='<%= @organization.id %>'><%= @organization.name %></option>");
+$("#conference_organization_ids").append("<option value='<%= @organization.id %>' selected><%= @organization.name %></option>");
 $("#organization_name").val("");
 $("<p id='organization_notice' class='alert alert-success'>Organization created successfully</p>").insertAfter("#conference_organization_ids");
 $("#organization_notice").fadeOut(3000);
