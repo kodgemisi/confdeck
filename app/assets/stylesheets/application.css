@@ -13,3 +13,8 @@
  *= require bootstrap
  *= require bootstrap-theme
  */
+
+
+body {
+    padding: 30px
+}
