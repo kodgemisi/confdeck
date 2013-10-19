@@ -14,3 +14,13 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap
+//= require gmaps
+
+
+$(document).ready(function(){
+    $('.disable-enter').keypress(function (event) {
+        if (event.keyCode == 13) {
+            event.preventDefault();
+        }
+    });
+})
