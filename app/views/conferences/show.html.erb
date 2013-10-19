@@ -29,7 +29,8 @@
     <div class="item active">
       <div class="fill" style="background-image:url('<%=@conference.heading_image.url%>');"></div>
       <div class="carousel-caption title">
-        <h1><%=@conference.name %></h1>
+        <h1><%= best_in_place_if @conference.organizations && current_user.organizations, @conference, :name, :type => :input %></h1>
+
         <h2><%= @conference.days.first.date.strftime("%B %d") %> - <%= @conference.days.last.date.strftime("%B %d") %> </h2>
         <h2><%= best_in_place_if @conference.organizations && current_user.organizations, @conference.address, :city, :type => :input, :path => conference_address_path(@conference, @conference.address) %></h2>
 
