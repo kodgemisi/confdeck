@@ -1,0 +1,25 @@
+<h1>Listing appeals</h1>
+
+<table>
+  <tr>
+    <th>Conference</th>
+    <th>Topic</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @appeals.each do |appeal| %>
+  <tr>
+    <td><%= appeal.conference_id %></td>
+    <td><%= appeal.topic_id %></td>
+    <td><%= link_to 'Show', appeal %></td>
+    <td><%= link_to 'Edit', edit_appeal_path(appeal) %></td>
+    <td><%= link_to 'Destroy', appeal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Appeal', new_appeal_path %>

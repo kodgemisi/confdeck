@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Conference:</b>
+  <%= @appeal.conference_id %>
+</p>
+
+<p>
+  <b>Topic:</b>
+  <%= @appeal.topic_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_appeal_path(@appeal) %> |
+<%= link_to 'Back', appeals_path %>
