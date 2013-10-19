@@ -5,6 +5,7 @@
     <th>Conference</th>
     <th>Topic</th>
     <th>Speakers </th>
+    <th>#comments</th>
     <th></th>
     <th></th>
     <th></th>
@@ -19,6 +20,7 @@
         <%= link_to speaker.name, speaker_path(speaker) %>
       <% end %>
     </td>
+    <td><%= appeal.comments.count %></td>
     <td><%= link_to 'Show', [@conference, appeal] %></td>
     <td><%= link_to 'Edit', edit_conference_appeal_path(@conference, appeal) %></td>
     <td><%= link_to 'Destroy', [@conference, appeal], method: :delete, data: { confirm: 'Are you sure?' } %></td>
