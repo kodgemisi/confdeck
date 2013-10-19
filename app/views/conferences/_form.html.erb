@@ -11,7 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
+    <div class="field">
+        <label for="from">From</label>
+        <input type="text" id="from" name="from"/>
+        <label for="to">to</label>
+        <input type="text" id="to" name="to"/>
+    </div>
+
+    <div class="field">
     <%= f.label :organization %><br />
     <%= f.collection_select :organization_ids, current_user.organizations, :id, :name, {}, {:multiple => true}%>
   </div>

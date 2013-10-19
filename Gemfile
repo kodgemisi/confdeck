@@ -13,6 +13,8 @@ gem 'paperclip'
 # in production environments by default.
 group :assets do
   gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-ui-rails'
+
 end
 
 gem 'jquery-rails'
