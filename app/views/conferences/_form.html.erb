@@ -1,4 +1,4 @@
-<%= form_for(@conference) do |f| %>
+<%= form_for(@conference, :html => {:class => 'form-horizontal'}) do |f| %>
   <% if @conference.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@conference.errors.count, "error") %> prohibited this conference from being saved:</h2>
@@ -11,80 +11,173 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <label for="from">From</label>
-    <input type="text" id="from" name="from"/>
-    <label for="to">to</label>
-    <input type="text" id="to" name="to"/>
-  </div>
+    <div class="row">
+      <!-- Left Col -->
+      <div class="col-lg-12 col-md-12 col-sm-12">
 
-  <div class="field">
-    <%= f.label :organization %><br />
-    <%= f.collection_select :organization_ids, current_user.organizations, :id, :name, {}, {:multiple => true}%>
-    <a data-toggle="modal" href="#newOrg" class="btn btn-primary btn-lg">Add another organization</a>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :summary %><br />
-    <%= f.text_field :summary %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :logo %><br />
-    <%= f.file_field :logo %>
-  </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Basic Information</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                      <div class="form-group">
+                        <label for="from" class="col-lg-3 control-label"><%= t("Start Date") %></label>
 
-  <div class="field">
-    <%= f.label :heading_image %>
-      <br/>
-      <%= f.file_field :heading_image %>
-  </div>
+                        <div class="col-lg-9">
+                          <input type="text" class="form-control" id="from" name="from" placeholder="mm/dd/yyyy" value="<%= @conference.days.first.date.strftime("%m/%d/%Y") %>"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                      <div class="form-group">
+                        <label for="from" class="col-lg-3 control-label"><%= t("Start Date") %></label>
 
-  <%= f.fields_for :address do |address_form| %>
-    <div class="field">
-        <%= address_form.label :address_info %><br />
-        <%= address_form.text_area :info %>
-    </div>
+                        <div class="col-lg-9">
+                          <input type="text" class="form-control" id="to" name="to" placeholder="mm/dd/yyyy" value="<%= @conference.days.last.date.strftime("%m/%d/%Y") %>"/>
+                        </div>
+                      </div>
+                    </div>
+                </div>
 
-    <div class="address-map">
-      <div id="panel">
-        <input id="target" type="text" placeholder="Search Box" class="disable-enter">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                      <div class="form-group">
+                        <%= f.label :name, :class => "col-lg-3 control-label" %>
+
+                        <div class="col-lg-9">
+                          <%= f.text_field :name, :class => "form-control" %>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <%= f.label :summary, :class => "col-lg-3 control-label" %>
+
+                        <div class="col-lg-9">
+                          <%= f.text_field :summary, :class => "form-control" %>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                      <div class="form-group">
+                        <%= f.label :organization, :class => "col-lg-3 control-label" %>
+
+                        <div class="col-lg-9">
+                          <%= f.collection_select :organization_ids, current_user.organizations, :id, :name, {}, {:multiple => true, :class => "form-control", :style => "float:left; width:88%"} %>
+                          <a data-toggle="modal" href="#newOrg" class="btn btn-primary btn-small tt" style="float:left; margin-left: 7px" title="Add New Organization"><i class="icon-plus-sign"></i></a>
+
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                      <div class="form-group">
+                        <%= f.label :description, :class => "col-lg-1 control-label", :style => "margin-left:46px" %>
+
+                        <div class="col-lg-10">
+                          <%= f.text_area :description, :class => "form-control", :style => "height: 200px; width: 100%" %>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+
+            </div>
+          </div>
       </div>
-      <div id="map-canvas"></div>
     </div>
 
-    <%= address_form.hidden_field :lat, :id => "map_lat" %>
-    <%= address_form.hidden_field :lon, :id => "map_lon" %>
-  <% end %>
-  <div class="field">
-    <%= f.label :website %><br />
-    <%= f.text_field :website %>
-  </div>
-  <div class="field">
-    <%= f.label :twitter %><br />
-    <%= f.text_field :twitter %>
-  </div>
-  <div class="field">
-    <%= f.label :facebook %><br />
-    <%= f.text_field :facebook %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="row">
+      <!-- Left Col -->
+      <div class="col-lg-12 col-md-12 col-sm-12">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Details</div>
+            <div class="panel-body">
+
+              <div class="form-group">
+                <%= f.label :logo, :class => "col-lg-3 control-label" %>
+
+                <div class="col-lg-9">
+                  <%= f.file_field :logo, :class => "form-control" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :heading_image, :class => "col-lg-3 control-label" %>
+
+                <div class="col-lg-9">
+                  <%= f.file_field :heading_image, :class => "form-control" %>
+                </div>
+              </div>
+
+              <%= f.fields_for :address do |address_form| %>
+                  <div class="form-group">
+                    <%= address_form.label "Address Details", :class => "col-lg-3 control-label"%>
+
+                    <div class="col-lg-9">
+                      <%= address_form.text_area :info, :class => "form-control" %>
+                    </div>
+                  </div>
+                  <div class="row">
+                          <div class="form-group">
+                            <%= address_form.label "Location", :class => "col-lg-3 control-label" %>
+                            <div class="col-lg-9 address-map" style="padding-right: 30px">
+                                <div id="panel">
+                                  <input id="target" type="text" placeholder="Search Box" class="disable-enter">
+                                </div>
+                                <div id="map-canvas"></div>
+                              </div>
+
+                              <%= address_form.hidden_field :lat, :id => "map_lat" %>
+                              <%= address_form.hidden_field :lon, :id => "map_lon" %>
+                          </div>
+                  </div>
+              <% end %>
+
+              <div class="form-group">
+                <%= f.label :website, :class => "col-lg-3 control-label" %>
+
+                <div class="col-lg-9">
+                  <%= f.text_field :website, :class => "form-control" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :twitter, :class => "col-lg-3 control-label" %>
+
+                <div class="col-lg-9">
+                  <%= f.text_field :twitter, :class => "form-control" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :facebook, :class => "col-lg-3 control-label" %>
+
+                <div class="col-lg-9">
+                  <%= f.text_field :facebook, :class => "form-control" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :email, :class => "col-lg-3 control-label" %>
+
+                <div class="col-lg-9">
+                  <%= f.text_field :email, :class => "form-control" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :phone, :class => "col-lg-3 control-label" %>
+
+                <div class="col-lg-9">
+                  <%= f.text_field :phone, :class => "form-control" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                  <%= f.submit :class => "btn btn-default" %>
+                </div>
+              </div>
+
+            </div>
+        </div>
+      </div>
+    </div>
 <% end %>
 
 <div class="modal fade" id="newOrg">
