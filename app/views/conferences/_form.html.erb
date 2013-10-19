@@ -11,16 +11,17 @@
     </div>
   <% end %>
 
-    <div class="field">
-        <label for="from">From</label>
-        <input type="text" id="from" name="from"/>
-        <label for="to">to</label>
-        <input type="text" id="to" name="to"/>
-    </div>
+  <div class="field">
+    <label for="from">From</label>
+    <input type="text" id="from" name="from"/>
+    <label for="to">to</label>
+    <input type="text" id="to" name="to"/>
+  </div>
 
-    <div class="field">
+  <div class="field">
     <%= f.label :organization %><br />
     <%= f.collection_select :organization_ids, current_user.organizations, :id, :name, {}, {:multiple => true}%>
+    <a data-toggle="modal" href="#newOrg" class="btn btn-primary btn-lg">Add another organization</a>
   </div>
   <div class="field">
     <%= f.label :name %><br />
@@ -79,3 +80,24 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<div class="modal fade" id="newOrg">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Create a new organization</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for(Organization.new, remote: true) do |of| %>
+          <%= of.label :organization_name %>
+          <%= of.text_field :name %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+          <%= of.submit class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
