@@ -9,4 +9,5 @@ class Appeal < ActiveRecord::Base
   validates_presence_of :conference, :topic
 
   acts_as_commentable
+  acts_as_votable
 end

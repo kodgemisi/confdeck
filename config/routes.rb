@@ -13,6 +13,8 @@ Confman::Application.routes.draw do
     resources :appeals do
       member do
         post 'comment'
+        get 'upvote'
+        get 'downvote'
       end
     end
     member do

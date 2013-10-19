@@ -6,6 +6,8 @@
     <th>Topic</th>
     <th>Speakers </th>
     <th>#comments</th>
+    <th>#upvotes</th>
+    <th>#downvotes</th>
     <th></th>
     <th></th>
     <th></th>
@@ -21,6 +23,18 @@
       <% end %>
     </td>
     <td><%= appeal.comments.count %></td>
+    <td>
+      <%= appeal.upvotes.count %>
+      <% unless current_user.voted_up_on? appeal %>
+        <%= link_to :upvote, upvote_conference_appeal_path(@conference, appeal), remote: true %>
+      <% end %>
+    </td>
+    <td>
+      <%= appeal.downvotes.count %>
+      <% unless current_user.voted_down_on? appeal %>
+        <%= link_to :downvote, downvote_conference_appeal_path(@conference, appeal), remote: true %>
+      <% end %>
+    </td>
     <td><%= link_to 'Show', [@conference, appeal] %></td>
     <td><%= link_to 'Edit', edit_conference_appeal_path(@conference, appeal) %></td>
     <td><%= link_to 'Destroy', [@conference, appeal], method: :delete, data: { confirm: 'Are you sure?' } %></td>

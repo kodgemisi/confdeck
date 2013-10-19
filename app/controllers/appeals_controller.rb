@@ -1,5 +1,6 @@
 class AppealsController < ApplicationController
   before_filter :set_conference
+  before_filter :set_appeal, only: [:show, :edit, :update, :destroy, :comment, :upvote, :downvote]
   # GET /appeals
   # GET /appeals.json
   def index
@@ -14,8 +15,6 @@ class AppealsController < ApplicationController
   # GET /appeals/1
   # GET /appeals/1.json
   def show
-    @appeal = Appeal.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @appeal }
@@ -36,7 +35,6 @@ class AppealsController < ApplicationController
 
   # GET /appeals/1/edit
   def edit
-    @appeal = Appeal.find(params[:id])
   end
 
   # POST /appeals
@@ -59,8 +57,6 @@ class AppealsController < ApplicationController
   # PUT /appeals/1
   # PUT /appeals/1.json
   def update
-    @appeal = Appeal.find(params[:id])
-
     respond_to do |format|
       if @appeal.update_attributes(params[:appeal])
         format.html { redirect_to @appeal, notice: 'Appeal was successfully updated.' }
@@ -75,7 +71,6 @@ class AppealsController < ApplicationController
   # DELETE /appeals/1
   # DELETE /appeals/1.json
   def destroy
-    @appeal = Appeal.find(params[:id])
     @appeal.destroy
 
     respond_to do |format|
@@ -85,8 +80,6 @@ class AppealsController < ApplicationController
   end
 
   def comment
-    @appeal = @conference.appeals.find(params[:id])
-
     @comment = @appeal.comments.build(params[:comment])
     @comment.user = current_user
 
@@ -101,8 +94,26 @@ class AppealsController < ApplicationController
 
   end
 
+  def upvote
+    @appeal.upvote_from current_user
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def downvote
+    @appeal.downvote_from current_user
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
   def set_conference
     @conference = Conference.find(params[:conference_id])
+  end
+
+  def set_appeal
+    @appeal = @conference.appeals.find(params[:id])
   end
 end
