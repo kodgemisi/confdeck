@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131019111024) do
+ActiveRecord::Schema.define(:version => 20131019133656) do
 
   create_table "addresses", :force => true do |t|
     t.text     "info"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(:version => 20131019111024) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.string   "city"
+  end
+
+  create_table "appeals", :force => true do |t|
+    t.integer  "conference_id"
+    t.integer  "topic_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "conferences", :force => true do |t|
@@ -81,6 +88,21 @@ ActiveRecord::Schema.define(:version => 20131019111024) do
     t.integer "organization_id"
   end
 
+  create_table "speakers", :force => true do |t|
+    t.string   "email"
+    t.string   "name"
+    t.string   "phone"
+    t.string   "twitter"
+    t.string   "facebook"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "speakers_topics", :id => false, :force => true do |t|
+    t.integer "speaker_id"
+    t.integer "topic_id"
+  end
+
   create_table "sponsors", :force => true do |t|
     t.string   "name"
     t.string   "website"
@@ -91,6 +113,15 @@ ActiveRecord::Schema.define(:version => 20131019111024) do
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+  end
+
+  create_table "topics", :force => true do |t|
+    t.string   "subject"
+    t.string   "abstract"
+    t.text     "detail"
+    t.text     "additional_info"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "users", :force => true do |t|
