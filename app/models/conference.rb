@@ -1,5 +1,5 @@
 class Conference < ActiveRecord::Base
-  attr_accessible :description, :email, :facebook, :name, :phone, :summary, :twitter, :website, :address_attributes, :organization_ids, :logo
+  attr_accessible :description, :email, :facebook, :name, :phone, :summary, :twitter, :website, :address_attributes, :organization_ids, :logo, :heading_image
 
   has_one :address
   has_and_belongs_to_many :organizations
@@ -13,4 +13,14 @@ class Conference < ActiveRecord::Base
   validates_presence_of :name, :organizations
 
   has_attached_file :logo, :styles => { :medium => "400x400>", :thumb => "200x100>" }
+  has_attached_file :heading_image, :styles => { :default => "1900x254>", :thumb => "200x100>" }
+
+  def create_days(from_date, to_date)
+   current_date = from_date
+   begin
+    day = Day.find_or_create_by_date(current_date)
+    self.days << day
+    current_date = current_date.next_day
+   end while current_date != to_date.next_day
+  end
 end

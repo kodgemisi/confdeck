@@ -50,12 +50,7 @@ class ConferencesController < ApplicationController
 
     respond_to do |format|
       if @conference.save
-        current_date = from_date
-        begin
-          day = Day.find_or_create_by_date(current_date)
-          @conference.days << day
-          current_date = current_date.next_day
-        end while current_date != to_date.next_day
+        @conference.create_days(from_date, to_date)
         format.html { redirect_to @conference, notice: 'Conference was successfully created.' }
         format.json { render json: @conference, status: :created, location: @conference }
       else
@@ -69,9 +64,14 @@ class ConferencesController < ApplicationController
   # PUT /conferences/1.json
   def update
     @conference = Conference.find(params[:id])
+    from_date = DateTime.strptime(params[:from], "%m/%d/%Y")
+    to_date = DateTime.strptime(params[:to], "%m/%d/%Y")
 
     respond_to do |format|
       if @conference.update_attributes(params[:conference])
+        @conference.days.destroy_all
+        @conference.create_days(from_date, to_date)
+
         format.html { redirect_to @conference, notice: 'Conference was successfully updated.' }
         format.json { head :no_content }
       else
