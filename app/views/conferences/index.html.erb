@@ -2,14 +2,11 @@
 
 <table>
   <tr>
+    <th></th>
     <th>Name</th>
     <th>Summary</th>
-    <th>Description</th>
     <th>Website</th>
-    <th>Twitter</th>
-    <th>Facebook</th>
-    <th>Email</th>
-    <th>Phone</th>
+    <th># of appeals</th>
     <th>Address</th>
     <th></th>
     <th></th>
@@ -21,12 +18,8 @@
     <td><%= image_tag conference.logo.url(:thumb) %></td>
     <td><%= conference.name %></td>
     <td><%= conference.summary %></td>
-    <td><%= conference.description %></td>
     <td><%= conference.website %></td>
-    <td><%= conference.twitter %></td>
-    <td><%= conference.facebook %></td>
-    <td><%= conference.email %></td>
-    <td><%= conference.phone %></td>
+    <td><%= link_to conference.appeals.count, conference_appeals_path(conference) %></td>
     <td><%= conference.address.info %></td>
     <td><%= link_to 'Show', conference %></td>
     <td><%= link_to 'Edit', edit_conference_path(conference) %></td>

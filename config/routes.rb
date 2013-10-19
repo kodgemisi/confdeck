@@ -1,7 +1,7 @@
 Confman::Application.routes.draw do
+  resources :topics
   resources :rooms
   resources :slots
-  resources :appeals
   resources :topics
   resources :speakers
 
@@ -9,6 +9,7 @@ Confman::Application.routes.draw do
 
   resources :conferences do
     resources :sponsors
+    resources :appeals
     member do
      get 'schedule'
     end
