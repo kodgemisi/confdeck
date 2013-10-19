@@ -144,3 +144,21 @@ footer {
     width: 555px;
     height: 357px
 }
+
+.best_in_place {
+    padding: .1 m;
+    cursor: hand;
+    cursor: pointer;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.best_in_place:hover{
+    padding-right: 1.5em;
+    background: url('/assets/pen.png') no-repeat right;
+    background-color: #CCC;
+}

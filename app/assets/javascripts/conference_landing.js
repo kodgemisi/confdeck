@@ -1,3 +1,5 @@
+//= require best_in_place
+
 $(function () {
     $('a[href*=#]:not([href=#])').click(function () {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
@@ -13,4 +15,8 @@ $(function () {
             }
         }
     });
+
+
+    /* Activating Best In Place */
+    jQuery(".best_in_place").best_in_place();
 });

@@ -15,6 +15,7 @@
 //= require jquery.ui.datepicker
 //= require bootstrap
 //= require gmaps
+//= require best_in_place
 
 
 $(document).ready(function(){
@@ -23,4 +24,7 @@ $(document).ready(function(){
             event.preventDefault();
         }
     });
+
+    /* Activating Best In Place */
+    jQuery(".best_in_place").best_in_place();
 })

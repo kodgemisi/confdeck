@@ -64,14 +64,17 @@ class ConferencesController < ApplicationController
   # PUT /conferences/1.json
   def update
     @conference = Conference.find(params[:id])
-    from_date = DateTime.strptime(params[:from], "%m/%d/%Y")
-    to_date = DateTime.strptime(params[:to], "%m/%d/%Y")
 
+    if(params[:from] && params[:to])
+     from_date = DateTime.strptime(params[:from], "%m/%d/%Y")
+     to_date = DateTime.strptime(params[:to], "%m/%d/%Y")
+    end
     respond_to do |format|
       if @conference.update_attributes(params[:conference])
-        @conference.days.destroy_all
-        @conference.create_days(from_date, to_date)
-
+        if (params[:from] && params[:to])
+         @conference.days.destroy_all
+         @conference.create_days(from_date, to_date)
+        end
         format.html { redirect_to @conference, notice: 'Conference was successfully updated.' }
         format.json { head :no_content }
       else
