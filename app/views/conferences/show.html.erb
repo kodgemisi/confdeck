@@ -26,6 +26,7 @@
       <div class="carousel-caption title">
         <h1><%=@conference.name %></h1>
         <h2><%= @conference.days.first.date.strftime("%B %d") %> - <%= @conference.days.last.date.strftime("%B %d") %> </h2>
+        <h2><%= @conference.address.city %> </h2>
       </div>
     </div>
   </div>
