@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  info: MyText
+  lat: 1.5
+  lon: 1.5
+  conference_id: 1
+
+two:
+  info: MyText
+  lat: 1.5
+  lon: 1.5
+  conference_id: 1

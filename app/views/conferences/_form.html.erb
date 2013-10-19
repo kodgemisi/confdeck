@@ -1,0 +1,64 @@
+<%= form_for(@conference) do |f| %>
+  <% if @conference.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@conference.errors.count, "error") %> prohibited this conference from being saved:</h2>
+
+      <ul>
+      <% @conference.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :summary %><br />
+    <%= f.text_field :summary %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+
+  <%= f.fields_for :address do |address_form| %>
+    <div class="field">
+      <%= address_form.label :address_info %><br />
+      <%= address_form.text_area :info %>
+    </div>
+    <div class="field">
+      <%= address_form.label :lat %><br />
+      <%= address_form.text_field :lat %>
+    </div>
+    <div class="field">
+      <%= address_form.label :lon %><br />
+      <%= address_form.text_field :lon %>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :website %><br />
+    <%= f.text_field :website %>
+  </div>
+  <div class="field">
+    <%= f.label :twitter %><br />
+    <%= f.text_field :twitter %>
+  </div>
+  <div class="field">
+    <%= f.label :facebook %><br />
+    <%= f.text_field :facebook %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

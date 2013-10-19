@@ -1,4 +1,7 @@
 Confman::Application.routes.draw do
+  resources :conferences
+
+
   resources :organizations
 
 
