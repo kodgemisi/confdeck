@@ -96,7 +96,9 @@ class ConferencesController < ApplicationController
     end
   end
 
- def schedule
-
- end
+  def schedule
+    @conference = Conference.find(params[:id])
+    @room = Room.new
+    @slot = Slot.new
+  end
 end
