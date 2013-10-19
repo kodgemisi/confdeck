@@ -100,24 +100,13 @@
         <h2>Our Sponsors</h2>
         <hr>
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-6">
-        <a href="portfolio-item.html"><img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450"></a>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-6">
-        <a href="portfolio-item.html"><img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450"></a>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-6">
-        <a href="portfolio-item.html"><img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450"></a>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-6">
-        <a href="portfolio-item.html"><img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450"></a>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-6">
-        <a href="portfolio-item.html"><img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450"></a>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-6">
-        <a href="portfolio-item.html"><img class="img-responsive img-home-portfolio" src="http://placehold.it/700x450"></a>
-      </div>
+      <% @conference.sponsors.each do |sponsor| %>
+          <div class="col-lg-4 col-md-4 col-sm-6">
+              <%= link_to image_tag(sponsor.logo.url, :class => "img-responsive img-home-portfolio"), sponsor.website %>
+
+          </div>
+      <% end %>
+
     </div>
     <!-- /.row -->
 
