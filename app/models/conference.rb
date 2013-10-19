@@ -23,4 +23,5 @@ class Conference < ActiveRecord::Base
     current_date = current_date.next_day
    end while current_date != to_date.next_day
   end
+
 end

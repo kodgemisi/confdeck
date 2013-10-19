@@ -18,13 +18,14 @@
   <!-- /.container -->
 </nav>
 
-<div class="carousel slide">
+<div class="carousel slide heading">
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
       <div class="fill" style="background-image:url('<%=@conference.heading_image.url%>');"></div>
-      <div class="carousel-caption">
-        <h1>Modern Business - A Bootstrap 3 Template</h1>
+      <div class="carousel-caption title">
+        <h1><%=@conference.name %></h1>
+        <h2><%= @conference.days.first.date.strftime("%B %d") %> - <%= @conference.days.last.date.strftime("%B %d") %> </h2>
       </div>
     </div>
   </div>

@@ -135,3 +135,7 @@ footer {
 .speaker img {
     margin: auto auto;
 }
+
+.heading .title {
+    padding-bottom: 130px;
+}
