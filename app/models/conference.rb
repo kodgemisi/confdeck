@@ -9,7 +9,7 @@ class Conference < ActiveRecord::Base
   has_many :slots
   has_many :appeals
   has_many :topics, through: :appeals
-  has_many :speakers, through: :topics
+  has_many :speakers, through: :topics, :uniq => true
 
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :organizations
