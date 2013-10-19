@@ -1,8 +1,9 @@
 class AppealsController < ApplicationController
+  before_filter :set_conference
   # GET /appeals
   # GET /appeals.json
   def index
-    @appeals = Appeal.all
+    @appeals = @conference.appeals
 
     respond_to do |format|
       format.html # index.html.erb
@@ -79,5 +80,10 @@ class AppealsController < ApplicationController
       format.html { redirect_to appeals_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def set_conference
+    @conference = Conference.find(params[:conference_id])
   end
 end

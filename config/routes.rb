@@ -1,17 +1,13 @@
 Confman::Application.routes.draw do
-  resources :appeals
-
-
   resources :topics
 
-
   resources :speakers
-
 
   get "invitations/accept"
 
   resources :conferences do
     resources :sponsors
+    resources :appeals
     member do
      get 'schedule'
     end
