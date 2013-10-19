@@ -1,4 +1,7 @@
 Confman::Application.routes.draw do
+  resources :rooms
+
+
   resources :slots
 
   get "invitations/accept"
