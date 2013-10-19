@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>Organizations:</b>
+  <% @conference.organizations.each do |organization| %>
+    <%= organization.name %>
+  <% end %>
+</p>
+
+<p>
   <b>Name:</b>
   <%= @conference.name %>
 </p>

@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :organization %><br />
+    <%= f.collection_select :organization_ids, current_user.organizations, :id, :name, {}, {:multiple => true}%>
+  </div>
+  <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
