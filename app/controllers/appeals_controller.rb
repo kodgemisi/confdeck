@@ -26,6 +26,7 @@ class AppealsController < ApplicationController
   # GET /appeals/new.json
   def new
     @appeal = Appeal.new
+    @appeal.build_topic
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,10 +43,11 @@ class AppealsController < ApplicationController
   # POST /appeals.json
   def create
     @appeal = Appeal.new(params[:appeal])
+    @appeal.conference = @conference
 
     respond_to do |format|
       if @appeal.save
-        format.html { redirect_to @appeal, notice: 'Appeal was successfully created.' }
+        format.html { redirect_to [@conference, @appeal], notice: 'Appeal was successfully created.' }
         format.json { render json: @appeal, status: :created, location: @appeal }
       else
         format.html { render action: "new" }

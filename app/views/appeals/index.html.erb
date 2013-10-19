@@ -4,6 +4,7 @@
   <tr>
     <th>Conference</th>
     <th>Topic</th>
+    <th>Speakers </th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,10 +12,15 @@
 
 <% @appeals.each do |appeal| %>
   <tr>
-    <td><%= appeal.conference_id %></td>
-    <td><%= appeal.topic_id %></td>
+    <td><%= appeal.conference.name %></td>
+    <td><%= appeal.topic.subject %></td>
+    <td>
+      <% appeal.topic.speakers.each do |speaker| %>
+        <%= link_to speaker.name, speaker_path(speaker) %>
+      <% end %>
+    </td>
     <td><%= link_to 'Show', [@conference, appeal] %></td>
-    <td><%= link_to 'Edit', edit_appeal_path(appeal) %></td>
+    <td><%= link_to 'Edit', edit_conference_appeal_path(@conference, appeal) %></td>
     <td><%= link_to 'Destroy', [@conference, appeal], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>

@@ -12,13 +12,31 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :conference_id %><br />
-    <%= f.number_field :conference_id %>
+    <h3>Add appeal to <%= @conference.name %></h3>
   </div>
-  <div class="field">
-    <%= f.label :topic_id %><br />
-    <%= f.number_field :topic_id %>
-  </div>
+  <%= f.fields_for :topic do |topic_form| %>
+    <div class="field">
+      <%= topic_form.label :speakers %><br />
+      <%= topic_form.collection_select :speaker_ids, Speaker.all, :id, :name, {}, {:multiple => true}%>
+    </div>
+    <a data-toggle="modal" href="#newSpeaker" class="btn btn-primary btn-lg">Add another speaker</a>
+    <div class="field">
+      <%= topic_form.label :subject %><br />
+      <%= topic_form.text_field :subject %>
+    </div>
+    <div class="field">
+      <%= topic_form.label :abstract %><br />
+      <%= topic_form.text_field :abstract %>
+    </div>
+    <div class="field">
+      <%= topic_form.label :detail %><br />
+      <%= topic_form.text_area :detail %>
+    </div>
+    <div class="field">
+      <%= topic_form.label :additional_info %><br />
+      <%= topic_form.text_area :additional_info %>
+    </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
