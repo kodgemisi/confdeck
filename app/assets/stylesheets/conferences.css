@@ -3,8 +3,9 @@
   They will automatically be included in application.css.
 */
 .address-map {
-    height: 300px;
-    width: 800px
+    height: 400px;
+    width: 100%;
+    padding-right: 30px
 }
 #map-canvas {
     height: 100%;
