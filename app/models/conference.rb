@@ -1,5 +1,5 @@
 class Conference < ActiveRecord::Base
-  attr_accessible :description, :email, :facebook, :name, :phone, :summary, :twitter, :website, :address_attributes, :organization_ids, :logo, :heading_image
+  attr_accessible :description, :email, :facebook, :name, :phone, :summary, :twitter, :website, :address_attributes, :organization_ids, :logo, :heading_image, :keywords
 
   has_one :address
   has_and_belongs_to_many :organizations

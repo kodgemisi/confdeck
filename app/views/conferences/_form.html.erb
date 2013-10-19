@@ -168,12 +168,20 @@
                   <%= f.text_field :phone, :class => "form-control" %>
                 </div>
               </div>
+
+              <div class="form-group">
+                <%= f.label :keywords, :class => "col-lg-3 control-label" %>
+
+                <div class="col-lg-9">
+                  <%= f.text_field :keywords, :class => "form-control", :placeholder => "seperate by comma"  %>
+
+                </div>
+              </div>
               <div class="form-group">
                 <div class="col-lg-offset-2 col-lg-10">
                   <%= f.submit :class => "btn btn-default" %>
                 </div>
               </div>
-
             </div>
         </div>
       </div>

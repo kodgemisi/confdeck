@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131019191509) do
+ActiveRecord::Schema.define(:version => 20131019213636) do
 
   create_table "addresses", :force => true do |t|
     t.text     "info"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20131019191509) do
     t.string   "heading_image_content_type"
     t.integer  "heading_image_file_size"
     t.datetime "heading_image_updated_at"
+    t.string   "keywords"
   end
 
   create_table "conferences_days", :id => false, :force => true do |t|

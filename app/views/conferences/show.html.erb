@@ -29,15 +29,15 @@
     <div class="item active">
       <div class="fill" style="background-image:url('<%=@conference.heading_image.url%>');"></div>
       <div class="carousel-caption title">
-        <h1><%= best_in_place_if @conference.organizations && current_user.organizations, @conference, :name, :type => :input %></h1>
+        <h1><%= best_in_place_if current_user && @conference.organizations && current_user.organizations, @conference, :name, :type => :input %></h1>
 
-        <h2>
+
           <% if @conference.days.first.date == @conference.days.last.date %>
-              <%= @conference.days.first.date.strftime("%B %d") %>
+            <h2> <%= @conference.days.first.date.strftime("%B %d") %></h2>
           <% else %>
-            <%= @conference.days.first.date.strftime("%B %d") %> - <%= @conference.days.last.date.strftime("%B %d") %> </h2>
+            <h2><%= @conference.days.first.date.strftime("%B %d") %> - <%= @conference.days.last.date.strftime("%B %d") %> </h2>
           <% end %>
-        <h2><%= best_in_place_if @conference.organizations && current_user.organizations, @conference.address, :city, :type => :input, :path => conference_address_path(@conference, @conference.address) %></h2>
+        <h2><%= best_in_place_if current_user && @conference.organizations && current_user.organizations, @conference.address, :city, :type => :input, :path => conference_address_path(@conference, @conference.address) %></h2>
 
       </div>
     </div>
@@ -52,8 +52,9 @@
 
     <div class="row">
       <div class="col-lg-12">
-        <h2><%= best_in_place_if @conference.organizations && current_user.organizations, @conference, :summary, :type => :input %></h2>
-        <h3><%= best_in_place_if @conference.organizations && current_user.organizations, @conference, :description, :type => :input %></h3>
+        <h2><%= best_in_place_if current_user && @conference.organizations && current_user.organizations, @conference, :summary, :type => :input %></h2>
+        <h3><%= best_in_place_if current_user && @conference.organizations && current_user.organizations, @conference, :description, :type => :input %></h3>
+        <h4><%= best_in_place_if current_user && @conference.organizations && current_user.organizations, @conference, :keywords, :type => :input %></h4>
       </div>
     </div>
     <!-- /.row -->
@@ -130,7 +131,7 @@
       <div class="col-lg-6 col-md-6 col-sm-6">
         <h2>Location</h2>
 
-        <%= best_in_place_if @conference.organizations && current_user.organizations, @conference.address, :info, :type => :textarea, :path => conference_address_path(@conference, @conference.address) %>
+        <%= best_in_place_if current_user && @conference.organizations && current_user.organizations, @conference.address, :info, :type => :textarea, :path => conference_address_path(@conference, @conference.address) %>
 
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6" id="address_map">
