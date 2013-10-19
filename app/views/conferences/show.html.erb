@@ -82,53 +82,39 @@
 </div><!-- /.section -->
 
 <div class="section-colored" id="speakers">
-  <div class="container">
+  <div class="container text-center">
 
-      <div class="row">
+      <div class="row text-center" >
         <div class="col-lg-12 text-center">
           <h2>Speakers</h2>
           <hr>
         </div>
-        <div class="col-lg-4 col-sm-6 speaker">
-          <img class="img-circle img-responsive" src="http://placehold.it/200x200">
+        <% @conference.speakers.each do |speaker| %>
+            <div class="col-lg-4 col-sm-6 speaker">
+              <img class="img-circle img-responsive" src="<%=speaker.avatar_url%>">
 
-          <h3>John Smith
-            <small>Job Title</small>
-          </h3>
-          <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <img class="img-circle img-responsive" src="http://placehold.it/200x200">
+              <h2><%= speaker.name %>
+              </h2>
 
-          <h3>John Smith
-            <small>Job Title</small>
-          </h3>
-          <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <img class="img-circle img-responsive" src="http://placehold.it/200x200">
+              <p><%= speaker.bio %></p>
 
-          <h3>John Smith
-            <small>Job Title</small>
-          </h3>
-          <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <img class="img-circle img-responsive" src="http://placehold.it/200x200">
+              <p class="social-links">
+                <% if speaker.twitter %>
+                    <a href="http://www.twitter.com/<%= speaker.twitter %>"><i class="icon-twitter" style="font-size: 30px"></i></a>
+                <% end %>
+                <% if speaker.github %>
+                    <a href="http://www.github.com/<%= speaker.github %>"><i class="icon-github" style="font-size: 30px"></i></a>
+                <% end %>
 
-          <h3>John Smith
-            <small>Job Title</small>
-          </h3>
-          <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-          <img class="img-circle img-responsive" src="http://placehold.it/200x200">
+                <% if speaker.facebook %>
+                    <a href="http://www.facebook.com/<%= speaker.facebook%>"><i class="icon-facebook" style="font-size: 30px"></i></a>
+                <% end %>
 
-          <h3>John Smith
-            <small>Job Title</small>
-          </h3>
-          <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-        </div>
+              </p>
+            </div>
+        <% end %>
+
+
       </div>
   </div>
 </div>

@@ -1,4 +1,8 @@
-
+/*
+ *
+ *= require_self
+ *= require font-awesome.min
+*/
 
 /* 
 Custom CSS for...
@@ -161,4 +165,13 @@ footer {
     padding-right: 1.5em;
     background: url('/assets/pen.png') no-repeat right;
     background-color: #CCC;
+}
+
+.social-links{
+
+}
+
+.social-links a{
+    text-decoration: none;
+    color: #000000;
 }
