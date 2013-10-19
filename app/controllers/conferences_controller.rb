@@ -42,9 +42,18 @@ class ConferencesController < ApplicationController
   # POST /conferences.json
   def create
     @conference = Conference.new(params[:conference])
+    from_date = DateTime.strptime(params[:from], "%m/%d/%Y")
+    to_date = DateTime.strptime(params[:to], "%m/%d/%Y")
+
 
     respond_to do |format|
       if @conference.save
+        current_date = from_date
+        begin
+          day = Day.find_or_create_by_date(current_date)
+          @conference.days << day
+          current_date = current_date.next_day
+        end while current_date != to_date.next_day
         format.html { redirect_to @conference, notice: 'Conference was successfully created.' }
         format.json { render json: @conference, status: :created, location: @conference }
       else
