@@ -8,6 +8,7 @@ Confman::Application.routes.draw do
   get "invitations/accept"
 
   resources :conferences do
+    resources :addresses
     resources :sponsors
     resources :appeals
     member do

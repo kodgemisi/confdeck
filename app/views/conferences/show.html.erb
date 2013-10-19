@@ -31,6 +31,7 @@
       <div class="carousel-caption title">
         <h1><%=@conference.name %></h1>
         <h2><%= @conference.days.first.date.strftime("%B %d") %> - <%= @conference.days.last.date.strftime("%B %d") %> </h2>
+        <h2><%= best_in_place_if @conference.organizations && current_user.organizations, @conference.address, :city, :type => :input, :path => conference_address_path(@conference, @conference.address) %></h2>
 
       </div>
     </div>
@@ -138,7 +139,9 @@
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-6">
         <h2>Location</h2>
-        <%=@conference.address.info%>
+
+        <%= best_in_place_if @conference.organizations && current_user.organizations, @conference.address, :info, :type => :textarea, :path => conference_address_path(@conference, @conference.address) %>
+
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6" id="address_map">
 
