@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131019083250) do
+ActiveRecord::Schema.define(:version => 20131019104100) do
 
   create_table "addresses", :force => true do |t|
     t.text     "info"
@@ -31,12 +31,16 @@ ActiveRecord::Schema.define(:version => 20131019083250) do
     t.string   "facebook"
     t.string   "email"
     t.string   "phone"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.string   "logo_file_name"
     t.string   "logo_content_type"
     t.integer  "logo_file_size"
     t.datetime "logo_updated_at"
+    t.string   "heading_image_file_name"
+    t.string   "heading_image_content_type"
+    t.integer  "heading_image_file_size"
+    t.datetime "heading_image_updated_at"
   end
 
   create_table "conferences_days", :id => false, :force => true do |t|

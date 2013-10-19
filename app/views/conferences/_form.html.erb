@@ -40,6 +40,12 @@
     <%= f.file_field :logo %>
   </div>
 
+  <div class="field">
+    <%= f.label :heading_image %>
+      <br/>
+      <%= f.file_field :heading_image %>
+  </div>
+
   <%= f.fields_for :address do |address_form| %>
     <div class="field">
         <%= address_form.label :address_info %><br />

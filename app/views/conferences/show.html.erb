@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="index.html">Modern Business</a>
+      <a class="navbar-brand" href="#about"><%=@conference.name%></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -22,7 +22,7 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
-      <div class="fill" style="background-image:url('http://placehold.it/1900x1080&text=Slide One');"></div>
+      <div class="fill" style="background-image:url('<%=@conference.heading_image.url%>');"></div>
       <div class="carousel-caption">
         <h1>Modern Business - A Bootstrap 3 Template</h1>
       </div>
