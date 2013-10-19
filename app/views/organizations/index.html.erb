@@ -4,6 +4,7 @@
   <tr>
     <th>Name</th>
     <th>Website</th>
+    <th># of members</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +14,7 @@
   <tr>
     <td><%= organization.name %></td>
     <td><%= organization.website %></td>
+    <td><%= organization.users.count %></td>
     <td><%= link_to 'Show', organization %></td>
     <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
     <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>

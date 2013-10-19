@@ -11,6 +11,10 @@ gem 'paperclip'
 gem 'devise_invitable'
 gem 'best_in_place'
 
+gem 'acts_as_commentable', '3.0.1'
+
+gem 'acts_as_votable', '~> 0.7.1'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

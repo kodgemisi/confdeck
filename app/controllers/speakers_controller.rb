@@ -50,6 +50,7 @@ class SpeakersController < ApplicationController
         format.html { render action: "new" }
         format.json { render json: @speaker.errors, status: :unprocessable_entity }
       end
+      format.js
     end
   end
 

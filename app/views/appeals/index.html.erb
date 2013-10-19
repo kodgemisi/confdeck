@@ -5,6 +5,9 @@
     <th>Conference</th>
     <th>Topic</th>
     <th>Speakers </th>
+    <th>#comments</th>
+    <th>#upvotes</th>
+    <th>#downvotes</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +20,19 @@
     <td>
       <% appeal.topic.speakers.each do |speaker| %>
         <%= link_to speaker.name, speaker_path(speaker) %>
+      <% end %>
+    </td>
+    <td><%= appeal.comments.count %></td>
+    <td>
+      <%= appeal.upvotes.count %>
+      <% unless current_user.voted_up_on? appeal %>
+        <%= link_to :upvote, upvote_conference_appeal_path(@conference, appeal), remote: true %>
+      <% end %>
+    </td>
+    <td>
+      <%= appeal.downvotes.count %>
+      <% unless current_user.voted_down_on? appeal %>
+        <%= link_to :downvote, downvote_conference_appeal_path(@conference, appeal), remote: true %>
       <% end %>
     </td>
     <td><%= link_to 'Show', [@conference, appeal] %></td>

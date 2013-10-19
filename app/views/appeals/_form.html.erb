@@ -41,3 +41,35 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<div class="modal fade" id="newSpeaker">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Create a new speaker</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for(Speaker.new, remote: true) do |sf| %>
+          <%= sf.label :name %>
+          <%= sf.text_field :name %>
+          <br>
+          <%= sf.label :email %>
+          <%= sf.email_field :email %>
+          <br>
+          <%= sf.label :phone %>
+          <%= sf.text_field :phone %>
+          <br>
+          <%= sf.label :twitter %>
+          <%= sf.text_field :twitter %>
+          <br>
+          <%= sf.label :facebook %>
+          <%= sf.text_field :facebook %>
+      </div>
+      <div class="modal-footer">
+          <%= sf.submit class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
