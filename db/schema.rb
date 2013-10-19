@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(:version => 20131019083250) do
 
   create_table "conferences_days", :id => false, :force => true do |t|
     t.integer "conference_id"
-    t.integer "organization_id"
+    t.integer "day_id"
   end
 
   create_table "conferences_organizations", :id => false, :force => true do |t|
