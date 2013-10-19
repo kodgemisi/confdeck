@@ -3,6 +3,9 @@ Confman::Application.routes.draw do
 
   resources :conferences do
     resources :sponsors
+    member do
+     get 'schedule'
+    end
   end
 
   resources :organizations do
