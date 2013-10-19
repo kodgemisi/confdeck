@@ -5,6 +5,7 @@ class Conference < ActiveRecord::Base
   has_and_belongs_to_many :organizations
   has_and_belongs_to_many :days
   has_many :sponsors
+  has_many :rooms
   has_many :slots
   has_many :appeals
   has_many :topics, through: :appeals

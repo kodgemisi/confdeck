@@ -90,8 +90,9 @@ ActiveRecord::Schema.define(:version => 20131019171923) do
 
   create_table "rooms", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "conference_id"
   end
 
   create_table "slots", :force => true do |t|
