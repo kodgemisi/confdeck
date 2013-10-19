@@ -1,18 +1,20 @@
-<h2>Sign up</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "form-signin form-signup"}) do |f| %>
+    <%= devise_error_messages! %>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+    <h2 class="form-signin-heading">Sign In</h2>
+    <%= f.text_field :email, :autofocus => true, :class => "form-control", :placeholder => "Email" %>
+    <%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
+    <%= f.password_field :password_confirmation, :class => "form-control", :placeholder => "Password" %>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+    <div><%= f.submit "Sign Up", :class => "btn btn-lg btn-primary btn-block", :style => "margin-top: 10px" %></div>
 
-  <div><%= f.submit "Sign up" %></div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<div class="row">
+  <div class="col-lg-4 col-lg-offset-8">
+    <%= render "devise/shared/links" %>
+  </div>
+</div>
+
