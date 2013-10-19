@@ -3,9 +3,11 @@ class Conference < ActiveRecord::Base
 
   has_one :address
   has_and_belongs_to_many :organizations
+  has_and_belongs_to_many :days
 
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :organizations
+  accepts_nested_attributes_for :days
 
   validates_presence_of :name, :organizations
 end
