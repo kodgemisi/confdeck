@@ -1,4 +1,6 @@
 class ConferencesController < ApplicationController
+
+ layout 'conference_landing', :only => [:show]
   # GET /conferences
   # GET /conferences.json
   def index
