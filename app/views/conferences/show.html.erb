@@ -23,7 +23,7 @@
   <!-- /.container -->
 </nav>
 
-<div class="carousel slide heading">
+<div class="carousel slide heading" id="about">
   <!-- Wrapper for slides -->
   <div class="carousel-inner">
     <div class="item active">
@@ -38,38 +38,6 @@
 
 </div>
 
-<div class="section">
-
-  <div class="container">
-
-    <div class="row">
-      <div class="col-lg-4 col-md-4">
-        <h3><i class="icon-ok-circle"></i> Bootstrap 3 Built</h3>
-
-        <p>The 'Modern Business' website template by <a href="http://startbootstrap.com">Start Bootstrap</a> is built
-          with <a href="http://getbootstrap.com">Bootstrap 3</a>. Make sure you're up to date with latest Bootstrap
-          documentation!</p>
-      </div>
-      <div class="col-lg-4 col-md-4">
-        <h3><i class="icon-pencil"></i> Ready to Style &amp; Edit</h3>
-
-        <p>Your ready to go with this pre-built page structure, now all you need to do is add your own custom stylings!
-          You can see some free themes over at <a href="http://bootswatch.com">Bootswatch</a>, or come up with your own
-          using <a href="http://getbootstrap.com/customize/">the Bootstrap customizer</a>!</p>
-      </div>
-      <div class="col-lg-4 col-md-4">
-        <h3><i class="icon-folder-open-alt"></i> Many Page Options</h3>
-
-        <p>This template features many common pages that you might see on a business website. Pages include: about,
-          contact, portfolio variations, blog, pricing, FAQ, 404, services, and general multi-purpose pages.</p>
-      </div>
-    </div>
-    <!-- /.row -->
-
-  </div>
-  <!-- /.container -->
-
-</div><!-- /.section -->
 
 <div class="section-colored text-center">
 
@@ -77,11 +45,8 @@
 
     <div class="row">
       <div class="col-lg-12">
-        <h2>Modern Business: A Clean &amp; Simple Full Website Template by Start Bootstrap</h2>
+        <h2><%= @conference.description %></h2>
 
-        <p>A complete website design featuring various single page templates from Start Bootstraps library of free HTML
-          starter templates.</p>
-        <hr>
       </div>
     </div>
     <!-- /.row -->
@@ -208,35 +173,6 @@
 
 </div><!-- /.section-colored -->
 
-<div class="section">
-
-  <div class="container">
-
-    <div class="row">
-      <div class="col-lg-6 col-md-6 col-sm-6">
-        <img class="img-responsive" src="http://placehold.it/700x450">
-      </div>
-      <div class="col-lg-6 col-md-6 col-sm-6">
-        <h2>Modern Business Features Include:</h2>
-        <ul>
-          <li>Bootstrap 3 Framework</li>
-          <li>Mobile Responsive Design</li>
-          <li>Predefined File Paths</li>
-          <li>Working PHP Contact Page</li>
-          <li>Minimal Custom CSS Styles</li>
-          <li>Unstyled: Add Your Own Style and Content!</li>
-          <li>Font-Awesome fonts come pre-installed!</li>
-          <li>100% <strong>Free</strong> to Use</li>
-          <li>Open Source: Use for any project, private or commercial!</li>
-        </ul>
-      </div>
-    </div>
-    <!-- /.row -->
-
-  </div>
-  <!-- /.container -->
-
-</div><!-- /.section -->
 
 <div class="container">
 
@@ -268,75 +204,3 @@
   </footer>
 
 </div><!-- /.container -->
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Organizations:</b>
-  <% @conference.organizations.each do |organization| %>
-    <%= organization.name %>
-  <% end %>
-</p>
-
-<p>
-  <%= image_tag @conference.logo.url(:medium) %>
-</p>
-<p>
-  <b>Name:</b>
-  <%= @conference.name %>
-</p>
-
-<p>
-  <b>Summary:</b>
-  <%= @conference.summary %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @conference.description %>
-</p>
-
-<p>
-  <b>Sponsors:</b>
-  <% @conference.sponsors.each do |sponsor| %>
-    <%= sponsor.name %>
-  <% end %>
-  <br>
-  <%= link_to "manage sponsors", conference_sponsors_path(@conference) %>
-</p>
-
-<p>
-  <b>Website:</b>
-  <%= @conference.website %>
-</p>
-
-<p>
-  <b>Twitter:</b>
-  <%= @conference.twitter %>
-</p>
-
-<p>
-  <b>Facebook:</b>
-  <%= @conference.facebook %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @conference.email %>
-</p>
-
-<p>
-  <b>Phone:</b>
-  <%= @conference.phone %>
-</p>
-
-<p>
-  <b>Address:</b>
-  <%= @conference.address.info %>
-  <%= @conference.address.lat %>
-  <%= @conference.address.lon %>
-</p>
-
-
-<%= link_to 'Edit', edit_conference_path(@conference) %> |
-<%= link_to 'Back', conferences_path %>
