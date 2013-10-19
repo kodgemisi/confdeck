@@ -14,6 +14,16 @@ function initialize() {
     var input = document.getElementById('target');
     var searchBox = new google.maps.places.SearchBox(input);
 
+    google.maps.event.addListener(map, 'click', function (event) {
+        var myLatLng = event.latLng;
+        var lat = myLatLng.lat();
+        var lng = myLatLng.lng();
+
+        $('#map_lat').val(lat);
+        $('#map_lon').val(lng);
+    })
+
+
     // [START region_getplaces]
     // Listen for the event fired when the user selects an item from the
     // pick list. Retrieve the matching places for that item.
@@ -36,15 +46,6 @@ function initialize() {
                 scaledSize: new google.maps.Size(25, 25)
             };
 
-            // Create a marker for each place.
-            var marker = new google.maps.Marker({
-                map: map,
-                icon: image,
-                title: place.name,
-                position: place.geometry.location
-            });
-
-            markers.push(marker);
 
             bounds.extend(place.geometry.location);
         }

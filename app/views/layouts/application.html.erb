@@ -3,8 +3,8 @@
 <head>
   <title>Confman</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places' %>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -44,7 +44,9 @@
     <!--/.nav-collapse -->
   </div>
 
-<%= yield %>
+    <%= yield %>
+
+</div>
 
 </body>
 </html>

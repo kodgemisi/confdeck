@@ -2,3 +2,21 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+.address-map {
+    height: 300px;
+    width: 800px
+}
+#map-canvas {
+    height: 100%;
+    margin: 0px;
+    padding: 0px
+}
+
+#panel {
+    position: absolute;
+    left: 50%;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+}

@@ -30,17 +30,19 @@
 
   <%= f.fields_for :address do |address_form| %>
     <div class="field">
-      <%= address_form.label :address_info %><br />
-      <%= address_form.text_area :info %>
+        <%= address_form.label :address_info %><br />
+        <%= address_form.text_area :info %>
     </div>
-    <div class="field">
-      <%= address_form.label :lat %><br />
-      <%= address_form.text_field :lat %>
+
+    <div class="address-map">
+      <div id="panel">
+        <input id="target" type="text" placeholder="Search Box" class="disable-enter">
+      </div>
+      <div id="map-canvas"></div>
     </div>
-    <div class="field">
-      <%= address_form.label :lon %><br />
-      <%= address_form.text_field :lon %>
-    </div>
+
+    <%= address_form.hidden_field :lat, :id => "map_lat" %>
+    <%= address_form.hidden_field :lon, :id => "map_lon" %>
   <% end %>
   <div class="field">
     <%= f.label :website %><br />
