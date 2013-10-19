@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @organization.name %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%= @organization.website %>
+</p>
+
+<p>
+  <b>users:</b>
+  <% @organization.users.each do |u| %>
+    <%= u.email %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_organization_path(@organization) %> |
+<%= link_to 'Back', organizations_path %>
