@@ -1,10 +1,26 @@
 //= require jquery
+//= require bootstrap
 
 $(function() {
-  $('.add-slot').hide();
 
+  var slotDiv = '<div class="slot-div" data-slot-id="{ID}"><div>';
+  
+  // addSlot click handler on TDs
   $('td[data-hour]').click(function() {
+    debugger
     var hour = $(this).data('hour');
+    var jModal = $(this).closest('table').siblings('.modal');
+
+    //fill hour&minute
+    jModal.find('[name="slot[start_hour(4i)]"]').val(hour.split(':')[0]);
+    jModal.find('[name="slot[start_hour(5i)]"]').val(hour.split(':')[1]);
+
+    jModal.modal();// show modal
+  });
+
+  $('.slot-div').click(function(e) {
+    debugger
+    return false;
   });
 
   function traverseSlots(days) {
@@ -20,7 +36,6 @@ $(function() {
     }
   }
 
-  var slotDiv = '<div class="slot-div" data-slot-id="{ID}"><div>';
   function renderSlot(slot, dayId, roomId) {
     var date = new Date(slot.start_hour);
     var startHour = (date.getUTCHours() < 10 ? '0' + date.getUTCHours() : date.getUTCHours());
@@ -41,14 +56,13 @@ $(function() {
     var height = slot.duration / 30 * cellHeight;
     var top = (startMinute >= 30 ? startMinute - 30 : startMinute ) / 30 * cellHeight;
     top += 2; // 2px top margin
-    height -= 5; // 2px bottom margin, this is equal to top, left and right margin
+    height -= (height % cellHeight == 0 && top == 0 ? 5 : 0); // 2px bottom margin, this is equal to top, left and right margin
     startCell.append(slotDiv.replace('{ID}', slot.id));
     var currentSlotDiv = $('[data-slot-id="'+slot.id+'"]');
-    currentSlotDiv.css('height', height).css('top', top).text('Slot content');
+    currentSlotDiv.css('height', height).css('top', top).text('Duration: ' + slot.duration + ' minutes');
   }
 
   traverseSlots(window.slotsData);
-
 });
 
 
