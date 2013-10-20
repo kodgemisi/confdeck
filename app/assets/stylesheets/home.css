@@ -88,7 +88,7 @@ body {
 }
 
 #menu-toggle {
-    top: 0;
+    top: 35px;
     right: 0;
     position: fixed;
     z-index: 1;
