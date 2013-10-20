@@ -6,7 +6,7 @@ class SponsorsController < ApplicationController
   # GET /sponsors
   # GET /sponsors.json
   def index
-    @sponsors = @conference.sponsors
+    @sponsors = @conference.sponsors.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

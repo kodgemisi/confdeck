@@ -3,5 +3,5 @@ class Sponsor < ActiveRecord::Base
 
   belongs_to :conference
 
-  has_attached_file :logo, :styles => { :default => "360x230>" }
+  has_attached_file :logo, :styles => { :default => "360x230>", :thumb => "200x200", :small => "50x50"}
 end
