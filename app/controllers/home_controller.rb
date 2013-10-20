@@ -10,6 +10,8 @@ class HomeController < ApplicationController
   end
 
   def dashboard
+    @waiting_appeals = Appeal.where(:conference_id => current_user.conferences.pluck(:id), :state => "waiting_review")
+    @total_appeals = Appeal.where(:conference_id => current_user.conferences.pluck(:id))
   end
 
   def guest_session
