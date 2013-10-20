@@ -13,8 +13,17 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#about">About</a></li>
-        <li><a href="#sponsors">Sponsors</a></li>
-        <li><a href="#speakers">Speakers</a></li>
+        <% if @conference.sponsors.present? %>
+            <li><a href="#sponsors">Sponsors</a></li>
+        <% end %>
+        <% if @conference.speakers.present? %>
+            <li><a href="#speakers">Speakers</a></li>
+        <% end %>
+
+        <% if @conference.slots.present? %>
+            <li><a href="#schedule">Schedule</a></li>
+        <% end %>
+
         <li><a href="#location">Location</a></li>
         <li><a href="#organizators">Organizators</a></li>
       </ul>
