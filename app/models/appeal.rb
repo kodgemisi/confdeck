@@ -10,6 +10,10 @@ class Appeal < ActiveRecord::Base
 
   validates_presence_of :conference, :topic
 
+  scope :accepted, -> { where(state: :accepted) }
+
+  delegate :subject, to: :topic, prefix: true
+
   acts_as_commentable
   acts_as_votable
 
