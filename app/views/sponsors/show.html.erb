@@ -1,24 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <%= image_tag @sponsor.logo.url %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">Details of <%= @sponsor.name %></div>
+  <div class="panel-body">
+    <table class="table table-bordered">
+      <tr>
+        <td class="span2" style="font-weight: bold">Name</td>
+        <td><%= @sponsor.name %></td>
+      </tr>
+      <tr>
+        <td class="span2" style="font-weight: bold">Logo</td>
+        <td><%= image_tag @sponsor.logo.url %></td>
+      </tr>
+      <tr>
+        <td class="span2" style="font-weight: bold">Website</td>
+        <td><%= link_to @sponsor.website, @sponsor.website if @sponsor.website %></td>
+      </tr>
 
-<p>
-  <b>Name:</b>
-  <%= @sponsor.name %>
-</p>
 
-<p>
-  <b>Website:</b>
-  <%= @sponsor.website %>
-</p>
-
-<p>
-  <b>Conference:</b>
-  <%= @sponsor.conference_id %>
-</p>
-
+      <tr>
+        <td class="span2" style="font-weight: bold">Conference</td>
+        <td>
+          <%= link_to @sponsor.conference.name, @sponsor.conference %>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_conference_sponsor_path(@conference, @sponsor) %> |
 <%= link_to 'Back', conference_sponsors_path(@conference) %>
