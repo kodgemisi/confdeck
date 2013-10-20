@@ -18,20 +18,11 @@
 <body>
 
 <!-- Side Menu -->
-<a id="menu-toggle" href="#" class="btn btn-primary btn-lg toggle"><i class="icon-reorder"></i></a>
-
-<div id="sidebar-wrapper">
-  <ul class="sidebar-nav">
-    <a id="menu-close" href="#" class="btn btn-default btn-lg pull-right toggle"><i class="icon-remove"></i></a>
-    <li class="sidebar-brand"><a href="http://startbootstrap.com">Start Bootstrap</a></li>
-    <li><a href="#top">Home</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
+<div id="menu-toggle" style="margin: 10px">
+  <%= current_user ? (bs_button_to " ", destroy_user_session_path,  icon: "reorder", class: "btn-primary btn-lg toogle", tooltip: "Dashboard") : "" %>
+  <%= current_user ? (bs_button_to " ", destroy_user_session_path, method: :delete, icon: "signout", class: "btn-primary btn-lg toogle", tooltip: "Logout") : (bs_button_to " ", new_user_session_path, icon: "signin", class: "btn-primary btn-lg toogle", tooltip: "Login") %>
 </div>
-<!-- /Side Menu -->
+
 
 <!-- Full Page Image Header Area -->
 <div id="top" class="header">
