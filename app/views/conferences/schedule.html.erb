@@ -1,3 +1,30 @@
+<%= javascript_include_tag "schedule" %>
+
+<style type="text/css">
+  table{
+    border: 1px solid #ccc;
+  }
+  td{
+    padding: 3px;
+  }
+  td[data-hour]{
+    cursor: pointer;
+  }
+  td[data-hour]:hover{
+    background-color: #ddd;
+  }
+  .clickable-row1, .clickable-row2{
+    border-left: 1px solid #ccc;
+    width: 100%;
+  }
+  .clickable-row1{
+    border-bottom: 1px dotted #ccc;
+  }
+  .clickable-row2{
+    border-bottom: 1px solid #ccc;
+  }
+</style>
+
 <%= form_for(@room) do |f| %>
   <div class="field">
     <%= f.label :name %><br />
@@ -24,35 +51,49 @@
       <div class="row">
         <% @conference.rooms.each do |room| %>
           <div class="well col-md-<%= 12/@conference.rooms.count %>">
-           <%= room.name %>
-           <%= link_to 'Edit', edit_room_path(room) %>
+            <%= room.name %>
+            <%= link_to 'Edit', edit_room_path(room) %>
 
-            <%= form_for(@slot) do |f| %>
-              <%= f.hidden_field :conference_id, value: @conference.id %>
-              <%= f.hidden_field :room_id, value: room.id %>
-              <%= f.hidden_field :day_id, value: day.id %>
-              <div class="field">
-                <%= f.label :start_hour %><br />
-                <%= f.time_select :start_hour %>
-              </div>
-              <div class="field">
-                <%= f.label :duration %><br />
-                <%= f.number_field :duration %>
-              </div>
-              <div class="field">
-                <%= f.label :topic_id %><br />
-                <%= f.number_field :topic_id %>
-              </div>
-              <div class="actions">
-                <%= f.submit  %>
-              </div>
-            <% end %>
-
+            <div class="add-slot">
+              <%= form_for(@slot) do |f| %>
+                <%= f.hidden_field :conference_id, value: @conference.id %>
+                <%= f.hidden_field :room_id, value: room.id %>
+                <%= f.hidden_field :day_id, value: day.id %>
+                <div class="field">
+                  <%= f.label :start_hour %><br />
+                  <%= f.time_select :start_hour %>
+                </div>
+                <div class="field">
+                  <%= f.label :duration %><br />
+                  <%= f.number_field :duration %>
+                </div>
+                <div class="field">
+                  <%= f.label :topic_id %><br />
+                  <%= f.number_field :topic_id %>
+                </div>
+                <div class="actions">
+                  <%= f.submit  %>
+                </div>
+              <% end %>
+            </div>
 
             <% room.slots.where(:day_id => day.id).each do |slot| %>
               <div>slot.id <%=slot.id%> | <%=slot.start_hour%> | <%=slot.duration%></div>
               <%= link_to 'Edit', edit_slot_path(slot) %> 
             <% end %>
+
+            <table>
+              <% (0..23).each do |n| %>
+                <tr>
+                  <td class="schd-row"><%= n < 10 ? '0' + n.to_s : n %>:00</td>
+                  <td class="clickable-row1" data-hour="<%= n < 10 ? '0' + n.to_s : n %>:00">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td class="clickable-row2" data-hour="<%= n < 10 ? '0' + n.to_s : n %>:30">&nbsp;</td>
+                </tr>
+              <% end %>
+            </table>
 
           </div> <!-- room -->
         <% end %>
