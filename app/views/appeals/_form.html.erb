@@ -83,21 +83,42 @@
         <h4 class="modal-title">Create a new speaker</h4>
       </div>
       <div class="modal-body">
-        <%= form_for(Speaker.new, remote: true) do |sf| %>
-          <%= sf.label :name %>
-          <%= sf.text_field :name %>
-          <br>
-          <%= sf.label :email %>
-          <%= sf.email_field :email %>
-          <br>
-          <%= sf.label :phone %>
-          <%= sf.text_field :phone %>
-          <br>
-          <%= sf.label :twitter %>
-          <%= sf.text_field :twitter %>
-          <br>
-          <%= sf.label :facebook %>
-          <%= sf.text_field :facebook %>
+        <%= form_for(Speaker.new, remote: true, :html => {:class => 'form-horizontal'}) do |sf| %>
+            <div class="form-group">
+              <%= sf.label :name, :class => "col-lg-3 control-label" %>
+
+              <div class="col-lg-9">
+                <%= sf.text_field :name, :class => "form-control" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= sf.label :email, :class => "col-lg-3 control-label" %>
+
+              <div class="col-lg-9">
+                <%= sf.text_field :email, :class => "form-control" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= sf.label :phone, :class => "col-lg-3 control-label" %>
+
+              <div class="col-lg-9">
+                <%= sf.text_field :phone, :class => "form-control" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= sf.label :twitter, :class => "col-lg-3 control-label" %>
+
+              <div class="col-lg-9">
+                <%= sf.text_field :twitter, :class => "form-control" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <%= sf.label :facebook, :class => "col-lg-3 control-label" %>
+
+              <div class="col-lg-9">
+                <%= sf.text_field :facebook, :class => "form-control" %>
+              </div>
+            </div>
       </div>
       <div class="modal-footer">
           <%= sf.submit class: "btn btn-primary" %>
