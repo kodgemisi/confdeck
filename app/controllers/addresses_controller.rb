@@ -1,16 +1,18 @@
 class AddressesController < ApplicationController
- def update
-  @address = Address.find(params[:id])
+  before_filter :authenticate_user!
 
-  respond_to do |format|
-   if @address.update_attributes(params[:address])
+  def update
+    @address = Address.find(params[:id])
 
-    format.html { redirect_to @address, notice: 'Address was successfully updated.' }
-    format.json { head :no_content }
-   else
-    format.html { render action: "edit" }
-    format.json { render json: @address.errors, status: :unprocessable_entity }
-   end
+    respond_to do |format|
+      if @address.update_attributes(params[:address])
+
+        format.html { redirect_to @address, notice: 'Address was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @address.errors, status: :unprocessable_entity }
+      end
+    end
   end
- end
 end

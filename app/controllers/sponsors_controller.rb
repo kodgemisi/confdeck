@@ -1,4 +1,6 @@
 class SponsorsController < ApplicationController
+  before_filter :authenticate_user!
+
   before_filter :set_conference
 
   # GET /sponsors

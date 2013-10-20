@@ -1,6 +1,7 @@
 class ConferencesController < ApplicationController
+  before_filter :authenticate_user!, except: [:show]
 
- layout 'conference_landing', :only => [:show]
+  layout 'conference_landing', :only => [:show]
   # GET /conferences
   # GET /conferences.json
   def index

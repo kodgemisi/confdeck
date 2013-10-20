@@ -1,5 +1,5 @@
 Confman::Application.routes.draw do
-  resources :topics
+  resources :topics, only: [:index]
   resources :slots
   resources :topics
   resources :speakers

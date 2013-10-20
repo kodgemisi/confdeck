@@ -1,4 +1,6 @@
 class AppealsController < ApplicationController
+  before_filter :authenticate_user!, except: [:new, :create]
+
   before_filter :set_conference
   before_filter :set_appeal, only: [:show, :edit, :update, :destroy, :comment, :upvote, :downvote, :accept, :reject]
   # GET /appeals

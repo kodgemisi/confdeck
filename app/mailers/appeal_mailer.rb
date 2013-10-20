@@ -5,7 +5,7 @@ class AppealMailer < ActionMailer::Base
    @appeal = appeal
    subject = "[#{appeal.topic.subject}] New application: #{appeal.topic.subject}"
    if appeal.conference.email?
-    mail(to: conference.email, subject: subject)
+    mail(to: appeal.conference.email, subject: subject)
    else
     appeal.conference.organizations.each do |org|
      org.users.each do |user|

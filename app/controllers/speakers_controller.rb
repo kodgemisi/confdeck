@@ -1,4 +1,5 @@
 class SpeakersController < ApplicationController
+  before_filter :authenticate_user!, except: [:new, :create]
   # GET /speakers
   # GET /speakers.json
   def index

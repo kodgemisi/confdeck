@@ -1,4 +1,6 @@
 class RoomsController < ApplicationController
+  before_filter :authenticate_user!
+
   # GET /rooms
   # GET /rooms.json
   def index
