@@ -37,6 +37,7 @@ GEM
       jquery-rails
       rails (~> 3.1)
     builder (3.0.4)
+    cancan (1.6.10)
     capistrano (2.15.5)
       highline
       net-scp (>= 1.0.0)
@@ -155,6 +156,7 @@ DEPENDENCIES
   acts_as_commentable (= 3.0.1)
   acts_as_votable (~> 0.7.1)
   best_in_place
+  cancan
   capistrano (~> 2.15)
   devise
   devise_invitable
