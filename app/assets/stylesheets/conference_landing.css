@@ -35,7 +35,7 @@ body {
 /* Page Sections */
 .section,
 .section-colored {
-    padding: 50px 0;
+    padding: 20px 0;
 }
 
 .section-colored {
@@ -68,6 +68,7 @@ body {
     height: 100%;
     background-position: center;
     background-size: cover;
+    background-color: rgba(50,50,50,0.3);
 }
 
 /* Social Icons Styles */
@@ -183,4 +184,25 @@ footer {
 .footer-social-links a {
     text-decoration: none;
     color: #428bca;
+}
+
+
+.color1{
+    background-color: #42282f;
+    color: wheat;
+}
+.color2{
+    background-color: #d6ccad;
+    color: #333;
+}
+.color3{
+    background-color: #74a588;
+    color: #fafafa;
+}
+.color4{
+    background-color: #fafafa;
+}
+.color5{
+    background-color: #d6655a;
+    color: white;
 }
