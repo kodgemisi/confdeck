@@ -5,7 +5,7 @@ Confman::Application.routes.draw do
   resources :speakers
 
   get "invitations/accept"
-
+  get '/dashboard', to: 'home#dashboard'
   resources :conferences do
     resources :addresses
     resources :sponsors

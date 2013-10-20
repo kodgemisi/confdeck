@@ -19,7 +19,7 @@
 
 <!-- Side Menu -->
 <div id="menu-toggle" style="margin: 10px">
-  <%= current_user ? (bs_button_to " ", destroy_user_session_path,  icon: "reorder", class: "btn-primary btn-lg toogle", tooltip: "Dashboard") : "" %>
+  <%= current_user ? (bs_button_to " ", dashboard_url,  icon: "reorder", class: "btn-primary btn-lg toogle", tooltip: "Dashboard") : "" %>
   <%= current_user ? (bs_button_to " ", destroy_user_session_path, method: :delete, icon: "signout", class: "btn-primary btn-lg toogle", tooltip: "Logout") : (bs_button_to "Login", new_user_session_path, icon: "signin", class: "btn-primary btn-lg toogle", tooltip: "Login") %>
   <%= current_user ? "" : (bs_button_to "Signin as Guest", new_user_session_path, icon: "user", class: "btn-primary btn-lg toogle", tooltip: "Login") %>
   <%= current_user ? "" : (bs_button_to "Register", new_user_registration_path, icon: "plus-sign", class: "btn-primary btn-lg toogle", tooltip: "Login") %>
