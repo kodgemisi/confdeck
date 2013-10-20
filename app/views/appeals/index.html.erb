@@ -1,5 +1,13 @@
 <h1>Listing appeals for conference <%= @conference.name %></h1>
 
+<p id="notice"><%= notice %></p>
+
+<style type="text/css">
+  .panel-body a,.panel-body a:hover{
+    text-decoration: none;
+  }
+</style>
+
 <% @appeals.each do |appeal| %>
   <%= div_for(appeal, class: "panel panel-default") do %>
     <div class="panel-heading">
@@ -18,14 +26,14 @@
     <div class="panel-body">
       <div class="updown">
         <% unless current_user.voted_up_on? appeal %>
-          <%= link_to upvote_conference_appeal_path(@conference, appeal), remote: true do %>
+          <%= link_to upvote_conference_appeal_path(@conference, appeal) do %>
             <i class="icon-thumbs-up" style="font-size: 24px;color: gray;"> <%= appeal.upvotes.count %></i>
           <% end %>
         <% else %>
           <i class="icon-thumbs-up" style="font-size: 24px;"> <%= appeal.upvotes.count %></i>
         <% end %>
         <% unless current_user.voted_down_on? appeal %>
-          <%= link_to downvote_conference_appeal_path(@conference, appeal), remote: true do %>
+          <%= link_to downvote_conference_appeal_path(@conference, appeal) do %>
             <i class="icon-thumbs-down" style="font-size: 24px;color: gray;"> <%= appeal.downvotes.count %></i>
           <% end %>
         <% else %>
@@ -42,10 +50,10 @@
       </div>
       <div class="state">
         <% if appeal.waiting_review? %>
-          <%= link_to accept_conference_appeal_path(@conference, appeal), remote: true, data: { confirm: 'Are you sure?' } do %>
+          <%= link_to accept_conference_appeal_path(@conference, appeal), data: { confirm: 'Are you sure? Once you accept this appeal its speakers will be informed via email. Hence this action can NOT be undone.' } do %>
             <i class="icon-ok" style="font-size: 32px;color: gray"></i>
           <% end %>
-          <%= link_to reject_conference_appeal_path(@conference, appeal), remote: true, data: { confirm: 'Are you sure?' } do %>
+          <%= link_to reject_conference_appeal_path(@conference, appeal), data: { confirm: 'Are you sure? Once you reject this appeal its speakers will be informed via email. Hence this action can NOT be undone.' } do %>
             <i class="icon-remove" style="font-size: 32px;color: gray"></i>
           <% end %>
         <% elsif appeal.accepted? %>
