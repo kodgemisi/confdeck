@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @slot %> |
-<%= link_to 'Back', slots_path %>
+<%= link_to 'Show', [@conference, @slot] %> |
+<%= link_to 'Back', conference_slots_path(@conference) %>

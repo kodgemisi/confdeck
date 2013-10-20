@@ -5,7 +5,7 @@
 $(function() {
 
   var slotDiv = '<div class="slot-div" data-slot-id="{ID}"><div>';
-  
+
   // addSlot click handler on TDs
   $('td[data-hour]').click(function() {
     var hour = $(this).data('hour');
@@ -39,13 +39,13 @@ $(function() {
     var date = new Date(slot.start_hour);
     var startHour = (date.getUTCHours() < 10 ? '0' + date.getUTCHours() : date.getUTCHours());
     var startMinute = (date.getUTCMinutes() < 10 ? '0' + date.getUTCMinutes() : date.getUTCMinutes());
-    
+
     //normalization of start minute
     if(parseInt(startMinute) < 30){
       var fullHour = startHour + ':00';
     }
     else{
-      fullHour = startHour + ':30'; 
+      fullHour = startHour + ':30';
     }
 
     startMinute = parseInt(startMinute);
@@ -58,7 +58,7 @@ $(function() {
     height -= (height % cellHeight == 0 && startMinute % 30 == 0 ? 5 : 0); // 2px bottom margin, this is equal to top, left and right margin
     startCell.append(slotDiv.replace('{ID}', slot.id));
     var currentSlotDiv = $('[data-slot-id="'+slot.id+'"]');
-    currentSlotDiv.css('height', height).css('top', top).text('Duration: ' + slot.duration + ' minutes');
+    currentSlotDiv.css('height', height).css('top', top).text('Duration: ' + slot.duration + ' minutes | Topic:' + slot.topic_id);
   }
 
   traverseSlots(window.slotsData);

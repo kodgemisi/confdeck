@@ -7,7 +7,7 @@ class RoomsController < ApplicationController
   # GET /rooms
   # GET /rooms.json
   def index
-    @rooms = Room.all
+    @rooms = @conference.rooms
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,7 +27,7 @@ class RoomsController < ApplicationController
   # GET /rooms/new
   # GET /rooms/new.json
   def new
-    @room = Room.new
+    @room = @conference.rooms.build
 
     respond_to do |format|
       format.html # new.html.erb

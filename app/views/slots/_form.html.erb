@@ -1,4 +1,4 @@
-<%= form_for(@slot) do |f| %>
+<%= form_for([@conference, @slot]) do |f| %>
   <% if @slot.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@slot.errors.count, "error") %> prohibited this slot from being saved:</h2>
