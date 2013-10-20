@@ -18,7 +18,12 @@ class Conference < ActiveRecord::Base
   has_many :slots
   has_many :appeals
   has_many :topics, through: :appeals
-  has_many :speakers, through: :topics, :uniq => true
+  has_many :speakers, through: :topics, :uniq => true do
+    def accepted
+      where("appeals.state = ?", "accepted")
+    end
+  end
+
 
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :organizations
@@ -28,6 +33,7 @@ class Conference < ActiveRecord::Base
 
   has_attached_file :logo, :styles => { :medium => "400x400>", :thumb => "200x100>" }, :default_url => "/assets/missing_:style.png"
   has_attached_file :heading_image, :styles => { :default => "1900x254", :thumb => "200x100"}
+
 
   def create_days(from_date, to_date)
    current_date = from_date

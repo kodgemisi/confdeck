@@ -16,7 +16,7 @@
         <% if @conference.sponsors.present? %>
             <li><a href="#sponsors">Sponsors</a></li>
         <% end %>
-        <% if @conference.speakers.present? %>
+        <% if @conference.speakers.accepted.present? %>
             <li><a href="#speakers">Speakers</a></li>
         <% end %>
 
@@ -101,7 +101,7 @@
 <% end %>
 
 
-<% if @conference.speakers.present? %>
+<% if @conference.speakers.accepted.present? %>
 
     <div class="section-colored color3" id="speakers">
       <div class="container text-center">
@@ -116,7 +116,7 @@
               <div class="clearfix"></div>
               <hr>
             </div>
-            <% @conference.speakers.each do |speaker| %>
+            <% @conference.speakers.accepted.each do |speaker| %>
                 <div class="col-lg-4 col-sm-6 speaker">
                   <img class="img-circle img-responsive" src="<%=speaker.avatar_url%>">
 
