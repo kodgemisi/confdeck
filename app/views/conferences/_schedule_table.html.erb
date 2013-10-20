@@ -44,10 +44,18 @@
   .room{
     width: 300px;
     display: inline-block;
+    border: 1px solid #aaa;
+    padding: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
   }
 
   .tab-pane{
     overflow-x: auto;
+  }
+  .room-edit-link{
+    font-size: 0.7em;
   }
 </style>
 
@@ -66,15 +74,15 @@
 <div class="tab-content">
   <% @conference.days.each_with_index do |day, i| %>
     <div class="tab-pane fade in <%= 'active' if i == 0 %>" id="<%= day.date %>">
-      <p>Rooms for <%= day.date %></p>
-
       <div class="room-container">
         <% @conference.rooms.each do |room| %>
           <div class="room">
-            <%= room.name %>
-            <% if editable %>
-              <%= link_to 'Edit', edit_conference_room_path(@conference, room) %>
-            <% end %>
+            <legend>
+              <%= room.name %>
+              <% if editable %>
+                <%= link_to 'Edit', edit_conference_room_path(@conference, room), :class => "room-edit-link" %>
+              <% end %>
+            </legend>
 
             <div id="slotModal<%= day.id %><%= room.id %>" class="modal fade">
               <div class="modal-dialog">
