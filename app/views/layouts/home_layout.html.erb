@@ -10,6 +10,7 @@
 
   <%= stylesheet_link_tag "bootstrap", :media => "all" %>
   <%= stylesheet_link_tag "home", :media => "all" %>
+  <%= stylesheet_link_tag "timeline", :media => "all" %>
   <%= javascript_include_tag "home" %>
   <%= csrf_meta_tags %>
 </head>
@@ -107,6 +108,36 @@
 </div>
 <!-- /Services -->
 
+
+<!-- Services -->
+<div id="upcoming" >
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Upcoming Events</h2>
+
+        <% @days.each do |day| %>
+            <% day.conferences.each do |conf| %>
+                <b><%= link_to conf.name, conf %></b> - <%= conf.days.first.date.strftime("%d %B %Y") %> - <%= conf.days.last.date.strftime("%d %B %Y") %> <br />
+            <% end %>
+        <% end %>
+
+             <br />
+             <br />
+             <br />
+             <br />
+        <% @conferences.each do |conf| %>
+            <b><%= link_to conf.name, conf %></b> - <%= conf.days.first.date.strftime("%d %B %Y") %>
+            - <%= conf.days.last.date.strftime("%d %B %Y") %> <br/>
+        <% end %>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- /Services -->
 
 <!-- Footer -->
 <footer>

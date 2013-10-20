@@ -204,3 +204,9 @@ i.service-icon:hover {
 footer {
     padding: 100px 0;
 }
+
+#upcoming {
+    background: #6DBCDB;
+    padding: 50px 0;
+    color: #ffffff;
+}
