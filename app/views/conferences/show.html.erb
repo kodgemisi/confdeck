@@ -13,8 +13,17 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#about">About</a></li>
-        <li><a href="#sponsors">Sponsors</a></li>
-        <li><a href="#speakers">Speakers</a></li>
+        <% if @conference.sponsors.present? %>
+            <li><a href="#sponsors">Sponsors</a></li>
+        <% end %>
+        <% if @conference.speakers.present? %>
+            <li><a href="#speakers">Speakers</a></li>
+        <% end %>
+
+        <% if @conference.slots.present? %>
+            <li><a href="#schedule">Schedule</a></li>
+        <% end %>
+
         <li><a href="#location">Location</a></li>
         <li><a href="#organizators">Organizators</a></li>
       </ul>
@@ -92,7 +101,7 @@
 <% end %>
 
 
-<% if @conference.sponsors.present? %>
+<% if @conference.speakers.present? %>
 
     <div class="section-colored color3" id="speakers">
       <div class="container text-center">
@@ -139,14 +148,12 @@
       <div class="container text-center">
         <div class="row text-center">
           <div class="col-lg-12 text-center">
-            <h2>Speakers</h2>
 
             <div class="">
               <a class="btn btn-lg btn-primary" href="<%= new_conference_appeal_url(@conference) %>">Speaker
                 Application</a>
             </div>
             <div class="clearfix"></div>
-            <hr>
           </div>
         </div>
       </div>
