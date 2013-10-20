@@ -46,7 +46,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal"><%= t("Close") %></button>
         <%= link_to 'Destroy', [@conference, @slot], method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" %>
         <%= f.submit :Save, :class=>"btn btn-primary" %>
       </div>

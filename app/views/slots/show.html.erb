@@ -1,35 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h4 class="modal-title"><%= t "Slot" %></h4>
+    </div>
+    <div class="modal-body">
+      <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Start hour:</b>
-  <%= @slot.start_hour %>
-</p>
+      <p>
+        <b>Start hour:</b>
+        <%= @slot.start_hour %>
+      </p>
 
-<p>
-  <b>Duration:</b>
-  <%= @slot.duration %>
-</p>
+      <p>
+        <b>Duration:</b>
+        <%= @slot.duration %> <%= t("minutes") %> 
+      </p>
 
-<p>
-  <b>Conference:</b>
-  <%= @slot.conference_id %>
-</p>
+      <p>
+        <b>Day:</b>
+        <%= @slot.day.date %>
+      </p>
 
-<p>
-  <b>Day:</b>
-  <%= @slot.day_id %>
-</p>
+      <p>
+        <b>Room:</b>
+        <%= @slot.room.name %>
+      </p>
 
-<p>
-  <b>Room:</b>
-  <%= @slot.room_id %>
-</p>
-
-<p>
-  <b>Topic:</b>
-  <%= @slot.topic_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_conference_slot_path(@conference, @slot) %> |
-<%= link_to 'Back', conference_slots_path(@conference) %>
+      <p>
+        <b>Topic:</b>
+        <%= @slot.topic.present? ? @slot.topic.subject : t("Not set")  %>
+      </p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-default" data-dismiss="modal"><%= t("Close") %></button>
+    </div>
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->

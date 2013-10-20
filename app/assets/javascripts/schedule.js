@@ -13,17 +13,19 @@ $(function() {
     $('.room-container').css('width', width);
   }());
 
-  // addSlot click handler on TDs
-  $('td[data-hour]').click(function() {
-    var hour = $(this).data('hour');
-    var jModal = $(this).closest('table').siblings('.modal');
+  if(editable){
+    // addSlot click handler on TDs
+    $('td[data-hour]').click(function() {
+      var hour = $(this).data('hour');
+      var jModal = $(this).closest('table').siblings('.modal');
 
-    //fill hour&minute
-    jModal.find('[name="slot[start_hour(4i)]"]').val(hour.split(':')[0]);
-    jModal.find('[name="slot[start_hour(5i)]"]').val(hour.split(':')[1]);
+      //fill hour&minute
+      jModal.find('[name="slot[start_hour(4i)]"]').val(hour.split(':')[0]);
+      jModal.find('[name="slot[start_hour(5i)]"]').val(hour.split(':')[1]);
 
-    jModal.modal();// show modal
-  });
+      jModal.modal();// show modal
+    });
+  }
 
   function traverseSlots(days) {
     for(dayKey in days){
@@ -73,11 +75,24 @@ $(function() {
     $('#slotDetailsContainer').children().remove();
     $('#slotDetailsContainer').append('<div id="slotDetails" class="modal fade"></div>');
 
+    var url = '/conferences/'+conferenceId+'/slots/'+slotId;
+
+    if(editable){
+      url += '/edit';
+    }
+
     $('#slotDetails').modal({
-      remote: '/conferences/'+conferenceId+'/slots/'+slotId+'/edit'
+      remote: url
     });
     return false;
   });
+
+  //FIXME this shouldn't be necessary at all. In schedule page tabs work but in conference show page 
+  //this is required for some reason!
+  $('.schedule-tabs a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })
 
 });
 

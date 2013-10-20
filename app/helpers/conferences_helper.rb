@@ -30,4 +30,16 @@ module ConferencesHelper
     return days.to_json
   end
 
+  def self.hour_span(conference, editable)
+    if(editable)
+      return 7..23
+    else
+      hours = conference.slots.map do |slot|
+        slot.start_hour.hour
+      end
+      start_end = hours.minmax
+      return start_end[0]..start_end[1]
+    end
+  end
+
 end
