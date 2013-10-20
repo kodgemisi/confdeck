@@ -91,47 +91,67 @@
     </div><!-- /.section -->
 <% end %>
 
-<div class="section-colored color3" id="speakers">
-  <div class="container text-center">
 
-      <div class="row text-center" >
-        <div class="col-lg-12 text-center">
-          <h2>Speakers
-          </h2>
+<% if @conference.sponsors.present? %>
 
-          <div class="">
-            <a class="btn btn-lg btn-primary" href="<%= new_conference_appeal_url(@conference) %>">Speaker Application</a>
-          </div>
-          <div class="clearfix"></div>
-          <hr>
-        </div>
-        <% @conference.speakers.each do |speaker| %>
-            <div class="col-lg-4 col-sm-6 speaker">
-              <img class="img-circle img-responsive" src="<%=speaker.avatar_url%>">
+    <div class="section-colored color3" id="speakers">
+      <div class="container text-center">
 
-              <h2><%= speaker.name %>
-              </h2>
+          <div class="row text-center" >
+            <div class="col-lg-12 text-center">
+              <h2>Speakers</h2>
 
-              <p><%= speaker.bio %></p>
-
-              <p class="social-links">
-                <% if speaker.twitter %>
-                    <a href="http://www.twitter.com/<%= speaker.twitter %>"><i class="icon-twitter" style="font-size: 30px"></i></a>
-                <% end %>
-                <% if speaker.github %>
-                    <a href="http://www.github.com/<%= speaker.github %>"><i class="icon-github" style="font-size: 30px"></i></a>
-                <% end %>
-                <% if speaker.facebook %>
-                    <a href="http://www.facebook.com/<%= speaker.facebook%>"><i class="icon-facebook" style="font-size: 30px"></i></a>
-                <% end %>
-              </p>
+              <div class="">
+                <a class="btn btn-lg btn-primary" href="<%= new_conference_appeal_url(@conference) %>">Speaker Application</a>
+              </div>
+              <div class="clearfix"></div>
+              <hr>
             </div>
-        <% end %>
+            <% @conference.speakers.each do |speaker| %>
+                <div class="col-lg-4 col-sm-6 speaker">
+                  <img class="img-circle img-responsive" src="<%=speaker.avatar_url%>">
+
+                  <h2><%= speaker.name %>
+                  </h2>
+
+                  <p><%= speaker.bio %></p>
+
+                  <p class="social-links">
+                    <% if speaker.twitter %>
+                        <a href="http://www.twitter.com/<%= speaker.twitter %>"><i class="icon-twitter" style="font-size: 30px"></i></a>
+                    <% end %>
+                    <% if speaker.github %>
+                        <a href="http://www.github.com/<%= speaker.github %>"><i class="icon-github" style="font-size: 30px"></i></a>
+                    <% end %>
+                    <% if speaker.facebook %>
+                        <a href="http://www.facebook.com/<%= speaker.facebook%>"><i class="icon-facebook" style="font-size: 30px"></i></a>
+                    <% end %>
+                  </p>
+                </div>
+            <% end %>
 
 
+          </div>
       </div>
-  </div>
-</div>
+    </div>
+<% else %>
+    <div class="section-colored color3" id="speakers">
+      <div class="container text-center">
+        <div class="row text-center">
+          <div class="col-lg-12 text-center">
+            <h2>Speakers</h2>
+
+            <div class="">
+              <a class="btn btn-lg btn-primary" href="<%= new_conference_appeal_url(@conference) %>">Speaker
+                Application</a>
+            </div>
+            <div class="clearfix"></div>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
 
 <% if !(@conference.slots.empty?) %>
 <div class="section color4" id="schedule">
@@ -187,7 +207,7 @@
 
 
 
-<div class="container" id="organizators">
+<div class="container" id="organizators" style="margin-top: 20px">
 
   <div class="row well">
     <div class="col-lg-12 col-md-12">
