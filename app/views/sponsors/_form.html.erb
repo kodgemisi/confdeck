@@ -1,4 +1,4 @@
-<%= form_for([@conference, @sponsor]) do |f| %>
+<%= form_for([@conference, @sponsor], :html => {:class => 'form-horizontal'}) do |f| %>
   <% if @sponsor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@sponsor.errors.count, "error") %> prohibited this sponsor from being saved:</h2>
@@ -11,21 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :website %><br />
-    <%= f.text_field :website %>
-  </div>
-  <div class="field">
-    <%= f.label :logo %><br />
-    <%= f.file_field :logo %>
-  </div>
+<div class="row">
+  <div class="col-md-4">
+
+    <div class="form-group">
+      <%= f.label :name, :class => "control-label col-lg-3" %>
+      <div class="col-lg-9">
+        <%= f.text_field :name, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :website, :class => "control-label col-lg-3" %>
+      <div class="col-lg-9">
+        <%= f.text_field :website, :class => "form-control" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= f.label :logo, :class => "control-label col-lg-3" %>
+      <div class="col-lg-9">
+        <%= f.file_field :logo, :class => "form-control" %>
+      </div>
+    </div>
 
 
-  <div class="actions">
-    <%= f.submit %>
+    <div class="actions">
+      <%= f.submit :class => "btn btn-default pull-right" %>
+    </div>
+    
   </div>
+</div>
+
 <% end %>
