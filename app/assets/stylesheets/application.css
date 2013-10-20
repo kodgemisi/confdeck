@@ -229,3 +229,20 @@ body {
     border-radius: 4px 4px 0 0;
     box-shadow: none;
 }
+
+.easy-click{
+border: 1px solid #ccc;
+padding: 5px 25px;
+background-color: #ddd;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+-o-border-radius: 5px;
+-ms-border-radius: 5px;
+-khtml-border-radius: 5px;
+border-radius: 5px;
+}
+.easy-click:hover{
+text-decoration: none;
+-webkit-filter: brightness(1.05);
+filter: brightness(1.05);
+}
