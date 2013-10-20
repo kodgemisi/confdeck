@@ -16,6 +16,7 @@
   .clickable-row1, .clickable-row2{
     border-left: 1px solid #ccc;
     width: 100%;
+    position: relative;
   }
   .clickable-row1{
     border-bottom: 1px dotted #ccc;
@@ -23,13 +24,34 @@
   .clickable-row2{
     border-bottom: 1px solid #ccc;
   }
+  .slot-div{
+    background-color: #428bca;
+    color: #fff;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    z-index: 1;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 2px;
+  }
+  .slot-div:hover{
+    -webkit-filter: brightness(1.2);
+    filter: brightness(1.2);
+  }
 </style>
+
+<script type="text/javascript">
+  window.slotsData = JSON.parse('<%= ConferencesHelper.slots_data(@conference).html_safe %>');
+</script>
 
 <%= form_for(@room) do |f| %>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
-    <%= f.hidden_field :conference_id, value: @conference.id %>
+    <%= f.hidden_field :conference_id, value: @conference %>
   </div>
   <div class="actions">
     <%= f.submit  %>
@@ -77,20 +99,15 @@
               <% end %>
             </div>
 
-            <% room.slots.where(:day_id => day.id).each do |slot| %>
-              <div>slot.id <%=slot.id%> | <%=slot.start_hour%> | <%=slot.duration%></div>
-              <%= link_to 'Edit', edit_slot_path(slot) %> 
-            <% end %>
-
             <table>
-              <% (0..23).each do |n| %>
+              <% (7..22).each do |n| %>
                 <tr>
                   <td class="schd-row"><%= n < 10 ? '0' + n.to_s : n %>:00</td>
-                  <td class="clickable-row1" data-hour="<%= n < 10 ? '0' + n.to_s : n %>:00">&nbsp;</td>
+                  <td class="clickable-row1" data-hour="<%= n < 10 ? '0' + n.to_s : n %>:00" data-day="<%= day.id %>" data-room="<%= room.id %>">&nbsp;</td>
                 </tr>
                 <tr>
                   <td></td>
-                  <td class="clickable-row2" data-hour="<%= n < 10 ? '0' + n.to_s : n %>:30">&nbsp;</td>
+                  <td class="clickable-row2" data-hour="<%= n < 10 ? '0' + n.to_s : n %>:30" data-day="<%= day.id %>" data-room="<%= room.id %>">&nbsp;</td>
                 </tr>
               <% end %>
             </table>
