@@ -59,7 +59,7 @@ class AppealsController < ApplicationController
   def update
     respond_to do |format|
       if @appeal.update_attributes(params[:appeal])
-        format.html { redirect_to @appeal, notice: 'Appeal was successfully updated.' }
+        format.html { redirect_to [@conference, @appeal], notice: 'Appeal was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
