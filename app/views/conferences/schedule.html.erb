@@ -97,11 +97,11 @@
                         </div>
                         <div class="field">
                           <%= f.label :duration %><br />
-                          <%= f.number_field :duration %>
+                          <%= f.number_field :duration, value: 45 %> minutes
                         </div>
                         <div class="field">
                           <%= f.label :topic_id %><br />
-                          <%= f.number_field :topic_id %>
+                          <%= f.collection_select :topic_id, @conference.unassigned_topics , :topic_id, :topic_subject, :prompt => "Select a topic" %>
                         </div>
                     </div>
                     <div class="modal-footer">
