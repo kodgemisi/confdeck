@@ -20,6 +20,18 @@ class Appeal < ActiveRecord::Base
      event :reject do
        transition :waiting_review => :rejected
      end
+
+     after_transition :waiting_review => :accepted, :do => :send_accept_notification
+     after_transition :waiting_review => :rejected, :do => :send_reject_notification
+
+   end
+
+   def send_accept_notification
+    AppealMailer.accept_notification_email(self).deliver
+   end
+
+   def send_reject_notification
+    AppealMailer.reject_notification_email(self).deliver
    end
 
    def send_notifications

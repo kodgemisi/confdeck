@@ -22,4 +22,20 @@ class AppealMailer < ActionMailer::Base
      mail(to: speaker.email, subject: subject) if speaker.email?
    end
   end
+
+  def accept_notification_email(appeal)
+   @appeal = appeal
+   subject = "[#{appeal.topic.subject}] #{appeal.topic.subject} application is accepted"
+   appeal.topic.speakers.each do |speaker|
+    mail(to: speaker.email, subject: subject) if speaker.email?
+   end
+  end
+
+  def reject_notification_email(appeal)
+   @appeal = appeal
+   subject = "[#{appeal.topic.subject}] #{appeal.topic.subject} application is rejected"
+   appeal.topic.speakers.each do |speaker|
+    mail(to: speaker.email, subject: subject) if speaker.email?
+   end
+  end
 end
