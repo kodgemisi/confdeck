@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Confman</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places' %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag controller_name if !["sessions"].include? controller_name %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="container">
+
+
+
+  <div class="row">
+    <div class="col-lg-12">
+        <%= yield %>
+    </div>
+  </div>
+
+  <footer>
+    <div class="row">
+      <div class="col-lg-12">
+        <hr/>
+        <p class="pull-right">ConfMan © 2013 </p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
