@@ -82,6 +82,7 @@
               <% if editable %>
                 <%= link_to 'Edit', edit_conference_room_path(@conference, room), :class => "room-edit-link" %>
               <% end %>
+              <!-- <p class="help-block">Example block-level help text here.</p> -->
             </legend>
 
             <div id="slotModal<%= day.id %><%= room.id %>" class="modal fade">
@@ -123,11 +124,11 @@
               <% ConferencesHelper.hour_span(@conference, editable).each do |n| %>
                 <tr>
                   <td class="schd-row"><%= n < 10 ? '0' + n.to_s : n %>:00</td>
-                  <td class="clickable-row1" data-hour="<%= n < 10 ? '0' + n.to_s : n %>:00" data-day="<%= day.id %>" data-room="<%= room.id %>">&nbsp;</td>
+                  <td title="Click to add slot" class="clickable-row1" data-hour="<%= n < 10 ? '0' + n.to_s : n %>:00" data-day="<%= day.id %>" data-room="<%= room.id %>">&nbsp;</td>
                 </tr>
                 <tr>
                   <td></td>
-                  <td class="clickable-row2" data-hour="<%= n < 10 ? '0' + n.to_s : n %>:30" data-day="<%= day.id %>" data-room="<%= room.id %>">&nbsp;</td>
+                  <td title="Click to add slot" class="clickable-row2" data-hour="<%= n < 10 ? '0' + n.to_s : n %>:30" data-day="<%= day.id %>" data-room="<%= room.id %>">&nbsp;</td>
                 </tr>
               <% end %>
             </table>

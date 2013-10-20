@@ -1,15 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<%= form_for([@conference, @room]) do |f| %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, :class => 'form-control' %>
-    <%= f.hidden_field :conference_id, value: @conference.id %>
+<div class="row">
+  <div class="col-md-4">
+    
+  <%= form_for([@conference, @room], :html => {:class=>"form-inline"}) do |f| %>
+
+    <div class="form-group">
+      <%= f.label :Room_name, :class=>"sr-only" %><br />
+      <%= f.text_field :name, :class => 'form-control', :placeholder=>"Room name" %>
+      <%= f.hidden_field :conference_id, value: @conference.id %>
+    </div>
+    <div class="form-group">
+      <%= f.submit 'Add room' ,:class => 'btn' %>
+    </div>
+  <% end %>
+  
   </div>
-  <div class="actions">
-    <%= f.submit 'Add room' ,:class => 'btn' %>
-  </div>
-<% end %>
+</div>
 
 <hr>
 <%= render partial: 'schedule_table', locals: {editable: true} %>

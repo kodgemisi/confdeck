@@ -5,7 +5,8 @@ class ConferencesController < ApplicationController
   # GET /conferences
   # GET /conferences.json
   def index
-    @conferences = Conference.paginate(:page => params[:page])
+    organization_ids = current_user.organizations.pluck(:id)
+    @conferences = Conference.includes(:organizations).where(organizations: {id: organization_ids}).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
