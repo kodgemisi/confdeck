@@ -20,6 +20,10 @@ $(function() {
       var jModal = $(this).closest('table').siblings('.modal');
 
       //fill hour&minute
+      jModal.find('[name="slot[start_hour(1i)]"]').val(2000);
+      jModal.find('[name="slot[start_hour(2i)]"]').val(1);
+      jModal.find('[name="slot[start_hour(3i)]"]').val(1);
+
       jModal.find('[name="slot[start_hour(4i)]"]').val(hour.split(':')[0]);
       jModal.find('[name="slot[start_hour(5i)]"]').val(hour.split(':')[1]);
 
