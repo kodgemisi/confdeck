@@ -16,6 +16,7 @@
 //= require jquery.ui.datepicker
 //= require bootstrap
 //= require gmaps
+//= require best_in_place
 
 
 $(document).ready(function(){
@@ -26,7 +27,8 @@ $(document).ready(function(){
     });
 
     /* Activating Best In Place */
-    jQuery(".best_in_place").best_in_place();
+    if($.fn.best_in_place)
+        jQuery(".best_in_place").best_in_place();
 
     $('.tt').tooltip();
     $("[data-toggle=tooltip]").tooltip()
