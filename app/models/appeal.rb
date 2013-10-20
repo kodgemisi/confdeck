@@ -1,5 +1,5 @@
 class Appeal < ActiveRecord::Base
-  attr_accessible :conference_id, :topic_id, :topic_attributes, :comment
+  attr_accessible :conference_id, :topic_id, :topic_attributes, :comment, :state
 
   after_create :send_notifications
 

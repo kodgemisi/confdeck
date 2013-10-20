@@ -18,5 +18,6 @@ $(function () {
 
 
     /* Activating Best In Place */
-    jQuery(".best_in_place").best_in_place();
+    if($.fn.best_in_place)
+        jQuery(".best_in_place").best_in_place();
 });

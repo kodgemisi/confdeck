@@ -11,10 +11,9 @@
 </div>
 <table class="table table-striped ">
   <tr>
-    <th class="span1"></th>
+    <th class="span1">Logo</th>
     <th>Name</th>
     <th>Summary</th>
-    <th>Website</th>
     <th># of appeals</th>
     <th># of sponsors</th>
     <th class="span2"></th>
@@ -23,9 +22,11 @@
   <% @conferences.each do |conference| %>
       <tr>
         <td><%= image_tag conference.logo.url(:thumb), height: "50", width: "50" %></td>
-        <td><%= conference.name %></td>
+        <td>
+          <%= conference.name %> <br />
+          <%= link_to conference.website, conference.website if conference.website %>
+        </td>
         <td><%= conference.summary %></td>
-        <td><%= conference.website %></td>
         <td><%= link_to conference.appeals.count, conference_appeals_path(conference) %></td>
         <td><%= link_to conference.sponsors.count, conference_sponsors_path(conference) %></td>
         <td>

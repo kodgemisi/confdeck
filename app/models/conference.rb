@@ -26,7 +26,7 @@ class Conference < ActiveRecord::Base
   validates_presence_of :name, :organizations
 
   has_attached_file :logo, :styles => { :medium => "400x400>", :thumb => "200x100>" }, :default_url => "/assets/missing_:style.png"
-  has_attached_file :heading_image, :styles => { :default => "1900x254>", :thumb => "200x100>" }
+  has_attached_file :heading_image, :styles => { :default => "1900x254"}
 
   def create_days(from_date, to_date)
    current_date = from_date
