@@ -7,14 +7,8 @@ Rake::Task['db:create'].invoke
 Rake::Task['db:migrate'].invoke
 
 
-u = User.create!(
-  :email => "mbbrain@gmail.com",
-  :password => "12345678"
-)
-
-
 u = User.new(
-  :email => "admin@railsconf.com",
+  :email => "guest@kodgemisi.com",
   :password => "12345678"
 )
 
