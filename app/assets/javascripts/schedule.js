@@ -7,7 +7,6 @@ $(function() {
   
   // addSlot click handler on TDs
   $('td[data-hour]').click(function() {
-    debugger
     var hour = $(this).data('hour');
     var jModal = $(this).closest('table').siblings('.modal');
 
@@ -19,7 +18,6 @@ $(function() {
   });
 
   $('.slot-div').click(function(e) {
-    debugger
     return false;
   });
 
