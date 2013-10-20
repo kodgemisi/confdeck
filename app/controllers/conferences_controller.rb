@@ -20,6 +20,7 @@ class ConferencesController < ApplicationController
     @conference = Conference.find(params[:id])
     @slot = Slot.new #for schedule showing
 
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @conference }

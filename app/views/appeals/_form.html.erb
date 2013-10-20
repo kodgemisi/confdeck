@@ -63,6 +63,7 @@
 
                       <div class="form-group">
                         <div class="col-lg-offset-2 col-lg-10">
+                          <%= bs_button_to "Return to #{@conference.name}", @conference, :class => "btn btn-default pull-left" %>
                           <%= f.submit :class => "btn btn-default pull-right" %>
                         </div>
                       </div>
@@ -70,7 +71,8 @@
                 </div>
             </div>
         </div>
-    </div>
+
+
 
 
 <% end %>

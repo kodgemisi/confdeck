@@ -39,10 +39,13 @@
           <% end %>
         </td>
       </tr>
+
     </table>
+    <div class="pull-right"> <%= bs_button_to "Return to #{@conference.name}", @conference, :class => "btn btn-default pull-left" %></div>
   </div>
 </div>
 
+<% if current_user %>
 <div class="panel panel-default">
   <div class="panel-body">
     <%= form_for(Comment.new, url: comment_conference_appeal_path(@conference, @appeal), remote: true, :html => {:class => 'form-horizontal'}) do |f| %>
@@ -78,3 +81,5 @@
 
 <%= link_to 'Edit', edit_conference_appeal_path([@conference, @appeal]) %> |
 <%= link_to 'Back', conference_appeals_path(@conference) %>
+
+<% end %>

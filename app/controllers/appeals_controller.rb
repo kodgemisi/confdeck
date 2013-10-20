@@ -1,8 +1,10 @@
 class AppealsController < ApplicationController
-  before_filter :authenticate_user!, except: [:new, :create]
+  before_filter :authenticate_user!, except: [:new, :create, :show]
 
   before_filter :set_conference
   before_filter :set_appeal, only: [:show, :edit, :update, :destroy, :comment, :upvote, :downvote, :accept, :reject]
+
+  layout "application_no_nav", :only => ["new", "show"]
   # GET /appeals
   # GET /appeals.json
   def index
@@ -50,7 +52,7 @@ class AppealsController < ApplicationController
         format.html { redirect_to [@conference, @appeal], notice: 'Appeal was successfully created.' }
         format.json { render json: @appeal, status: :created, location: @appeal }
       else
-        format.html { render action: "new" }
+        format.html { render layout: "application_no_nav",action: "new" }
         format.json { render json: @appeal.errors, status: :unprocessable_entity }
       end
     end
