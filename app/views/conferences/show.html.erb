@@ -65,28 +65,30 @@
 
 </div><!-- /.section-colored -->
 
-<div class="section" id="sponsors">
+<% if @conference.sponsors.present? %>
+    <div class="section" id="sponsors">
 
-  <div class="container">
+      <div class="container">
 
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2>Our Sponsors</h2>
-        <hr>
-      </div>
-      <% @conference.sponsors.each do |sponsor| %>
-          <div class="col-lg-4 col-md-4 col-sm-6">
-              <%= link_to image_tag(sponsor.logo.url, :class => "img-responsive img-home-portfolio"), sponsor.website %>
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2>Our Sponsors</h2>
+            <hr>
           </div>
-      <% end %>
+          <% @conference.sponsors.each do |sponsor| %>
+              <div class="col-lg-4 col-md-4 col-sm-6">
+                  <%= link_to image_tag(sponsor.logo.url, :class => "img-responsive img-home-portfolio"), sponsor.website %>
+              </div>
+          <% end %>
 
-    </div>
-    <!-- /.row -->
+        </div>
+        <!-- /.row -->
 
-  </div>
-  <!-- /.container -->
+      </div>
+      <!-- /.container -->
 
-</div><!-- /.section -->
+    </div><!-- /.section -->
+<% end %>
 
 <div class="section-colored" id="speakers">
   <div class="container text-center">
