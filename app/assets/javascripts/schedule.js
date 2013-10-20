@@ -67,7 +67,7 @@ $(function() {
     height -= (height % cellHeight == 0 && startMinute % 30 == 0 ? 5 : 0); // 2px bottom margin, this is equal to top, left and right margin
     startCell.append(slotDiv.replace('{ID}', slot.id));
     var currentSlotDiv = $('[data-slot-id="'+slot.id+'"]');
-    currentSlotDiv.css('height', height).css('top', top).text('Duration: ' + slot.duration + ' minutes | Topic:' + slot.topic_id);
+    currentSlotDiv.css('height', height).css('top', top).html( (slot.topic ? slot.topic.subject : '<em>Topic not set</em>') + ' | ' + slot.duration + ' minutes');
   }
 
   traverseSlots(window.slotsData);
