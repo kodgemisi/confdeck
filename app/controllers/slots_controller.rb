@@ -4,6 +4,8 @@ class SlotsController < ApplicationController
   before_filter :set_conference
   before_filter :set_slot, only: [:show, :edit, :update, :destroy]
 
+  layout false
+
   # GET /slots
   # GET /slots.json
   def index
@@ -46,7 +48,7 @@ class SlotsController < ApplicationController
 
     respond_to do |format|
       if @slot.save
-        format.html { redirect_to [@conference, @slot], notice: 'Slot was successfully created.' }
+        format.html { redirect_to schedule_conference_path(@conference), notice: 'Slot was successfully created.' }
         format.json { render json: @slot, status: :created, location: @slot }
       else
         format.html { render action: "new" }
@@ -60,7 +62,7 @@ class SlotsController < ApplicationController
   def update
     respond_to do |format|
       if @slot.update_attributes(params[:slot])
-        format.html { redirect_to [@conference, @slot], notice: 'Slot was successfully updated.' }
+        format.html { redirect_to schedule_conference_path(@conference), notice: 'Slot was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -75,7 +77,7 @@ class SlotsController < ApplicationController
     @slot.destroy
 
     respond_to do |format|
-      format.html { redirect_to conference_slots_url(@conference) }
+      format.html { redirect_to schedule_conference_path(@conference) }
       format.json { head :no_content }
     end
   end

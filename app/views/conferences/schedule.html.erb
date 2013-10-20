@@ -53,6 +53,7 @@
 
 <script type="text/javascript">
   window.slotsData = JSON.parse('<%= ConferencesHelper.slots_data(@conference).html_safe %>');
+  window.conferenceId = '<%= @conference.id %>';
 </script>
 
 <p id="notice"><%= notice %></p>
@@ -141,3 +142,4 @@
   <% end %>
 </div>
 
+<div id="slotDetailsContainer"></div>

@@ -25,10 +25,6 @@ $(function() {
     jModal.modal();// show modal
   });
 
-  $('.slot-div').click(function(e) {
-    return false;
-  });
-
   function traverseSlots(days) {
     for(dayKey in days){
       var day = days[dayKey];
@@ -69,6 +65,20 @@ $(function() {
   }
 
   traverseSlots(window.slotsData);
+
+  // order is important for this handler addition, should be after 'traverseSlots'
+  $('.slot-div').click(function(e) {
+    var slotId = $(this).data('slot-id');
+
+    $('#slotDetailsContainer').children().remove();
+    $('#slotDetailsContainer').append('<div id="slotDetails" class="modal fade"></div>');
+
+    $('#slotDetails').modal({
+      remote: '/conferences/'+conferenceId+'/slots/'+slotId+'/edit'
+    });
+    return false;
+  });
+
 });
 
 
