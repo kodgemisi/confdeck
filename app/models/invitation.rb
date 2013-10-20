@@ -13,10 +13,11 @@ class Invitation < ActiveRecord::Base
 
   def self.accept_invitation(token, user)
     @invitation = Invitation.where(token: token).first
-    if @invitation.active?
+    if @invitation.present? && @invitation.active?
       @invitation.active = false
+      @invitation.save
       @organization = Organization.find(@invitation.organization_id)
-      user.organizations << @organization
+      user.organizations << @organization unless @organization.users.include? user
 
       return true
     end

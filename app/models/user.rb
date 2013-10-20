@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
-  has_and_belongs_to_many :organizations
+  has_and_belongs_to_many :organizations, :uniq => true
   has_many :conferences, through: :organizations, uniq: true
 
   acts_as_voter
