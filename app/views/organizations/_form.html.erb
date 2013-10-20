@@ -11,6 +11,14 @@
     </div>
   <% end %>
 
+    <div class="form-group">
+      <%= f.label :logo, :class => "col-lg-3 control-label" %>
+
+      <div class="col-lg-9">
+        <%= f.file_field :logo, :class => "form-control" %>
+      </div>
+    </div>
+
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>

@@ -144,6 +144,10 @@ footer {
     padding-bottom: 130px;
 }
 
+.organization img {
+    margin: auto auto;
+}
+
 #address_map {
     width: 555px;
     height: 357px
