@@ -110,6 +110,7 @@
                 <%= f.label :logo, :class => "col-lg-3 control-label" %>
 
                 <div class="col-lg-9">
+                  <%= image_tag @conference.logo.url(:thumb) %>
                   <%= f.file_field :logo, :class => "form-control" %>
                 </div>
               </div>
@@ -117,7 +118,9 @@
                 <%= f.label :heading_image, :class => "col-lg-3 control-label" %>
 
                 <div class="col-lg-9">
+                  <%= image_tag @conference.heading_image.url(:thumb) %>
                   <%= f.file_field :heading_image, :class => "form-control" %>
+
                 </div>
               </div>
 
