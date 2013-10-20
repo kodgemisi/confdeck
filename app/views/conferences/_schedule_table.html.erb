@@ -72,7 +72,9 @@
         <% @conference.rooms.each do |room| %>
           <div class="room">
             <%= room.name %>
-            <%= link_to 'Edit', edit_conference_room_path(@conference, room) %>
+            <% if editable %>
+              <%= link_to 'Edit', edit_conference_room_path(@conference, room) %>
+            <% end %>
 
             <div id="slotModal<%= day.id %><%= room.id %>" class="modal fade">
               <div class="modal-dialog">
