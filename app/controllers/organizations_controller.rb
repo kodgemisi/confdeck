@@ -91,7 +91,7 @@ class OrganizationsController < ApplicationController
     respond_to do |format|
       if @invitation.save
         InvitationMailer.invite_email(@invitation).deliver
-        format.js
+        format.html { redirect_to organization_path(@organization), notice: "Your invitation has sent to #{params[:invitation][:email]}" }
       end
     end
   end

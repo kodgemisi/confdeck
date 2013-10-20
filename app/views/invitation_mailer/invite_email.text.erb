@@ -2,4 +2,4 @@ Hi,
 
 You have invited to organization <%= @organization.name %> to manage your conferences.
 
-<%= link_to "click here", accept_invitation_url(@token) %> to accept your invitation.
+<%= link_to "click here", accept_invitation_url(invitation_token: @token) %> to accept your invitation.

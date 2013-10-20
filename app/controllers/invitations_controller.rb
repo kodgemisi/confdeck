@@ -5,7 +5,7 @@ class InvitationsController < ApplicationController
 
     respond_to do |format|
       if Invitation.accept_invitation(@token, current_user)
-        format.html { redirect_to organizations_url, notice: 'You have added to the organization.' }
+        format.html { redirect_to organizations_path, notice: 'You are now member of the organization.' }
       else
         format.html { redirect_to root_url, notice: 'Your invitation token is wrong.' }
       end
