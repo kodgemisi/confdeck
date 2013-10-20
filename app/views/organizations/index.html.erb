@@ -8,26 +8,29 @@
   </div>
   <div class="clearfix"></div>
 </div>
+
 <table class="table table-striped">
   <tr>
     <th>Name</th>
     <th>Website</th>
     <th># of members</th>
-    <th class="span1"></th>
-    <th class="span1"></th>
-    <th class="span1"></th>
+    <th class="span2"></th>
   </tr>
 
-<% @organizations.each do |organization| %>
-  <tr>
-    <td><%= organization.name %></td>
-    <td><%= link_to organization.website, organization.website %></td>
-    <td><%= organization.users.count %></td>
-    <td><%= link_to 'Show', organization %></td>
-    <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
-    <td><%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+    <% @organizations.each do |organization| %>
+      <tr>
+        <td><%= organization.name %></td>
+        <td><%= link_to organization.website, organization.website %></td>
+        <td><%= organization.users.count %></td>
+        <td>
+          <%= button_group class: "btn-group-sm" do %>
+              <%= bs_button_to "", organization, tooltip: "Details", icon: "eye-open", style: "primary", size: "mini" %>
+              <%= bs_button_to "", edit_organization_path(organization), tooltip: "Edit", icon: "pencil", style: "primary", size: "mini" %>
+              <%= bs_button_to "", organization, method: :delete, data: {:confirm => "Are You Sure?"}, tooltip: "Delete", icon: "remove", style: "primary", size: "mini" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
 </table>
 
 <br />
