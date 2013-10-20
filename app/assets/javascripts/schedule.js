@@ -5,6 +5,13 @@
 $(function() {
 
   var slotDiv = '<div class="slot-div" data-slot-id="{ID}"><div>';
+
+  //calculate "room-container"s' widths
+  (function() {
+    var roomSize = $('.tab-pane').first().find('.room').length;
+    var width = ($('.room').first().outerWidth(true) + 5) * roomSize;
+    $('.room-container').css('width', width);
+  }());
   
   // addSlot click handler on TDs
   $('td[data-hour]').click(function() {

@@ -41,6 +41,14 @@
     -webkit-filter: brightness(1.2);
     filter: brightness(1.2);
   }
+  .room{
+    width: 300px;
+    display: inline-block;
+  }
+
+  .tab-pane{
+    overflow-x: auto;
+  }
 </style>
 
 <script type="text/javascript">
@@ -72,9 +80,9 @@
     <div class="tab-pane <%= 'active' if i == 0 %>" id="<%= day.date %>">
       <p>Rooms for <%= day.date %></p>
 
-      <div class="row">
+      <div class="room-container">
         <% @conference.rooms.each do |room| %>
-          <div class="well col-md-<%= 12/@conference.rooms.count %>">
+          <div class="room">
             <%= room.name %>
             <%= link_to 'Edit', edit_conference_room_path(@conference, room) %>
 
