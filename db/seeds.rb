@@ -75,7 +75,10 @@ speaker3 = Speaker.create!(
 )
 
 topic = Topic.new(
-  :subject => "State Machines in Rails"
+  :subject => "State Machines in Rails",
+  :additional_info => "",
+  :detail => "",
+  :abstract => "",
 )
 
 topic.speakers << speaker

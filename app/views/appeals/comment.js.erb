@@ -2,4 +2,5 @@ $("#comment_comment").val("");
 $("#notice").show();
 $("#notice").html("your comment successfully created");
 $("#notice").fadeOut(3000);
-$("#comments").append("<li><%= @comment.comment %> <span>by <%= @comment.user.email %></span></li>");
+$("#comments").prepend("<%=escape_javascript(render("appeals/comment", :comment => @comment))%>");
+$("#comments > div:last").effect('highlight', 500)

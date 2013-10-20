@@ -221,3 +221,11 @@ body {
 .table-vertical-align tbody > tr > td {
     vertical-align: middle;
 }
+
+.comment-box {
+    background-color: #fff;
+    border-width: 1px;
+    border-color: #ddd;
+    border-radius: 4px 4px 0 0;
+    box-shadow: none;
+}
