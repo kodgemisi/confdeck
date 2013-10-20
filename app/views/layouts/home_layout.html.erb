@@ -12,7 +12,6 @@
   <%= stylesheet_link_tag "home", :media => "all" %>
   <%= stylesheet_link_tag "timeline", :media => "all" %>
   <%= javascript_include_tag "home" %>
-  <%= javascript_include_tag "http://s0.railsrumble.com/banner.js" %>
   <%= csrf_meta_tags %>
 </head>
 </head>
@@ -176,6 +175,7 @@
         });
     });
 </script>
+<%= javascript_include_tag "http://s0.railsrumble.com/banner.js" %>
 
 </body>
 
