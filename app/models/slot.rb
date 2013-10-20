@@ -37,6 +37,6 @@ class Slot < ActiveRecord::Base
   belongs_to :day
   belongs_to :topic
 
-  validates_with OverlapValidator
+  #validates_with OverlapValidator
 
 end
