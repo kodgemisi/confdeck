@@ -32,7 +32,7 @@
   <div class="vert-text">
     <h1><img src="/assets/logo.png"/></h1>
 
-    <h3><em>manage your conferences on cloud</em></h3>
+    <h3><em>Creating conferences made easy</em></h3>
     <a href="#intro" class="btn btn-default btn-lg">Find Out More</a>
   </div>
 </div>
@@ -43,18 +43,8 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3 text-center">
-        <h2>Create Your Organization!</h2>
-
-        <p>
-
-        <form class="form-inline" role="form">
-          <div class="form-group">
-            <label class="sr-only" for="exampleInputPassword2">Organization Name</label>
-            <input type="text" class="form-control" id="exampleInputPassword2" placeholder="Organization Name">
-          </div>
-          <button type="submit" class="btn btn-default">Create!</button>
-        </form>
-        </p>
+        <h2>Organizing a conference and its speakers is easy now</h2>
+        <p class="lead">Meeting new people and old friends in conferences are awesome but what about organizing a conference? Confman makes it easy to create, organize and share conferences.</p>
       </div>
     </div>
   </div>
@@ -73,34 +63,36 @@
     <div class="row">
       <div class="col-md-2 col-md-offset-2 text-center">
         <div class="service-item">
-          <i class="service-icon icon-magic"></i>
-          <h4>Manage Your Organization</h4>
-
-          <p></p>
+          <i class="service-icon icon-calendar"></i>
+          <h4>Manage Event Schedule</h4>
+          <p>You can create schedule for different rooms for the same event</p>
         </div>
       </div>
+
       <div class="col-md-2 text-center">
         <div class="service-item">
-          <i class="service-icon icon-magnet"></i>
-          <h4>Create Your Event Page</h4>
+          <i class="service-icon icon-microphone"></i>
+          <h4>Get apeals from speakers</h4>
 
-          <p></p>
+          <p>Let speakers apply to your event and you discuss and decide with your event committee</p>
         </div>
       </div>
+      
       <div class="col-md-2 text-center">
         <div class="service-item">
-          <i class="service-icon icon-shield"></i>
-          <h4>Accept Speakers</h4>
+          <i class="service-icon icon-group"></i>
+          <h4>Gather orginization committee</h4>
 
-          <p></p>
+          <p>Add people to conference to discuss and decide on speaker appeals</p>
         </div>
       </div>
+      
       <div class="col-md-2 text-center">
         <div class="service-item">
-          <i class="service-icon icon-pencil"></i>
-          <h4>Create Schedule</h4>
+          <i class="service-icon icon-bullhorn"></i>
+          <h4>Share your event's page</h4>
 
-          <p></p>
+          <p>Avoid the burden of creating event pages since Confman creates one for you</p>
         </div>
       </div>
     </div>
@@ -108,6 +100,17 @@
 </div>
 <!-- /Services -->
 
+<!-- call-to-action -->
+<div class="call-to-action">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center">
+        <h3>As organizer keep a speaker database so that you can invite the ones later on who are loved most by the orginizing committee.</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- call-to-action -->
 
 <!-- Services -->
 <div id="upcoming" >
@@ -116,16 +119,7 @@
       <div class="col-md-12">
         <h2>Upcoming Events</h2>
 
-        <% @days.each do |day| %>
-            <% day.conferences.each do |conf| %>
-                <b><%= link_to conf.name, conf %></b> - <%= conf.days.first.date.strftime("%d %B %Y") %> - <%= conf.days.last.date.strftime("%d %B %Y") %> <br />
-            <% end %>
-        <% end %>
-
-             <br />
-             <br />
-             <br />
-             <br />
+ 
         <% @conferences.each do |conf| %>
             <b><%= link_to conf.name, conf %></b> - <%= conf.days.first.date.strftime("%d %B %Y") %>
             - <%= conf.days.last.date.strftime("%d %B %Y") %> <br/>
