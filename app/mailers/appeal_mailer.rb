@@ -1,5 +1,5 @@
 class AppealMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "confmanrumble@gmail.com"
 
   def committee_notification_email(appeal)
    @appeal = appeal
