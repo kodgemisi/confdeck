@@ -13,11 +13,11 @@
         <table class="table table-bordered">
           <tr>
             <td class="span3" style="font-weight: bold">Total Organizations:</td>
-            <td><%= link_to current_user.organizations.count, organizations_path %></td>
+            <td><%= link_to current_user.organizations.count, organizations_path, :class=>"easy-click" %></td>
           </tr>
           <tr>
             <td class="span3" style="font-weight: bold">Total Conferences:</td>
-            <td><%= link_to current_user.conferences.count, conferences_path %></td>
+            <td><%= link_to current_user.conferences.count, conferences_path, :class=>"easy-click" %></td>
           </tr>
           <tr>
             <td class="span3" style="font-weight: bold">Total Appeals:</td>
