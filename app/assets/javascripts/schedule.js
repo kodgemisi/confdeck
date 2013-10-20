@@ -1,5 +1,6 @@
 //= require jquery
 //= require bootstrap
+//= require jquery.ui.core
 
 $(function() {
 
@@ -7,7 +8,6 @@ $(function() {
   
   // addSlot click handler on TDs
   $('td[data-hour]').click(function() {
-    debugger
     var hour = $(this).data('hour');
     var jModal = $(this).closest('table').siblings('.modal');
 
@@ -19,7 +19,6 @@ $(function() {
   });
 
   $('.slot-div').click(function(e) {
-    debugger
     return false;
   });
 
@@ -56,7 +55,7 @@ $(function() {
     var height = slot.duration / 30 * cellHeight;
     var top = (startMinute >= 30 ? startMinute - 30 : startMinute ) / 30 * cellHeight;
     top += 2; // 2px top margin
-    height -= (height % cellHeight == 0 && top == 0 ? 5 : 0); // 2px bottom margin, this is equal to top, left and right margin
+    height -= (height % cellHeight == 0 && startMinute % 30 == 0 ? 5 : 0); // 2px bottom margin, this is equal to top, left and right margin
     startCell.append(slotDiv.replace('{ID}', slot.id));
     var currentSlotDiv = $('[data-slot-id="'+slot.id+'"]');
     currentSlotDiv.css('height', height).css('top', top).text('Duration: ' + slot.duration + ' minutes');

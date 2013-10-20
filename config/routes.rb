@@ -3,13 +3,13 @@ Confman::Application.routes.draw do
   resources :slots
   resources :topics
   resources :speakers
-  resources :rooms
 
   get "invitations/accept"
 
   resources :conferences do
     resources :addresses
     resources :sponsors
+    resources :rooms
     resources :appeals do
       member do
         post 'comment'
