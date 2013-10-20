@@ -47,7 +47,7 @@
 </div>
 
 
-<div class="section-colored text-center">
+<div class="section-colored text-center color1">
 
   <div class="container">
 
@@ -66,7 +66,7 @@
 </div><!-- /.section-colored -->
 
 <% if @conference.sponsors.present? %>
-    <div class="section" id="sponsors">
+    <div class="section color2" id="sponsors">
 
       <div class="container">
 
@@ -90,7 +90,7 @@
     </div><!-- /.section -->
 <% end %>
 
-<div class="section-colored" id="speakers">
+<div class="section-colored color3" id="speakers">
   <div class="container text-center">
 
       <div class="row text-center" >
@@ -98,7 +98,7 @@
           <h2>Speakers
           </h2>
 
-          <div class="pull-right">
+          <div class="">
             <a class="btn btn-lg btn-primary" href="">Speaker Application</a>
           </div>
           <div class="clearfix"></div>
@@ -133,7 +133,7 @@
 </div>
 
 <% if !(@conference.slots.empty?) %>
-<div class="section" id="schedule">
+<div class="section color4" id="schedule">
   <div class="container">
     <%= render partial: 'schedule_table', locals: {editable: false} %>
   </div>
@@ -141,7 +141,7 @@
 <% end %>
 
 
-<div class="section" id="location">
+<div class="section color5" id="location">
 
   <div class="container">
 
