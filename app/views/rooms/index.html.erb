@@ -1,4 +1,4 @@
-<h1>Listing rooms</h1>
+<h1>Listing rooms for conference <%= @conference.name %></h1>
 
 <table>
   <tr>
@@ -11,13 +11,13 @@
 <% @rooms.each do |room| %>
   <tr>
     <td><%= room.name %></td>
-    <td><%= link_to 'Show', room %></td>
-    <td><%= link_to 'Edit', edit_room_path(room) %></td>
-    <td><%= link_to 'Destroy', room, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', [@conference, room] %></td>
+    <td><%= link_to 'Edit', edit_conference_room_path(@conference, room) %></td>
+    <td><%= link_to 'Destroy', [@conference, room], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Room', new_room_path %>
+<%= link_to 'New Room', new_conference_room_path(@conference) %>

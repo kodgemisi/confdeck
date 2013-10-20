@@ -47,7 +47,9 @@
   window.slotsData = JSON.parse('<%= ConferencesHelper.slots_data(@conference).html_safe %>');
 </script>
 
-<%= form_for(@room) do |f| %>
+<p id="notice"><%= notice %></p>
+
+<%= form_for([@conference, @room]) do |f| %>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name, :class => 'form-control' %>
@@ -74,7 +76,7 @@
         <% @conference.rooms.each do |room| %>
           <div class="well col-md-<%= 12/@conference.rooms.count %>">
             <%= room.name %>
-            <%= link_to 'Edit', edit_room_path(room) %>
+            <%= link_to 'Edit', edit_conference_room_path(@conference, room) %>
 
             <div id="slotModal<%= day.id %><%= room.id %>" class="modal fade">
               <div class="modal-dialog">

@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @room %> |
-<%= link_to 'Back', rooms_path %>
+<%= link_to 'Show', [@conference, @room] %> |
+<%= link_to 'Back', conference_rooms_path(@conference) %>
