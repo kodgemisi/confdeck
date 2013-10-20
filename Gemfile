@@ -17,6 +17,13 @@ gem 'acts_as_votable', '~> 0.7.1'
 
 gem 'state_machine'
 
+gem 'capistrano', '~> 2.15'
+
+group :production do
+  gem 'mysql2' # If using mysql in development, this can be outside the production group.
+  gem 'therubyracer'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
