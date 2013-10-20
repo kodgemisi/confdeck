@@ -13,29 +13,28 @@ class Appeal < ActiveRecord::Base
   acts_as_commentable
   acts_as_votable
 
-   state_machine :state, :initial => :waiting_review do
-     event :accept do
-       transition :waiting_review => :accepted
-     end
-     event :reject do
-       transition :waiting_review => :rejected
-     end
+  state_machine :state, :initial => :waiting_review do
+    event :accept do
+      transition :waiting_review => :accepted
+    end
+    event :reject do
+      transition :waiting_review => :rejected
+    end
 
-     after_transition :waiting_review => :accepted, :do => :send_accept_notification
-     after_transition :waiting_review => :rejected, :do => :send_reject_notification
+    after_transition :waiting_review => :accepted, :do => :send_accept_notification
+    after_transition :waiting_review => :rejected, :do => :send_reject_notification
+  end
 
-   end
-
-   def send_accept_notification
+  def send_accept_notification
     AppealMailer.accept_notification_email(self).deliver
-   end
+  end
 
-   def send_reject_notification
+  def send_reject_notification
     AppealMailer.reject_notification_email(self).deliver
-   end
+  end
 
-   def send_notifications
-     AppealMailer.speaker_notification_email(self).deliver
-     AppealMailer.committee_notification_email(self).deliver
-   end
+  def send_notifications
+    AppealMailer.speaker_notification_email(self).deliver
+    AppealMailer.committee_notification_email(self).deliver
+  end
 end
