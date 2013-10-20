@@ -42,4 +42,8 @@ class Conference < ActiveRecord::Base
     self.appeals.accepted.map {|a| a unless self.slots.pluck(:topic_id).include? a.topic_id }.reject { |a| a.nil? }
   end
 
+  def accepted_topics
+    self.appeals.accepted
+  end
+
 end

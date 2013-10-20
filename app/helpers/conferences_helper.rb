@@ -19,7 +19,9 @@ module ConferencesHelper
       rooms.each do |room|
         r = {}
         Slot.where(conference_id: conference.id, day_id: day[:id], room_id: room[:id]).each do |slot|
-          r[slot.id] = slot
+          s = slot
+          s[:topic] = slot.topic
+          r[slot.id] = s
         end
         d[room[:id]] = r
       end
