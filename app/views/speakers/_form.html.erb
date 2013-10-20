@@ -11,38 +11,68 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :twitter %><br />
-    <%= f.text_field :twitter %>
-  </div>
-  <div class="field">
-    <%= f.label :facebook %><br />
-    <%= f.text_field :facebook %>
-  </div>
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12">
 
-  <div class="field">
-    <%= f.label :github %><br />
-    <%= f.text_field :github %>
-  </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">Basic Information</div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="form-group">
+                <%= f.label :email, :class => "control-label col-lg-3" %>
+                <div class="col-lg-9">
+                  <%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :name, :class => "control-label col-lg-3" %>
+                <div class="col-lg-9">
+                  <%= f.text_field :name, :class => "form-control", :placeholder => "Name" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :phone, :class => "control-label col-lg-3" %>
+                <div class="col-lg-9">
+                  <%= f.text_field :phone, :class => "form-control", :placeholder => "Phone" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :twitter, :class => "control-label col-lg-3" %>
+                <div class="col-lg-9">
+                  <%= f.text_field :twitter, :class => "form-control", :placeholder => "Twitter" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :facebook, :class => "control-label col-lg-3" %>
+                <div class="col-lg-9">
+                  <%= f.text_field :facebook, :class => "form-control", :placeholder => "Facebook" %>
+                </div>
+              </div>
 
-  <div class="field">
-    <%= f.label :bio %>
-    <br/>
-    <%= f.text_area :bio %>
-    </div>
-  <div class="actions">
-    <%= f.submit %>
+              <div class="form-group">
+                <%= f.label :github, :class => "control-label col-lg-3" %>
+                <div class="col-lg-9">
+                  <%= f.text_field :github, :class => "form-control", :placeholder => "Github" %>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              <div class="form-group">
+                <%= f.label :bio, :class => "control-label col-lg-3"  %>
+                <br/>
+                <%= f.text_area :bio, :class => "form-control", :placeholder => "Bio" %>
+              </div>
+              <div class="actions">
+                <%= f.submit :class => "btn btn-default pull-right" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
   </div>
+</div>
+
+
 <% end %>
