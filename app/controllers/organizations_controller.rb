@@ -1,10 +1,11 @@
 class OrganizationsController < ApplicationController
+
   before_filter :authenticate_user!
 
   # GET /organizations
   # GET /organizations.json
   def index
-    @organizations = current_user.organizations
+    @organizations = current_user.organizations.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

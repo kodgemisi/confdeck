@@ -2,7 +2,7 @@ class SpeakersController < ApplicationController
   # GET /speakers
   # GET /speakers.json
   def index
-    @speakers = Speaker.all
+    @speakers = Speaker.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
