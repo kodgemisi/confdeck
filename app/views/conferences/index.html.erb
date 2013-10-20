@@ -17,7 +17,6 @@
     <th>Website</th>
     <th># of appeals</th>
     <th># of sponsors</th>
-    <th>Address</th>
     <th class="span2"></th>
   </tr>
 
@@ -31,6 +30,7 @@
         <td><%= link_to conference.sponsors.count, conference_sponsors_path(conference) %></td>
         <td><%= conference.address.info %></td>
         <td style="width: 145px">
+        <td>
           <%= button_group class: "btn-group-sm" do %>
             <%= bs_button_to "", conference, tooltip: "Details", icon: "eye-open", style: "primary", size: "mini" %>
             <%= bs_button_to "", schedule_conference_path(conference), tooltip: "Schedule", icon: "calendar", style: "primary", size: "mini" %>
