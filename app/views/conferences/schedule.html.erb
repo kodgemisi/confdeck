@@ -53,6 +53,7 @@
 
 <script type="text/javascript">
   window.slotsData = JSON.parse('<%= ConferencesHelper.slots_data(@conference).html_safe %>');
+  window.conferenceId = '<%= @conference.id %>';
 </script>
 
 <p id="notice"><%= notice %></p>
@@ -93,7 +94,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     <h4 class="modal-title"><%= t 'Add slot' %></h4>
                   </div>
-                  <%= form_for(@slot) do |f| %>
+                  <%= form_for([@conference, @slot]) do |f| %>
                     <div class="modal-body">
                       <p>Adding slot for <%= room.name %> at <%= day.date %></p>
                         <%= f.hidden_field :conference_id, value: @conference.id %>
@@ -141,3 +142,4 @@
   <% end %>
 </div>
 
+<div id="slotDetailsContainer"></div>

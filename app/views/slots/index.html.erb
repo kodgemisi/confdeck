@@ -21,13 +21,13 @@
     <td><%= slot.day_id %></td>
     <td><%= slot.room_id %></td>
     <td><%= slot.topic_id %></td>
-    <td><%= link_to 'Show', slot %></td>
-    <td><%= link_to 'Edit', edit_slot_path(slot) %></td>
-    <td><%= link_to 'Destroy', slot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', [@conference, slot] %></td>
+    <td><%= link_to 'Edit', edit_conference_slot_path(@conference, slot) %></td>
+    <td><%= link_to 'Destroy', [@conference, slot], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Slot', new_slot_path %>
+<%= link_to 'New Slot', new_conference_slot_path(@conference) %>

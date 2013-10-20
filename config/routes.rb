@@ -1,6 +1,5 @@
 Confman::Application.routes.draw do
   resources :topics, only: [:index]
-  resources :slots
   resources :topics
   resources :speakers
 
@@ -10,6 +9,7 @@ Confman::Application.routes.draw do
     resources :addresses
     resources :sponsors
     resources :rooms
+    resources :slots
     resources :appeals do
       member do
         post 'comment'
