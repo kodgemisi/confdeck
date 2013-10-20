@@ -1,4 +1,4 @@
-<%= form_for(@speaker) do |f| %>
+<%= form_for(@speaker, :html => {:class => 'form-horizontal'}) do |f| %>
   <% if @speaker.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@speaker.errors.count, "error") %> prohibited this speaker from being saved:</h2>
@@ -60,8 +60,9 @@
             <div class="col-lg-6 col-md-6 col-sm-6">
               <div class="form-group">
                 <%= f.label :bio, :class => "control-label col-lg-3"  %>
-                <br/>
-                <%= f.text_area :bio, :class => "form-control", :placeholder => "Bio" %>
+                <div class="col-lg-9">
+                    <%= f.text_area :bio, :class => "form-control", :placeholder => "Bio" %>
+                </div>
               </div>
               <div class="actions">
                 <%= f.submit :class => "btn btn-default pull-right" %>
