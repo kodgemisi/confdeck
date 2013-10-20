@@ -6,23 +6,26 @@ class OverlapValidator < ActiveModel::Validator
     slots = Slot.where(room_id: record.room_id, conference_id: record.conference_id, start_hour: record.start_hour..record.start_hour+(duration-1).minute)
     
     if(slots.count > 1)
-      failed = true
+      record.errors[:start_hour] << 'Slots cannot overlap!'
+      # p '===================================== 1'
+      return
     elsif slots.count == 1 && !slots.include?(record)
-      failed = true
+      record.errors[:start_hour] << 'Slots cannot overlap!'
+      # p '===================================== 2'
+      return
     end
 
     Slot.where(room_id: record.room_id, conference_id: record.conference_id).each do |slot|
       if(slot != record)
-        range = slot.start_hour..slot.start_hour+(duration-1).minute
+        range = slot.start_hour..slot.start_hour+(slot.duration-1).minute
         if(range.cover?(record.start_hour))
-          failed = true
+          record.errors[:start_hour] << 'Slots cannot overlap!'
+          # p '===================================== 3', range, record, slot
+          return
         end
       end
     end
 
-    if failed
-      record.errors[:start_hour] << 'Slots cannot overlap!'
-    end
   end
 end
 
