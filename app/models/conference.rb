@@ -1,5 +1,13 @@
 class Conference < ActiveRecord::Base
-  attr_accessible :description, :email, :facebook, :name, :phone, :summary, :twitter, :website, :address_attributes, :organization_ids, :logo, :heading_image, :keywords
+  extend FriendlyId
+
+  attr_accessible :description, :email, :facebook, :name, :phone, :summary, :twitter, :website, :address_attributes, :organization_ids, :logo, :heading_image, :keywords, :slug
+
+  friendly_id :name, use: :slugged
+
+  def should_generate_new_friendly_id?
+    name_changed?
+  end
 
   has_one :address
   has_and_belongs_to_many :organizations

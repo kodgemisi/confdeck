@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131020123903) do
+ActiveRecord::Schema.define(:version => 20131020145113) do
 
   create_table "addresses", :force => true do |t|
     t.text     "info"
@@ -65,7 +65,10 @@ ActiveRecord::Schema.define(:version => 20131020123903) do
     t.integer  "heading_image_file_size"
     t.datetime "heading_image_updated_at"
     t.string   "keywords"
+    t.string   "slug"
   end
+
+  add_index "conferences", ["slug"], :name => "index_conferences_on_slug", :unique => true
 
   create_table "conferences_days", :id => false, :force => true do |t|
     t.integer "conference_id"

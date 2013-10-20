@@ -17,6 +17,8 @@ gem 'acts_as_votable', '~> 0.7.1'
 
 gem 'state_machine'
 
+gem "friendly_id", "~> 4.0.10"
+
 gem 'capistrano', '~> 2.15'
 
 group :production do
