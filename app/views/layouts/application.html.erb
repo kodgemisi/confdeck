@@ -5,7 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places' %>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag controller_name if !["sessions"].include? controller_name %>
+  <%= javascript_include_tag controller_name if !["sessions", "registrations"].include? controller_name %>
   <%= csrf_meta_tags %>
 </head>
 <body>
