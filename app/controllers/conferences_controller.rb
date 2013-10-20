@@ -1,12 +1,12 @@
 class ConferencesController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
+  load_and_authorize_resource
 
   layout 'conference_landing', :only => [:show]
   # GET /conferences
   # GET /conferences.json
   def index
-    organization_ids = current_user.organizations.pluck(:id)
-    @conferences = Conference.includes(:organizations).where(organizations: {id: organization_ids}).paginate(:page => params[:page])
+    @conferences = current_user.conferences.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

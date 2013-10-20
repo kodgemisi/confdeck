@@ -11,6 +11,7 @@ class Conference < ActiveRecord::Base
 
   has_one :address
   has_and_belongs_to_many :organizations
+  has_many :users, through: :organizations, :uniq => true
   has_and_belongs_to_many :days
   has_many :sponsors
   has_many :rooms

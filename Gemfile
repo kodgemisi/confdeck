@@ -19,6 +19,8 @@ gem 'state_machine'
 
 gem "friendly_id", "~> 4.0.10"
 
+gem "cancan"
+
 gem 'capistrano', '~> 2.15'
 
 group :production do

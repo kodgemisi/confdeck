@@ -76,7 +76,7 @@ class AppealsController < ApplicationController
     @appeal.destroy
 
     respond_to do |format|
-      format.html { redirect_to appeals_url }
+      format.html { redirect_to conference_appeals_path(@conference) }
       format.json { head :no_content }
     end
   end
@@ -87,7 +87,7 @@ class AppealsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to [@conference, @appeal], notice: "your comment successfully created"}
+        format.html { redirect_to [@conference, @appeal], notice: "Your comment is successfully created"}
       else
         format.html { render :action => 'show' }
       end
@@ -99,28 +99,28 @@ class AppealsController < ApplicationController
   def upvote
     @appeal.upvote_from current_user
     respond_to do |format|
-      format.js
+      format.html { redirect_to conference_appeals_path(@conference), notice: "This appeal is upvoted" }
     end
   end
 
   def downvote
     @appeal.downvote_from current_user
     respond_to do |format|
-      format.js
+      format.html { redirect_to conference_appeals_path(@conference), notice: "This appeal is downvoted" }
     end
   end
 
   def accept
     @appeal.accept
     respond_to do |format|
-      format.js
+      format.html { redirect_to conference_appeals_path(@conference), notice: "This appeal is accepted" }
     end
   end
 
   def reject
     @appeal.reject
     respond_to do |format|
-      format.js
+      format.html { redirect_to conference_appeals_path(@conference), notice: "This appeal is rejected" }
     end
   end
 
