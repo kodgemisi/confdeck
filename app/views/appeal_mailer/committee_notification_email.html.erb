@@ -1,0 +1,17 @@
+New application is received for <%=@appeal.conference.name %><br /><br />
+
+
+<b>Speakers:</b> <br />
+    <ul>
+        <% @appeal.topic.speakers.each do |speaker| %>
+            <li><%= speaker.name %> </li>
+        <% end %>
+    </ul>
+<b>Topic:</b> <%=@appeal.topic.subject %> <br />
+<b>Details: </b><%=@appeal.topic.detail%> <br />
+<b>Additional Info:</b> <%=@appeal.topic.additional_info%> <br/> <br/>
+
+<%= link_to "See More", conference_appeal_url(@appeal.conference, @appeal) %>
+<br/><br/>
+
+-ConfMan
