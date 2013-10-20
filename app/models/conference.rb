@@ -29,4 +29,8 @@ class Conference < ActiveRecord::Base
    end while current_date != to_date.next_day
   end
 
+  def unassigned_topics
+    self.appeals.accepted.map {|a| a unless self.slots.pluck(:topic_id).include? a.topic_id }.reject { |a| a.nil? }
+  end
+
 end
