@@ -218,3 +218,6 @@ body {
     margin-top: 35px;
 }
 
+.table-vertical-align tbody > tr > td {
+    vertical-align: middle;
+}

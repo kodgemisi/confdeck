@@ -9,9 +9,9 @@
   </div>
   <div class="clearfix"></div>
 </div>
-<table class="table table-striped">
+<table class="table table-striped ">
   <tr>
-    <th></th>
+    <th class="span1"></th>
     <th>Name</th>
     <th>Summary</th>
     <th>Website</th>
@@ -23,7 +23,7 @@
 
   <% @conferences.each do |conference| %>
       <tr>
-        <td><%= image_tag conference.logo.url(:thumb) %></td>
+        <td><%= image_tag conference.logo.url(:thumb), height: "50", width: "50" %></td>
         <td><%= conference.name %></td>
         <td><%= conference.summary %></td>
         <td><%= conference.website %></td>
