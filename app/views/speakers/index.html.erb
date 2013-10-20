@@ -1,31 +1,41 @@
-<h1>Listing speakers</h1>
+<div class="page-header">
+  <h1 class="pull-left">Speakers</h1>
 
-<table>
+  <div class="pull-right toolbar">
+
+    <%= button_group do %>
+        <%= bs_button_to "", new_speaker_path, tooltip: "New Speaker", icon: "plus", style: "primary" %>
+    <% end %>
+  </div>
+  <div class="clearfix"></div>
+</div>
+
+
+<table class="table table-striped">
   <tr>
     <th>Email</th>
     <th>Name</th>
     <th>Phone</th>
     <th>Twitter</th>
     <th>Facebook</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th class="span2"></th>
   </tr>
 
-<% @speakers.each do |speaker| %>
-  <tr>
-    <td><%= speaker.email %></td>
-    <td><%= speaker.name %></td>
-    <td><%= speaker.phone %></td>
-    <td><%= speaker.twitter %></td>
-    <td><%= speaker.facebook %></td>
-    <td><%= link_to 'Show', speaker %></td>
-    <td><%= link_to 'Edit', edit_speaker_path(speaker) %></td>
-    <td><%= link_to 'Destroy', speaker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <% @speakers.each do |speaker| %>
+      <tr>
+        <td><%= speaker.email %></td>
+        <td><%= speaker.name %></td>
+        <td><%= speaker.phone %></td>
+        <td><%= speaker.twitter %></td>
+        <td><%= speaker.facebook %></td>
+        <td>
+          <%= button_group class: "btn-group-sm" do %>
+              <%= bs_button_to "", speaker, tooltip: "Details", icon: "eye-open", style: "primary", size: "mini" %>
+              <%= bs_button_to "", edit_speaker_path(speaker), tooltip: "Edit", icon: "pencil", style: "primary", size: "mini" %>
+              <%= bs_button_to "", speaker, method: :delete, data: {:confirm => "Are You Sure?"}, tooltip: "Delete", icon: "remove", style: "primary", size: "mini" %>
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+
 </table>
-
-<br />
-
-<%= link_to 'New Speaker', new_speaker_path %>
