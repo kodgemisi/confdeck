@@ -1,6 +1,16 @@
-<h1>Listing conferences</h1>
+<div class="page-header">
+  <h1 class="pull-left">Your Conferences</h1>
 
-<table>
+  <div class="pull-right toolbar">
+
+    <%= button_group do %>
+        <%= bs_button_to "", new_conference_path, tooltip: "New Conference", icon: "plus", style: "primary" %>
+    <% end %>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<table class="table table-striped">
+  <tr>
   <tr>
     <th></th>
     <th>Name</th>
@@ -8,26 +18,23 @@
     <th>Website</th>
     <th># of appeals</th>
     <th>Address</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th class="span1"></th>
+    <th class="span1"></th>
+    <th class="span1"></th>
   </tr>
 
-<% @conferences.each do |conference| %>
-  <tr>
-    <td><%= image_tag conference.logo.url(:thumb) %></td>
-    <td><%= conference.name %></td>
-    <td><%= conference.summary %></td>
-    <td><%= conference.website %></td>
-    <td><%= link_to conference.appeals.count, conference_appeals_path(conference) %></td>
-    <td><%= conference.address.info %></td>
-    <td><%= link_to 'Show', conference %></td>
-    <td><%= link_to 'Edit', edit_conference_path(conference) %></td>
-    <td><%= link_to 'Destroy', conference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <% @conferences.each do |conference| %>
+      <tr>
+        <td><%= image_tag conference.logo.url(:thumb) %></td>
+        <td><%= conference.name %></td>
+        <td><%= conference.summary %></td>
+        <td><%= conference.website %></td>
+        <td><%= link_to conference.appeals.count, conference_appeals_path(conference) %></td>
+        <td><%= conference.address.info %></td>
+        <td><%= link_to 'Show', conference %></td>
+        <td><%= link_to 'Edit', edit_conference_path(conference) %></td>
+        <td><%= link_to 'Destroy', conference, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+  <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Conference', new_conference_path %>

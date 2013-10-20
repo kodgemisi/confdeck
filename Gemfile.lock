@@ -88,6 +88,8 @@ GEM
       activesupport (= 3.2.15)
       bundler (~> 1.0)
       railties (= 3.2.15)
+    rails-bootstrap-helpers (0.1.0)
+      rails (>= 3.2.11)
     railties (3.2.15)
       actionpack (= 3.2.15)
       activesupport (= 3.2.15)
@@ -132,6 +134,7 @@ DEPENDENCIES
   jquery-ui-rails
   paperclip
   rails (= 3.2.15)
+  rails-bootstrap-helpers
   sqlite3
   state_machine
   uglifier (>= 1.0.3)

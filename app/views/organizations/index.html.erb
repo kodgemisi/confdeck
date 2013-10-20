@@ -1,19 +1,27 @@
-<h1>Listing organizations</h1>
+<div class="page-header">
+  <h1 class="pull-left">Your Organizations</h1>
+  <div class="pull-right toolbar">
 
-<table>
+    <%= button_group do %>
+        <%= bs_button_to "", new_organization_path, tooltip: "New Organization", icon: "plus", style: "primary" %>
+    <% end %>
+  </div>
+  <div class="clearfix"></div>
+</div>
+<table class="table table-striped">
   <tr>
     <th>Name</th>
     <th>Website</th>
     <th># of members</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th class="span1"></th>
+    <th class="span1"></th>
+    <th class="span1"></th>
   </tr>
 
 <% @organizations.each do |organization| %>
   <tr>
     <td><%= organization.name %></td>
-    <td><%= organization.website %></td>
+    <td><%= link_to organization.website, organization.website %></td>
     <td><%= organization.users.count %></td>
     <td><%= link_to 'Show', organization %></td>
     <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
@@ -23,5 +31,3 @@
 </table>
 
 <br />
-
-<%= link_to 'New Organization', new_organization_path %>

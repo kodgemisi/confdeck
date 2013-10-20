@@ -29,4 +29,6 @@ $(document).ready(function(){
     jQuery(".best_in_place").best_in_place();
 
     $('.tt').tooltip();
+    $("[data-toggle=tooltip]").tooltip()
+
 })
