@@ -101,7 +101,7 @@
                         </div>
                         <div class="field">
                           <%= f.label :topic_id %><br />
-                          <%= f.collection_select :topic_id, @conference.appeals.accepted, :topic_id, :topic_subject %>
+                          <%= f.collection_select :topic_id, @conference.unassigned_topics , :topic_id, :topic_subject, :prompt => "Select a topic" %>
                         </div>
                     </div>
                     <div class="modal-footer">
