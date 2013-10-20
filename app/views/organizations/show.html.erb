@@ -1,31 +1,53 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @organization.name %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">Details of <%= @organization.name %></div>
+  <div class="panel-body">
+    <table class="table table-bordered">
+      <tr>
+        <td class="span2" style="font-weight: bold">Name</td>
+        <td><%= @organization.name %></td>
+      </tr>
+      <tr>
+        <td class="span2" style="font-weight: bold">Logo</td>
+        <td><%= image_tag @organization.logo.url %></td>
+      </tr>
+      <tr>
+        <td class="span2" style="font-weight: bold">Website</td>
+        <td><%= link_to @organization.website, @organization.website %></td>
+      </tr>
 
-<p>
-  <b>Website:</b>
-  <%= @organization.website %>
-</p>
 
-<p>
-  <b>users:</b>
-  <% @organization.users.each do |u| %>
-    <%= u.email %>
-  <% end %>
-</p>
+      <tr>
+        <td class="span2" style="font-weight: bold">Members</td>
+        <td>
+          <% @organization.users.each do |user| %>
+              <%= user.email %> &nbsp;
+          <% end %>
+        </td>
+      </tr>
+      <tr>
+        <td class="span2" style="font-weight: bold">Invite New Member</td>
+        <td>
+          <% if can? :invite, @organization %>
+              <%= form_for Invitation.new, url: invite_organization_path(@organization), :html => {:class => 'form-horizontal'} do |f| %>
+                  <%= f.hidden_field :organization_id, value: @organization.id %>
 
-<% if can? :invite, @organization %>
-  <h3>Invite users to organization</h3>
-  <%= form_for Invitation.new, url: invite_organization_path(@organization) do |f| %>
-    <%= f.hidden_field :organization_id, value: @organization.id %>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-    <%= f.submit %>
-  <% end %>
-<% end %>
+                    <div class="col-lg-5">
+                      <%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
+                    </div>
+                  <div class="col-lg-3">
+                    <%= f.submit :class => "btn btn-primary" %>
+
+                  </div>
+              <% end %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
 
 <%= link_to 'Edit', edit_organization_path(@organization) %> |
 <%= link_to 'Back', organizations_path %>

@@ -10,33 +10,37 @@
       </ul>
     </div>
   <% end %>
+    <div class="row">
+      <!-- Left Col -->
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-heading"><strong>New Organizations</strong></div>
+          <div class="panel-body">
+              <div class="form-group">
+                <%= f.label :logo, :class => "col-lg-3 control-label" %>
 
-  <div class="row">
-    <div class="col-lg-4">
-        <div class="form-group">
-          <%= f.label :logo, :class => "col-lg-3 control-label" %>
-
-          <div class="col-lg-9">
-            <%= f.file_field :logo, :class => "form-control" %>
+                <div class="col-lg-9">
+                  <%= f.file_field :logo, :class => "form-control" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :name, :class => "col-lg-3 control-label" %>
+                <div class="col-lg-9">
+                  <%= f.text_field :name, :class => "form-control", :required => "required" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :website, :class => "col-lg-3 control-label" %>
+                <div class="col-lg-9">
+                  <%= f.text_field :website, :class => "form-control", :type => 'url' %>
+                </div>
+              </div>
+              <div class="actions">
+                <%= f.submit :class => "btn btn-default pull-right" %>
+              </div>
           </div>
         </div>
-
-        <div class="form-group">
-          <%= f.label :name, :class => "col-lg-3 control-label" %>
-          <div class="col-lg-9">
-            <%= f.text_field :name, :class => "form-control", :required => "required" %>
-          </div>
-        </div>
-        <div class="form-group">
-          <%= f.label :website, :class => "col-lg-3 control-label" %>
-          <div class="col-lg-9">
-            <%= f.text_field :website, :class => "form-control", :type => 'url' %>
-          </div>
-        </div>
-        <div class="actions">
-          <%= f.submit :class => "btn btn-default pull-right" %>
-        </div>
+      </div>
     </div>
-  </div>
 
 <% end %>
