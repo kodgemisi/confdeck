@@ -3,6 +3,9 @@ class Speaker < ActiveRecord::Base
 
   has_and_belongs_to_many :topics
 
+  validates_presence_of :email
+  validates_uniqueness_of :email
+
   def avatar_url(size=150)
     gravatar_id = Digest::MD5::hexdigest(self.email).downcase
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"

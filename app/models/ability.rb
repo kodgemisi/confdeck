@@ -7,7 +7,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
     #can :manage, Conference
     can :read, Conference
-    can :update, Conference do |conference|
+    can [:update, :destroy], Conference do |conference|
       conference.users.include? user
     end
     #   if user.admin?
