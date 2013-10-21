@@ -7,11 +7,11 @@ class OverlapValidator < ActiveModel::Validator
     
     if(slots.count > 1)
       record.errors[:start_hour] << 'Slots cannot overlap!'
-      p '===================================== 1'
+      # p '===================================== 1'
       return
     elsif slots.count == 1 && !slots.include?(record)
       record.errors[:start_hour] << 'Slots cannot overlap!'
-      p '===================================== 2'
+      # p '===================================== 2'
       return
     end
 
@@ -20,7 +20,7 @@ class OverlapValidator < ActiveModel::Validator
         range = slot.start_hour..slot.start_hour+(slot.duration-1).minute
         if(range.cover?(record.start_hour))
           record.errors[:start_hour] << 'Slots cannot overlap!'
-          p '===================================== 3', range, record, slot
+          # p '===================================== 3', range, record, slot
           return
         end
       end
