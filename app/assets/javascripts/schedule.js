@@ -60,7 +60,8 @@ $(function() {
     startMinute = parseInt(startMinute);
 
     var startCell = $('[data-hour="'+fullHour+'"][data-day="'+dayId+'"][data-room="'+roomId+'"]');
-    var cellHeight = startCell.outerHeight();
+    var referenceCell = $('[data-day="'+1+'"][data-room="'+1+'"]').first();
+    var cellHeight = referenceCell.outerHeight();
     var height = slot.duration / 30 * cellHeight;
     var top = (startMinute >= 30 ? startMinute - 30 : startMinute ) / 30 * cellHeight;
     top += 2; // 2px top margin
