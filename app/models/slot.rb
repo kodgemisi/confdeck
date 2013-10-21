@@ -16,7 +16,7 @@ class OverlapValidator < ActiveModel::Validator
     end
 
     Slot.where(room_id: record.room_id, conference_id: record.conference_id).each do |slot|
-      if(slot != record)
+      if(slot != record && slot.day_id == record.day_id && slot.room_id == record.room_id)
         range = slot.start_hour..slot.start_hour+(slot.duration-1).minute
         if(range.cover?(record.start_hour))
           record.errors[:start_hour] << 'Slots cannot overlap!'
@@ -37,6 +37,6 @@ class Slot < ActiveRecord::Base
   belongs_to :day
   belongs_to :topic
 
-  #validates_with OverlapValidator
+  validates_with OverlapValidator
 
 end
