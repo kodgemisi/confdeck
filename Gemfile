@@ -41,6 +41,8 @@ gem "rails-bootstrap-helpers"
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
 gem 'faker'
+gem 'font-awesome-sass'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
