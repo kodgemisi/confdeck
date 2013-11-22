@@ -36,6 +36,9 @@ GEM
     best_in_place (2.1.0)
       jquery-rails
       rails (~> 3.1)
+    bootstrap-sass-rails (3.0.2.1)
+      railties (>= 3.1.0)
+      sass-rails (>= 3.1.0)
     builder (3.0.4)
     cancan (1.6.10)
     capistrano (2.15.5)
@@ -163,6 +166,7 @@ DEPENDENCIES
   acts_as_commentable (= 3.0.1)
   acts_as_votable (~> 0.7.1)
   best_in_place
+  bootstrap-sass-rails
   cancan
   capistrano (~> 2.15)
   devise
@@ -176,6 +180,7 @@ DEPENDENCIES
   paperclip
   rails (= 3.2.15)
   rails-bootstrap-helpers
+  sass-rails
   sqlite3
   state_machine
   therubyracer
