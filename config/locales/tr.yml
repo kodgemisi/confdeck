@@ -5,9 +5,10 @@ tr:
   new_speaker: "Yeni Konuşmacı Ekle"
   create_speaker: "Konuşmacı Oluştur"
   speaker_application_header: "%{conference_name} Konuşmacı Başvurusu"
-  subject: "Konu"
-  abstract: "Özet"
-  detail: "Detay"
+  appeal:
+    subject: "Konu Başlığı"
+    abstract: "Konu Özeti"
+    detail: "Konuşmanın Ana Hatları"
   additional_info: "Ek Bilgi"
   speaker:
     name: "Konuşmacı İsmi"
