@@ -3,3 +3,8 @@
 
 en:
   hello: "Hello world"
+  new_speaker: "Add new speaker"
+  create_speaker: "Create a new speaker"
+  speaker_application_header: "Speaker Application To %{conference_name}"
+  speaker:
+    name: "Speaker Name"

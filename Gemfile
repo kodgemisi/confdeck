@@ -32,6 +32,7 @@ end
 
 group :test, :development do
   gem "rspec-rails"
+  gem "sqlite3"
 end
 
 gem 'uglifier', '>= 1.0.3'
