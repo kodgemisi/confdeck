@@ -20,5 +20,6 @@ class Organization < ActiveRecord::Base
   validates_presence_of :name
 
   has_attached_file :logo, :styles => {:medium => "400x400>", :thumb => "200x200>"}, :default_url => "/assets/missing_org_:style.png"
+  validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
 
 end

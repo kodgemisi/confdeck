@@ -46,6 +46,8 @@ class Conference < ActiveRecord::Base
 
   has_attached_file :logo, :styles => { :medium => "400x400>", :thumb => "200x100>" }, :default_url => "/assets/missing_:style.png"
   has_attached_file :heading_image, :styles => { :default => "1900x254", :thumb => "200x100"}, :default_url => "/assets/heading_missing_:style.png"
+  validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :heading_image, :content_type => /\Aimage\/.*\Z/
 
 
   def create_days(from_date, to_date)
