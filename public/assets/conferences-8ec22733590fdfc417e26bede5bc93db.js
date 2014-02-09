@@ -1,0 +1,1 @@
+$(function(){$("#from").datepicker({defaultDate:"+1w",changeMonth:!0,numberOfMonths:1,onClose:function(t){$("#to").datepicker("option","minDate",t)}}),$("#to").datepicker({defaultDate:"+1w",changeMonth:!0,numberOfMonths:1,onClose:function(t){$("#from").datepicker("option","maxDate",t)}})});
