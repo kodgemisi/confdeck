@@ -1,5 +1,5 @@
 == ConfDeck
-ConfDeck is a conference management tool for small or big organizations. It's especially good for conferences where speakers are expected to apply first and then they are evaluated by a committee and then accepted or rejected. ConfMan aims to ease this speaker application process.
+ConfDeck is a conference management tool for small or big organizations. It's especially good for conferences where speakers are expected to apply first and then they are evaluated by a committee and then accepted or rejected. ConfDeck aims to ease this speaker application process.
 
 Only a Few ConfDeck Features:
 
