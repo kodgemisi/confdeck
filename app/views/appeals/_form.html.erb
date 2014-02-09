@@ -95,7 +95,7 @@
         <h4 class="modal-title"></h4>
       </div>
       <div class="modal-body">
-        <%= form_for(Speaker.new, remote: true, :html => {:class => 'form-horizontal'}) do |sf| %>
+        <%= form_for(Speaker.new, remote: true, :html => {:class => 'form-horizontal speaker-form'}) do |sf| %>
             <div class="form-group">
               <%= sf.label t('speaker.name'), :class => "col-lg-3 control-label" %>
 

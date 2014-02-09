@@ -16,7 +16,7 @@ class Speaker < ActiveRecord::Base
 
   has_and_belongs_to_many :topics
 
-  validates_presence_of :email
+  validates_presence_of :email, :name
   validates_uniqueness_of :email
 
   def avatar_url(size=150)

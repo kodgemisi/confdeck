@@ -1,13 +1,17 @@
-<%= @appeal.conference.name %> başvurunuz kaydedilmiştir<br /><br/>
-
+<%= @appeal.conference.name %> başvurunuz kaydedilmiştir
+<br/>
+<br/>
 Başvuru sonucunuz, son başvuru tarihinden(28 Şubat 2014 Cuma) sonra program kurulu tarafından incelenerek tarafınıza iletilecektir.
-
+<br/>
+<br/>
 Bilgilerinize,
-
+<br/>
 <%= @appeal.conference.name %> Program Kurulu
+<br/>
+<br/>
 
-
-Başvuru Bilgileriniz:
+Başvuru Bilgileriniz:<br/>
+<b>Başvuru Tipi:</b> <%= @appeal.appeal_type.type_name %> <br/>
 <b>Konuşmacılar:</b> <br/>
 <ul>
   <% @appeal.topic.speakers.each do |speaker| %>
