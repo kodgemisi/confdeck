@@ -23,11 +23,11 @@ gem "cancan"
 
 gem 'capistrano', '~> 2.15'
 
-gem 'mysql2' # If using mysql in development, this can be outside the production group.
 
 group :production do
   gem 'therubyracer'
   gem 'rails_12factor' #adds heroku enhanchments
+  gem 'mysql2'
 end
 
 group :test, :development do
