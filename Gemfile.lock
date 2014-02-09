@@ -38,10 +38,6 @@ GEM
       rails (~> 3.1)
     bootstrap-sass (3.1.0.2)
       sass (~> 3.2)
-    bootstrap-sass-rails (3.1.0.0)
-      bootstrap-sass (~> 3.1.0.0)
-      railties (>= 3.2.0)
-      sass-rails (>= 3.2.0)
     builder (3.0.4)
     cancan (1.6.10)
     capistrano (2.15.5)
@@ -187,7 +183,7 @@ DEPENDENCIES
   acts_as_commentable (= 3.0.1)
   acts_as_votable (~> 0.7.1)
   best_in_place
-  bootstrap-sass-rails
+  bootstrap-sass (~> 3.1.0)
   cancan
   capistrano (~> 2.15)
   devise
@@ -204,7 +200,7 @@ DEPENDENCIES
   rails-bootstrap-helpers
   rails_12factor
   rspec-rails
-  sass-rails
+  sass-rails (>= 3.2)
   state_machine
   therubyracer
   uglifier (>= 1.0.3)
