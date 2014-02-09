@@ -25,7 +25,9 @@ test:
   socket: /var/run/mysqld/mysqld.sock
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: confdeck
   pool: 5
-  timeout: 5000
+  username: myapp
+  password:
