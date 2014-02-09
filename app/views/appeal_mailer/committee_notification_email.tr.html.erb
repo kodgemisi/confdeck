@@ -7,10 +7,10 @@
             <li><%= speaker.name %> </li>
         <% end %>
     </ul>
-    <b><%=t :appeal.subject %></b> <%=@appeal.topic.subject %> <br />
-    <b><%=t :appeal.abstract %></b><%=@appeal.topic.abstract %> <br />
-    <b><%=t :appeal.detail %></b><%=@appeal.topic.detail%> <br />
-    <b><%=t :appeal.additional_info %></b> <%=@appeal.topic.additional_info%> <br/> <br/>
+    <b><%=t 'appeal.subject' %></b> <%=@appeal.topic.subject %> <br />
+    <b><%=t 'appeal.abstract' %></b><%=@appeal.topic.abstract %> <br />
+    <b><%=t 'appeal.detail' %></b><%=@appeal.topic.detail%> <br />
+    <b><%=t 'appeal.additional_info' %></b> <%=@appeal.topic.additional_info%> <br/> <br/>
 
 <%= link_to "Değerlendirmek için tıklayınız", conference_appeal_url(@appeal.conference, @appeal) %>
 <br/><br/>

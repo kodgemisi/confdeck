@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131020145113) do
+ActiveRecord::Schema.define(:version => 20140209182841) do
 
   create_table "addresses", :force => true do |t|
     t.text     "info"
@@ -23,12 +23,20 @@ ActiveRecord::Schema.define(:version => 20131020145113) do
     t.string   "city"
   end
 
+  create_table "appeal_types", :force => true do |t|
+    t.integer  "conference_id"
+    t.string   "type_name"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "appeals", :force => true do |t|
     t.integer  "conference_id"
     t.integer  "topic_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.string   "state"
+    t.integer  "appeal_type_id"
   end
 
   create_table "comments", :force => true do |t|

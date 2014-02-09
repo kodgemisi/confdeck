@@ -12,12 +12,13 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class Appeal < ActiveRecord::Base
-  attr_accessible :conference_id, :topic_id, :topic_attributes, :comment, :state
+  attr_accessible :conference_id, :topic_id, :topic_attributes, :comment, :state, :appeal_type_id
 
   after_create :send_notifications
 
   belongs_to :conference
   belongs_to :topic
+  belongs_to :appeal_type
 
   accepts_nested_attributes_for :topic
 

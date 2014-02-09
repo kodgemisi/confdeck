@@ -2,7 +2,7 @@
     <%= div_for(appeal, class: "panel panel-default") do %>
         <div class="panel-heading">
           <h3 class="panel-title pull-left">
-            <%= appeal.topic.subject %>
+            <%= link_to appeal.topic.subject, [appeal.conference, appeal] %>
           </h3>
 
           <div class="speakers pull-right">

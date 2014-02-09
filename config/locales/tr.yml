@@ -6,6 +6,7 @@ tr:
   create_speaker: "Konuşmacı Oluştur"
   speaker_application_header: "%{conference_name} Konuşmacı Başvurusu"
   appeal:
+    appeal_type: "Başvuru Tipi"
     subject: "Konu Başlığı"
     abstract: "Konu Özeti"
     detail: "Konuşmanın Ana Hatları"

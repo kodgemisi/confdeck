@@ -9,6 +9,10 @@
         <td><%= @appeal.conference.name %></td>
       </tr>
       <tr>
+        <td class="span2" style="font-weight: bold">Appeal Type</td>
+        <td><%= @appeal.appeal_type.try(:type_name) %></td>
+      </tr>
+      <tr>
         <td class="span2" style="font-weight: bold">Subject</td>
         <td><%= @appeal.topic.subject %></td>
       </tr>

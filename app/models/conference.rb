@@ -30,6 +30,7 @@ class Conference < ActiveRecord::Base
   has_many :rooms
   has_many :slots
   has_many :appeals
+  has_many :appeal_types
   has_many :topics, through: :appeals
   has_many :speakers, through: :topics, :uniq => true do
     def accepted

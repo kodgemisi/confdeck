@@ -19,6 +19,15 @@
                 <strong><%= t :speaker_application_header, conference_name: @conference.name %></strong>
               </div>
                     <div class="panel-body">
+                        <% if @conference.appeal_types.size > 0 %>
+                          <div class="form-group">
+                            <%= f.label t('appeal.appeal_type'), :class => "col-lg-3 control-label" %>
+
+                            <div class="col-lg-9">
+                              <%= f.collection_select :appeal_type_id, @conference.appeal_types, :id, :type_name, {}, {:class => "form-control"} %>
+                            </div>
+                          </div>
+                        <% end %>
                       <%= f.fields_for :topic do |topic_form| %>
                           <div class="form-group">
                             <%= topic_form.label t(:speakers), :class => "col-lg-3 control-label" %>
