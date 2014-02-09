@@ -43,7 +43,7 @@ class Conference < ActiveRecord::Base
   accepts_nested_attributes_for :organizations
   accepts_nested_attributes_for :days
 
-  validates_presence_of :name, :organizations
+  validates_presence_of :name, :organizations, :email
 
   has_attached_file :logo, :styles => { :medium => "400x400>", :thumb => "200x100>" }, :default_url => "/assets/missing_:style.png"
   has_attached_file :heading_image, :styles => { :default => "1900x254", :thumb => "200x100"}, :default_url => "/assets/heading_missing_:style.png"

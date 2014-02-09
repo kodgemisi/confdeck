@@ -16,7 +16,7 @@ class AppealMailer < ActionMailer::Base
 
   def committee_notification_email(appeal)
    @appeal = appeal
-   subject = "[#{appeal.conference.subject}] New application: #{appeal.topic.subject}"
+   subject = "Yeni Başvuru: #{appeal.topic.subject}"
    if appeal.conference.email?
     mail(to: appeal.conference.email, subject: subject)
    else
@@ -30,9 +30,9 @@ class AppealMailer < ActionMailer::Base
 
   def speaker_notification_email(appeal)
    @appeal = appeal
-   subject = "[#{appeal.conference.subject}] #{appeal.topic.subject} application is received"
+   subject = "[#{appeal.conference.name}]" + I18n.t(:application_received, :topic => appeal.topic.subject)
    appeal.topic.speakers.each do |speaker|
-     mail(to: speaker.email, subject: subject) if speaker.email?
+     mail(reply_to: appeal.conference.email, to: speaker.email, subject: subject) if speaker.email?
    end
   end
 

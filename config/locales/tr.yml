@@ -18,3 +18,4 @@ tr:
     twitter: "Twitter"
     facebook: "Facebook"
   create_appeal: "Başvuruyu Oluştur"
+  application_received: "%{topic} Başvurunuz alınmıştır"
