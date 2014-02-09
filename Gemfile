@@ -27,7 +27,7 @@ gem 'capistrano', '~> 2.15'
 group :production do
   gem 'therubyracer'
   gem 'rails_12factor' #adds heroku enhanchments
-  gem 'mysql2'
+  #gem 'mysql2'
 end
 
 group :test, :development do
