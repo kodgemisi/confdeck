@@ -1,0 +1,57 @@
+# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
+
+tr:
+  errors:
+    messages:
+      expired: "süresi sona erdi, lütfen yenisini isteyin"
+      not_found: "bulunamadı"
+      already_confirmed: "zaten onaylandı, lütfen tekrar giriş yapmayı deneyin"
+      not_locked: "kilitlenmedi"
+      not_saved:
+        one: "Bu %{resource} kaydedilirken 1 hata yakalandı:"
+        other: "Bu %{resource} kaydedilirken %{count} hata yakalandı:"
+
+  devise:
+    failure:
+      already_authenticated: 'Zaten giriş yaptınız.'
+      unauthenticated: 'Devam etmeden önce kayıt olmanız veya giriş yapmanız gerekmektedir.'
+      unconfirmed: 'Devam etmeden önce hesabınızı onaylamalısınız.'
+      locked: 'Hesabınız kilitlendi.'
+      invalid: 'Geçersiz email veya parola.'
+      invalid_token: 'Geçesiz onaylama kodu.'
+      timeout: 'Oturumunuz sona erdi. Devam etmek için lütfen giriş yapın.'
+      inactive: 'Hesabınız henüz etkinleştirilmedi.'
+    sessions:
+      signed_in: 'Başarılı giriş.'
+      signed_out: 'Başarılı çıkış.'
+    passwords:
+      send_instructions: 'Bir kaç dakika içinde parolanızı nasıl sıfırlayacağız hakkında bir email alacaksınız.'
+      updated: 'Parolanız başarıyla değiştirildi. Şu anda giriş yapmış bulunuyorsunuz.'
+      updated_not_active: 'Parolanız başarıyla değiştirildi.'
+      send_paranoid_instructions: 'Email adresiniz veritabanımızda kayıtlı ise email adresinize parola kurtarma linki göndereceğiz.'
+    confirmations:
+      send_instructions: 'Bir kaç dakika içinde hesabınızı onaylama hakkında bir email alacaksınız.'
+      send_paranoid_instructions: 'Email adresiniz veritabanımızda kayıtlı ise email adresinize hesabınızı onaylama hakkında bir email göndereceğiz.'
+      confirmed: 'Hesabınız başarıyla onaylandı. Şu anda giriş yapmış bulunuyorsunuz.'
+    registrations:
+      signed_up: 'Hoşgeldiniz! Kaydınız başarıyla tamamlandı.'
+      signed_up_but_unconfirmed: 'Email adresinize onaylama linki içeren bir mesaj gönderdik. Lütfen hesabınızını aktif etmek için linki kullanın.'
+      signed_up_but_inactive: 'Başarılı kayıt oldunuz. Ancak hesabınızı henüz aktif yapmadığınız için oturum açamıyorsunuz.'
+      signed_up_but_locked: 'Başarılı kayıt oldunuz. Ancak hesabınız kitli olduğu için oturum açamıyorsunuz.'
+      updated: 'Hesabınızı başarıyla güncellediniz.'
+      update_needs_confirmation: 'Hesabınızı başarıyla güncellediniz, fakat email adresinizi onaylamamız gerekmektedir. Lütfen emailinizi kontrol edin ve email adresinizi onaylamak için onay linkine tıklayın.'
+      destroyed: 'Güle güle! Hesabınız başarıyla kapatıldı. Sizi yakında tekrar görmeyi ümit ediyoruz.'
+    unlocks:
+      send_instructions: 'Bir kaç dakika içinde hesabınızın kilitini nasıl kaldıracağınız hakkında bir email alacaksınız.'
+      unlocked: 'Hesabınız başarıyla açıldı. Şu anda giriş yapmış bulunuyorsunuz.'
+      send_paranoid_instructions: 'Bir hesabınız varsa bir kaç dakika içinde hesabınızın kilitini nasıl açacağınız hakkında bir email alacaksınız.'
+    omniauth_callbacks:
+      success: '%{kind} hesabından başarıyla onaylandı.'
+      failure: '"%{reason}" olmasından dolayı %{kind} hesabından onaylama yapamazsınız.'
+    mailer:
+      confirmation_instructions:
+        subject: 'Onaylama talimatları'
+      reset_password_instructions:
+        subject: 'Parola sıfırlama talimatları'
+      unlock_instructions:
+        subject: 'Kilit açma talimatları'

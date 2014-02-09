@@ -26,9 +26,9 @@
     <div class="navbar-collapse collapse">
       <% if current_user %>
           <ul class="nav navbar-nav">
-            <li class="<%= 'active' if current_page?(conferences_path)%>"><%= link_to "Conferences", conferences_path %></li>
-            <li class="<%= 'active' if current_page?(organizations_path)%>"><%= link_to "Organizations", organizations_path %></li>
-            <li class="<%= 'active' if current_page?(speakers_path)%>"><%= link_to "Speakers", speakers_path %></li>
+            <li class="<%= 'active' if current_page?(conferences_path)%>"><%= link_to t(:conferences), conferences_path %></li>
+            <li class="<%= 'active' if current_page?(organizations_path)%>"><%= link_to t(:organizations), organizations_path %></li>
+            <li class="<%= 'active' if current_page?(speakers_path)%>"><%= link_to t(:speakers), speakers_path %></li>
           </ul>
       <% end %>
       <ul class="nav navbar-nav navbar-right">

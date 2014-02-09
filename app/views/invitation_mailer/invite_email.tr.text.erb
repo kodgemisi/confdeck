@@ -1,0 +1,5 @@
+Merhaba,
+
+Konferans yönetimi için <%= @organization.name %> organizasyonuna davet edildiniz.
+
+Daveti kabul etmek için <%= link_to "buraya tıklayınız", accept_invitation_url(invitation_token: @token) %> veya <%= accept_invitation_url(invitation_token: @token) %> bağlantısını tarayıcınızda açınız.
