@@ -34,14 +34,9 @@ group :test, :development do
   gem "rspec-rails"
 end
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'uglifier', '>= 1.0.3'
-  gem 'jquery-ui-rails'
-  gem 'sass-rails'
-
-end
+gem 'uglifier', '>= 1.0.3'
+gem 'jquery-ui-rails'
+gem 'sass-rails'
 
 gem 'jquery-rails'
 gem "rails-bootstrap-helpers"

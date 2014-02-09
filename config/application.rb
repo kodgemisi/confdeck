@@ -61,7 +61,7 @@ module Confman
 
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
-    config.assets.initialize_on_precompile = false
+    config.assets.initialize_on_precompile = true
 
     WillPaginate.per_page = 10
 
