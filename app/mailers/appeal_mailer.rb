@@ -12,7 +12,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class AppealMailer < ActionMailer::Base
-  default from: "confmanrumble@gmail.com"
+  default from: "app@confdeck.com"
 
   def committee_notification_email(appeal)
    @appeal = appeal

@@ -54,7 +54,11 @@ class SpeakersController < ApplicationController
   # POST /speakers
   # POST /speakers.json
   def create
-    @speaker = Speaker.new(params[:speaker])
+    #check if speaker exists in db
+    @speaker = Speaker.where(email: params[:speaker][:email]).first
+
+    #create a new speaker if not exists
+    @speaker = Speaker.new(params[:speaker]) if @speaker.nil?
 
     respond_to do |format|
       if @speaker.save
