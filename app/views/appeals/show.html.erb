@@ -45,6 +45,20 @@
       </tr>
 
     </table>
+    <div class="state pull-left">
+      <% if @appeal.waiting_review? %>
+          <%= link_to accept_conference_appeal_path(@appeal.conference, @appeal), data: {confirm: 'Are you sure? Once you accept this appeal its speakers will be informed via email. Hence this action can NOT be undone.'} do %>
+              <i class="icon-ok" style="font-size: 32px;color: gray"></i>
+          <% end %>
+          <%= link_to reject_conference_appeal_path(@appeal.conference, @appeal), data: {confirm: 'Are you sure? Once you reject this appeal its speakers will be informed via email. Hence this action can NOT be undone.'} do %>
+              <i class="icon-remove" style="font-size: 32px;color: gray"></i>
+          <% end %>
+      <% elsif appeal.accepted? %>
+          <i class="icon-ok" style="font-size: 32px;"></i>
+      <% elsif appeal.rejected? %>
+          <i class="icon-remove" style="font-size: 32px;"></i>
+      <% end %>
+    </div>
     <div class="pull-right"> <%= bs_button_to "Return to #{@conference.name}", @conference, :class => "btn btn-default pull-left" %></div>
   </div>
 </div>
