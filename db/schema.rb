@@ -168,7 +168,7 @@ ActiveRecord::Schema.define(:version => 20140217154242) do
 
   create_table "topics", :force => true do |t|
     t.string   "subject"
-    t.text     "abstract",        :limit => 255
+    t.text     "abstract"
     t.text     "detail"
     t.text     "additional_info"
     t.datetime "created_at",                     :null => false
