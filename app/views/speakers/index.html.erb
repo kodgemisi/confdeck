@@ -13,34 +13,20 @@
 
 <table class="table table-striped">
   <tr>
-    <th>Email</th>
     <th>Name</th>
-    <th>Phone</th>
     <th>Twitter</th>
     <th>Facebook</th>
-    <th class="span2"></th>
   </tr>
 
   <% @speakers.each do |speaker| %>
       <tr>
-        <td><%= speaker.email %></td>
         <td><%= speaker.name %></td>
-        <td><%= speaker.phone %></td>
         <td><%= speaker.twitter %></td>
         <td><%= speaker.facebook %></td>
-        <td>
-          <%= button_group class: "btn-group-sm" do %>
-              <%= bs_button_to "", speaker, tooltip: "Details", icon: "eye-open", style: "primary", size: "mini" %>
-              <%= bs_button_to "", edit_speaker_path(speaker), tooltip: "Edit", icon: "pencil", style: "primary", size: "mini" %>
-              <%= bs_button_to "", speaker, method: :delete, data: {:confirm => "Are You Sure?"}, tooltip: "Delete", icon: "remove", style: "primary", size: "mini" %>
-          <% end %>
-        </td>
       </tr>
   <% end %>
 
 </table>
-
-
 
 <div class="pull-right">
   <%= bs_will_paginate(@speakers) %>
