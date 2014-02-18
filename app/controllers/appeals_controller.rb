@@ -12,9 +12,12 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class AppealsController < ApplicationController
-  before_filter :authenticate_user!, except: [:new, :create, :show]
+  before_filter :authenticate_user!, except: [:new, :create]
 
   before_filter :set_conference
+
+  before_filter :authorize_user, except: [:new, :create]
+
   before_filter :set_appeal, only: [:show, :edit, :update, :destroy, :comment, :upvote, :downvote, :accept, :reject]
 
   layout "application_no_nav", :only => ["new", "show"]
@@ -62,7 +65,7 @@ class AppealsController < ApplicationController
 
     respond_to do |format|
       if @appeal.save
-        format.html { redirect_to [@conference, @appeal], notice: 'Appeal was successfully created.' }
+        format.html
         format.json { render json: @appeal, status: :created, location: @appeal }
       else
         format.html { render layout: "application_no_nav",action: "new" }
@@ -146,5 +149,11 @@ class AppealsController < ApplicationController
 
   def set_appeal
     @appeal = @conference.appeals.find(params[:id])
+  end
+
+  def authorize_user
+    unless @conference.users.include? current_user
+      redirect_to root_url, notice: "You shall not pass"
+    end
   end
 end

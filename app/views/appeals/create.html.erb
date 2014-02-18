@@ -1,0 +1,50 @@
+<p id="notice">Başvurunuz alınmıştır. Teşekkürler</p>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Details of <%= @appeal.topic.subject %></div>
+  <div class="panel-body">
+    <table class="table table-bordered">
+      <tr>
+        <td class="span2" style="font-weight: bold">Conference</td>
+        <td><%= @appeal.conference.name %></td>
+      </tr>
+      <tr>
+        <td class="span2" style="font-weight: bold">Appeal Type</td>
+        <td><%= @appeal.appeal_type.try(:type_name) %></td>
+      </tr>
+      <tr>
+        <td class="span2" style="font-weight: bold">Subject</td>
+        <td><%= @appeal.topic.subject %></td>
+      </tr>
+      <% if @appeal.topic.abstract? %>
+          <tr>
+            <td class="span2" style="font-weight: bold">Abstract</td>
+            <td><%= @appeal.topic.abstract %></td>
+          </tr>
+      <% end %>
+      <% if @appeal.topic.additional_info? %>
+          <tr>
+            <td class="span2" style="font-weight: bold">Additional Info</td>
+            <td><%= @appeal.topic.additional_info %></td>
+          </tr>
+      <% end %>
+      <% if @appeal.topic.detail? %>
+          <tr>
+            <td class="span2" style="font-weight: bold">Detail</td>
+            <td><%= @appeal.topic.detail %></td>
+          </tr>
+      <% end %>
+
+      <tr>
+        <td class="span2" style="font-weight: bold">Speakers</td>
+        <td>
+          <% @appeal.topic.speakers.each do |speaker| %>
+              <%= link_to speaker.name, speaker_path(speaker) %>
+          <% end %>
+        </td>
+      </tr>
+
+    </table>
+    <div class="pull-right"> <%= bs_button_to "Return to #{@conference.name}", @conference, :class => "btn btn-default pull-left" %></div>
+  </div>
+</div>
