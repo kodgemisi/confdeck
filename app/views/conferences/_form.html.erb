@@ -35,7 +35,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6">
                       <div class="form-group">
-                        <label for="from" class="col-lg-3 control-label"><%= t("Start Date") %></label>
+                        <label for="from" class="col-lg-3 control-label"><%= t("End Date") %></label>
 
                         <div class="col-lg-9">
                           <input type="text" class="form-control" id="to" name="to" placeholder="mm/dd/yyyy" value="<%= @conference.days.last.date.strftime("%m/%d/%Y") if @conference.days.last%>" required/>
