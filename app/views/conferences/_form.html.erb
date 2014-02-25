@@ -98,6 +98,39 @@
       </div>
     </div>
 
+    <!-- Start Appeal types -->
+    <div class="row">
+      <!-- Left Col -->
+      <div class="col-lg-12 col-md-12 col-sm-12">
+
+          <div class="panel panel-default">
+            <div class="panel-heading"><%= t('appeal.appeal_types') %></div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                      <div class="form-group">
+                        <label for="from" class="col-lg-3 control-label"><%= t("Start Date") %></label>
+
+                        <div class="col-lg-9">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                      <div class="form-group">
+                        <label for="from" class="col-lg-3 control-label"><%= t("End Date") %></label>
+
+                        <div class="col-lg-9">
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!-- End Appeal types -->
+
+
     <div class="row">
       <!-- Left Col -->
       <div class="col-lg-12 col-md-12 col-sm-12">
@@ -223,7 +256,7 @@
           <%= of.text_field :name %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal"><%= t(:close) %></button>
           <%= of.submit class: "btn btn-primary" %>
         <% end %>
       </div>
