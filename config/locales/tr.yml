@@ -22,7 +22,7 @@ tr:
   application_received: "%{topic} Başvurunuz alınmıştır"
 
   close: "Kapat"
-
+  create_organization: "Yeni Organizasyon Oluştur"
   activerecord:
     errors:
       models:
