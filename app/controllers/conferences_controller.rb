@@ -92,7 +92,7 @@ class ConferencesController < ApplicationController
          @conference.days.destroy_all
          @conference.create_days(from_date, to_date)
         end
-        format.html { redirect_to @conference, notice: 'Conference was successfully updated.' }
+        format.html { redirect_to edit_conference_path(@conference), notice: 'Conference was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
