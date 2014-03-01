@@ -21,3 +21,11 @@
     padding: 5px;
     border: 1px solid #999;
 }
+
+.appeal-types {
+    padding-left: 80px;
+}
+
+.add-appeal-type{
+    margin-left: 20px;
+}

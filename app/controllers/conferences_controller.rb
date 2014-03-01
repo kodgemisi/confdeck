@@ -45,6 +45,7 @@ class ConferencesController < ApplicationController
   def new
     @conference = Conference.new
     @conference.build_address
+    @conference.appeal_types.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -55,6 +56,7 @@ class ConferencesController < ApplicationController
   # GET /conferences/1/edit
   def edit
     @conference = Conference.find(params[:id])
+    @conference.appeal_types.build if @conference.appeal_types.empty?
   end
 
   # POST /conferences
@@ -118,4 +120,6 @@ class ConferencesController < ApplicationController
     @room = Room.new
     @slot = Slot.new
   end
+
+
 end

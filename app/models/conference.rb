@@ -14,7 +14,7 @@
 class Conference < ActiveRecord::Base
   extend FriendlyId
 
-  attr_accessible :description, :email, :facebook, :name, :phone, :summary, :twitter, :website, :address_attributes, :organization_ids, :logo, :heading_image, :keywords, :slug
+  attr_accessible :description, :email, :facebook, :name, :phone, :summary, :twitter, :website, :address_attributes, :organization_ids, :logo, :heading_image, :keywords, :slug, :appeal_types_attributes
 
   friendly_id :name, use: :slugged
 
@@ -39,6 +39,7 @@ class Conference < ActiveRecord::Base
   end
 
 
+  accepts_nested_attributes_for :appeal_types, allow_destroy: true
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :organizations
   accepts_nested_attributes_for :days

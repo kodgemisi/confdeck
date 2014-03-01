@@ -11,6 +11,10 @@ tr:
     subject: "Konu Başlığı"
     abstract: "Konu Özeti"
     detail: "Konuşmanın Ana Hatları"
+
+  create_appeal_type: "Başvuru Tipi Oluştur"
+  add_appeal_type: "Başvuru Tipi Ekle"
+  remove_appeal_type: "Başvuru Tipini Sil"
   additional_info: "Ek Bilgi"
   speaker:
     name: "Konuşmacı İsmi"

@@ -1,0 +1,13 @@
+<div class="form-group">
+    <div class="input-group">
+      <%= f.text_field :type_name, :class => "form-control" %>
+      <%= f.hidden_field :id if f.object.id.present? %>
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-default remove-appeal-type" tabindex="-1"><%= t(:remove_appeal_type) %></button>
+      </div>
+
+    </div>
+      <%= link_to "Delete",
+                  conference_path(@conference.id, conference: {appeal_types_attributes: {id: f.object.id, "_destroy" => true}}),
+                  remote: true, method: :put, class: "remove-link", style: "display: none" %>
+</div>
