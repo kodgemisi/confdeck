@@ -23,6 +23,9 @@ tr:
 
   close: "Kapat"
   create_organization: "Yeni Organizasyon Oluştur"
+  accepted: "Kabul Edildi"
+  rejected: "Reddedildi"
+  waiting_review: "Beklemede"
   activerecord:
     errors:
       models:

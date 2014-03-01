@@ -6,9 +6,155 @@
   .panel-body a,.panel-body a:hover{
     text-decoration: none;
   }
-</style>
+  .row{
+    margin-top:40px;
+  }
+  .clickable{
+    cursor: pointer;   
+  }
 
-<%= render "appeals/appeals_list", appeals: @appeals %>
+  .panel-heading div {
+    margin-top: -18px;
+    font-size: 15px;
+  }
+  .panel-heading div span{
+    margin-left:5px;
+  }
+  .panel-body{
+    display: none;
+  }
+  .accepted {
+    background-color: #BBFAAB;
+  }
+  .rejected {
+    background-color: #FACCCC;
+  }
+  .actions {
+    width: 150px;
+  }
+  .icon-thumbs-down {
+    font-size: 20px !important;
+  }
+  .icon-thumbs-up {
+    font-size: 20px !important;
+  }
+</style>
+<script type="text/javascript">
+  (function(){
+      'use strict';
+    var $ = jQuery;
+    $.fn.extend({
+      filterTable: function(){
+        return this.each(function(){
+          $(this).on('keyup', function(e){
+            $('.filterTable_no_results').remove();
+            var $this = $(this), search = $this.val().toLowerCase(), target = $this.attr('data-filters'), $target = $(target), $rows = $target.find('tbody tr');
+            if(search == '') {
+              $rows.show(); 
+            } else {
+              $rows.each(function(){
+                var $this = $(this);
+                $this.text().toLowerCase().indexOf(search) === -1 ? $this.hide() : $this.show();
+              })
+              if($target.find('tbody tr:visible').size() === 0) {
+                var col_count = $target.find('tr').first().find('td').size();
+                var no_results = $('<tr class="filterTable_no_results"><td colspan="'+col_count+'">No results found</td></tr>')
+                $target.find('tbody').append(no_results);
+              }
+            }
+          });
+        });
+      }
+    });
+    $('[data-action="filter"]').filterTable();
+  })(jQuery);
+
+  $(function(){
+      // attach table filter plugin to inputs
+    $('[data-action="filter"]').filterTable();
+    
+    $('.container').on('click', '.panel-heading span.filter', function(e){
+      var $this = $(this), 
+          $panel = $this.parents('.panel');
+      
+      $panel.find('.panel-body').slideToggle();
+      if($this.css('display') != 'none') {
+        $panel.find('.panel-body input').focus();
+      }
+      return false;
+    });
+    $('[data-toggle="tooltip"]').tooltip();
+  })
+</script>
+
+  <% @appeal_types.each do |appeal_type| %>
+    <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+        <h3 class="panel-title"><%= appeal_type.type_name %> (<%= appeal_type.appeals.count %> Başvuru)</h3>
+          <div class="pull-right">
+            <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+              <i class="glyphicon glyphicon-filter"></i>
+            </span>
+          </div>
+        </div>
+        <div class="panel-body">
+          <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#table<%= appeal_type.id %>" placeholder="Filter Developers" />
+        </div>
+        <table class="table table-hover" id="table<%= appeal_type.id %>">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Konu Başlığı</th>
+              <th>Konu Özeti</th>
+              <th>Konuşmacılar</th>
+              <th>Durum</th>
+              <th>İşlem</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% appeal_type.appeals.each do |appeal| %>
+            <tr class="<%= appeal.state %>">
+              <td><%= appeal.id %></td>
+              <td><%= appeal.topic.subject %></td>
+              <td><%= appeal.topic.abstract %></td>
+              <td>
+                <% appeal.topic.speakers.each do |speaker| %>
+                  <div class="speaker">
+                  <%= link_to image_tag(speaker.avatar_url(20), class: "img-circle"), speaker_path(speaker), title: speaker.info, class: "tt" %>
+                </div>
+              <% end %>
+              </td>
+              <td><%=t appeal.state %></td>
+              <td class="actions">
+                <div class="updown">
+                  <% unless current_user.voted_up_on? appeal %>
+                      <%= link_to upvote_conference_appeal_path(appeal.conference, appeal) do %>
+                          <i class="icon-thumbs-up" style="font-size: 24px;color: gray;"> <%= appeal.upvotes.count %></i>
+                      <% end %>
+                  <% else %>
+                      <i class="icon-thumbs-up" style="font-size: 24px;"> <%= appeal.upvotes.count %></i>
+                  <% end %>
+                  <% unless current_user.voted_down_on? appeal %>
+                      <%= link_to downvote_conference_appeal_path(appeal.conference, appeal) do %>
+                          <i class="icon-thumbs-down" style="font-size: 24px;color: gray;"> <%= appeal.downvotes.count %></i>
+                      <% end %>
+                  <% else %>
+                      <i class="icon-thumbs-down" style="font-size: 24px;"> <%= appeal.downvotes.count %></i>
+                  <% end %>
+                </div>
+                <%= link_to "#{appeal.comments.count} comments", [appeal.conference, appeal] %>
+                <%= link_to :show, conference_appeal_path(appeal.conference, appeal), class: "btn btn-success button" %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 
 <%= link_to 'New Appeal', new_conference_appeal_path(@conference) %>

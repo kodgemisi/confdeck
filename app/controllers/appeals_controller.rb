@@ -24,11 +24,11 @@ class AppealsController < ApplicationController
   # GET /appeals
   # GET /appeals.json
   def index
-    @appeals = @conference.appeals
+    @appeal_types = @conference.appeal_types.includes(:appeals)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @appeals }
+      format.json { render json: @appeal_types }
     end
   end
 
