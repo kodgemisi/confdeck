@@ -2,91 +2,7 @@
 
 <p id="notice"><%= notice %></p>
 
-<style type="text/css">
-  .panel-body a,.panel-body a:hover{
-    text-decoration: none;
-  }
-  .row{
-    margin-top:40px;
-  }
-  .clickable{
-    cursor: pointer;   
-  }
-
-  .panel-heading div {
-    margin-top: -18px;
-    font-size: 15px;
-  }
-  .panel-heading div span{
-    margin-left:5px;
-  }
-  .panel-body{
-    display: none;
-  }
-  .accepted {
-    background-color: #BBFAAB;
-  }
-  .rejected {
-    background-color: #FACCCC;
-  }
-  .actions {
-    width: 150px;
-  }
-  .icon-thumbs-down {
-    font-size: 20px !important;
-  }
-  .icon-thumbs-up {
-    font-size: 20px !important;
-  }
-</style>
-<script type="text/javascript">
-  (function(){
-      'use strict';
-    var $ = jQuery;
-    $.fn.extend({
-      filterTable: function(){
-        return this.each(function(){
-          $(this).on('keyup', function(e){
-            $('.filterTable_no_results').remove();
-            var $this = $(this), search = $this.val().toLowerCase(), target = $this.attr('data-filters'), $target = $(target), $rows = $target.find('tbody tr');
-            if(search == '') {
-              $rows.show(); 
-            } else {
-              $rows.each(function(){
-                var $this = $(this);
-                $this.text().toLowerCase().indexOf(search) === -1 ? $this.hide() : $this.show();
-              })
-              if($target.find('tbody tr:visible').size() === 0) {
-                var col_count = $target.find('tr').first().find('td').size();
-                var no_results = $('<tr class="filterTable_no_results"><td colspan="'+col_count+'">No results found</td></tr>')
-                $target.find('tbody').append(no_results);
-              }
-            }
-          });
-        });
-      }
-    });
-    $('[data-action="filter"]').filterTable();
-  })(jQuery);
-
-  $(function(){
-      // attach table filter plugin to inputs
-    $('[data-action="filter"]').filterTable();
-    
-    $('.container').on('click', '.panel-heading span.filter', function(e){
-      var $this = $(this), 
-          $panel = $this.parents('.panel');
-      
-      $panel.find('.panel-body').slideToggle();
-      if($this.css('display') != 'none') {
-        $panel.find('.panel-body input').focus();
-      }
-      return false;
-    });
-    $('[data-toggle="tooltip"]').tooltip();
-  })
-</script>
-
+<div class="appeals-list">
   <% @appeal_types.each do |appeal_type| %>
     <div class="row">
     <div class="col-md-12">
@@ -119,7 +35,7 @@
               <td><%= appeal.id %></td>
               <td><%= appeal.topic.subject %></td>
               <td><%= appeal.topic.abstract %></td>
-              <td>
+              <td class="text-center">
                 <% appeal.topic.speakers.each do |speaker| %>
                   <div class="speaker">
                   <%= link_to image_tag(speaker.avatar_url(20), class: "img-circle"), speaker_path(speaker), title: speaker.info, class: "tt" %>
@@ -155,6 +71,6 @@
     </div>
   </div>
 <% end %>
-
+</div>
 
 <%= link_to 'New Appeal', new_conference_appeal_path(@conference) %>

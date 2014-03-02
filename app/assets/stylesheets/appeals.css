@@ -4,7 +4,7 @@
 */
 .speaker {
   width: 30px;
-  float: right;
+  float: left;
 }
 
 .updown {
@@ -15,4 +15,49 @@
 .state {
   float:right;
   width: 120px;
+}
+
+.appeals-list .panel-body a, .panel-body a:hover {
+    text-decoration: none;
+}
+
+.appeals-list .row {
+    margin-top: 40px;
+}
+
+.appeals-list .clickable {
+    cursor: pointer;
+}
+
+.appeals-list .panel-heading div {
+    margin-top: -18px;
+    font-size: 15px;
+}
+
+.appeals-list .panel-heading div span {
+    margin-left: 5px;
+}
+
+.appeals-list .panel-body {
+    display: none;
+}
+
+.appeals-list .accepted {
+    background-color: #BBFAAB;
+}
+
+.appeals-list .rejected {
+    background-color: #FACCCC;
+}
+
+.appeals-list .actions {
+    width: 150px;
+}
+
+.appeals-list .icon-thumbs-down {
+    font-size: 20px !important;
+}
+
+.appeals-list .icon-thumbs-up {
+    font-size: 20px !important;
 }
