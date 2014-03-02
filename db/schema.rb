@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140302204940) do
+ActiveRecord::Schema.define(:version => 20140302212119) do
 
   create_table "addresses", :force => true do |t|
     t.text     "info"
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(:version => 20140302204940) do
   end
 
   create_table "email_templates", :force => true do |t|
-    t.text     "template"
+    t.text     "body"
     t.string   "type"
     t.string   "subject"
     t.integer  "conference_id"
