@@ -47,6 +47,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
 gem 'faker'
 gem 'font-awesome-sass'
+gem 'liquid'
 
 
 # To use ActiveModel has_secure_password
