@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140302224948) do
+ActiveRecord::Schema.define(:version => 20140302230739) do
 
   create_table "addresses", :force => true do |t|
     t.text     "info"
@@ -104,11 +104,11 @@ ActiveRecord::Schema.define(:version => 20140302224948) do
 
   create_table "email_templates", :force => true do |t|
     t.text     "body"
-    t.string   "type"
     t.string   "subject"
     t.integer  "conference_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.integer  "email_template_type_id"
   end
 
   create_table "invitations", :force => true do |t|
