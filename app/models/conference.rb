@@ -14,7 +14,7 @@
 class Conference < ActiveRecord::Base
   extend FriendlyId
 
-  attr_accessible :description, :email, :facebook, :name, :phone, :summary, :twitter, :website, :address_attributes, :organization_ids, :logo, :heading_image, :keywords, :slug
+  attr_accessible :description, :email, :facebook, :name, :phone, :summary, :twitter, :website, :address_attributes, :organization_ids, :logo, :heading_image, :keywords, :slug, :email_templates_attributes
 
   friendly_id :name, use: :slugged
 
@@ -32,6 +32,7 @@ class Conference < ActiveRecord::Base
   has_many :appeals
   has_many :appeal_types
   has_many :topics, through: :appeals
+  has_many :email_templates
   has_many :speakers, through: :topics, :uniq => true do
     def accepted
       where("appeals.state = ?", "accepted")
@@ -39,9 +40,11 @@ class Conference < ActiveRecord::Base
   end
 
 
+
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :organizations
   accepts_nested_attributes_for :days
+  accepts_nested_attributes_for :email_templates
 
   validates_presence_of :name, :organizations, :email
 
@@ -79,7 +82,7 @@ class Conference < ActiveRecord::Base
         'logo_path' => logo.url,
         'email' => email,
         'phone' => phone,
-        'organization' => organizations
+        'organization' => orga
     }
   end
 end

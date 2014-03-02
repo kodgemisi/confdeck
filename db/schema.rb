@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140302212119) do
+ActiveRecord::Schema.define(:version => 20140302224948) do
 
   create_table "addresses", :force => true do |t|
     t.text     "info"
@@ -92,6 +92,14 @@ ActiveRecord::Schema.define(:version => 20140302212119) do
     t.date     "date"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "email_template_types", :force => true do |t|
+    t.string   "type_name"
+    t.text     "description"
+    t.text     "default_template"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "email_templates", :force => true do |t|
