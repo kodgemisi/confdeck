@@ -10,6 +10,7 @@ Confman::Application.routes.draw do
     resources :sponsors
     resources :rooms
     resources :slots
+    resources :email_templates
     resources :appeals do
       member do
         post 'comment'
