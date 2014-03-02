@@ -22,4 +22,12 @@ class Organization < ActiveRecord::Base
   has_attached_file :logo, :styles => {:medium => "400x400>", :thumb => "200x200>"}, :default_url => "/assets/missing_org_:style.png"
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
 
+
+  def to_liquid
+    {
+        'name' => name,
+        'website' => website,
+        'logo_path' => logo.url,
+    }
+  end
 end

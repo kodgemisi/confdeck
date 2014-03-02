@@ -27,4 +27,16 @@ class Speaker < ActiveRecord::Base
   def info
     "#{self.name} - #{self.email} - #{self.phone}"
   end
+
+  def to_liquid
+    {
+        'name' => name,
+        'bio' => bio,
+        'github' => github,
+        'twitter' => twitter,
+        'facebook' => facebook,
+        'email' => email,
+        'phone' => phone,
+    }
+  end
 end

@@ -17,4 +17,13 @@ class Topic < ActiveRecord::Base
   has_and_belongs_to_many :speakers
 
   validates_presence_of :speakers, :subject, :abstract, :detail
+
+  def to_liquid
+    {
+        'abstract' => abstract,
+        'additional_info' => additional_info,
+        'detail' => detail,
+        'subject' => subject
+    }
+  end
 end

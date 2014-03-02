@@ -68,4 +68,18 @@ class Conference < ActiveRecord::Base
     self.appeals.accepted
   end
 
+  def to_liquid
+    {
+        'name' => name,
+        'summary' => summary,
+        'description' => description,
+        'twitter' => twitter,
+        'facebook' => facebook,
+        'website' => website,
+        'logo_path' => logo.url,
+        'email' => email,
+        'phone' => phone,
+        'organization' => organizations
+    }
+  end
 end

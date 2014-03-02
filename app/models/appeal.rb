@@ -55,4 +55,14 @@ class Appeal < ActiveRecord::Base
     AppealMailer.speaker_notification_email(self).deliver
     AppealMailer.committee_notification_email(self).deliver
   end
+
+  def to_liquid
+    {
+        'conference' => conference,
+        'topic' => topic,
+        'appeal_type' => appeal_type,
+        'state' => state,
+        'speakers' => topic.speakers
+    }
+  end
 end
