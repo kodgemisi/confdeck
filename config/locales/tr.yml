@@ -32,6 +32,8 @@ tr:
     subject: "Konu Başlığı"
     abstract: "Konu Özeti"
     speakers: "Konuşmacılar"
+  update: "Güncelle"
+  description: "Açıklama"
 
   activerecord:
     errors:
