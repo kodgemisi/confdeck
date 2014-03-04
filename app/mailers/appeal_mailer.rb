@@ -14,7 +14,7 @@
 class AppealMailer < ActionMailer::Base
   include TemplateMailer
 
-  default from: "app@confdeck.com"
+  default from: "app@confdeck.com", content_type: "text/html"
 
   layout "email_layout"
 

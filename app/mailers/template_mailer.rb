@@ -28,8 +28,14 @@ module TemplateMailer
     attr_accessor :subject
 
     def initialize(body, subject)
-      @body = body
+      @body = Helpers::raw(body)
       @subject = subject
     end
+
+
+    module Helpers
+      extend ActionView::Helpers::OutputSafetyHelper
+    end
   end
+
 end
