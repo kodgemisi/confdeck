@@ -7,7 +7,7 @@ module TemplateMailer
       body_liquid = Liquid::Template.parse(template.body)
       subject_liquid = Liquid::Template.parse(template.subject)
     else #load default from EmailTemplateType
-      template_type = EmailTemplateType.find_by type_name: type
+      template_type = EmailTemplateType.find_by_type_name(type)
       body_liquid = Liquid::Template.parse(template_type.default_body)
       subject_liquid = Liquid::Template.parse(template_type.default_subject)
     end
