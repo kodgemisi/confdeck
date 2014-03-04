@@ -99,12 +99,13 @@
                         <%= f.hidden_field :room_id, value: room.id %>
                         <%= f.hidden_field :day_id, value: day.id %>
                         <div class="field">
-                          <%= f.label :start_hour %><br />
-                          <%= f.time_select :start_hour %>
+                          <%= f.label :start_time %><br />
+                          <%= f.time_select :start_time %>
                         </div>
                         <div class="field">
-                          <%= f.label :duration %><br />
-                          <%= f.number_field :duration, value: 45 %> minutes
+                          <%= f.label :end_time %>
+                          <br/>
+                          <%= f.time_select :end_time %>
                         </div>
                         <div class="field">
                           <%= f.label :topic_id %><br />
