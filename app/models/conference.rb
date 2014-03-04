@@ -72,7 +72,7 @@ class Conference < ActiveRecord::Base
   end
 
   def to_liquid
-    {
+    liquid_vars = {
         'name' => name,
         'summary' => summary,
         'description' => description,
@@ -82,7 +82,10 @@ class Conference < ActiveRecord::Base
         'logo_path' => logo.url,
         'email' => email,
         'phone' => phone,
-        'organization' => orga
+        'organizations' => organizations
     }
+
+    liquid_vars[:organization] = organizations.first if organizations.count == 1
+    liquid_vars
   end
 end
