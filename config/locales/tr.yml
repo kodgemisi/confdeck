@@ -34,7 +34,8 @@ tr:
     speakers: "Konuşmacılar"
   update: "Güncelle"
   description: "Açıklama"
-
+  subject: "Başlık"
+  body: "Posta"
   activerecord:
     errors:
       models:
