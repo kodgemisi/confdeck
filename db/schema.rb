@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140303221830) do
+ActiveRecord::Schema.define(:version => 20140304134358) do
 
   create_table "addresses", :force => true do |t|
     t.text     "info"
@@ -97,10 +97,11 @@ ActiveRecord::Schema.define(:version => 20140303221830) do
   create_table "email_template_types", :force => true do |t|
     t.string   "type_name"
     t.text     "description"
-    t.text     "default_template"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.text     "default_body"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.string   "title"
+    t.string   "default_subject"
   end
 
   create_table "email_templates", :force => true do |t|
