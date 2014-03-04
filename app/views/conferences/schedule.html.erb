@@ -1,5 +1,42 @@
 <p id="notice"><%= notice %></p>
 
+<div id="scheduler"></div>
+<script>
+    $("#scheduler").kendoScheduler({
+        date: new Date("2013/6/6"), // The current date of the scheduler
+        dataSource: [
+            {
+                id: 1,
+                start: new Date("2013/6/6 08:00 AM"),
+                end: new Date("2013/6/6 09:00 AM"),
+                title: "Interview",
+                roomId: 1 // the event is held in "Small meeting room" whose roomId is 1
+            },
+            {
+                id: 2,
+                start: new Date("2013/6/6 08:00 AM"),
+                end: new Date("2013/6/6 09:00 AM"),
+                title: "Meeting",
+                roomId: 2 // the event is held in "Big meeting room" whose roomId is 2
+            }
+        ],
+        group: {
+            resources: ["Rooms"]
+        },
+        resources: [
+            {
+                name: "Rooms",
+                field: "roomId",
+                dataValueField: "roomId",
+                dataSource: [
+                    { text: "Small meeting room", roomId: 1 },
+                    { text: "Big meeting room", roomId: 2 }
+                ]
+            }
+        ]
+    });
+</script>
+
 <div class="row">
   <div class="col-md-4">
     

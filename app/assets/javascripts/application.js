@@ -19,6 +19,12 @@
 //= require bootstrap
 //= require gmaps
 //= require best_in_place
+//= require kendo.web
+//= require kendo.scheduler
+//= require kendo.scheduler.view
+//= require kendo.scheduler.dayview
+//= require kendo.scheduler.recurrence
+
 
 
 $(document).ready(function(){
