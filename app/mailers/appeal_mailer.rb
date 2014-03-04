@@ -12,43 +12,36 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class AppealMailer < ActionMailer::Base
+  include TemplateMailer
+
   default from: "app@confdeck.com"
 
+  layout "email_layout"
+
+
   def committee_notification_email(appeal)
-   @appeal = appeal
-   subject = "Yeni Başvuru: #{appeal.topic.subject}"
-   if appeal.conference.email?
-    mail(to: appeal.conference.email, subject: subject)
-   else
-    appeal.conference.organizations.each do |org|
-     org.users.each do |user|
-      mail(to: user.email, subject: subject) if user.email?
-     end
-    end
-   end
+    liquid_template = prepare(appeal.conference, __method__, { "appeal" => appeal})
+    mail(to: appeal.conference.email, subject: liquid_template.subject, body: liquid_template.body)
   end
 
   def speaker_notification_email(appeal)
-   @appeal = appeal
-   subject = "[#{appeal.conference.name}]" + I18n.t(:application_received, :topic => appeal.topic.subject)
-   appeal.topic.speakers.each do |speaker|
-     mail(reply_to: appeal.conference.email, to: speaker.email, subject: subject) if speaker.email?
-   end
+    liquid_template = prepare(appeal.conference, __method__, {"appeal" => appeal})
+    appeal.topic.speakers.each do |speaker|
+      mail(reply_to: appeal.conference.email, to: speaker.email, subject: liquid_template.subject, body: liquid_template.body) if speaker.email?
+    end
   end
 
   def accept_notification_email(appeal)
-   @appeal = appeal
-   subject = "[#{appeal.topic.subject}] #{appeal.topic.subject} application is accepted"
-   appeal.topic.speakers.each do |speaker|
-    mail(to: speaker.email, subject: subject) if speaker.email?
-   end
+    liquid_template = prepare(appeal.conference, __method__, {"appeal" => appeal})
+    appeal.topic.speakers.each do |speaker|
+      mail(to: speaker.email,subject: liquid_template.subject, body: liquid_template.body) if speaker.email?
+    end
   end
 
   def reject_notification_email(appeal)
-   @appeal = appeal
-   subject = "[#{appeal.topic.subject}] #{appeal.topic.subject} application is rejected"
-   appeal.topic.speakers.each do |speaker|
-    mail(to: speaker.email, subject: subject) if speaker.email?
-   end
+    liquid_template = prepare(appeal.conference, __method__, {"appeal" => appeal})
+    appeal.topic.speakers.each do |speaker|
+      mail(to: speaker.email, subject: liquid_template.subject, body: liquid_template.body) if speaker.email?
+    end
   end
 end
