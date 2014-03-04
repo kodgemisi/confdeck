@@ -24,14 +24,14 @@
                   <% else %>
                       <div class="form-group">
                         <%= f.label :subject, t(:subject), :class => "col-lg-2 control-label" %>
-                        <div class="col-lg-2">
+                        <div class="col-lg-10">
                           <%= text_field_tag "conference[email_templates_attributes][][subject]", tt.default_subject, {:class => "form-control"} %>
                         </div>
                       </div>
                       <div class="form-group">
                         <%= f.label :body, t(:body), :class => "col-lg-2 control-label" %>
-                        <div class="col-lg-2">
-                          <%= text_area_tag "conference[email_templates_attributes][][body]", tt.default_body, {:class => "form-control"} %>
+                        <div class="col-lg-10">
+                          <%= text_area_tag "conference[email_templates_attributes][][body]", tt.default_body, {:class => "form-control", :rows => 15} %>
                         </div>
                       </div>
                   <% end %>
@@ -39,7 +39,7 @@
                 </div>
                 <div class="col-lg-3 description">
                   <h4><%= t :description %></h4>
-                  <p><%= tt.description %></p>
+                  <p><%= tt.description %>&nbsp;</p>
                 </div>
               </div>
 
