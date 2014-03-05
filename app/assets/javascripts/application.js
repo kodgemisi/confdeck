@@ -20,6 +20,7 @@
 //= require gmaps
 //= require best_in_place
 //= require kendo.web
+//= require kendo.validator
 //= require kendo.scheduler
 //= require kendo.scheduler.view
 //= require kendo.scheduler.dayview

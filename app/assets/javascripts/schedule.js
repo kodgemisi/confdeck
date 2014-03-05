@@ -1,105 +1,110 @@
-//= require jquery
-//= require bootstrap
-//= require jquery.ui.core
 
-$(function() {
+$(function(){
+    function dataSource_requestEnd(e) {
+        var response = e.response;
+        var type = e.type;
+        console.log(type); // displays "read"
+        console.log(response.length); // displays "77"
+    }
 
-  var slotDiv = '<div class="slot-div" data-slot-id="{ID}"><div>';
+    function dataSource_error(e) {
+        console.log(e.status); // displays "error"
+    }
 
-  //calculate "room-container"s' widths
-  (function() {
-    var roomSize = $('.tab-pane').first().find('.room').length;
-    var width = ($('.room').first().outerWidth(true) + 5) * roomSize;
-    $('.room-container').css('width', width);
-  }());
 
-  if(editable){
-    // addSlot click handler on TDs
-    $('td[data-hour]').click(function() {
-      var hour = $(this).data('hour');
-      var jModal = $(this).closest('table').siblings('.modal');
+    window.dataSource = new kendo.data.SchedulerDataSource({
+        batch: true,
+        transport: {
+            read: {
+                url: "http://localhost:3000/conferences/dedecon/schedule.json",
+                dataType: "json"
+            },
+            update: {
+                url: "http://localhost:3000/conferences/dedecon/schedule.json",
+                dataType: "json",
+                type: "PUT"
+            },
+            create: {
+                url: "http://localhost:3000/conferences/dedecon/schedule.json",
+                dataType: "json",
+                type: "POST"
+            },
+            destroy: {
+                url: "http://localhost:3000/conferences/dedecon/schedule.json",
+                dataType: "json",
+                type: "DELETE"
+            },
+            parameterMap: function (options, operation) {
+                if (operation !== "read" && options.models) {
+                    return {models: kendo.stringify(options.models)};
+                }
+            }
+        },
+        schema: {
+            model: {
+                id: "id",
+                fields: {
+                    id: { type: "number" },
+                    title: { from: "title", defaultValue: "No title", editable: false},
+                    start: { type: "date", from: "start", parse: function(e){
+                        if (typeof e === "string")
+                            return new Date(parseInt(e))
+                        else
+                            return e
+                    } },
+                    end: { type: "date", from: "end",
+                        parse: function (e) {
+                            if (typeof e === "string")
+                                return new Date(parseInt(e))
+                            else
+                                return e
 
-      //fill hour&minute
-      jModal.find('[name="slot[start_hour(1i)]"]').val(2000);
-      jModal.find('[name="slot[start_hour(2i)]"]').val(1);
-      jModal.find('[name="slot[start_hour(3i)]"]').val(1);
-
-      jModal.find('[name="slot[start_hour(4i)]"]').val(hour.split(':')[0]);
-      jModal.find('[name="slot[start_hour(5i)]"]').val(hour.split(':')[1]);
-
-      jModal.modal();// show modal
-    });
-  }
-
-  function traverseSlots(days) {
-    for(dayKey in days){
-      var day = days[dayKey];
-      for(roomKey in day){
-        var room = day[roomKey];
-        for(slotKey in room){
-          var slot = room[slotKey];
-          renderSlot(slot, dayKey, roomKey);
+                        }
+                    },
+                    room_id: { from: "room_id", defaultValue: 1 }
+                }
+            }
         }
-      }
-    }
-  }
-
-  function renderSlot(slot, dayId, roomId) {
-    var date = new Date(slot.start_hour);
-    var startHour = (date.getUTCHours() < 10 ? '0' + date.getUTCHours() : date.getUTCHours());
-    var startMinute = (date.getUTCMinutes() < 10 ? '0' + date.getUTCMinutes() : date.getUTCMinutes());
-
-    //normalization of start minute
-    if(parseInt(startMinute) < 30){
-      var fullHour = startHour + ':00';
-    }
-    else{
-      fullHour = startHour + ':30';
-    }
-
-    startMinute = parseInt(startMinute);
-
-    var startCell = $('[data-hour="'+fullHour+'"][data-day="'+dayId+'"][data-room="'+roomId+'"]');
-    var referenceCell = $('[data-day][data-room]').filter(":visible").first();
-    var cellHeight = referenceCell.outerHeight();
-    var height = slot.duration / 30 * cellHeight;
-    var top = (startMinute >= 30 ? startMinute - 30 : startMinute ) / 30 * cellHeight;
-    top += 2; // 2px top margin
-    height -= (height % cellHeight == 0 && startMinute % 30 == 0 ? 5 : 0); // 2px bottom margin, this is equal to top, left and right margin
-    startCell.append(slotDiv.replace('{ID}', slot.id));
-    var currentSlotDiv = $('[data-slot-id="'+slot.id+'"]');
-    currentSlotDiv.css('height', height).css('top', top).html( (slot.topic ? slot.topic.subject : '<em>Topic not set</em>') + ' | ' + slot.duration + ' minutes');
-  }
-
-  traverseSlots(window.slotsData);
-
-  // order is important for this handler addition, should be after 'traverseSlots'
-  $('.slot-div').click(function(e) {
-    var slotId = $(this).data('slot-id');
-
-    $('#slotDetailsContainer').children().remove();
-    $('#slotDetailsContainer').append('<div id="slotDetails" class="modal fade"></div>');
-
-    var url = '/conferences/'+conferenceId+'/slots/'+slotId;
-
-    if(editable){
-      url += '/edit';
-    }
-
-    $('#slotDetails').modal({
-      remote: url
     });
-    return false;
-  });
+    dataSource.bind("error", dataSource_error);
 
-  //FIXME this shouldn't be necessary at all. In schedule page tabs work but in conference show page 
-  //this is required for some reason!
-  $('.schedule-tabs a').click(function (e) {
-    e.preventDefault()
-    $(this).tab('show')
-  })
+    var parseDate = function(d){
+        console.log(d)
+    }
 
-});
+    dataSource.fetch(function () {
+    });
 
+    $("#scheduler").kendoScheduler({
+        date: new Date(1392796800000),
+        dataSource: dataSource,
+        group: {
+            resources: ["Rooms"]
+        },
+        allDaySlot: false,
+        edit: function (e) { //remove all day check box and recurrence rule editor
+            e.container
+                .find("[name=isAllDay]") // find the all day checkbox
+                .parent()
+                .prev()
+                .remove()
+                .end()
+                .remove();
+            e.container.find("*[for=recurrenceRule]").parent().remove()
+            e.container.find("*[data-container-for=recurrenceRule]").remove()
+        },
+        resources: [
+            {
+                name: "Rooms",
+                field: "room_id",
+                dataValueField: "room_id",
+                dataSource: [
+                    { text: "Small meeting room", room_id: 1 },
+                    { text: "Big meeting room", room_id: 2 }
+                ]
+            }
+        ]
+    });
 
+})
 //<td class="clickable-row1" data-hour="07:00" data-day="1" data-room="1">&nbsp;</td>
