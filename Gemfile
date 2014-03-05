@@ -48,7 +48,7 @@ gem 'will_paginate-bootstrap'
 gem 'faker'
 gem 'font-awesome-sass'
 gem 'liquid'
-
+gem 'jbuilder'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

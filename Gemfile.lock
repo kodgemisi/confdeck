@@ -71,6 +71,9 @@ GEM
     highline (1.6.20)
     hike (1.2.3)
     i18n (0.6.9)
+    jbuilder (2.0.3)
+      activesupport (>= 3.0.0)
+      multi_json (>= 1.2.0)
     journey (1.0.4)
     jquery-rails (3.1.0)
       railties (>= 3.0, < 5.0)
@@ -192,6 +195,7 @@ DEPENDENCIES
   faker
   font-awesome-sass
   friendly_id (~> 4.0.10)
+  jbuilder
   jquery-rails
   jquery-ui-rails
   liquid
