@@ -1,4 +1,12 @@
 Confman::Application.routes.draw do
+  get "schedule/show"
+
+  get "schedule/update"
+
+  get "schedule/destroy"
+
+  get "schedule/create"
+
   resources :topics, only: [:index]
   resources :topics
   resources :speakers
@@ -20,9 +28,10 @@ Confman::Application.routes.draw do
         get 'reject'
       end
     end
-    member do
-     get 'schedule'
-    end
+    resource :schedule, :controller => 'schedule'
+    #member do
+    # get 'schedule'
+    #end
   end
 
   resources :organizations do
