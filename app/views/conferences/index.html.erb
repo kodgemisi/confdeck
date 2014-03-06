@@ -32,7 +32,7 @@
         <td>
           <%= button_group class: "btn-group-sm pull-right" do %>
             <%= bs_button_to "", conference, tooltip: "Details", icon: "eye-open", style: "primary", size: "mini" %>
-            <%= bs_button_to "", schedule_conference_path(conference), tooltip: "Schedule", icon: "calendar", style: "primary", size: "mini" %>
+            <%= bs_button_to "", conference_schedule_path(conference), tooltip: "Schedule", icon: "calendar", style: "primary", size: "mini" %>
             <%= bs_button_to "", edit_conference_path(conference), tooltip: "Edit", icon: "pencil", style: "primary", size: "mini" %>
             <%= bs_button_to "", conference, method: :delete, data: { :confirm => "Are You Sure?"}, tooltip: "Delete", icon: "remove", style: "primary", size: "mini" %>
             <% end %>
