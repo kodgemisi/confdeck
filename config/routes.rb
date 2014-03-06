@@ -29,9 +29,9 @@ Confman::Application.routes.draw do
       end
     end
     resource :schedule, :controller => 'schedule'
-    #member do
-    # get 'schedule'
-    #end
+    member do
+     get 'appeal_types'
+    end
   end
 
   resources :organizations do
