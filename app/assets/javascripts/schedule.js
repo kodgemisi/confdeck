@@ -82,6 +82,15 @@ $(function(){
                     text: { from: "name", defaultValue: "No title", editable: false}
                 }
             }
+        },
+        change: function (e) {
+            refreshScheduler()
+        }
+    });
+    roomSource.bind("error", dataSource_error);
+    roomSource.bind("requestEnd", function(e){
+        if(e.response.length == 0){ //If there is no room open the create-room-window
+            openCreateRoomWindow();
         }
     });
 
@@ -155,6 +164,7 @@ $(function(){
             }
         ]
     });
+    window.scheduler = $("#scheduler").data("kendoScheduler");
 
 
     $(".draggable").kendoDraggable({
@@ -209,7 +219,41 @@ $(function(){
 
             }
         });
+    };
+
+    function refreshScheduler(){
+        if (typeof(scheduler.view()) != "undefined")
+            scheduler.view(scheduler.view().name); //re-render
     }
+
+    $(".create-room-window").kendoWindow({
+        actions: ["Close"],
+        draggable: true,
+        height: "200px",
+        modal: true,
+        pinned: false,
+        resizable: false,
+        visible: false,
+        title: "Create Room",
+        width: "500px"
+    });
+
+    var createRoomWindow = $(".create-room-window").data("kendoWindow");
+    createRoomWindow.bind("close", function () {
+        roomSource.read();
+    })
+
+
+    $(".create-room-button").click(function(){
+        openCreateRoomWindow();
+    })
+
+    var openCreateRoomWindow = function(){
+        var win = $(".create-room-window").data("kendoWindow");
+        win.center();
+        win.open();
+    }
+
 
 
 })

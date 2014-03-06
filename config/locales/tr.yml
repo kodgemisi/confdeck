@@ -22,12 +22,14 @@ tr:
     facebook: "Facebook"
   create_appeal: "Başvuruyu Oluştur"
   application_received: "%{topic} Başvurunuz alınmıştır"
-
+  create: "Oluştur"
   close: "Kapat"
   create_organization: "Yeni Organizasyon Oluştur"
   accepted: "Kabul Edildi"
   rejected: "Reddedildi"
   waiting_review: "Beklemede"
+  room:
+    name: "Oda Adı"
   topic:
     subject: "Konu Başlığı"
     abstract: "Konu Özeti"

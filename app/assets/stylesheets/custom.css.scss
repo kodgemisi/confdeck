@@ -118,3 +118,11 @@ html, body, .cp-container, .cp-body, .cp-sidebar {
     padding: 5px;
     font-size: 10px;
 }
+
+.k-window .form-horizontal input{
+  -webkit-box-sizing: border-box;
+}
+
+.k-window .form-horizontal  {
+  width: 98%;
+}

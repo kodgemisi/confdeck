@@ -62,9 +62,12 @@ class RoomsController < ApplicationController
       if @room.save
         format.html { redirect_to conference_schedule_path(@conference), notice: 'Room was successfully created.' }
         format.json { render json: @room, status: :created, location: @room }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @room.errors, status: :unprocessable_entity }
+        format.js
+
       end
     end
   end
