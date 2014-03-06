@@ -7,5 +7,6 @@
        json.end (slot.end_time.to_i * 1000).to_s
        json.title slot.topic.subject
        json.room_id slot.room_id
+       json.type_id slot.appeal_type.id
     end
 
