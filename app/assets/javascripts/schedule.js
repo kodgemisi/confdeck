@@ -1,7 +1,7 @@
 
 $(function(){
 
-    var appealTypeColors = ["red", "green"]
+    var appealTypeColors = ["#59ace2", "#A9D86E", "#8175c7", "#FCB322", "#FF6C60", "#a1a1a1", "#344860"]
 
     function dataSource_error(e) {
         console.log(e.status); // displays "error"
