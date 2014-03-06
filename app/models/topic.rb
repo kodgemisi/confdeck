@@ -16,6 +16,7 @@ class Topic < ActiveRecord::Base
 
   has_and_belongs_to_many :speakers
   has_one :slot
+  has_one :appeal
 
   validates_presence_of :speakers, :subject, :abstract, :detail
 
