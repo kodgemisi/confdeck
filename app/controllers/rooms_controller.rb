@@ -60,7 +60,7 @@ class RoomsController < ApplicationController
 
     respond_to do |format|
       if @room.save
-        format.html { redirect_to schedule_conference_path(@conference), notice: 'Room was successfully created.' }
+        format.html { redirect_to conference_schedule_path(@conference), notice: 'Room was successfully created.' }
         format.json { render json: @room, status: :created, location: @room }
       else
         format.html { render action: "new" }
