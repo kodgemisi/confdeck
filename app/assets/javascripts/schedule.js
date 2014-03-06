@@ -11,21 +11,21 @@ $(function(){
         batch: true,
         transport: {
             read: {
-                url: "http://localhost:3000/conferences/dedecon/schedule.json",
+                url: schedule_url,
                 dataType: "json"
             },
             update: {
-                url: "http://localhost:3000/conferences/dedecon/schedule.json",
+                url: schedule_url,
                 dataType: "json",
                 type: "PUT"
             },
             create: {
-                url: "http://localhost:3000/conferences/dedecon/schedule.json",
+                url: schedule_url,
                 dataType: "json",
                 type: "POST"
             },
             destroy: {
-                url: "http://localhost:3000/conferences/dedecon/schedule.json",
+                url: schedule_url,
                 dataType: "json",
                 type: "DELETE"
             },
@@ -70,7 +70,7 @@ $(function(){
         batch: true,
         transport: {
             read: {
-                url: "http://localhost:3000/conferences/dedecon/rooms.json",
+                url: rooms_url,
                 dataType: "json"
             }
         },
@@ -89,7 +89,7 @@ $(function(){
         batch: true,
         transport: {
             read: {
-                url: "http://localhost:3000/conferences/dedecon/appeal_types.json",
+                url: appeal_types_url,
                 dataType: "json"
             }
         },

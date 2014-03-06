@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
-
+<%= javascript_tag do %>
+    window.schedule_url = '<%= j conference_schedule_url(@conference)%>';
+    window.rooms_url = '<%= j conference_rooms_url(@conference)%>';
+    window.appeal_types_url = '<%= j appeal_types_conference_url(@conference)%>';
+<% end %>
 
 <div class="row">
   <div class="col-lg-9">
