@@ -46,6 +46,8 @@ class ScheduleController < ApplicationController
     }
     @slot = Slot.new
     @slot.attributes = attributes
+    @day = Day.where("date BETWEEN ? AND ? ", @slot.start_time.to_date, @slot.end_time.to_date + 1.day).first
+    @slot.day = @day
     @slot.conference = @conference
     respond_to do |format|
       if @slot.save
