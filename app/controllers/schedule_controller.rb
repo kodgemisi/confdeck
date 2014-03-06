@@ -3,6 +3,7 @@ class ScheduleController < ApplicationController
 
   def show
     @conference = Conference.find(params[:conference_id])
+    @appeal_types = @conference.appeal_types.includes(:appeals).where("appeals.state" => "accepted")
     @room = Room.new
     @slot = Slot.new
   end

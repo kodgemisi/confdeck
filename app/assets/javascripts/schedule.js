@@ -93,6 +93,10 @@ $(function(){
             e.container.find("*[for=recurrenceRule]").parent().remove()
             e.container.find("*[data-container-for=recurrenceRule]").remove()
         },
+        dataBound: function (e) {
+            //create drop area from current View
+            createDropArea(this);
+        },
         resources: [
             {
                 name: "Rooms",
@@ -105,6 +109,62 @@ $(function(){
             }
         ]
     });
+
+
+    $(".draggable").kendoDraggable({
+        hint: function (row) {
+
+            //remove old selection
+            row.parent().find(".k-state-selected").each(function () {
+                $(this).removeClass("k-state-selected")
+            })
+
+            //add selected class to the current row
+            row.addClass("k-state-selected");
+
+            var dataItem = row
+            var tooltipHtml = "<div class='k-event' id='dragTooltip'><div class='k-event-template'>" +
+                "</div><div class='k-event-template'>" + dataItem.data("subject") +
+                "</div></div>";
+
+            return $(tooltipHtml).css("width", 300);
+        }
+    });
+
+    function createDropArea(scheduler) {
+        scheduler.view().content.kendoDropTargetArea({
+            filter: ".k-scheduler-table td, .k-event",
+            drop: function (e) {
+                var view = scheduler.view();
+
+                var offset = $(e.dropTarget).offset();
+                var slot = scheduler.slotByPosition(offset.left, offset.top);
+                var dataItem = e.draggable.element;
+
+                //To get Room Id
+                var startSlot = view._slotByPosition(offset.left, offset.top);
+                var startResources = view._resourceBySlot(startSlot);
+                var room_id = startResources.room_id
+
+                //Check whether a new event
+                if (dataItem && slot && dataItem.attr("class").indexOf("draggable") != -1) {
+                    var offsetMiliseconds = new Date().getTimezoneOffset() * 60000;
+                    var newEvent = {
+                        title: dataItem.data("subject"),
+                        end: new Date(slot.startDate.getTime() + 1800000),
+                        start: slot.startDate,
+                        isAllDay: slot.isDaySlot,
+                        room_id: room_id
+                    };
+
+                    scheduler.dataSource.add(newEvent);
+                    scheduler.dataSource.sync();
+                }
+
+            }
+        });
+    }
+
 
 })
 //<td class="clickable-row1" data-hour="07:00" data-day="1" data-room="1">&nbsp;</td>

@@ -1,3 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<div id="scheduler"></div>
+
+<div class="row">
+  <div class="col-lg-9">
+    <div id="scheduler"></div>
+  </div>
+  <div class="col-lg-3">
+    <% @appeal_types.each do |appeal_type| %>
+        <%= appeal_type.type_name %>
+        <table class="table table-bordered">
+          <thead>
+              <tr>
+                <th><%= t :subject %></th>
+                <th><%= t :speakers %></th>
+              </tr>
+          </thead>
+          <tbody>
+            <% appeal_type.appeals.each do |appeal|%>
+                <tr class="draggable"
+                    data-subject="<%= appeal.topic.subject %>"
+                >
+                   <td><%= appeal.topic.subject %></td>
+                   <td><%= appeal.topic.subject %></td>
+                </tr>
+            <% end %>
+          </tbody>
+        </table>
+    <% end %>
+  </div>
+</div>
