@@ -1,16 +1,11 @@
 
 $(function(){
-    function dataSource_requestEnd(e) {
-        var response = e.response;
-        var type = e.type;
-        console.log(type); // displays "read"
-        console.log(response.length); // displays "77"
-    }
+
+    var appealTypeColors = ["red", "green"]
 
     function dataSource_error(e) {
         console.log(e.status); // displays "error"
     }
-
 
     window.dataSource = new kendo.data.SchedulerDataSource({
         batch: true,
@@ -46,40 +41,88 @@ $(function(){
                 fields: {
                     id: { type: "number" },
                     title: { from: "title", defaultValue: "No title", editable: false},
-                    start: { type: "date", from: "start", parse: function(e){
-                        if (typeof e === "string")
-                            return new Date(parseInt(e))
-                        else
-                            return e
-                    } },
-                    end: { type: "date", from: "end",
-                        parse: function (e) {
-                            if (typeof e === "string")
-                                return new Date(parseInt(e))
-                            else
-                                return e
-
-                        }
-                    },
-                    room_id: { from: "room_id", defaultValue: 1 }
+                    start: { type: "date", from: "start" },
+                    end: { type: "date", from: "end" },
+                    room_id: { type: "number", from: "room_id", defaultValue: 1 },
+                    type_id: { type: "number", from: "type_id", defaultValue: 25 }
                 }
+            },
+            parse: function (response) {
+                var slots = [];
+                for (var i = 0; i < response.length; i++) {
+                    var slot = {
+                        id: response[i].id,
+                        title: response[i].title,
+                        room_id: response[i].room_id,
+                        type_id: response[i].type_id,
+                        start: new Date(parseInt(response[i].start)),
+                        end: new Date(parseInt(response[i].end))
+                    };
+                    slots.push(slot);
+                }
+                return slots;
             }
         }
     });
     dataSource.bind("error", dataSource_error);
 
-    var parseDate = function(d){
-        console.log(d)
-    }
-
-    dataSource.fetch(function () {
+    var roomSource = new kendo.data.SchedulerDataSource({
+        batch: true,
+        transport: {
+            read: {
+                url: "http://localhost:3000/conferences/dedecon/rooms.json",
+                dataType: "json"
+            }
+        },
+        schema: {
+            model: {
+                id: "id",
+                fields: {
+                    id: { type: "number" },
+                    text: { from: "name", defaultValue: "No title", editable: false}
+                }
+            }
+        }
     });
+
+    var appealTypeSource = new kendo.data.SchedulerDataSource({
+        batch: true,
+        transport: {
+            read: {
+                url: "http://localhost:3000/conferences/dedecon/appeal_types.json",
+                dataType: "json"
+            }
+        },
+        schema: {
+            model: {
+                id: "id",
+                fields: {
+                    id: { type: "number" },
+                    text: { from: "type_name", defaultValue: "No title", editable: false},
+                    color: { from: "color", defaultValue: "red"}
+                }
+            },
+            parse: function (response) {
+                var types = [];
+                for (var i = 0; i < response.length; i++) {
+                    var type = {
+                        id: response[i].id,
+                        text: response[i].type_name,
+                        color: appealTypeColors[i]
+                    };
+                    types.push(type);
+                }
+                return types;
+            }
+        }
+    });
+
 
     $("#scheduler").kendoScheduler({
         date: new Date(1392796800000),
         dataSource: dataSource,
         group: {
-            resources: ["Rooms"]
+            resources: ["room_id"]
         },
         allDaySlot: false,
         edit: function (e) { //remove all day check box and recurrence rule editor
@@ -93,19 +136,22 @@ $(function(){
             e.container.find("*[for=recurrenceRule]").parent().remove()
             e.container.find("*[data-container-for=recurrenceRule]").remove()
         },
+        remove: function (e) {
+            console.log("Removing", e.event.title);
+        },
         dataBound: function (e) {
-            //create drop area from current View
             createDropArea(this);
         },
         resources: [
             {
-                name: "Rooms",
+                field: "type_id",
+                dataValueField: "id",
+                dataSource: appealTypeSource
+            },
+            {
                 field: "room_id",
-                dataValueField: "room_id",
-                dataSource: [
-                    { text: "Small meeting room", room_id: 1 },
-                    { text: "Big meeting room", room_id: 2 }
-                ]
+                dataValueField: "id",
+                dataSource: roomSource
             }
         ]
     });
