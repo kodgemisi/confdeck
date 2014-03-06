@@ -25,6 +25,7 @@
 //= require kendo.scheduler.view
 //= require kendo.scheduler.dayview
 //= require kendo.scheduler.recurrence
+//= require kendo.window
 
 
 
