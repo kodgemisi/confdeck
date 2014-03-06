@@ -33,5 +33,26 @@ class ScheduleController < ApplicationController
   end
 
   def create
+    @conference = Conference.find(params[:conference_id])
+    slot_data = JSON.parse(params[:models]).first
+
+
+    attributes = {
+        room_id: slot_data["room_id"],
+        start_time: DateTime.parse(slot_data["start"]),
+        end_time: DateTime.parse(slot_data["end"]),
+        topic_id: slot_data["topic_id"]
+
+    }
+    @slot = Slot.new
+    @slot.attributes = attributes
+    @slot.conference = @conference
+    respond_to do |format|
+      if @slot.save
+        format.json { head :no_content }
+      else
+        format.json { head :no_content }
+      end
+    end
   end
 end

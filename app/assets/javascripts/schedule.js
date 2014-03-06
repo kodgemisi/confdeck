@@ -44,7 +44,8 @@ $(function(){
                     start: { type: "date", from: "start" },
                     end: { type: "date", from: "end" },
                     room_id: { type: "number", from: "room_id", defaultValue: 1 },
-                    type_id: { type: "number", from: "type_id", defaultValue: 25 }
+                    type_id: { type: "number", from: "type_id", defaultValue: 25 },
+                    topic_id: { type: "number", from: "topic_id" }
                 }
             },
             parse: function (response) {
@@ -55,6 +56,7 @@ $(function(){
                         title: response[i].title,
                         room_id: response[i].room_id,
                         type_id: response[i].type_id,
+                        topic_id: response[i].topic_id,
                         start: new Date(parseInt(response[i].start)),
                         end: new Date(parseInt(response[i].end))
                     };
@@ -130,6 +132,7 @@ $(function(){
     $("#scheduler").kendoScheduler({
         date: new Date(1392796800000),
         dataSource: dataSource,
+        timezone: "UTC",
         group: {
             resources: ["room_id"]
         },
@@ -184,6 +187,10 @@ $(function(){
                 "</div></div>";
 
             return $(tooltipHtml).css("width", 300);
+        },
+        dragend: function(row){
+            $(row.currentTarget).remove();
+
         }
     });
 
@@ -201,6 +208,7 @@ $(function(){
                 var startSlot = view._slotByPosition(offset.left, offset.top);
                 var startResources = view._resourceBySlot(startSlot);
                 var room_id = startResources.room_id
+                var topic_id = startResources.topic_id
 
                 //Check whether a new event
                 if (dataItem && slot && dataItem.attr("class").indexOf("draggable") != -1) {
@@ -210,7 +218,8 @@ $(function(){
                         end: new Date(slot.startDate.getTime() + 1800000),
                         start: slot.startDate,
                         isAllDay: slot.isDaySlot,
-                        room_id: room_id
+                        room_id: room_id,
+                        topic_id: dataItem.data("topic_id")
                     };
 
                     scheduler.dataSource.add(newEvent);

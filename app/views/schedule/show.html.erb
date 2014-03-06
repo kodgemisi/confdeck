@@ -24,6 +24,7 @@
             <% appeal_type.appeals.each do |appeal|%>
                 <tr class="draggable"
                     data-subject="<%= appeal.topic.subject %>"
+                    data-topic_id="<%= appeal.topic.id %>"
                 >
                    <td><%= appeal.topic.subject %></td>
                    <td><%= appeal.topic.subject %></td>
