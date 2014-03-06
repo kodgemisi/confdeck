@@ -2161,6 +2161,9 @@ kendo_module({
                     }
                 },
                 dragend: function(e) {
+                    if (!slot) {
+                        return;
+                    }
                     var dragHandle = $(e.currentTarget);
                     var start = new Date(event.start.getTime());
                     var end = new Date(event.end.getTime());
