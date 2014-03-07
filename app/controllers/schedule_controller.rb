@@ -9,14 +9,12 @@ class ScheduleController < ApplicationController
   end
 
   def update
-    slot_data = JSON.parse(params[:models]).first
-
-    @slot = Slot.find(slot_data["id"])
+    @slot = Slot.find(params["id"])
 
     attributes = {
-        room_id: slot_data["room_id"],
-        start_time: slot_data["start"],
-        end_time: slot_data["end"],
+        room_id: params["room_id"],
+        start_time: params["start"],
+        end_time: params["end"],
 
     }
 
@@ -35,7 +33,6 @@ class ScheduleController < ApplicationController
   def create
     @conference = Conference.find(params[:conference_id])
 
-
     attributes = {
         room_id: params["room_id"],
         start_time: DateTime.parse(params["start"]),
@@ -43,6 +40,7 @@ class ScheduleController < ApplicationController
         appeal_id: params["appeal_id"]
 
     }
+
     @slot = Slot.new
     @slot.attributes = attributes
     @day = Day.where("date BETWEEN ? AND ? ", @slot.start_time.to_date, @slot.end_time.to_date + 1.day).first
