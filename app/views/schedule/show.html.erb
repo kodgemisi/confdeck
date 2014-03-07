@@ -9,41 +9,10 @@
   <div class="col-lg-9">
     <div id="scheduler"></div>
   </div>
-  <div class="col-lg-3">
+  <div class="col-lg-3 sidebar">
     <button type="button" class="btn btn-primary btn-block create-room-button" ><%= t :create_room %></button>
-
     <div class="appeal-list">
-        <% @appeal_types.each do |appeal_type| %>
-            <div class="panel panel-default appeal-type" data-type_id="<%= appeal_type.id %>">
-              <div class="panel-heading">
-                <h3 class="panel-title"><%= appeal_type.type_name %> </h3>
-              </div>
-              <div class="panel-body">
-                <table class="table table-bordered">
-                  <thead>
-                  <tr>
-                    <th><%= t :subject %></th>
-                    <th><%= t :speakers %></th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <% appeal_type.appeals.each do |appeal| %>
-                      <% if appeal.slot.nil? %>
-                          <tr class="draggable"
-                                  data-subject="<%= appeal.topic.subject %>"
-                                  data-appeal_id="<%= appeal.id %>"
-                              >
-                                <td><%= appeal.topic.subject %></td>
-                                <td><%= appeal.topic.subject %></td>
-                          </tr>
-                      <% end %>
-
-                  <% end %>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-        <% end %>
+        <%= render "schedule/appeal_list", appeal_types: @appeal_types %>
     </div>
   </div>
 </div>

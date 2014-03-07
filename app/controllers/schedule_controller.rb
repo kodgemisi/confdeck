@@ -8,6 +8,15 @@ class ScheduleController < ApplicationController
     @slot = Slot.new
   end
 
+  def appeal_list
+    @conference = Conference.find(params[:conference_id])
+    @appeal_types = @conference.appeal_types.includes(:appeals).where("appeals.state" => "accepted")
+
+    respond_to do |format|
+      format.html { render partial:"schedule/appeal_list", locals: {appeal_types: @appeal_types} }
+    end
+  end
+
   def update
     @slot = Slot.find(params["id"])
 
@@ -28,6 +37,13 @@ class ScheduleController < ApplicationController
   end
 
   def destroy
+    @slot = Slot.find(params[:id])
+    @slot.destroy
+
+    respond_to do |format|
+      format.html { redirect_to conferences_url }
+      format.json { head :no_content }
+    end
   end
 
   def create

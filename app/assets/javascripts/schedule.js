@@ -67,6 +67,15 @@ $(function(){
                 }
                 return slots;
             }
+        },
+        requestEnd: function (e) {
+            if(e.type == "destroy"){
+                $(".appeal-list").load("http://localhost:3000/conferences/dedecon/schedule/appeal_list", function(){
+                    $(".draggable").kendoDraggable(draggableConfig);
+
+                });
+
+            }
         }
     });
     dataSource.bind("error", dataSource_error);
@@ -171,12 +180,8 @@ $(function(){
         ]
     });
     window.scheduler = $("#scheduler").data("kendoScheduler");
-    scheduler.bind("remove", function(e){
-        var type_div = $(".appeal-type[data-type_id=" + e.event.id +"]") //Find appeal-type div
 
-    })
-
-    $(".draggable").kendoDraggable({
+    var draggableConfig = {
         hint: function (row) {
 
             //remove old selection
@@ -194,13 +199,14 @@ $(function(){
 
             return $(tooltipHtml).css("width", 300);
         },
-        dragend: function(row){
-            if(scheduler.view()._slotByPosition(row.x.location, row.y.location)){ //Check whether its dropped to scheduler
+        dragend: function (row) {
+            if (scheduler.view()._slotByPosition(row.x.location, row.y.location)) { //Check whether its dropped to scheduler
                 $(row.currentTarget).remove();
             }
 
         }
-    });
+    };
+    $(".draggable").kendoDraggable(draggableConfig);
 
     function createDropArea(scheduler) {
         scheduler.view().content.kendoDropTargetArea({

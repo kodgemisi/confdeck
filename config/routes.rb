@@ -28,7 +28,11 @@ Confman::Application.routes.draw do
         get 'reject'
       end
     end
-    resource :schedule, :controller => 'schedule'
+    resource :schedule, :controller => 'schedule' do
+      member do
+        get 'appeal_list'
+      end
+    end
     member do
      get 'appeal_types'
     end
