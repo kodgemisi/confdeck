@@ -189,7 +189,9 @@ $(function(){
             return $(tooltipHtml).css("width", 300);
         },
         dragend: function(row){
-            $(row.currentTarget).remove();
+            if(scheduler.view()._slotByPosition(row.x.location, row.y.location)){ //Check whether its dropped to scheduler
+                $(row.currentTarget).remove();
+            }
 
         }
     });
