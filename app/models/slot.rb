@@ -43,14 +43,13 @@ class OverlapValidator < ActiveModel::Validator
 end
 
 class Slot < ActiveRecord::Base
-  attr_accessible :conference_id, :day_id, :room_id, :start_time, :end_time, :topic_id
-  validates_uniqueness_of :topic_id
+  attr_accessible :conference_id, :day_id, :room_id, :start_time, :end_time, :appeal_id
+  validates_uniqueness_of :appeal_id
 
   belongs_to :conference
   belongs_to :room
   belongs_to :day
-  belongs_to :topic
-  delegate :appeal, :to => :topic, :allow_nil => true
+  belongs_to :appeal
   delegate :appeal_type, :to => :appeal, :allow_nil => true
   #validates_with OverlapValidator
 

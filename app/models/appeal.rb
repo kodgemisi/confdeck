@@ -19,6 +19,7 @@ class Appeal < ActiveRecord::Base
   belongs_to :conference
   belongs_to :topic
   belongs_to :appeal_type
+  has_one :slot
 
   accepts_nested_attributes_for :topic
 

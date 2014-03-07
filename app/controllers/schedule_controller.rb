@@ -40,7 +40,7 @@ class ScheduleController < ApplicationController
         room_id: params["room_id"],
         start_time: DateTime.parse(params["start"]),
         end_time: DateTime.parse(params["end"]),
-        topic_id: params["topic_id"]
+        appeal_id: params["appeal_id"]
 
     }
     @slot = Slot.new

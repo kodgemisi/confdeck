@@ -48,7 +48,7 @@ $(function(){
                     end: { type: "date", from: "end" },
                     room_id: { type: "number", from: "room_id", defaultValue: 1 },
                     type_id: { type: "number", from: "type_id", defaultValue: 25 },
-                    topic_id: { type: "number", from: "topic_id" }
+                    appeal_id: { type: "number", from: "appeal_id" }
                 }
             },
             parse: function (response) {
@@ -59,7 +59,7 @@ $(function(){
                         title: response[i].title,
                         room_id: response[i].room_id,
                         type_id: response[i].type_id,
-                        topic_id: response[i].topic_id,
+                        appeal_id: response[i].appeal_id,
                         start: new Date(parseInt(response[i].start)),
                         end: new Date(parseInt(response[i].end))
                     };
@@ -216,7 +216,7 @@ $(function(){
                 var startSlot = view._slotByPosition(offset.left, offset.top);
                 var startResources = view._resourceBySlot(startSlot);
                 var room_id = startResources.room_id
-                var topic_id = startResources.topic_id
+                var appeal_id = startResources.appeal_id
 
                 //Check whether a new event
                 if (dataItem && slot && dataItem.attr("class").indexOf("draggable") != -1) {
@@ -227,7 +227,7 @@ $(function(){
                         start: slot.startDate,
                         isAllDay: slot.isDaySlot,
                         room_id: room_id,
-                        topic_id: dataItem.data("topic_id")
+                        appeal_id: dataItem.data("appeal_id")
                     };
 
                     scheduler.dataSource.add(newEvent);
