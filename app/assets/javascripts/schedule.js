@@ -11,7 +11,7 @@ $(function(){
     }
 
     window.dataSource = new kendo.data.SchedulerDataSource({
-        //batch: true,
+        batch: false,
         transport: {
             read: {
                 url: schedule_url,
@@ -171,7 +171,10 @@ $(function(){
         ]
     });
     window.scheduler = $("#scheduler").data("kendoScheduler");
+    scheduler.bind("remove", function(e){
+        var type_div = $(".appeal-type[data-type_id=" + e.event.id +"]") //Find appeal-type div
 
+    })
 
     $(".draggable").kendoDraggable({
         hint: function (row) {
@@ -229,6 +232,8 @@ $(function(){
 
                     scheduler.dataSource.add(newEvent);
                     scheduler.dataSource.sync();
+                    scheduler.dataSource.read();
+
                 }
 
             }
