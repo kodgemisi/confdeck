@@ -11,28 +11,38 @@
   </div>
   <div class="col-lg-3">
     <button type="button" class="btn btn-primary btn-block create-room-button" ><%= t :create_room %></button>
-    <% @appeal_types.each do |appeal_type| %>
-        <%= appeal_type.type_name %>
-        <table class="table table-bordered">
-          <thead>
-              <tr>
-                <th><%= t :subject %></th>
-                <th><%= t :speakers %></th>
-              </tr>
-          </thead>
-          <tbody>
-            <% appeal_type.appeals.each do |appeal|%>
-                <tr class="draggable"
-                    data-subject="<%= appeal.topic.subject %>"
-                    data-topic_id="<%= appeal.topic.id %>"
-                >
-                   <td><%= appeal.topic.subject %></td>
-                   <td><%= appeal.topic.subject %></td>
-                </tr>
-            <% end %>
-          </tbody>
-        </table>
-    <% end %>
+
+    <div class="appeal-list">
+        <% @appeal_types.each do |appeal_type| %>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title"><%= appeal_type.type_name %> </h3>
+              </div>
+              <div class="panel-body">
+                <table class="table table-bordered">
+                  <thead>
+                  <tr>
+                    <th><%= t :subject %></th>
+                    <th><%= t :speakers %></th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% appeal_type.appeals.each do |appeal| %>
+                      <tr class="draggable"
+                          data-subject="<%= appeal.topic.subject %>"
+                          data-topic_id="<%= appeal.topic.id %>"
+                      >
+                        <td><%= appeal.topic.subject %></td>
+                        <td><%= appeal.topic.subject %></td>
+                      </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+        <% end %>
+    </div>
   </div>
 </div>
 
