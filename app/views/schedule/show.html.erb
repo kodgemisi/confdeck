@@ -14,7 +14,7 @@
 
     <div class="appeal-list">
         <% @appeal_types.each do |appeal_type| %>
-            <div class="panel panel-default">
+            <div class="panel panel-default appeal-type" data-type_id="<%= appeal_type.id %>">
               <div class="panel-heading">
                 <h3 class="panel-title"><%= appeal_type.type_name %> </h3>
               </div>
@@ -28,19 +28,21 @@
                   </thead>
                   <tbody>
                   <% appeal_type.appeals.each do |appeal| %>
-                      <tr class="draggable"
-                          data-subject="<%= appeal.topic.subject %>"
-                          data-topic_id="<%= appeal.topic.id %>"
-                      >
-                        <td><%= appeal.topic.subject %></td>
-                        <td><%= appeal.topic.subject %></td>
-                      </tr>
+                      <% if appeal.slot.nil? %>
+                          <tr class="draggable"
+                                  data-subject="<%= appeal.topic.subject %>"
+                                  data-appeal_id="<%= appeal.id %>"
+                              >
+                                <td><%= appeal.topic.subject %></td>
+                                <td><%= appeal.topic.subject %></td>
+                          </tr>
+                      <% end %>
+
                   <% end %>
                   </tbody>
                 </table>
               </div>
             </div>
-
         <% end %>
     </div>
   </div>
