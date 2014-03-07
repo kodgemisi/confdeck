@@ -103,7 +103,7 @@ $(function(){
     });
     roomSource.bind("error", dataSource_error);
     roomSource.bind("requestEnd", function(e){
-        if(e.response.length == 0){ //If there is no room open the create-room-window
+        if(e.response && e.response.length == 0){ //If there is no room open the create-room-window
             openCreateRoomWindow();
         }
     });
@@ -144,6 +144,7 @@ $(function(){
     $("#scheduler").kendoScheduler({
         date: new Date(1392796800000),
         dataSource: dataSource,
+        majorTick: 30,
         timezone: "UTC",
         group: {
             resources: ["room_id"]
