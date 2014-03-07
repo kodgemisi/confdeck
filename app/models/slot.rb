@@ -44,6 +44,7 @@ end
 
 class Slot < ActiveRecord::Base
   attr_accessible :conference_id, :day_id, :room_id, :start_time, :end_time, :topic_id
+  validates_uniqueness_of :topic_id
 
   belongs_to :conference
   belongs_to :room

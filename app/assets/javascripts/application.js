@@ -45,3 +45,8 @@ $(document).ready(function(){
     $("[data-toggle=popover]").popover({trigger: "hover"})
 
 })
+
+
+window.showError = function(msg){
+    console.log(msg)
+}

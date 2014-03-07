@@ -4,11 +4,14 @@ $(function(){
     var appealTypeColors = ["#59ace2", "#A9D86E", "#8175c7", "#FCB322", "#FF6C60", "#a1a1a1", "#344860"]
 
     function dataSource_error(e) {
-        console.log(e.status); // displays "error"
+        if(e.xhr.status == 422){  // if unprocessable entry
+            dataSource.remove(dataSource.get(0)) //Remove unsaved entries
+            showError(e.xhr.responseText);
+        }
     }
 
     window.dataSource = new kendo.data.SchedulerDataSource({
-        batch: true,
+        //batch: true,
         transport: {
             read: {
                 url: schedule_url,
@@ -29,11 +32,11 @@ $(function(){
                 dataType: "json",
                 type: "DELETE"
             },
-            parameterMap: function (options, operation) {
-                if (operation !== "read" && options.models) {
-                    return {models: kendo.stringify(options.models)};
-                }
-            }
+//            parameterMap: function (options, operation) {
+//                if (operation !== "read" && options.models) {
+//                    return {models: kendo.stringify(options.models)};
+//                }
+//            }
         },
         schema: {
             model: {
