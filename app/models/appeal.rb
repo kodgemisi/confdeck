@@ -40,8 +40,8 @@ class Appeal < ActiveRecord::Base
       transition :waiting_review => :rejected
     end
 
-    after_transition :waiting_review => :accepted, :do => :send_accept_notification
-    after_transition :waiting_review => :rejected, :do => :send_reject_notification
+    #after_transition :waiting_review => :accepted, :do => :send_accept_notification
+    #after_transition :waiting_review => :rejected, :do => :send_reject_notification
   end
 
   def send_accept_notification
