@@ -34,14 +34,14 @@ class AppealMailer < ActionMailer::Base
   def accept_notification_email(appeal)
     liquid_template = prepare(appeal.conference, __method__, {"appeal" => appeal, "topic" => appeal.topic, "conference" => appeal.conference})
     appeal.topic.speakers.each do |speaker|
-      mail(to: speaker.email,subject: liquid_template.subject, body: liquid_template.body) if speaker.email?
+      mail(reply_to: appeal.conference.email, to: speaker.email, subject: liquid_template.subject, body: liquid_template.body) if speaker.email?
     end
   end
 
   def reject_notification_email(appeal)
     liquid_template = prepare(appeal.conference, __method__, {"appeal" => appeal})
     appeal.topic.speakers.each do |speaker|
-      mail(to: speaker.email, subject: liquid_template.subject, body: liquid_template.body) if speaker.email?
+      mail(reply_to: appeal.conference.email, to: speaker.email, subject: liquid_template.subject, body: liquid_template.body) if speaker.email?
     end
   end
 end
