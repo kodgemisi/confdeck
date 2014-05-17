@@ -26,7 +26,8 @@
 //= require kendo.scheduler.dayview
 //= require kendo.scheduler.recurrence
 //= require kendo.window
-
+//= require core
+//= require adminre
 
 
 $(document).ready(function(){

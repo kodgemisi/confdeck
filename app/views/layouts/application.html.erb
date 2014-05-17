@@ -10,7 +10,13 @@
 </head>
 <body>
     <%= render "layouts/header" %>
+    <%= render "layouts/sidebar" %>
 
-    <%= yield %>
+    <section id="main" role="main">
+      <!-- START Template Container -->
+      <div class="container-fluid">
+            <%= yield %>
+      </div>
+    </section>
 </body>
 </html>

@@ -14,15 +14,28 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :set_user_data
+  layout :layout_for_devise
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
   end
 
 
+
+  protected
+
+  def layout_for_devise
+    if devise_controller?
+      "application_no_nav"
+    end
+  end
+
+
   # to make accessible across all controllers to use on sidebar
   def set_user_data
-    @user_conferences = current_user.conferences
-    @user_organizations = current_user.organizations
+    if current_user
+      @user_conferences = current_user.conferences.includes(:waiting_appeals) #waiting appeals for display count on sidebar
+      @user_organizations = current_user.organizations
+    end
   end
 end

@@ -11,8 +11,10 @@
  *= require_self
  *= require font-awesome
  *= require jquery.ui.datepicker
- *= require_tree .
+ *= require adminre_layout
+ *= require adminre_ui
  *= require custom
+ *= stub conference_landing
  */
 
 

@@ -1,0 +1,61 @@
+<!-- START Template Sidebar (Left) -->
+<aside class="sidebar sidebar-left sidebar-menu">
+    <!-- START Sidebar Content -->
+    <section class="content slimscroll">
+        <!-- START Template Navigation/Menu -->
+        <ul class="topmenu" data-toggle="menu">
+            <li class="active open">
+              <a href="<%= root_path %>" data-parent=".topmenu">
+                <span class="figure"><i class="ico-home2"></i></span>
+                <span class="text"><%= t "Homepage" %></span>
+              </a>
+            </li>
+            <li >
+                <a href="javascript:void(0);" data-toggle="submenu" data-target="#sidebar-conferences-menu" data-parent=".topmenu">
+                  <span class="figure"><i class="ico-flag5"></i></span>
+                  <span class="text"><%= t "conferences" %></span>
+                  <span class="arrow"></span>
+                </a>
+                <!-- START 2nd Level Menu -->
+                <ul id="sidebar-conferences-menu" class="submenu collapse ">
+                  <li class="submenu-header ellipsis"><%= t "conferences" %></li>
+                  <% @user_conferences.each do |conference| %>
+                      <li >
+                        <a href="<%= conference_path(conference) %>">
+                          <span class="text"><%= conference.name %></span>
+
+                          <span class="number <%= "hidden" if conference.waiting_appeals.count == 0 %>"> <!-- hide if no waiting appeal -->
+                            <span class="label label-danger"><%= conference.waiting_appeals.count %></span>
+                          </span>
+                        </a>
+                      </li>
+                  <% end %>
+                </ul>
+                <!--/ END 2nd Level Menu -->
+            </li>
+            <li >
+                <a href="javascript:void(0);" data-toggle="submenu" data-target="#sidebar-organizations-menu" data-parent=".topmenu">
+                  <span class="figure"><i class="ico-users4"></i></span>
+                  <span class="text"><%= t "organizations" %></span>
+                  <span class="arrow"></span>
+                </a>
+                <!-- START 2nd Level Menu -->
+                <ul id="sidebar-organizations-menu" class="submenu collapse ">
+                  <li class="submenu-header ellipsis"><%= t "organizations" %></li>
+                  <% @user_organizations.each do |organization| %>
+                      <li >
+                        <a href="<%= organization_path(organization) %>">
+                          <span class="text"><%= organization.name %></span>
+                        </a>
+                      </li>
+                  <% end %>
+                </ul>
+                <!--/ END 2nd Level Menu -->
+            </li>
+        </ul>
+        <!--/ END Template Navigation/Menu -->
+
+    </section>
+    <!--/ END Sidebar Container -->
+</aside>
+<!--/ END Template Sidebar (Left) -->
