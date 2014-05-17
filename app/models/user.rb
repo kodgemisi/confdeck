@@ -30,4 +30,8 @@ class User < ActiveRecord::Base
     gravatar_id = Digest::MD5::hexdigest(self.email).downcase
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
   end
+
+  def display_name
+    email
+  end
 end
