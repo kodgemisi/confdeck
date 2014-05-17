@@ -125,4 +125,9 @@ class ConferencesController < ApplicationController
       format.json { render json: @appeal_types }
     end
   end
+
+  #admin side #show equivalent
+  def manage
+
+  end
 end

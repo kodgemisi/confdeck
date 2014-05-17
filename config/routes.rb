@@ -34,7 +34,8 @@ Confman::Application.routes.draw do
       end
     end
     member do
-     get 'appeal_types'
+      get 'appeal_types'
+      get 'manage'
     end
   end
 

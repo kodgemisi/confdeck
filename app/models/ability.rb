@@ -20,7 +20,7 @@ class Ability
     user ||= User.new # guest user (not logged in)
     #can :manage, Conference
     can [:create, :read], Conference
-    can [:update, :destroy, :schedule, :appeal_types], Conference do |conference|
+    can [:update, :destroy, :schedule, :appeal_types, :manage], Conference do |conference|
       conference.users.include? user
     end
 

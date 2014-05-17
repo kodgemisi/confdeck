@@ -21,7 +21,7 @@
                   <li class="submenu-header ellipsis"><%= t "conferences" %></li>
                   <% @user_conferences.each do |conference| %>
                       <li >
-                        <a href="<%= conference_path(conference) %>">
+                        <a href="<%= manage_conference_path(conference) %>">
                           <span class="text"><%= conference.name %></span>
 
                           <span class="number <%= "hidden" if conference.waiting_appeals.count == 0 %>"> <!-- hide if no waiting appeal -->
