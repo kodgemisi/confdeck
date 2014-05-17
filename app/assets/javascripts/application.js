@@ -28,6 +28,8 @@
 //= require kendo.window
 //= require core
 //= require adminre
+//= require adminre/jquery.steps
+//= require adminre/form-wizard
 
 
 $(document).ready(function(){

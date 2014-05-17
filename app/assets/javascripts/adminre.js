@@ -96,7 +96,7 @@ $(function () {
     APP.init();
 
     // Init template sidebar summary
-    APP.sidebarSparklines.init();
+    //APP.sidebarSparklines.init();
 
     // Init template message dropdown
     APP.headerDropdown.init({

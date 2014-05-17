@@ -2,6 +2,7 @@
 *= require kendo.common
 *= require kendo.default
 *= require kendo.flat
+*= require adminre/jquery-steps
 */
 /*
   Place all the styles related to the matching controller here.
