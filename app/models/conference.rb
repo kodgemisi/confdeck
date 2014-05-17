@@ -30,6 +30,8 @@ class Conference < ActiveRecord::Base
   has_many :rooms
   has_many :slots
   has_many :appeals
+  has_many :waiting_appeals, class_name: "Appeal", conditions: {:state => "waiting_review"}
+  has_many :accepted_appeals, class_name: "Appeal", conditions: {:state => "accepted"}
   has_many :appeal_types
   has_many :topics, through: :appeals
   has_many :email_templates
@@ -65,10 +67,6 @@ class Conference < ActiveRecord::Base
 
   def unassigned_topics
     self.appeals.accepted.map {|a| a unless self.slots.pluck(:topic_id).include? a.topic_id }.reject { |a| a.nil? }
-  end
-
-  def accepted_topics
-    self.appeals.accepted
   end
 
   def to_liquid
