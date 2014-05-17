@@ -1,0 +1,160 @@
+<!-- START Template Header -->
+<header id="header" class="navbar navbar-fixed-top">
+    <!-- START navbar header -->
+    <div class="navbar-header">
+      <!-- Brand -->
+      <a class="navbar-brand" href="javascript:void(0);">
+        <span class="logo-text">ConfDeck</span>
+      </a>
+      <!--/ Brand -->
+    </div>
+    <!--/ END navbar header -->
+
+    <!-- START Toolbar -->
+    <div class="navbar-toolbar clearfix">
+        <!-- START Left nav -->
+        <ul class="nav navbar-nav navbar-left">
+            <!-- Sidebar shrink -->
+            <li class="hidden-xs hidden-sm">
+              <a href="javascript:void(0);" class="sidebar-minimize" data-toggle="minimize" title="Minimize sidebar">
+                <span class="meta">
+                    <span class="icon"></span>
+                </span>
+              </a>
+            </li>
+            <!--/ Sidebar shrink -->
+
+            <!-- Navbar collapse -->
+            <li class="navbar-toggle">
+              <a href="javascript:void(0);" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="meta">
+                        <span class="icon"><i class="ico-sort-by-attributes-alt"></i></span>
+                    </span>
+              </a>
+            </li>
+            <!--/ Navbar collapse -->
+
+            <!-- Offcanvas left: This menu will take position at the top of template header (mobile only). Make sure that only #header have the `position: relative`, or it may cause unwanted behavior -->
+            <li class="navbar-main hidden-lg hidden-md hidden-sm">
+              <a href="javascript:void(0);" data-toggle="offcanvas" data-direction="ltr" rel="tooltip" title="Menu sidebar">
+                    <span class="meta">
+                        <span class="icon"><i class="ico-paragraph-left3"></i></span>
+                    </span>
+              </a>
+            </li>
+            <!--/ Offcanvas left -->
+
+            <!-- Notification dropdown -->
+            <li class="dropdown custom" id="header-dd-notification">
+              <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="meta">
+                    <span class="icon"><i class="ico-bell"></i></span>
+                    <span class="hasnotification hasnotification-danger"></span>
+                </span>
+              </a>
+
+
+              <!-- Dropdown menu -->
+              <div class="dropdown-menu" role="menu">
+                <div class="dropdown-header">
+                  <span class="title">Notification <span class="count"></span></span>
+                  <span class="option text-right"><a href="javascript:void(0);">Clear all</a></span>
+                </div>
+                <div class="dropdown-body slimscroll">
+                  <!-- indicator -->
+                  <div class="indicator inline"><span class="spinner"></span></div>
+                  <!--/ indicator -->
+
+                  <!-- Message list -->
+                  <div class="media-list">
+                    <a href="javascript:void(0);" class="media read border-dotted">
+                        <span class="media-object pull-left">
+                            <i class="ico-basket2 bgcolor-info"></i>
+                        </span>
+                        <span class="media-body">
+                            <span class="media-text">Duis aute irure dolor in <span class="text-primary semibold">reprehenderit</span> in voluptate.</span>
+                            <!-- meta icon -->
+                            <span class="media-meta pull-right">2d</span>
+                            <!--/ meta icon -->
+                        </span>
+                    </a>
+                  </div>
+                  <!--/ Message list -->
+                </div>
+              </div>
+              <!--/ Dropdown menu -->
+            </li>
+            <!--/ Notification dropdown -->
+
+        </ul>
+        <!--/ END Left nav -->
+
+
+    <!-- START Right nav -->
+    <ul class="nav navbar-nav navbar-right">
+      <!-- Profile dropdown -->
+      <li class="dropdown profile">
+        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+            <span class="meta">
+                <span class="avatar"><img src="<%= current_user.avatar_url %>" class="img-circle" alt=""/></span>
+                <span class="text hidden-xs hidden-sm pl5"><%= current_user.display_name %></span>
+                <span class="caret"></span>
+            </span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="javascript:void(0);"><span class="icon"><i class="ico-cog4"></i></span> Profile Settings</a></li>
+          <li><a href="javascript:void(0);"><span class="icon"><i class="ico-question"></i></span> Help</a></li>
+          <li class="divider"></li>
+          <li>
+            <%= link_to destroy_user_session_path, :method => :delete do %>
+                <span class="icon"><i class="ico-exit"></i></span><%= t "logout" %></a>
+            <% end %>
+          </li>
+        </ul>
+      </li>
+      <!--/ Profile dropdown -->
+
+    </ul>
+    <!--/ END Right nav -->
+
+    <!-- START nav collapse -->
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li>
+          <a href="#">
+            <span class="meta">
+                <span class="text">This menu</span>
+            </span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span class="meta">
+                <span class="text">Will collapse</span>
+            </span>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="meta">
+                    <span class="text">On mobile</span>
+                    <span class="caret"></span>
+                </span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!--/ END nav collapse -->
+    </div>
+<!--/ END Toolbar -->
+</header>
+<!--/ END Template Header -->
