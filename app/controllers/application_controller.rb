@@ -13,7 +13,16 @@
 
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :set_user_data
+
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, :alert => exception.message
+  end
+
+
+  # to make accessible across all controllers to use on sidebar
+  def set_user_data
+    @user_conferences = current_user.conferences
+    @user_organizations = current_user.organizations
   end
 end
