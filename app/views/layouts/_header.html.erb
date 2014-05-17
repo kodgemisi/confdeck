@@ -85,7 +85,11 @@
               <!--/ Dropdown menu -->
             </li>
             <!--/ Notification dropdown -->
-
+            <li>
+              <%= link_to new_conference_path do %>
+                  <button type="button" class="btn btn-primary mb5"><i class="ico-magic"></i> &nbsp; <%= t("new_conference") %></button>
+              <% end %>
+            </li>
         </ul>
         <!--/ END Left nav -->
 
@@ -116,6 +120,8 @@
 
     </ul>
     <!--/ END Right nav -->
+
+
 
     <!--&lt;!&ndash; START nav collapse &ndash;&gt;-->
     <!--<div class="collapse navbar-collapse" id="navbar-collapse">-->
