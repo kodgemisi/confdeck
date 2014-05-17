@@ -38,7 +38,9 @@ end
 gem 'uglifier', '>= 1.0.3'
 gem 'jquery-ui-rails'
 
-gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2
+group :assets do
+  gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2
+end
 gem 'bootstrap-sass', '~> 3.1.0'
 
 gem 'jquery-rails'
