@@ -20,6 +20,34 @@ tr:
     phone: "Telefon Numarası"
     twitter: "Twitter"
     facebook: "Facebook"
+  conference:
+    new: "Yeni Konferans"
+    address: "Adres"
+    basic_information: "Temel Bilgiler"
+    details: "Detaylar"
+    contact_info: "İletişim Bilgileri"
+    wizard:
+      title: "Konferans Oluşturma Sihirbazı"
+      step1:
+        desc:
+          title: "Konferans ile ilgili temel bilgiler"
+          text: ""
+      step2:
+        desc:
+          title: "Konferansın yapılacağı yer ile ilgili bilgiler"
+          text: "Harita üzerindeki arama formunu kullanarak adres araması yapabilirsiniz"
+      step3:
+        desc:
+          title: ""
+          text: ""
+      step4:
+        desc:
+          title: ""
+          text: ""
+  address:
+    city: "Şehir"
+    location: "Konum"
+    info: "Detay"
   create_appeal: "Başvuruyu Oluştur"
   application_received: "%{topic} Başvurunuz alınmıştır"
   create: "Oluştur"

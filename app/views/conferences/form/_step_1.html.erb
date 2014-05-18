@@ -1,0 +1,80 @@
+<!-- Wizard Container 1 -->
+<div class="wizard-title"><%= t "conference.basic_information" %></div>
+<div class="wizard-container">
+  <div class="form-group">
+    <div class="col-md-12">
+      <h5 class="semibold text-primary nm"><%= t "conference.wizard.step1.desc.title" %></h5>
+      <p class="text-muted nm"><%= t "conference.wizard.step1.desc.text" %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      <div class="form-group nb">
+        <label for="from" class="col-lg-3 control-label"><%= t("Start Date") %></label>
+
+        <div class="col-lg-9">
+          <input type="text" class="form-control" id="from" name="from" placeholder="mm/dd/yyyy" value="<%= @conference.days.first.date.strftime("%m/%d/%Y") if @conference.days.first%>" required/>
+
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      <div class="form-group nb">
+        <label for="from" class="col-lg-3 control-label"><%= t("End Date") %></label>
+
+        <div class="col-lg-9">
+          <input type="text" class="form-control" id="to" name="to" placeholder="mm/dd/yyyy" value="<%= @conference.days.last.date.strftime("%m/%d/%Y") if @conference.days.last%>" required/>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      <div class="form-group nb">
+        <%= f.label :name, :class => "col-lg-3 control-label" %>
+
+        <div class="col-lg-9">
+          <%= f.text_field :name, :class => "form-control", :required => "required" %>
+        </div>
+      </div>
+      <div class="form-group nb">
+        <%= f.label :slug, :class => "col-lg-3 control-label" %>
+
+        <div class="col-lg-9">
+          <%= f.text_field :slug, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="form-group nb">
+        <%= f.label :summary, :class => "col-lg-3 control-label" %>
+
+        <div class="col-lg-9">
+          <%= f.text_field :summary, :class => "form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6">
+      <div class="form-group">
+        <%= f.label :organization, :class => "col-lg-3 control-label" %>
+
+        <div class="col-lg-9">
+          <%= f.collection_select :organization_ids, current_user.organizations, :id, :name, {}, {:multiple => true, :class => "form-control", :style => "float:left; width:88%", :required => "required"}%>
+          <a data-toggle="modal" href="#newOrg" class="btn btn-primary btn-small tt" style="float:left; margin-left: 7px" title="Add New Organization"><i class="ico-plus-sign"></i></a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="form-group">
+        <%= f.label :description, :class => "col-sm-1 control-label" %>
+
+        <div class="col-lg-10">
+          <%= f.text_area :description, :class => "form-control" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/ Wizard Container 1 -->

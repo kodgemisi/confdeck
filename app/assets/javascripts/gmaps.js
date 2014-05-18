@@ -12,7 +12,7 @@ function initialize() {
         }
 
 
-        var map = new google.maps.Map(document.getElementById('map-canvas'), {
+        window.map = new google.maps.Map(document.getElementById('map-canvas'), {
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             center: center_coord ,
             zoom: zoom

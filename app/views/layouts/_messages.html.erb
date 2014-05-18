@@ -1,0 +1,40 @@
+<% if flash[:success] %>
+    <div class="alert alert-success">
+      <button class="close" data-dismiss="alert">×</button>
+      <strong><span class="awe-ok-sign"></span></strong>  <%= flash[:success] %>
+    </div>
+<% end  %>
+
+<% if flash[:info] %>
+    <div class="alert alert-info">
+      <button class="close" data-dismiss="alert">×</button>
+      <strong><span class="awe-info-sign"></span>&nbsp; Bilgi:</strong>  <%= flash[:info] %>
+    </div>
+<% end  %>
+
+<% if flash[:notice] %>
+    <div class="alert alert-info">
+      <button class="close" data-dismiss="alert">×</button>
+      <strong><span class="awe-info-sign"></span></strong>  <%= flash[:notice] %>
+    </div>
+<% end  %>
+
+<% if flash[:error] %>
+    <div class="alert alert-error">
+      <button class="close" data-dismiss="alert"></button>
+      <strong><span class="awe-warning-sign"></span></strong>  <%= flash[:error] %>
+    </div>
+<% end %>
+
+
+<% if flash[:alert] %>
+    <div class="alert alert-error">
+      <button class="close" data-dismiss="alert"></button>
+      <strong><span class="awe-warning-sign"></span></strong>  <%= flash[:alert] %>
+    </div>
+<% end %>
+
+<div class="flashnotice alert alert-info" style="display:none">
+  <button class="close" data-dismiss="alert"></button>
+  <strong><span class="awe-info-sign"></span></strong>&nbsp;&nbsp;<span class="flashmessage"></span>
+</div>

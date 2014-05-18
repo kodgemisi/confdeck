@@ -8,9 +8,13 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+
+.address-field{
+    height: 150px !important;
+}
+
 .address-map {
     height: 400px;
-    width: 100%;
     padding-right: 30px
 }
 #map-canvas {
@@ -27,3 +31,21 @@
     padding: 5px;
     border: 1px solid #999;
 }
+
+.conference-wizard .row {
+    border-top: 1px solid transparent;
+    border-top-color: #e0e7e8 !important
+}
+
+
+.conference-wizard .nb { /* no border*/
+    border: 0px !important;
+}
+
+.conference-wizard .alert { /* no border*/
+    border-radius: 0;
+    border: 0;
+}
+
+
+

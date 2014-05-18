@@ -13,23 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.core
-//= require jquery.ui.effect
-//= require jquery.ui.effect-highlight
 //= require jquery.ui.datepicker
 //= require bootstrap
-//= require gmaps
 //= require best_in_place
-//= require kendo.web
-//= require kendo.validator
-//= require kendo.scheduler
-//= require kendo.scheduler.view
-//= require kendo.scheduler.dayview
-//= require kendo.scheduler.recurrence
-//= require kendo.window
 //= require core
 //= require adminre
 //= require adminre/jquery.steps
-//= require adminre/form-wizard
 
 
 $(document).ready(function(){

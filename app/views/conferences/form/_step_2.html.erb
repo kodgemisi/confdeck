@@ -1,0 +1,41 @@
+<!-- Wizard Container 2 -->
+<div class="wizard-title"><%= t("conference.address") %></div>
+<div class="wizard-container">
+  <div class="form-group">
+    <div class="col-md-12">
+      <h5 class="semibold text-primary nm"><%= t "conference.wizard.step2.desc.title" %></h5>
+      <p class="text-muted nm"><%= t "conference.wizard.step2.desc.text" %></p>
+    </div>
+  </div>
+  <%= f.fields_for :address do |address_form| %>
+      <div class="form-group">
+        <%= address_form.label t("address.info"), :class => "col-lg-3 control-label"%>
+
+        <div class="col-lg-9">
+          <%= address_form.text_area :info, :class => "form-control address-field" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= address_form.label  t("address.city"), :class => "col-lg-3 control-label" %>
+
+        <div class="col-lg-9">
+          <%= address_form.text_field :city, :class => "form-control" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <%= address_form.label t("address.location"), :class => "col-lg-3 control-label" %>
+          <div class="col-lg-9 address-map">
+            <div id="panel">
+              <input id="target" type="text" placeholder="Search Box" class="disable-enter">
+            </div>
+            <div id="map-canvas"></div>
+          </div>
+
+          <%= address_form.hidden_field :lat, :value => "41.005811774870615", :id => "map_lat"  %>
+          <%= address_form.hidden_field :lon, :value => "28.96820068359375", :id => "map_lon" %>
+        </div>
+      </div>
+  <% end %>
+</div>
+<!--/ Wizard Container 2 -->
