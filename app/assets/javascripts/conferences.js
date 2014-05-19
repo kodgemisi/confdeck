@@ -25,7 +25,8 @@ $(function () {
         numberOfMonths: 1,
         onClose: function (selectedDate) {
             $("#to").datepicker("option", "minDate", selectedDate);
-        }
+        },
+        dateFormat: 'dd/mm/yy'
     });
     $("#to").datepicker({
         defaultDate: "+1w",
@@ -33,6 +34,7 @@ $(function () {
         numberOfMonths: 1,
         onClose: function (selectedDate) {
             $("#from").datepicker("option", "maxDate", selectedDate);
-        }
+        },
+        dateFormat: 'dd/mm/yy'
     });
 });

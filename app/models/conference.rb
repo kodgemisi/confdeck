@@ -16,6 +16,11 @@ class Conference < ActiveRecord::Base
 
   attr_accessible :description, :email, :facebook, :name, :phone, :summary, :twitter, :website, :address_attributes, :organization_ids, :logo, :heading_image, :keywords, :slug, :email_templates_attributes
 
+  attr_accessor :from_date
+  attr_accessor :to_date
+  attr_accessible :from_date
+  attr_accessible :to_date
+
   friendly_id :name, use: :slugged
 
   def should_generate_new_friendly_id?
@@ -48,8 +53,29 @@ class Conference < ActiveRecord::Base
   accepts_nested_attributes_for :days
   accepts_nested_attributes_for :email_templates
 
-  validates_presence_of :name, :organizations, :email
+  validates_presence_of :name, :organizations, :email, :from_date, :to_date
 
+
+  #validates :from_date, date: true
+  #validates :to_date, date: true
+  #validates :from_date, date: { before: :to_date }
+  validate :valid_from_date?
+  validate :valid_to_date?
+  def valid_from_date?
+    begin
+      DateTime.strptime(from_date, I18n.t(:"date.formats.default"))
+    rescue
+      errors.add(:from_date, I18n.t("x"))
+    end
+  end
+
+  def valid_to_date?
+    begin
+      DateTime.strptime(to_date, I18n.t(:"date.formats.default"))
+    rescue
+      errors.add(:from_date, I18n.t("x"))
+    end
+  end
   has_attached_file :logo, :styles => { :medium => "400x400>", :thumb => "200x100>" }, :default_url => "/assets/missing_:style.png"
   has_attached_file :heading_image, :styles => { :default => "1900x254", :thumb => "200x100"}, :default_url => "/assets/heading_missing_:style.png"
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/

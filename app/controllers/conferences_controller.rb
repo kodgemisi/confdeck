@@ -61,8 +61,15 @@ class ConferencesController < ApplicationController
   # POST /conferences.json
   def create
     @conference = Conference.new(params[:conference])
-    from_date = DateTime.strptime(params[:from], "%m/%d/%Y")
-    to_date = DateTime.strptime(params[:to], "%m/%d/%Y")
+
+    begin
+      from_date = DateTime.strptime(@conference.from_date, I18n.t(:"date.formats.default"))
+    rescue
+    end
+    begin
+      to_date = DateTime.strptime(@conference.to_date, I18n.t(:"date.formats.default"))
+    rescue
+    end
 
 
     respond_to do |format|
