@@ -1,8 +1,6 @@
-<div class="page-header page-header-block">
-  <div class="page-header-section">
-    <h4 class="title semibold"><%= t "conference.new" %></h4>
-  </div>
-</div>
+<% content_for :page_title  do %>
+    <%= t("conference.new") %>
+<% end %>
 
 <%= render 'form' %>
 
