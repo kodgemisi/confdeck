@@ -120,7 +120,7 @@ tr:
   new_speaker: "Yeni Konuşmacı Ekle"
   create_speaker: "Konuşmacı Oluştur"
   speaker_application_header: "%{conference_name} Konuşmacı Başvurusu"
-  Homepage: "Anasayfa"
+  homepage: "Anasayfa"
   dashboard: "Anasayfa"
   appeal:
     appeal_type: "Başvuru Tipi"
@@ -190,3 +190,8 @@ tr:
   description: "Açıklama"
   subject: "Başlık"
   body: "Posta"
+  devise:
+    sessions:
+      login_to_your_account: "Login to your account"
+      dont_have_account: "Don't have any account?"
+      sign_up_to_get_started: "Sign up to get gtarted"

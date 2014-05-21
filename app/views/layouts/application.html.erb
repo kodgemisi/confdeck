@@ -16,6 +16,11 @@
     <section id="main" role="main">
       <!-- START Template Container -->
       <div class="container-fluid">
+            <div class="page-header page-header-block">
+              <div class="page-header-section">
+                <h4 class="title semibold"><%= yield(:page_title) %></h4>
+              </div>
+            </div>
             <%= render "layouts/messages" %>
             <%= yield %>
       </div>

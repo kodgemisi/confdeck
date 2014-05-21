@@ -1,19 +1,81 @@
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "form-signin"}) do |f| %>
-    <h2 class="form-signin-heading">Sign In</h2>
-    <%= f.text_field :email, :autofocus => true, :class => "form-control", :placeholder => "Email" %>
-    <%= f.password_field :password,:class => "form-control", :placeholder => "Password" %>
-  <label class="checkbox">
-    <% if devise_mapping.rememberable? -%>
-        <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-    <% end -%>
-  </label>
-  <div><%= f.submit "Sign in", :class => "btn btn-lg btn-primary btn-block" %></div>
 
-<% end %>
 
-<div class="row">
-  <div class="col-lg-4 col-lg-offset-8">
-    <%= render "devise/shared/links" %>
-  </div>
-</div>
+<section id="main" role="main">
+  <!-- START Template Container -->
+  <section class="container">
+    <!-- START row -->
+    <div class="row">
+      <div class="col-lg-4 col-lg-offset-4">
+        <!-- Brand -->
+        <div class="text-center" style="margin-bottom:40px;">
+          <span class="logo-figure inverse"></span>
+          <span class="logo-text inverse"></span>
+          <h5 class="semibold text-muted mt-5"><%= t("devise.sessions.login_to_your_account") %></h5>
+        </div>
+        <!--/ Brand -->
 
+        <!-- Social button -->
+        <ul class="list-table">
+          <li><button type="button" class="btn btn-block btn-facebook">Connect with <i class="ico-facebook2 ml5"></i></button></li>
+          <li><button type="button" class="btn btn-block btn-twitter">Connect with <i class="ico-twitter2 ml5"></i></button></li>
+        </ul>
+        <!-- Social button -->
+
+        <hr><!-- horizontal line -->
+
+        <!-- Login form -->
+
+        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "panel"}) do |f| %>
+
+          <div class="panel-body">
+            <!-- Alert message -->
+            <div class="alert alert-warning">
+              <span class="semibold">Note :</span>&nbsp;&nbsp;Just put anything and hit 'sign-in' button.
+            </div>
+            <!--/ Alert message -->
+            <div class="form-group">
+              <div class="form-stack has-icon pull-left">
+                <%= f.text_field :email, :autofocus => true, :class => "form-control input-lg", :placeholder => t("Email") %>
+                <i class="ico-user2 form-control-icon"></i>
+              </div>
+              <div class="form-stack has-icon pull-left">
+                <%= f.password_field :password,:class => "form-control input-lg",  :placeholder => t("Password") %>
+                <i class="ico-lock2 form-control-icon"></i>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <div class="row">
+                <% if devise_mapping.rememberable? -%>
+                    <div class="col-xs-6">
+                      <div class="checkbox custom-checkbox">
+                        <%= f.check_box :remember_me %>
+                        <label for="remember">&nbsp;&nbsp;<%= f.label :remember_me %></label>
+                      </div>
+                    </div>
+                <% end -%>
+
+                <div class="col-xs-6 text-right">
+                  <a href="javascript:void(0);">Lost password?</a>
+                </div>
+              </div>
+            </div>
+            <div class="form-group nm">
+              <%= f.submit "Sign in", :class => "btn btn-block btn-success" %>
+            </div>
+          </div>
+        <% end %>
+        <!-- Login form -->
+
+        <hr><!-- horizontal line -->
+
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+            <p class="text-muted text-center"> <%= t("devise.sessions.dont_have_account") %> <%= link_to t("devise.sessions.sign_up_to_get_started"), new_registration_path(resource_name) %></p>
+        <% end -%>
+      </div>
+    </div>
+    <!--/ END row -->
+  </section>
+  <!--/ END Template Container -->
+</section>
