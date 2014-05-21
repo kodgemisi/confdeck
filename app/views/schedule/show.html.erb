@@ -9,7 +9,7 @@
   <div class="col-lg-9">
     <div id="scheduler"></div>
   </div>
-  <div class="col-lg-3 sidebar">
+  <div class="col-lg-3">
     <button type="button" class="btn btn-primary btn-block create-room-button" ><%= t :create_room %></button>
     <div class="appeal-list">
         <%= render "schedule/appeal_list", appeal_types: @appeal_types %>
@@ -20,7 +20,7 @@
 <div class="create-room-window">
   <%= form_for([@conference, @room], remote: true, html: {class: "form-horizontal"}) do |f| %>
     <%= f.hidden_field :conference_id, value: @conference.id %>
-    <div class="form-group">
+    <div class="form-group nm">
         <%= f.label :name, t("room.name"), class: "col-lg-2 control-label" %>
         <div class="col-lg-7">
           <%= f.text_field :name, class: "form-control" %>

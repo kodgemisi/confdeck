@@ -1,3 +1,10 @@
+//= require kendo.web
+//= require kendo.validator
+//= require kendo.scheduler
+//= require kendo.scheduler.view
+//= require kendo.scheduler.dayview
+//= require kendo.scheduler.recurrence
+//= require kendo.window
 
 $(function(){
     if ($("#scheduler").length == 0)
