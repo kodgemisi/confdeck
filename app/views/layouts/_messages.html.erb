@@ -20,7 +20,7 @@
 <% end  %>
 
 <% if flash[:error] %>
-    <div class="alert alert-error">
+    <div class="alert alert-danger">
       <button class="close" data-dismiss="alert"></button>
       <strong><span class="awe-warning-sign"></span></strong>  <%= flash[:error] %>
     </div>
@@ -28,7 +28,7 @@
 
 
 <% if flash[:alert] %>
-    <div class="alert alert-error">
+    <div class="alert alert-danger">
       <button class="close" data-dismiss="alert"></button>
       <strong><span class="awe-warning-sign"></span></strong>  <%= flash[:alert] %>
     </div>
