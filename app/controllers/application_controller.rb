@@ -27,6 +27,8 @@ class ApplicationController < ActionController::Base
   def layout_for_devise
     if devise_controller?
       "application_no_nav"
+    else
+      "application"
     end
   end
 
