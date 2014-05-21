@@ -51,7 +51,7 @@ gem 'faker'
 gem 'font-awesome-sass'
 gem 'liquid'
 gem 'jbuilder'
-
+gem 'date_validator'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

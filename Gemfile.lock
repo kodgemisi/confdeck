@@ -50,6 +50,8 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.3)
       climate_control (>= 0.0.3, < 1.0)
+    date_validator (0.7.0)
+      activemodel (>= 3)
     devise (3.2.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -190,6 +192,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.1.0)
   cancan
   capistrano (~> 2.15)
+  date_validator
   devise
   devise_invitable
   faker
