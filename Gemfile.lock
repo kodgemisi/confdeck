@@ -41,7 +41,6 @@ GEM
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     builder (3.2.2)
-    cancan (1.6.10)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.4)
@@ -214,7 +213,6 @@ DEPENDENCIES
   best_in_place
   better_errors
   bootstrap-sass (~> 3.1.0)
-  cancan
   date_validator
   devise
   devise_invitable

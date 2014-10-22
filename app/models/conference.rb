@@ -16,6 +16,9 @@ class Conference < ActiveRecord::Base
 
   friendly_id :name, use: :slugged
 
+  attr_accessor :from_date
+  attr_accessor :to_date
+
   def should_generate_new_friendly_id?
     name_changed?
   end

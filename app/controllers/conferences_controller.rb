@@ -13,7 +13,6 @@
 
 class ConferencesController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
-  load_and_authorize_resource
 
   layout 'conference_landing', :only => [:show]
   # GET /conferences
@@ -60,7 +59,7 @@ class ConferencesController < ApplicationController
   # POST /conferences
   # POST /conferences.json
   def create
-    @conference = Conference.new(params[:conference])
+    @conference = Conference.new(conference_params)
 
     begin
       from_date = DateTime.strptime(@conference.from_date, I18n.t(:"date.formats.default"))
@@ -94,7 +93,7 @@ class ConferencesController < ApplicationController
      to_date = DateTime.strptime(params[:to], "%m/%d/%Y")
     end
     respond_to do |format|
-      if @conference.update_attributes(params[:conference])
+      if @conference.update_attributes(conference_params)
         if (params[:from] && params[:to])
          @conference.days.destroy_all
          @conference.create_days(from_date, to_date)
@@ -137,4 +136,9 @@ class ConferencesController < ApplicationController
   def manage
 
   end
+
+  private
+    def conference_params
+      params.require(:conference).permit(:from_date, :to_date, :name, :slug, :summary, :organizations, :description, :website, :twitter, :facebook, :email, :phone, address_attributes: [:info, :city, :lat, :lon])
+    end
 end

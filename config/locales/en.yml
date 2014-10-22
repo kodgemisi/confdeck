@@ -11,14 +11,34 @@ en:
         organization: 
         slug: 
         summary: 
+        email: 
+        facebook: 
+        phone: 
+        twitter: 
+        website: 
+        organizations: 
+      address:
+        Detay: 
+        Konum: 
+        "Şehir": 
+      organization:
+        organization_name: 
+        name: 
+        logo: 
     errors:
       models:
         speaker:
           attributes:
             phone:
               blank: 
+        conference:
+          attributes:
+            organizations:
+              blank: 
     models:
       conference: 
+      invitation: 
+      organization: 
   additional_info: 
   address:
     city: 
@@ -157,3 +177,32 @@ en:
   waiting_appeals: 
   waiting_review: 
   x: 
+  helpers:
+    submit:
+      invitation:
+        create: 
+      organization:
+        create: 
+    label:
+      conference[address_attributes]:
+        Detay: 
+        Konum: 
+        "Şehir": 
+      conference:
+        description: 
+        email: 
+        facebook: 
+        name: 
+        organization: 
+        phone: 
+        slug: 
+        summary: 
+        twitter: 
+        website: 
+      organization:
+        organization_name: 
+        logo: 
+        name: 
+        website: 
+  errors:
+    format: 

@@ -19,9 +19,6 @@ gem 'state_machine'
 
 gem 'friendly_id', '~> 5.0.0'
 
-gem "cancan"
-
-
 group :production do
   gem 'therubyracer'
   gem 'rails_12factor' #adds heroku enhanchments
