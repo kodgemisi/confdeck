@@ -13,7 +13,7 @@
         <label for="from" class="col-lg-3 control-label"><%= t(:"conference.start_date") %></label>
 
         <div class="col-lg-9">
-          <%= f.text_field :from_date, :id => "from", :class => "form-control", :required => "required", :placeholder => "dd/mm/yyyy", :value => (@conference.days.first.date.strftime("%d/%m/%Y") if @conference.days.first) %>
+          <%= f.text_field :from_date, :id => "from", :class => "form-control", :required => "required", :placeholder => "dd/mm/yyyy" %>
 
         </div>
       </div>
@@ -23,7 +23,7 @@
         <label for="from" class="col-lg-3 control-label"><%= t(:"conference.end_date") %></label>
 
         <div class="col-lg-9">
-          <%= f.text_field :to_date, :id => "to", :class => "form-control", :required => "required", :placeholder => "dd/mm/yyyy", :value => (@conference.days.last.date.strftime("%d/%m/%Y") if @conference.days.last) %>
+          <%= f.text_field :to_date, :id => "to", :class => "form-control", :required => "required", :placeholder => "dd/mm/yyyy" %>
         </div>
       </div>
     </div>
