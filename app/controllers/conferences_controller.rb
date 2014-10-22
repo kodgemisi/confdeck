@@ -55,6 +55,9 @@ class ConferencesController < ApplicationController
   # GET /conferences/1/edit
   def edit
     @conference = Conference.find(params[:id])
+    @conference.to_date = @conference.days.last.date.strftime("%d/%m/%Y")
+    @conference.from_date = @conference.days.first.date.strftime("%d/%m/%Y")
+
   end
 
   # POST /conferences
