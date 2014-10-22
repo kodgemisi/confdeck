@@ -13,8 +13,7 @@
         <label for="from" class="col-lg-3 control-label"><%= t(:"conference.start_date") %></label>
 
         <div class="col-lg-9">
-          <%= f.text_field :from_date, :id => "from", :class => "form-control", :required => "required", :placeholder => "dd/mm/yyyy" %>
-
+          <%= f.text_field :from_date, :id => "from", :class => "form-control required", :placeholder => "dd/mm/yyyy" %>
         </div>
       </div>
     </div>
@@ -23,7 +22,7 @@
         <label for="from" class="col-lg-3 control-label"><%= t(:"conference.end_date") %></label>
 
         <div class="col-lg-9">
-          <%= f.text_field :to_date, :id => "to", :class => "form-control", :required => "required", :placeholder => "dd/mm/yyyy" %>
+          <%= f.text_field :to_date, :id => "to", :class => "form-control required", :placeholder => "dd/mm/yyyy" %>
         </div>
       </div>
     </div>
@@ -35,7 +34,7 @@
         <%= f.label :name, :class => "col-lg-3 control-label" %>
 
         <div class="col-lg-9">
-          <%= f.text_field :name, :class => "form-control", :required => "required" %>
+          <%= f.text_field :name, :class => "form-control required" %>
         </div>
       </div>
       <div class="form-group nb">
@@ -49,7 +48,7 @@
         <%= f.label :summary, :class => "col-lg-3 control-label" %>
 
         <div class="col-lg-9">
-          <%= f.text_field :summary, :class => "form-control" %>
+          <%= f.text_field :summary, :class => "form-control required" %>
         </div>
       </div>
     </div>
@@ -58,7 +57,7 @@
         <%= f.label :organization, :class => "col-lg-3 control-label" %>
 
         <div class="col-lg-9">
-          <%= f.collection_select :organization_ids, current_user.organizations, :id, :name, {}, {:multiple => true, :class => "form-control", :style => "float:left; width:88%", :required => "required"}%>
+          <%= f.collection_select :organization_ids, current_user.organizations, :id, :name, {}, {:multiple => true, :class => "form-control required", :style => "float:left; width:88%", :required => "required"}%>
           <a data-toggle="modal" href="#newOrg" class="btn btn-primary btn-small tt" style="float:left; margin-left: 7px" title="Add New Organization"><i class="ico-plus-sign"></i></a>
 
         </div>

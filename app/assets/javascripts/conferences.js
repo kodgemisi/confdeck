@@ -16,7 +16,15 @@ $(function () {
             if(currentIndex == 1){
                 google.maps.event.trigger(map, 'resize'); //Refresh map on address step
             }
+        },
+        onStepChanging: function (event, currentIndex, priorIndex) {
+
+            $(this).validate().settings.ignore = ":disabled,:hidden";
+
+            return $(this).valid();
         }
+    }).validate({
+        errorPlacement: function errorPlacement(error, element) { element.before(error); }
     });
 
     $("#from").datepicker({
