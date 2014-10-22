@@ -29,6 +29,9 @@ group :test, :development do
   gem "rspec-rails"
   gem "sqlite3"
   gem "better_errors"
+  gem 'shoulda-matchers'
+  gem 'guard-rspec'
+  gem 'spring-commands-rspec'
 end
 
 gem 'uglifier', '>= 1.0.3'
