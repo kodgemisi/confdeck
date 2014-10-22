@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.15'
+gem 'rails', '4.1.6'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -17,10 +17,7 @@ gem 'acts_as_votable', '~> 0.7.1'
 
 gem 'state_machine'
 
-gem "friendly_id", "~> 4.0.10"
-
-gem "cancan"
-
+gem 'friendly_id', '~> 5.0.0'
 
 group :production do
   gem 'therubyracer'
@@ -31,14 +28,13 @@ end
 group :test, :development do
   gem "rspec-rails"
   gem "sqlite3"
+  gem "better_errors"
 end
 
 gem 'uglifier', '>= 1.0.3'
 gem 'jquery-ui-rails'
 
-group :assets do
-  gem 'sass-rails', '>= 3.2' # sass-rails needs to be higher than 3.2
-end
+gem 'sass-rails', '>= 4.0' # sass-rails needs to be higher than 3.2
 gem 'bootstrap-sass', '~> 3.1.0'
 
 gem 'jquery-rails'

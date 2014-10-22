@@ -13,7 +13,6 @@
 
 class OrganizationsController < ApplicationController
   before_filter :authenticate_user!
-  load_and_authorize_resource
 
   # GET /organizations
   # GET /organizations.json
@@ -56,7 +55,7 @@ class OrganizationsController < ApplicationController
   # POST /organizations
   # POST /organizations.json
   def create
-    @organization = Organization.new(params[:organization])
+    @organization = Organization.new(organization_params)
 
     respond_to do |format|
       if @organization.save
@@ -77,7 +76,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
 
     respond_to do |format|
-      if @organization.update_attributes(params[:organization])
+      if @organization.update_attributes(organization_params)
         format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
         format.json { head :no_content }
       else
@@ -108,4 +107,10 @@ class OrganizationsController < ApplicationController
       end
     end
   end
+
+  private
+
+    def organization_params
+      params.require(:organization).permit(:name, :website, :logo)
+    end
 end

@@ -12,8 +12,6 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class Speaker < ActiveRecord::Base
-  attr_accessible :email, :facebook, :name, :phone, :twitter, :bio, :github
-
   has_and_belongs_to_many :topics
 
   validates_presence_of :email, :name, :phone

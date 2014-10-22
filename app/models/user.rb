@@ -17,12 +17,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
-  # attr_accessible :title, :body
-
-  has_and_belongs_to_many :organizations, :uniq => true
-  has_many :conferences, through: :organizations, uniq: true
+  has_and_belongs_to_many :organizations
+  has_many :conferences, through: :organizations
 
   acts_as_voter
 

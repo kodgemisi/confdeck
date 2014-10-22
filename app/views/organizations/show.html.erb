@@ -31,19 +31,17 @@
       <tr>
         <td class="span2" style="font-weight: bold">Invite New Member</td>
         <td>
-          <% if can? :invite, @organization %>
-              <%= form_for Invitation.new, url: invite_organization_path(@organization), :html => {:class => 'form-horizontal'} do |f| %>
-                  <%= f.hidden_field :organization_id, value: @organization.id %>
+            <%= form_for Invitation.new, url: invite_organization_path(@organization), :html => {:class => 'form-horizontal'} do |f| %>
+                <%= f.hidden_field :organization_id, value: @organization.id %>
 
-                  <div class="col-lg-5">
-                    <%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
-                  </div>
-                  <div class="col-lg-3">
-                    <%= f.submit :class => "btn btn-primary" %>
+                <div class="col-lg-5">
+                  <%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
+                </div>
+                <div class="col-lg-3">
+                  <%= f.submit :class => "btn btn-primary" %>
 
-                  </div>
-              <% end %>
-          <% end %>
+                </div>
+            <% end %>
         </td>
       </tr>
     </table>

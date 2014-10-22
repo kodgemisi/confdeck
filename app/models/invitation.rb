@@ -12,8 +12,6 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class Invitation < ActiveRecord::Base
-  attr_accessible :active, :email, :organization_id, :token
-
   before_save :generate_token
 
   validates_presence_of :email, :organization_id

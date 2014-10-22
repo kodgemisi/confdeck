@@ -18,5 +18,6 @@
 /public/system/conferences/heading_images
 /public/system
 /.sass-cache
+/config/initializers/localeapp.rb
 
 .localeapp
