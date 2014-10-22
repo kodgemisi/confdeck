@@ -1,0 +1,88 @@
+
+<div class="row">
+  <div class="col-md-12">
+    <%= error_messages! %>
+
+    <%= form_tag(update_settings_path, method: "post", class: "form-horizontal") do %>
+      <div class="panel panel-default">
+        <!-- panel heading/header -->
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= t("settings.general_settings") %></h3>
+        </div>
+        <!--/ panel heading/header -->
+        <!-- panel body -->
+        <div class="panel-body">
+          <div class="form-group">
+            <label class="col-md-3 control-label"><%= t("settings.language") %></label>
+            <div class="col-md-3">
+              <%= select_tag("settings[language]", options_for_select(@options[:language], @user_settings['language']), class: "form-control") %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="controls">
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <div class="pull-right">
+              <%= submit_tag(t("settings.save"), class:"btn btn-success") %>
+            </div>
+          </div>
+        </div>
+        <!-- panel body -->
+      </div>
+    <% end %>
+
+
+    <%= form_for(@user, :url => update_settings_path, :html => { :method => :post, class: "form-horizontal" }) do |f| %>
+
+    <div class="panel panel-default">
+        <!-- panel heading/header -->
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= t("settings.account_settings") %></h3>
+        </div>
+        <!--/ panel heading/header -->
+        <!-- panel body -->
+        <div class="panel-body">
+          <div class="form-group">
+            <label class="col-md-3 control-label"><%= t("settings.email") %></label>
+            <div class="col-md-3">
+              <%= f.email_field :email, class: "form-control" %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label"><%= t("settings.current_password") %></label>
+            <div class="col-md-3">
+              <%= f.password_field :current_password, :autocomplete => "off", class: "form-control" %>
+              <span class="help-block"><%= t("settings.current_password_help") %></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label"><%= t("settings.password") %></label>
+            <div class="col-md-3">
+              <%= f.password_field :password, :autocomplete => "off", class: "form-control" %>
+              <span class="help-block"><%= t("settings.password_help") %></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label"><%= t("settings.password_confirmation") %></label>
+            <div class="col-md-3">
+              <%= f.password_field :password_confirmation, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <div class="pull-right">
+              <%= submit_tag(t("settings.save"), class:"btn btn-success") %>
+            </div>
+          </div>
+        </div>
+        <!-- panel body -->
+      </div>
+
+
+
+        <%= f.hidden_field :account_settings, value: 1 %>
+    <% end %>
+  </div>
+</div>

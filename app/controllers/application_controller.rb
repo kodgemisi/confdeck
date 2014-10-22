@@ -14,6 +14,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :set_user_data
+  before_filter :set_locale
   layout :layout_for_devise
 
   protected
@@ -24,6 +25,19 @@ class ApplicationController < ActionController::Base
     else
       "application"
     end
+  end
+
+  def set_locale
+    if current_user
+      I18n.locale = current_user.settings[:language]
+    else
+      if  I18n.locale_available? extract_locale.to_sym
+        I18n.locale = extract_locale
+      else
+        I18n.locale = I18n.default_locale
+      end
+    end
+
   end
 
 

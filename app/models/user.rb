@@ -16,11 +16,16 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  after_create :set_default_settings
 
   has_and_belongs_to_many :organizations
   has_many :conferences, through: :organizations
 
   acts_as_voter
+
+  serialize :settings
+
+
 
   def avatar_url(size=150)
     gravatar_id = Digest::MD5::hexdigest(self.email).downcase
@@ -29,5 +34,16 @@ class User < ActiveRecord::Base
 
   def display_name
     email
+  end
+
+  def set_default_settings
+    self.settings = {
+        language: "en"
+    } if self.settings.nil?
+  end
+
+  def set!(key, val)
+    self.settings ||= {}
+    self.settings[key] = val
   end
 end

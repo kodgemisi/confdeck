@@ -25,6 +25,10 @@ en:
         organization_name: 
         name: 
         logo: 
+      user:
+        current_password: 
+        password: 
+        password_confirmation: 
     errors:
       models:
         speaker:
@@ -35,10 +39,18 @@ en:
           attributes:
             organizations:
               blank: 
+        user:
+          attributes:
+            current_password:
+              blank: 
+              invalid: 
+            password_confirmation:
+              confirmation: 
     models:
       conference: 
       invitation: 
       organization: 
+      user: 
   additional_info: 
   address:
     city: 

@@ -26,6 +26,10 @@ tr:
         name: Name
         logo: Logo
         website: Website
+      user:
+        current_password: Current password
+        password: Password
+        password_confirmation: Password confirmation
     errors:
       models:
         speaker:
@@ -36,10 +40,18 @@ tr:
           attributes:
             organizations:
               blank: 
+        user:
+          attributes:
+            current_password:
+              blank: 
+              invalid: 
+            password_confirmation:
+              confirmation: 
     models:
       conference: Konferans
       invitation: Invitation
       organization: Organization
+      user: User
   additional_info: Ek Bilgi
   address:
     city: "Şehir"
@@ -202,7 +214,7 @@ tr:
     - month
     - day
   description: Açıklama
-  error: 
+  error: Hata!
   hello: 
   homepage: Anasayfa
   logout: 
@@ -247,8 +259,7 @@ tr:
   errors:
     format: "%{attribute} %{message}"
     date:
-      invalid: "geçerli bir tarih değil"
-  error: Hata!
+      invalid: geçerli bir tarih değil
   helpers:
     submit:
       invitation:
@@ -276,3 +287,14 @@ tr:
         logo: 
         name: 
         website: 
+  settings:
+    account_settings: Hesap Ayarları
+    current_password: Mevcut Şifre
+    current_password_help: Değişiklikleri kaydetmek için mevcut şifreniz gereklidir.
+    email: Email
+    general_settings: Genel Ayarlar
+    language: Dil
+    password: "Şifre"
+    password_confirmation: "Şifre Onay"
+    password_help: Değişiklik yapmak istemiyorsanız boş bırakın
+    save: Kaydet

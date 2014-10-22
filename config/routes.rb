@@ -56,4 +56,7 @@ Confman::Application.routes.draw do
   end
   root :to => 'home#index'
 
+  get "settings", to: "settings#index"
+  post "settings", to: "settings#update", :as => "update_settings"
+
 end

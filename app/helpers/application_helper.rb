@@ -13,7 +13,27 @@
 
 module ApplicationHelper
 
- def bs_will_paginate(collection)
+  def error_messages!
+    resource = current_user if resource.nil?
+    resource = @user if resource.nil?
+    return "" if  resource.nil? || resource.errors.empty?
+
+    messages = resource.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
+
+
+    html = <<-HTML
+    <div class="alert alert-error">
+        <button class="close" data-dismiss="alert"></button>
+      <ul>#{messages}</ul>
+    </div>
+    HTML
+
+
+    html.html_safe
+  end
+
+
+  def bs_will_paginate(collection)
   will_paginate collection, renderer: BootstrapPagination::Rails
  end
 end
