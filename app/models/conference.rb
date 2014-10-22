@@ -65,7 +65,7 @@ class Conference < ActiveRecord::Base
     begin
       DateTime.strptime(from_date, I18n.t(:"date.formats.default"))
     rescue
-      errors.add(:from_date, I18n.t("x"))
+      errors.add(:from_date, I18n.t("errors.date.invalid"))
     end
   end
 
@@ -73,7 +73,7 @@ class Conference < ActiveRecord::Base
     begin
       DateTime.strptime(to_date, I18n.t(:"date.formats.default"))
     rescue
-      errors.add(:from_date, I18n.t("x"))
+      errors.add(:to_date, I18n.t("errors.date.invalid"))
     end
   end
   has_attached_file :logo, :styles => { :medium => "400x400>", :thumb => "200x100>" }, :default_url => "/assets/missing_:style.png"

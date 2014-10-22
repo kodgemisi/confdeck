@@ -223,4 +223,7 @@ tr:
     sign_up_to_get_started: Hemen yeni bir hesap açın
   waiting_appeals: 
   waiting_review: Beklemede
-  x: 
+  errors:
+    date:
+      invalid: "geçerli bir tarih değil"
+  error: Hata!
