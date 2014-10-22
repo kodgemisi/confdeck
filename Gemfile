@@ -50,18 +50,5 @@ gem 'font-awesome-sass'
 gem 'liquid'
 gem 'jbuilder'
 gem 'date_validator'
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'm
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
 gem 'localeapp'
+gem 'i18n-tasks', '~> 0.7.7'
