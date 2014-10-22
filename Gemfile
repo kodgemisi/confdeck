@@ -64,3 +64,4 @@ gem 'date_validator'
 
 # To use debugger
 # gem 'debugger'
+gem 'localeapp'

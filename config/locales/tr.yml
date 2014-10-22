@@ -1,21 +1,81 @@
 tr:
+  accepted: Kabul Edildi
   activerecord:
-    models:
-      conference: "Konferans"
     attributes:
       conference:
-        name: "Başlık"
-        slug: "Kısa İsim"
+        description: Açıklama
+        name: Başlık
+        organization: Organizasyon
+        slug: Kısa İsim
         summary: "Özet"
-        description: "Açıklama"
-        organization: "Organizasyon"
     errors:
       models:
         speaker:
           attributes:
             phone:
-              blank: "boş bırakılamaz."
-
+              blank: boş bırakılamaz.
+    models:
+      conference: Konferans
+  additional_info: Ek Bilgi
+  address:
+    city: "Şehir"
+    info: Detay
+    location: Konum
+  appeal:
+    abstract: Konu Özeti
+    actions: "İşlem"
+    appeal_type: Başvuru Tipi
+    appeal_types: Başvuru Tipleri
+    detail: Konuşmanın Ana Hatları
+    state: Durum
+    subject: Konu Başlığı
+  application_received: "%{topic} Başvurunuz alınmıştır"
+  body: Posta
+  close: Kapat
+  conference:
+    address: Adres
+    basic_information: Temel Bilgiler
+    contact_info: "İletişim Bilgileri"
+    delete: Sil
+    description: Açıklama
+    details: Detaylar
+    end_date: Bitiş Tarihi
+    logo: Logo
+    manage: Yönetim/Düzenleme
+    name: Başlık
+    new: Yeni Konferans
+    num_of_appeals: Başvurular
+    num_of_sponsors: Sponsorlar
+    organization: Organizasyon
+    schedule: Program
+    show: Konferans Sayfası
+    slug: Kısa İsim
+    start_date: Başlangıç Tarihi
+    summary: "Özet"
+    wizard:
+      step1:
+        desc:
+          text: 
+          title: Konferans ile ilgili temel bilgiler
+      step2:
+        desc:
+          text: Harita üzerindeki arama formunu kullanarak adres araması yapabilirsiniz
+          title: Konferansın yapılacağı yer ile ilgili bilgiler
+      step3:
+        desc:
+          text: 
+          title: 
+      step4:
+        desc:
+          text: 
+          title: 
+      title: Konferans Oluşturma Sihirbazı
+  conferences: Konferanslar
+  create: Oluştur
+  create_appeal: Başvuruyu Oluştur
+  create_organization: Yeni Organizasyon Oluştur
+  create_speaker: Konuşmacı Oluştur
+  dashboard: Anasayfa
   date:
     abbr_day_names:
     - Sun
@@ -26,9 +86,9 @@ tr:
     - Fri
     - Sat
     abbr_month_names:
-    -
+    - 
     - Oca
-    - Şub
+    - "Şub"
     - Mar
     - Nis
     - May
@@ -39,36 +99,6 @@ tr:
     - Eki
     - Kas
     - Ara
-    day_names:
-    - Sunday
-    - Monday
-    - Tuesday
-    - Wednesday
-    - Thursday
-    - Friday
-    - Saturday
-    formats:
-      default: ! '%d/%m/%Y'
-      long: ! '%d %B %Y'
-      short: ! '%b %d'
-    month_names:
-    -
-    - Ocak
-    - Şubat
-    - Mart
-    - Nisan
-    - Mayıs
-    - Haziran
-    - Temmuz
-    - Ağustos
-    - Eylül
-    - Ekim
-    - Kasım
-    - Aralık
-    order:
-    - year
-    - month
-    - day
     datetime:
       distance_in_words:
         about_x_hours:
@@ -86,27 +116,27 @@ tr:
         half_a_minute: yarım dakika
         less_than_x_minutes:
           one: 1 dakikadan az
-          other: ! '%{count} dakikadan az'
+          other: "%{count} dakikadan az"
           zero: 1 dakikadan az
         less_than_x_seconds:
           one: 1 saniyeden az
-          other: ! '%{count} saniyeden az'
+          other: "%{count} saniyeden az"
           zero: 1 saniyeden az
         over_x_years:
           one: 1 yıldan fazla
-          other: ! '%{count} yıldan fazla'
+          other: "%{count} yıldan fazla"
         x_days:
           one: 1 gün
-          other: ! '%{count} gün'
+          other: "%{count} gün"
         x_minutes:
           one: 1 dakika
-          other: ! '%{count} dakika'
+          other: "%{count} dakika"
         x_months:
           one: 1 ay
-          other: ! '%{count} ay'
+          other: "%{count} ay"
         x_seconds:
           one: 1 saniye
-          other: ! '%{count} saniye'
+          other: "%{count} saniye"
       prompts:
         day: Gün
         hour: Saat
@@ -114,100 +144,70 @@ tr:
         month: Ay
         second: Saniye
         year: Yıl
-  conferences: "Konferanslar"
-  organizations: "Organizasyonlar"
-  speakers: "Konuşmacılar"
-  new_speaker: "Yeni Konuşmacı Ekle"
-  create_speaker: "Konuşmacı Oluştur"
-  speaker_application_header: "%{conference_name} Konuşmacı Başvurusu"
-  homepage: "Anasayfa"
-  dashboard: "Anasayfa"
-  appeal:
-    appeal_type: "Başvuru Tipi"
-    appeal_types: "Başvuru Tipleri"
-    subject: "Konu Başlığı"
-    abstract: "Konu Özeti"
-    detail: "Konuşmanın Ana Hatları"
-    state: "Durum"
-    actions: "İşlem"
-  additional_info: "Ek Bilgi"
-  speaker:
-    name: "Konuşmacı İsmi"
-    email: "E-posta"
-    phone: "Telefon Numarası"
-    twitter: "Twitter"
-    facebook: "Facebook"
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    formats:
+      default: "%d/%m/%Y"
+      long: "%d %B %Y"
+      short: "%b %d"
+    month_names:
+    - 
+    - Ocak
+    - "Şubat"
+    - Mart
+    - Nisan
+    - Mayıs
+    - Haziran
+    - Temmuz
+    - Ağustos
+    - Eylül
+    - Ekim
+    - Kasım
+    - Aralık
+    order:
+    - year
+    - month
+    - day
+  description: Açıklama
+  hello: 
+  homepage: Anasayfa
+  new_speaker: Yeni Konuşmacı Ekle
   organization:
-    page_title: "%{organization} Organizasyonu"
-    conferences: "Konferanslar"
+    conferences: Konferanslar
     info: Organizasyon Detayları
     logo: Logo
-  conference:
-    start_date: "Başlangıç Tarihi"
-    end_date: "Bitiş Tarihi"
-    name: "Başlık"
-    slug: "Kısa İsim"
-    summary: "Özet"
-    description: "Açıklama"
-    organization: "Organizasyon"
-    new: "Yeni Konferans"
-    address: "Adres"
-    basic_information: "Temel Bilgiler"
-    details: "Detaylar"
-    contact_info: "İletişim Bilgileri"
-    logo: Logo
-    num_of_appeals: Başvurular
-    num_of_sponsors: Sponsorlar
-    show: Konferans Sayfası
-    manage: Yönetim/Düzenleme
-    schedule: Program
-    delete: Sil
-    wizard:
-      title: "Konferans Oluşturma Sihirbazı"
-      step1:
-        desc:
-          title: "Konferans ile ilgili temel bilgiler"
-          text: ""
-      step2:
-        desc:
-          title: "Konferansın yapılacağı yer ile ilgili bilgiler"
-          text: "Harita üzerindeki arama formunu kullanarak adres araması yapabilirsiniz"
-      step3:
-        desc:
-          title: ""
-          text: ""
-      step4:
-        desc:
-          title: ""
-          text: ""
-  address:
-    city: "Şehir"
-    location: "Konum"
-    info: "Detay"
-  create_appeal: "Başvuruyu Oluştur"
-  application_received: "%{topic} Başvurunuz alınmıştır"
-  create: "Oluştur"
-  close: "Kapat"
-  create_organization: "Yeni Organizasyon Oluştur"
-  accepted: "Kabul Edildi"
-  rejected: "Reddedildi"
-  waiting_review: "Beklemede"
+    page_title: "%{organization} Organizasyonu"
+  organizations: Organizasyonlar
+  rejected: Reddedildi
   room:
-    name: "Oda Adı"
+    name: Oda Adı
+  speaker:
+    email: E-posta
+    facebook: Facebook
+    name: Konuşmacı İsmi
+    phone: Telefon Numarası
+    twitter: Twitter
+  speaker_application_header: "%{conference_name} Konuşmacı Başvurusu"
+  speakers: Konuşmacılar
+  subject: Başlık
   topic:
-    subject: "Konu Başlığı"
-    abstract: "Konu Özeti"
-    speakers: "Konuşmacılar"
-  update: "Güncelle"
-  description: "Açıklama"
-  subject: "Başlık"
-  body: "Posta"
+    abstract: Konu Özeti
+    speakers: Konuşmacılar
+    subject: Konu Başlığı
+  update: Güncelle
   user:
+    dont_have_account: Hesabınız yok mu?
     email: E-Posta
-    password: Şifre
-    remember_me: Beni Hatırla
-    lost_password: Şifremi Unuttum
     login: Giriş
-    login_to_your_account: "Giriş Yap"
-    dont_have_account: "Hesabınız yok mu?"
-    sign_up_to_get_started: "Hemen yeni bir hesap açın"
+    login_to_your_account: Giriş Yap
+    lost_password: "Şifremi Unuttum"
+    password: "Şifre"
+    remember_me: Beni Hatırla
+    sign_up_to_get_started: Hemen yeni bir hesap açın
+  waiting_review: Beklemede
