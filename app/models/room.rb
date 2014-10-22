@@ -12,8 +12,6 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class Room < ActiveRecord::Base
-  attr_accessible :name, :conference_id
-
   has_many :slots
   belongs_to :conference
 end

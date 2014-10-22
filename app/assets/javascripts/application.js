@@ -12,8 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.core
-//= require jquery.ui.datepicker
+//= require jquery-ui/core
+//= require jquery-ui/datepicker
 //= require bootstrap
 //= require best_in_place
 //= require core

@@ -12,8 +12,6 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class Day < ActiveRecord::Base
-  attr_accessible :date
-
   has_many :slots
   has_and_belongs_to_many :conferences
 

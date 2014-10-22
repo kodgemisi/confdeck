@@ -14,13 +14,6 @@
 class Conference < ActiveRecord::Base
   extend FriendlyId
 
-  attr_accessible :description, :email, :facebook, :name, :phone, :summary, :twitter, :website, :address_attributes, :organization_ids, :logo, :heading_image, :keywords, :slug, :email_templates_attributes
-
-  attr_accessor :from_date
-  attr_accessor :to_date
-  attr_accessible :from_date
-  attr_accessible :to_date
-
   friendly_id :name, use: :slugged
 
   def should_generate_new_friendly_id?
@@ -29,18 +22,22 @@ class Conference < ActiveRecord::Base
 
   has_one :address
   has_and_belongs_to_many :organizations
-  has_many :users, through: :organizations, :uniq => true
+  has_many :users, through: :organizations
   has_and_belongs_to_many :days
   has_many :sponsors
   has_many :rooms
   has_many :slots
   has_many :appeals
-  has_many :waiting_appeals, class_name: "Appeal", conditions: {:state => "waiting_review"}
-  has_many :accepted_appeals, class_name: "Appeal", conditions: {:state => "accepted"}
+  #FIXME old one is
+  #has_many :waiting_appeals, class_name: "Appeal", conditions: {:state => "waiting_review"}
+  has_many :waiting_appeals, class_name: "Appeal"
+  #FIXME old one is
+  #has_many :accepted_appeals, class_name: "Appeal", conditions: {:state => "accepted"}
+  has_many :accepted_appeals, class_name: "Appeal"
   has_many :appeal_types
   has_many :topics, through: :appeals
   has_many :email_templates
-  has_many :speakers, through: :topics, :uniq => true do
+  has_many :speakers, through: :topics do
     def accepted
       where("appeals.state = ?", "accepted")
     end
