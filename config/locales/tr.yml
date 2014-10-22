@@ -1,5 +1,8 @@
 tr:
+  Close: 
+  Slot: 
   accepted: Kabul Edildi
+  active_conferences: 
   activerecord:
     attributes:
       conference:
@@ -24,12 +27,14 @@ tr:
   appeal:
     abstract: Konu Özeti
     actions: "İşlem"
+    additional_info: 
     appeal_type: Başvuru Tipi
     appeal_types: Başvuru Tipleri
     detail: Konuşmanın Ana Hatları
     state: Durum
     subject: Konu Başlığı
   application_received: "%{topic} Başvurunuz alınmıştır"
+  are_you_sure: 
   body: Posta
   close: Kapat
   conference:
@@ -74,6 +79,7 @@ tr:
   create: Oluştur
   create_appeal: Başvuruyu Oluştur
   create_organization: Yeni Organizasyon Oluştur
+  create_room: 
   create_speaker: Konuşmacı Oluştur
   dashboard: Anasayfa
   date:
@@ -175,8 +181,11 @@ tr:
     - month
     - day
   description: Açıklama
+  error: 
   hello: 
   homepage: Anasayfa
+  logout: 
+  minutes: 
   new_speaker: Yeni Konuşmacı Ekle
   organization:
     conferences: Konferanslar
@@ -197,9 +206,11 @@ tr:
   speakers: Konuşmacılar
   subject: Başlık
   topic:
+    absract: 
     abstract: Konu Özeti
     speakers: Konuşmacılar
     subject: Konu Başlığı
+  total_appeals: 
   update: Güncelle
   user:
     dont_have_account: Hesabınız yok mu?
@@ -210,4 +221,6 @@ tr:
     password: "Şifre"
     remember_me: Beni Hatırla
     sign_up_to_get_started: Hemen yeni bir hesap açın
+  waiting_appeals: 
   waiting_review: Beklemede
+  x: 

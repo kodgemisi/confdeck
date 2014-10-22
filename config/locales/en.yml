@@ -1,5 +1,8 @@
 en:
+  Close: 
+  Slot: 
   accepted: 
+  active_conferences: 
   activerecord:
     attributes:
       conference:
@@ -24,12 +27,14 @@ en:
   appeal:
     abstract: 
     actions: 
+    additional_info: 
     appeal_type: 
     appeal_types: 
     detail: 
     state: 
     subject: 
   application_received: 
+  are_you_sure: 
   body: 
   close: 
   conference:
@@ -74,7 +79,8 @@ en:
   create: 
   create_appeal: 
   create_organization: 
-  create_speaker: Create a new speaker
+  create_room: 
+  create_speaker: 
   dashboard: 
   date:
     abbr_day_names: 
@@ -108,9 +114,12 @@ en:
     month_names: 
     order: 
   description: 
-  hello: Hello world
+  error: 
+  hello: 
   homepage: 
-  new_speaker: Add new speaker
+  logout: 
+  minutes: 
+  new_speaker: 
   organization:
     conferences: 
     info: 
@@ -123,16 +132,18 @@ en:
   speaker:
     email: 
     facebook: 
-    name: Speaker Name
+    name: 
     phone: 
     twitter: 
-  speaker_application_header: Speaker Application To %{conference_name}
+  speaker_application_header: 
   speakers: 
   subject: 
   topic:
+    absract: 
     abstract: 
     speakers: 
     subject: 
+  total_appeals: 
   update: 
   user:
     dont_have_account: 
@@ -143,4 +154,6 @@ en:
     password: 
     remember_me: 
     sign_up_to_get_started: 
+  waiting_appeals: 
   waiting_review: 
+  x: 
