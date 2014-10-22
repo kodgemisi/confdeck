@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% content_for :page_title  do %>
+    <%= t("organization.page_title", organization: @organization.name) %>
+<% end %>
 
 <div class="panel panel-default">
   <div class="panel-heading">Details of <%= @organization.name %></div>
@@ -33,9 +35,9 @@
               <%= form_for Invitation.new, url: invite_organization_path(@organization), :html => {:class => 'form-horizontal'} do |f| %>
                   <%= f.hidden_field :organization_id, value: @organization.id %>
 
-                    <div class="col-lg-5">
-                      <%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
-                    </div>
+                  <div class="col-lg-5">
+                    <%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
+                  </div>
                   <div class="col-lg-3">
                     <%= f.submit :class => "btn btn-primary" %>
 
@@ -47,6 +49,99 @@
     </table>
   </div>
 </div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <form class="panel form-horizontal form-bordered" name="form-profile">
+        <div class="panel-body pt0 pb0">
+          <div class="form-group header bgcolor-default">
+            <div class="col-md-12">
+              <h4 class="semibold text-primary mt0 mb5"><%= t ("organization.info") %></h4>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-1 control-label">Name</label>
+            <div class="col-sm-6">
+              <%= @organization.name %>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-1 control-label">Location</label>
+            <div class="col-sm-5">
+              <input type="text" class="form-control" name="location">
+              <p class="help-block">Where in the world are you?</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-1 control-label">Website</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" name="website" value="http://">
+              <p class="help-block">Have a homepage or a blog? Put the address here.</p>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-1 control-label">Bio</label>
+            <div class="col-sm-6">
+              <textarea class="form-control" rows="3" placeholder="Describe about yourself"></textarea>
+              <p class="help-block">About yourself in 160 characters or less.</p>
+            </div>
+          </div>
+          <div class="form-group header bgcolor-default">
+            <div class="col-md-12">
+              <h4 class="semibold text-primary nm"><%= t("organization.conferences") %></h4>
+            </div>
+          </div>
+          <div class="form-group pt0">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th class="span1"><%= t "conference.logo" %></th>
+                  <th class="text-center"><%= t "conference.name" %></th>
+                  <th class="text-center"><%= t "conference.summary" %></th>
+                  <th class="text-center"><%= t "conference.num_of_appeals" %></th>
+                  <th class="text-center"><%= t "conference.num_of_sponsors" %></th>
+                  <th class="span3"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @organization.conferences.each do |conference| %>
+                        <tr>
+                          <td><%= image_tag conference.logo.url(:thumb), height: "50", width: "50" %></td>
+                          <td class="text-center">
+                            <%= conference.name %> <br />
+                            <%= link_to conference.website, conference.website if conference.website %>
+                          </td>
+                          <td class="text-center"><%= conference.summary %></td>
+                          <td class="text-center"><%= link_to conference.appeals.count, conference_appeals_path(conference), :class=>"easy-click" %></td>
+                          <td class="text-center"><%= link_to conference.sponsors.count, conference_sponsors_path(conference), :class=>"easy-click" %></td>
+                          <td class="text-center">
+                            <%= button_group class: "btn-group-sm pull-right" do %>
+                                <%= bs_button_to "", conference, tooltip: t("conference.show"), icon: "eye-open", style: "primary", size: "mini" %>
+                                <%= bs_button_to "", conference, tooltip: t("conference.manage"), icon: "screwdriver", style: "primary", size: "mini" %>
+                                <%= bs_button_to "", conference_schedule_path(conference), tooltip: t("conference.schedule"), icon: "calendar", style: "primary", size: "mini" %>
+                                <%= bs_button_to "", edit_conference_path(conference), tooltip: t("conference.schedule"), icon: "pencil", style: "primary", size: "mini" %>
+                                <%= bs_button_to "", conference, method: :delete, data: { :confirm => t("are_you_sure")}, tooltip: t("conference.delete"), icon: "remove", style: "primary", size: "mini" %>
+                            <% end %>
+                          </td>
+                        </tr>
+                <% end %>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <button type="reset" class="btn btn-default">Reset</button>
+          <button type="submit" class="btn btn-primary">Save change</button>
+        </div>
+        </form>
+        <!--/ form profile -->
+    </div>
+
+</div>
+
 
 
 <%= link_to 'Edit', edit_organization_path(@organization) %> |

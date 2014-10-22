@@ -137,6 +137,11 @@ tr:
     phone: "Telefon Numarası"
     twitter: "Twitter"
     facebook: "Facebook"
+  organization:
+    page_title: "%{organization} Organizasyonu"
+    conferences: "Konferanslar"
+    info: Organizasyon Detayları
+    logo: Logo
   conference:
     start_date: "Başlangıç Tarihi"
     end_date: "Bitiş Tarihi"
@@ -150,6 +155,13 @@ tr:
     basic_information: "Temel Bilgiler"
     details: "Detaylar"
     contact_info: "İletişim Bilgileri"
+    logo: Logo
+    num_of_appeals: Başvurular
+    num_of_sponsors: Sponsorlar
+    show: Konferans Sayfası
+    manage: Yönetim/Düzenleme
+    schedule: Program
+    delete: Sil
     wizard:
       title: "Konferans Oluşturma Sihirbazı"
       step1:
