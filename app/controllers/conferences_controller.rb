@@ -13,6 +13,7 @@
 
 class ConferencesController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
+  before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule]
 
   layout 'conference_landing', :only => [:show]
   # GET /conferences
@@ -29,7 +30,6 @@ class ConferencesController < ApplicationController
   # GET /conferences/1
   # GET /conferences/1.json
   def show
-    @conference = Conference.find(params[:id])
     @slot = Slot.new #for schedule showing
 
 
@@ -53,7 +53,6 @@ class ConferencesController < ApplicationController
 
   # GET /conferences/1/edit
   def edit
-    @conference = Conference.find(params[:id])
     @conference.to_date = @conference.days.last.date.strftime("%d/%m/%Y")
     @conference.from_date = @conference.days.first.date.strftime("%d/%m/%Y")
 
@@ -89,7 +88,6 @@ class ConferencesController < ApplicationController
   # PUT /conferences/1
   # PUT /conferences/1.json
   def update
-    @conference = Conference.find(params[:id])
 
     if(params[:from] && params[:to])
      from_date = DateTime.strptime(params[:from], "%m/%d/%Y")
@@ -113,7 +111,6 @@ class ConferencesController < ApplicationController
   # DELETE /conferences/1
   # DELETE /conferences/1.json
   def destroy
-    @conference = Conference.find(params[:id])
     @conference.destroy
 
     respond_to do |format|
@@ -123,7 +120,6 @@ class ConferencesController < ApplicationController
   end
 
   def schedule
-    @conference = Conference.find(params[:id])
     @room = Room.new
     @slot = Slot.new
   end
@@ -141,6 +137,11 @@ class ConferencesController < ApplicationController
   end
 
   private
+
+    def set_conference
+      @conference = Conference.friendly.find(params[:id])
+    end
+
     def conference_params
       params.require(:conference).permit(:from_date, :to_date, :name, :slug, :summary, :organizations, :description, :website, :twitter, :facebook, :email, :phone, address_attributes: [:info, :city, :lat, :lon])
     end
