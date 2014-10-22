@@ -49,8 +49,6 @@ Confman::Application.routes.draw do
 
   get "home/index"
 
-  get "home/guest_session", as: :guest_signin
-
   devise_for :users
 
   authenticated :user do

@@ -27,9 +27,4 @@ class HomeController < ApplicationController
     @total_appeals = Appeal.where(:conference_id => current_user.conferences.pluck(:id))
   end
 
-  def guest_session
-    user = User.where(email: "guest@kodgemisi.com").first
-    sign_in user, :bypass => true
-    redirect_to root_url
-  end
 end
