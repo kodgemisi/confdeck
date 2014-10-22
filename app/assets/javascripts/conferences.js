@@ -24,7 +24,19 @@ $(function () {
             return $(this).valid();
         }
     }).validate({
-        errorPlacement: function errorPlacement(error, element) { element.before(error); }
+        validClass:'has-success',
+        errorElement: 'span',
+        errorClass: 'help-block mt10',
+        errorPlacement: function errorPlacement(error, element) {
+            element.after(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).parents("div.form-group").addClass("has-error").removeClass("has-success");
+
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).parents("div.form-group").removeClass("has-error").addClass("has-success");
+        }
     });
 
     $("#from").datepicker({
