@@ -47,6 +47,8 @@ tr:
               invalid: 
             password_confirmation:
               confirmation: 
+            password:
+              too_short: 
     models:
       conference: Konferans
       invitation: Invitation
@@ -298,3 +300,4 @@ tr:
     password_confirmation: "Şifre Onay"
     password_help: Değişiklik yapmak istemiyorsanız boş bırakın
     save: Kaydet
+  updated: 

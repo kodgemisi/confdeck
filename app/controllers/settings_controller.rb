@@ -25,7 +25,7 @@ class SettingsController < ApplicationController
         render 'index'
       end
     else # updating user settings
-      current_user.update_attribute('settings', settings_params)
+      current_user.update_attribute('settings', settings_params.to_hash)
       redirect_to settings_path
     end
   end

@@ -46,6 +46,8 @@ en:
               invalid: 
             password_confirmation:
               confirmation: 
+            password:
+              too_short: 
     models:
       conference: 
       invitation: 
@@ -218,3 +220,4 @@ en:
         website: 
   errors:
     format: 
+  updated: 
