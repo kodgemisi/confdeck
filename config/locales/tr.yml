@@ -11,14 +11,35 @@ tr:
         organization: Organizasyon
         slug: Kısa İsim
         summary: "Özet"
+        email: Email
+        facebook: Facebook
+        phone: Phone
+        twitter: Twitter
+        website: Website
+        organizations: Organizations
+      address:
+        Detay: Detay
+        Konum: Konum
+        "Şehir": "Şehir"
+      organization:
+        organization_name: Organization name
+        name: Name
+        logo: Logo
+        website: Website
     errors:
       models:
         speaker:
           attributes:
             phone:
               blank: boş bırakılamaz.
+        conference:
+          attributes:
+            organizations:
+              blank: 
     models:
       conference: Konferans
+      invitation: Invitation
+      organization: Organization
   additional_info: Ek Bilgi
   address:
     city: "Şehir"
@@ -224,6 +245,34 @@ tr:
   waiting_appeals: 
   waiting_review: Beklemede
   errors:
+    format: "%{attribute} %{message}"
     date:
       invalid: "geçerli bir tarih değil"
   error: Hata!
+  helpers:
+    submit:
+      invitation:
+        create: Create Invitation
+      organization:
+        create: Create Organization
+    label:
+      conference[address_attributes]:
+        Detay: 
+        Konum: 
+        "Şehir": 
+      conference:
+        description: 
+        email: 
+        facebook: 
+        name: 
+        organization: 
+        phone: 
+        slug: 
+        summary: 
+        twitter: 
+        website: 
+      organization:
+        organization_name: 
+        logo: 
+        name: 
+        website: 

@@ -16,12 +16,6 @@ class ApplicationController < ActionController::Base
   before_filter :set_user_data
   layout :layout_for_devise
 
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
-  end
-
-
-
   protected
 
   def layout_for_devise
