@@ -240,6 +240,7 @@ tr:
   devise:
     confirmations:
       confirmed: Hesabınız başarıyla onaylandı. Şu anda giriş yapmış bulunuyorsunuz.
+      confirmed_and_signed_in: 
       send_instructions: Bir kaç dakika içinde hesabınızı onaylama hakkında bir email alacaksınız.
       send_paranoid_instructions: Email adresiniz veritabanımızda kayıtlı ise email adresinize hesabınızı onaylama hakkında bir email göndereceğiz.
     failure:
@@ -248,6 +249,7 @@ tr:
       invalid: Geçersiz email veya parola.
       invalid_token: Geçesiz onaylama kodu.
       locked: Hesabınız kilitlendi.
+      not_found_in_database: 
       timeout: Oturumunuz sona erdi. Devam etmek için lütfen giriş yapın.
       unauthenticated: Devam etmeden önce kayıt olmanız veya giriş yapmanız gerekmektedir.
       unconfirmed: Devam etmeden önce hesabınızı onaylamalısınız.
@@ -262,6 +264,7 @@ tr:
       failure: '"%{reason}" olmasından dolayı %{kind} hesabından onaylama yapamazsınız.'
       success: "%{kind} hesabından başarıyla onaylandı."
     passwords:
+      no_token: 
       send_instructions: Bir kaç dakika içinde parolanızı nasıl sıfırlayacağız hakkında bir email alacaksınız.
       send_paranoid_instructions: Email adresiniz veritabanımızda kayıtlı ise email adresinize parola kurtarma linki göndereceğiz.
       updated: Parolanız başarıyla değiştirildi. Şu anda giriş yapmış bulunuyorsunuz.
@@ -281,13 +284,14 @@ tr:
       send_instructions: Bir kaç dakika içinde hesabınızın kilitini nasıl kaldıracağınız hakkında bir email alacaksınız.
       send_paranoid_instructions: Bir hesabınız varsa bir kaç dakika içinde hesabınızın kilitini nasıl açacağınız hakkında bir email alacaksınız.
       unlocked: Hesabınız başarıyla açıldı. Şu anda giriş yapmış bulunuyorsunuz.
-  error: 
+  error: Hata!
   errors:
     date:
-      invalid: 
+      invalid: geçerli bir tarih değil
     format: "%{attribute} %{message}"
     messages:
       already_confirmed: zaten onaylandı, lütfen tekrar giriş yapmayı deneyin
+      confirmation_period_expired: 
       expired: süresi sona erdi, lütfen yenisini isteyin
       not_found: bulunamadı
       not_locked: kilitlenmedi
@@ -353,6 +357,17 @@ tr:
   rejected: Reddedildi
   room:
     name: Oda Adı
+  settings:
+    account_settings: Hesap Ayarları
+    current_password: Mevcut Şifre
+    current_password_help: Değişiklikleri kaydetmek için mevcut şifreniz gereklidir.
+    email: Email
+    general_settings: Genel Ayarlar
+    language: Dil
+    password: "Şifre"
+    password_confirmation: "Şifre Onay"
+    password_help: Değişiklik yapmak istemiyorsanız boş bırakın
+    save: Kaydet
   simple_form:
     hints:
       defaults:
