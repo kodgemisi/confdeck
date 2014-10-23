@@ -13,5 +13,38 @@ Only a Few ConfDeck Features:
 * Committee members can vote and comment on applications 
 * Applications can be accepted or rejected and aplicants are informed via email
 
+Contributing
+------------
+
+To get Confdeck running follow those commands:
+
+* Fork and clone the project
+* Go in project folder
+
+```
+# make sure you're using ruby-2
+$ rvm list
+
+rvm rubies
+
+   ruby-1.9.3-p545 [ x86_64 ]
+=* ruby-2.1.2 [ x86_64 ]
+
+# => - current
+# =* - current && default
+#  * - default
+
+$ rvm gemset create confdeck
+$ rvm use 2.1.2@confdeck
+$ rvm gemset list
+
+gemsets for ruby-2.1.2 (found in /home/theuser/.rvm/gems/ruby-2.1.2)
+   (default)
+=> confdeck
+
+$ bundle install --without production
+$ rails s
+```
+
 
 Special thanks to [john.pozy](www.twitter.com/pampersdry) for contributing the project by giving his [Adminre Admin Theme](http://themeforest.net/item/adminre-responsive-admin-theme/7133307)
