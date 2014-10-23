@@ -22,6 +22,11 @@ $(function () {
             $(this).validate().settings.ignore = ":disabled,:hidden";
 
             return $(this).valid();
+        },
+        onFinishing: function (event, currentIndex)
+        {
+            $(this).validate().settings.ignore = ":disabled";
+            return $(this).valid();
         }
     }).validate({
         validClass:'has-success',
