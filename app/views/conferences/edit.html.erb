@@ -1,6 +1,5 @@
-<h1>Editing conference</h1>
+<%
+   meta title: t("titles.conferences.edit", conference: @conference.name)
+%>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', @conference %> |
-<%= link_to 'Back', conferences_path %>

@@ -5,6 +5,10 @@ en:
   active_conferences: 
   activerecord:
     attributes:
+      'address/<span class="translation_missing" title="translation missing: en/address':
+        city">City</span>: 
+        info">Info</span>: 
+        location">Location</span>: 
       conference:
         description: 
         email: 
@@ -231,6 +235,8 @@ en:
       not_saved:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  general:
+    create: Create
   hello: Hello world
   helpers:
     label:
@@ -245,6 +251,15 @@ en:
         summary: 
         twitter: 
         website: 
+      conference[address_attributes]:
+        '<span class="translation_missing" title="translation missing: en':
+          address:
+            city">City</span>: 
+            info">Info</span>: 
+            location">Location</span>: 
+        Detay: 
+        Konum: 
+        "Şehir": 
       organization:
         logo: 
         name: 
@@ -290,6 +305,9 @@ en:
   rejected: 
   room:
     name: 
+  rooms:
+    create: 'Create a Room '
+    name: Room name
   settings:
     account_settings: 
     current_password: 
@@ -352,6 +370,16 @@ en:
   support:
     array:
       words_connector: 
+  titles:
+    conferences:
+      edit: 'Edit %{conference} '
+      manage: 'Deck of %{conference} '
+      schedule: Schedule of %{conference}
+    default_short: ConfDeck
+    home:
+      dashboard: Dashboard
+    settings:
+      index: Settings
   topic:
     absract: 
     abstract: 

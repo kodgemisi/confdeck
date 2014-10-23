@@ -1,6 +1,5 @@
 <%
    content_for :title, @conference.name + " " + @conference.days.first.date.strftime("%B %d").to_s + " - " + @conference.days.last.date.strftime("%B %d").to_s + " " + @conference.address.try(:city).to_s
-
 %>
 
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">

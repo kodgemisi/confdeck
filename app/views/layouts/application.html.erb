@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ConfDeck - manage your conferences on cloud</title>
+  <%= metamagic site: t("titles.default_short"), title: [:title, :site], separator: " - "%>
+
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places' %>
   <%= javascript_include_tag "application" %>
@@ -21,7 +22,7 @@
       <div class="container-fluid">
             <div class="page-header page-header-block">
               <div class="page-header-section">
-                <h4 class="title semibold"><%= yield(:page_title) %></h4>
+                <h4 class="title semibold"><%= get_title %></h4>
               </div>
             </div>
             <%= render "layouts/messages" %>

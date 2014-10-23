@@ -5,6 +5,10 @@ tr:
   active_conferences: 
   activerecord:
     attributes:
+      'address/<span class="translation_missing" title="translation missing: en/address':
+        city">City</span>: 
+        info">Info</span>: 
+        location">Location</span>: 
       conference:
         description: Açıklama
         email: Email
@@ -298,6 +302,8 @@ tr:
       not_saved:
         one: 'Bu %{resource} kaydedilirken 1 hata yakalandı:'
         other: 'Bu %{resource} kaydedilirken %{count} hata yakalandı:'
+  general:
+    create: Oluştur
   hello: 
   helpers:
     label:
@@ -312,6 +318,15 @@ tr:
         summary: 
         twitter: 
         website: 
+      conference[address_attributes]:
+        '<span class="translation_missing" title="translation missing: en':
+          address:
+            city">City</span>: 
+            info">Info</span>: 
+            location">Location</span>: 
+        Detay: 
+        Konum: 
+        "Şehir": 
       organization:
         logo: 
         name: 
@@ -357,6 +372,9 @@ tr:
   rejected: Reddedildi
   room:
     name: Oda Adı
+  rooms:
+    create: Oda Oluştur
+    name: Oda adı
   settings:
     account_settings: Hesap Ayarları
     current_password: Mevcut Şifre
@@ -419,6 +437,16 @@ tr:
   support:
     array:
       words_connector: 
+  titles:
+    conferences:
+      edit: "%{conference} Düzenle"
+      manage: "%{conference} Güvertesi"
+      schedule: "%{conference} Programı"
+    default_short: ConfDeck
+    home:
+      dashboard: Anasayfa
+    settings:
+      index: Ayarlar
   topic:
     absract: 
     abstract: Konu Özeti

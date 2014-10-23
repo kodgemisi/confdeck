@@ -28,6 +28,8 @@ gem 'liquid'
 gem 'jbuilder'
 gem 'date_validator'
 gem 'localeapp'
+gem 'metamagic'
+
 # gem 'i18n-tasks', '~> 0.7.7'
 
 group :production do

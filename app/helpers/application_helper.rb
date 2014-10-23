@@ -32,6 +32,9 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def get_title
+    @metamagic_renderer.tags.sort.first.value
+  end
 
   def bs_will_paginate(collection)
   will_paginate collection, renderer: BootstrapPagination::Rails
