@@ -7,24 +7,41 @@ tr:
     attributes:
       conference:
         description: Açıklama
-        name: Başlık
-        organization: Organizasyon
-        slug: Kısa İsim
-        summary: "Özet"
         email: Email
         facebook: Facebook
+        from_date: From date
+        name: Başlık
+        organization: Organizasyon
+        organizations: Organizations
         phone: Phone
+        slug: Kısa İsim
+        summary: "Özet"
+        to_date: To date
         twitter: Twitter
         website: Website
-        organizations: Organizations
-      address:
-        Detay: Detay
-        Konum: Konum
-        "Şehir": "Şehir"
+      email_template:
+        body: Body
+        content: Content
+        subject: Subject
+        type_name: Type name
+      email_template_type:
+        subject: Subject
       organization:
-        organization_name: Organization name
-        name: Name
         logo: Logo
+        name: Name
+        organization_name: Organization name
+        website: Website
+      speaker:
+        bio: Bio
+        email: Email
+        facebook: Facebook
+        github: Github
+        name: Name
+        phone: Phone
+        twitter: Twitter
+      sponsor:
+        logo: Logo
+        name: Name
         website: Website
       user:
         current_password: Current password
@@ -32,27 +49,30 @@ tr:
         password_confirmation: Password confirmation
     errors:
       models:
-        speaker:
-          attributes:
-            phone:
-              blank: boş bırakılamaz.
         conference:
           attributes:
             organizations:
               blank: 
+        speaker:
+          attributes:
+            phone:
+              blank: boş bırakılamaz.
         user:
           attributes:
             current_password:
               blank: 
               invalid: 
-            password_confirmation:
-              confirmation: 
             password:
               too_short: 
+            password_confirmation:
+              confirmation: 
     models:
       conference: Konferans
+      email_template: Email template
       invitation: Invitation
       organization: Organization
+      speaker: Speaker
+      sponsor: Sponsor
       user: User
   additional_info: Ek Bilgi
   address:
@@ -196,6 +216,7 @@ tr:
     formats:
       default: "%d/%m/%Y"
       long: "%d %B %Y"
+      placeholder: 
       short: "%b %d"
     month_names:
     - 
@@ -216,8 +237,109 @@ tr:
     - month
     - day
   description: Açıklama
-  error: Hata!
+  devise:
+    confirmations:
+      confirmed: Hesabınız başarıyla onaylandı. Şu anda giriş yapmış bulunuyorsunuz.
+      send_instructions: Bir kaç dakika içinde hesabınızı onaylama hakkında bir email alacaksınız.
+      send_paranoid_instructions: Email adresiniz veritabanımızda kayıtlı ise email adresinize hesabınızı onaylama hakkında bir email göndereceğiz.
+    failure:
+      already_authenticated: Zaten giriş yaptınız.
+      inactive: Hesabınız henüz etkinleştirilmedi.
+      invalid: Geçersiz email veya parola.
+      invalid_token: Geçesiz onaylama kodu.
+      locked: Hesabınız kilitlendi.
+      timeout: Oturumunuz sona erdi. Devam etmek için lütfen giriş yapın.
+      unauthenticated: Devam etmeden önce kayıt olmanız veya giriş yapmanız gerekmektedir.
+      unconfirmed: Devam etmeden önce hesabınızı onaylamalısınız.
+    mailer:
+      confirmation_instructions:
+        subject: Onaylama talimatları
+      reset_password_instructions:
+        subject: Parola sıfırlama talimatları
+      unlock_instructions:
+        subject: Kilit açma talimatları
+    omniauth_callbacks:
+      failure: '"%{reason}" olmasından dolayı %{kind} hesabından onaylama yapamazsınız.'
+      success: "%{kind} hesabından başarıyla onaylandı."
+    passwords:
+      send_instructions: Bir kaç dakika içinde parolanızı nasıl sıfırlayacağız hakkında bir email alacaksınız.
+      send_paranoid_instructions: Email adresiniz veritabanımızda kayıtlı ise email adresinize parola kurtarma linki göndereceğiz.
+      updated: Parolanız başarıyla değiştirildi. Şu anda giriş yapmış bulunuyorsunuz.
+      updated_not_active: Parolanız başarıyla değiştirildi.
+    registrations:
+      destroyed: Güle güle! Hesabınız başarıyla kapatıldı. Sizi yakında tekrar görmeyi ümit ediyoruz.
+      signed_up: Hoşgeldiniz! Kaydınız başarıyla tamamlandı.
+      signed_up_but_inactive: Başarılı kayıt oldunuz. Ancak hesabınızı henüz aktif yapmadığınız için oturum açamıyorsunuz.
+      signed_up_but_locked: Başarılı kayıt oldunuz. Ancak hesabınız kitli olduğu için oturum açamıyorsunuz.
+      signed_up_but_unconfirmed: Email adresinize onaylama linki içeren bir mesaj gönderdik. Lütfen hesabınızını aktif etmek için linki kullanın.
+      update_needs_confirmation: Hesabınızı başarıyla güncellediniz, fakat email adresinizi onaylamamız gerekmektedir. Lütfen emailinizi kontrol edin ve email adresinizi onaylamak için onay linkine tıklayın.
+      updated: Hesabınızı başarıyla güncellediniz.
+    sessions:
+      signed_in: Başarılı giriş.
+      signed_out: Başarılı çıkış.
+    unlocks:
+      send_instructions: Bir kaç dakika içinde hesabınızın kilitini nasıl kaldıracağınız hakkında bir email alacaksınız.
+      send_paranoid_instructions: Bir hesabınız varsa bir kaç dakika içinde hesabınızın kilitini nasıl açacağınız hakkında bir email alacaksınız.
+      unlocked: Hesabınız başarıyla açıldı. Şu anda giriş yapmış bulunuyorsunuz.
+  error: 
+  errors:
+    date:
+      invalid: 
+    format: "%{attribute} %{message}"
+    messages:
+      already_confirmed: zaten onaylandı, lütfen tekrar giriş yapmayı deneyin
+      expired: süresi sona erdi, lütfen yenisini isteyin
+      not_found: bulunamadı
+      not_locked: kilitlenmedi
+      not_saved:
+        one: 'Bu %{resource} kaydedilirken 1 hata yakalandı:'
+        other: 'Bu %{resource} kaydedilirken %{count} hata yakalandı:'
   hello: 
+  helpers:
+    label:
+      conference:
+        description: 
+        email: 
+        facebook: 
+        name: 
+        organization: 
+        phone: 
+        slug: 
+        summary: 
+        twitter: 
+        website: 
+      organization:
+        logo: 
+        name: 
+        organization_name: 
+        website: 
+      speaker:
+        bio: 
+        email: 
+        facebook: 
+        github: 
+        name: 
+        phone: 
+        twitter: 
+      sponsor:
+        logo: 
+        name: 
+        website: 
+    submit:
+      conference:
+        update: Update Konferans
+      email_template:
+        update: Update Email template
+      invitation:
+        create: Create Invitation
+      organization:
+        create: Create Organization
+      speaker:
+        create: Create Speaker
+      sponsor:
+        create: Create Sponsor
+      user_horizontal:
+        update: Update Email template
   homepage: Anasayfa
   logout: 
   minutes: 
@@ -231,6 +353,45 @@ tr:
   rejected: Reddedildi
   room:
     name: Oda Adı
+  simple_form:
+    hints:
+      defaults:
+        body_html: 
+        subject_html: 
+        type_name_html: 
+      email_template:
+        index:
+          body: 
+          subject: 
+          type_name: 
+    labels:
+      defaults:
+        body_html: 
+        subject_html: 
+        type_name_html: 
+      email_template:
+        index:
+          body: 
+          content: 
+          subject: 
+          type_name: 
+      email_template_type:
+        index:
+          subject: 
+    placeholders:
+      defaults:
+        body_html: 
+        subject_html: 
+        type_name_html: 
+      email_template:
+        index:
+          body: 
+          content: 
+          subject: 
+          type_name: 
+      email_template_type:
+        index:
+          subject: 
   speaker:
     email: E-posta
     facebook: Facebook
@@ -240,6 +401,9 @@ tr:
   speaker_application_header: "%{conference_name} Konuşmacı Başvurusu"
   speakers: Konuşmacılar
   subject: Başlık
+  support:
+    array:
+      words_connector: 
   topic:
     absract: 
     abstract: Konu Özeti
@@ -247,6 +411,7 @@ tr:
     subject: Konu Başlığı
   total_appeals: 
   update: Güncelle
+  updated: 
   user:
     dont_have_account: Hesabınız yok mu?
     email: E-Posta
@@ -258,46 +423,4 @@ tr:
     sign_up_to_get_started: Hemen yeni bir hesap açın
   waiting_appeals: 
   waiting_review: Beklemede
-  errors:
-    format: "%{attribute} %{message}"
-    date:
-      invalid: geçerli bir tarih değil
-  helpers:
-    submit:
-      invitation:
-        create: Create Invitation
-      organization:
-        create: Create Organization
-    label:
-      conference[address_attributes]:
-        Detay: 
-        Konum: 
-        "Şehir": 
-      conference:
-        description: 
-        email: 
-        facebook: 
-        name: 
-        organization: 
-        phone: 
-        slug: 
-        summary: 
-        twitter: 
-        website: 
-      organization:
-        organization_name: 
-        logo: 
-        name: 
-        website: 
-  settings:
-    account_settings: Hesap Ayarları
-    current_password: Mevcut Şifre
-    current_password_help: Değişiklikleri kaydetmek için mevcut şifreniz gereklidir.
-    email: Email
-    general_settings: Genel Ayarlar
-    language: Dil
-    password: "Şifre"
-    password_confirmation: "Şifre Onay"
-    password_help: Değişiklik yapmak istemiyorsanız boş bırakın
-    save: Kaydet
-  updated: 
+  x: 

@@ -7,51 +7,72 @@ en:
     attributes:
       conference:
         description: 
-        name: 
-        organization: 
-        slug: 
-        summary: 
         email: 
         facebook: 
+        from_date: 
+        name: 
+        organization: 
+        organizations: 
         phone: 
+        slug: 
+        summary: 
+        to_date: 
         twitter: 
         website: 
-        organizations: 
-      address:
-        Detay: 
-        Konum: 
-        "Şehir": 
+      email_template:
+        body: 
+        content: 
+        subject: 
+        type_name: 
+      email_template_type:
+        subject: 
       organization:
-        organization_name: 
-        name: 
         logo: 
+        name: 
+        organization_name: 
+        website: 
+      speaker:
+        bio: 
+        email: 
+        facebook: 
+        github: 
+        name: 
+        phone: 
+        twitter: 
+      sponsor:
+        logo: 
+        name: 
+        website: 
       user:
         current_password: 
         password: 
         password_confirmation: 
     errors:
       models:
-        speaker:
-          attributes:
-            phone:
-              blank: 
         conference:
           attributes:
             organizations:
+              blank: 
+        speaker:
+          attributes:
+            phone:
               blank: 
         user:
           attributes:
             current_password:
               blank: 
               invalid: 
-            password_confirmation:
-              confirmation: 
             password:
               too_short: 
+            password_confirmation:
+              confirmation: 
     models:
       conference: 
+      email_template: 
       invitation: 
       organization: 
+      speaker: 
+      sponsor: 
       user: 
   additional_info: 
   address:
@@ -114,160 +135,99 @@ en:
   create_appeal: 
   create_organization: 
   create_room: 
-  create_speaker: 
+  create_speaker: Create a new speaker
   dashboard: 
   date:
-    abbr_day_names:
-    - Sun
-    - Mon
-    - Tue
-    - Wed
-    - Thu
-    - Fri
-    - Sat
-    abbr_month_names:
-    -
-    - Jan
-    - Feb
-    - Mar
-    - Apr
-    - May
-    - Jun
-    - Jul
-    - Aug
-    - Sep
-    - Oct
-    - Nov
-    - Dec
-    day_names:
-    - Sunday
-    - Monday
-    - Tuesday
-    - Wednesday
-    - Thursday
-    - Friday
-    - Saturday
+    abbr_day_names: 
+    abbr_month_names: 
+    datetime:
+      distance_in_words:
+        about_x_hours: 
+        about_x_months: 
+        about_x_years: 
+        almost_x_years: 
+        half_a_minute: 
+        less_than_x_minutes: 
+        less_than_x_seconds: 
+        over_x_years: 
+        x_days: 
+        x_minutes: 
+        x_months: 
+        x_seconds: 
+      prompts:
+        day: 
+        hour: 
+        minute: 
+        month: 
+        second: 
+        year: 
+    day_names: 
     formats:
-      placeholder: "mm/dd/yyyy"
-      default: "%m/%d/%Y"
-      long: "%B %d, %Y"
-      short: "%b %d"
-    month_names:
-    -
-    - January
-    - February
-    - March
-    - April
-    - May
-    - June
-    - July
-    - August
-    - September
-    - October
-    - November
-    - December
-    order:
-    - :year
-    - :month
-    - :day
-  datetime:
-    distance_in_words:
-      about_x_hours:
-        one: about 1 hour
-        other: about %{count} hours
-      about_x_months:
-        one: about 1 month
-        other: about %{count} months
-      about_x_years:
-        one: about 1 year
-        other: about %{count} years
-      almost_x_years:
-        one: almost 1 year
-        other: almost %{count} years
-      half_a_minute: half a minute
-      less_than_x_minutes:
-        one: less than a minute
-        other: less than %{count} minutes
-      less_than_x_seconds:
-        one: less than 1 second
-        other: less than %{count} seconds
-      over_x_years:
-        one: over 1 year
-        other: over %{count} years
-      x_days:
-        one: 1 day
-        other: "%{count} days"
-      x_minutes:
-        one: 1 minute
-        other: "%{count} minutes"
-      x_months:
-        one: 1 month
-        other: "%{count} months"
-      x_seconds:
-        one: 1 second
-        other: "%{count} seconds"
-    prompts:
-      day: Day
-      hour: Hour
-      minute: Minute
-      month: Month
-      second: Seconds
-      year: Year
+      default: 
+      long: 
+      placeholder: 
+      short: 
+    month_names: 
+    order: 
   description: 
+  devise:
+    confirmations:
+      confirmed: 
+      send_instructions: 
+      send_paranoid_instructions: 
+    failure:
+      already_authenticated: 
+      inactive: 
+      invalid: 
+      invalid_token: 
+      locked: 
+      timeout: 
+      unauthenticated: 
+      unconfirmed: 
+    mailer:
+      confirmation_instructions:
+        subject: 
+      reset_password_instructions:
+        subject: 
+      unlock_instructions:
+        subject: 
+    omniauth_callbacks:
+      failure: 
+      success: 
+    passwords:
+      send_instructions: 
+      send_paranoid_instructions: 
+      updated: 
+      updated_not_active: 
+    registrations:
+      destroyed: 
+      signed_up: 
+      signed_up_but_inactive: 
+      signed_up_but_locked: 
+      signed_up_but_unconfirmed: 
+      update_needs_confirmation: 
+      updated: 
+    sessions:
+      signed_in: 
+      signed_out: 
+    unlocks:
+      send_instructions: 
+      send_paranoid_instructions: 
+      unlocked: 
   error: 
-  hello: 
-  homepage: 
-  logout: 
-  minutes: 
-  new_speaker: 
-  organization:
-    conferences: 
-    info: 
-    logo: 
-    page_title: 
-  organizations: 
-  rejected: 
-  room:
-    name: 
-  speaker:
-    email: 
-    facebook: 
-    name: 
-    phone: 
-    twitter: 
-  speaker_application_header: 
-  speakers: 
-  subject: 
-  topic:
-    absract: 
-    abstract: 
-    speakers: 
-    subject: 
-  total_appeals: 
-  update: 
-  user:
-    dont_have_account: 
-    email: 
-    login: 
-    login_to_your_account: 
-    lost_password: 
-    password: 
-    remember_me: 
-    sign_up_to_get_started: 
-  waiting_appeals: 
-  waiting_review: 
-  x: 
+  errors:
+    date:
+      invalid: 
+    format: 
+    messages:
+      already_confirmed: 
+      expired: 
+      not_found: 
+      not_locked: 
+      not_saved: 
+  hello: Hello world
   helpers:
-    submit:
-      invitation:
-        create: 
-      organization:
-        create: 
     label:
-      conference[address_attributes]:
-        Detay: 
-        Konum: 
-        "Şehir": 
       conference:
         description: 
         email: 
@@ -280,10 +240,118 @@ en:
         twitter: 
         website: 
       organization:
+        logo: 
+        name: 
         organization_name: 
+        website: 
+      speaker:
+        bio: 
+        email: 
+        facebook: 
+        github: 
+        name: 
+        phone: 
+        twitter: 
+      sponsor:
         logo: 
         name: 
         website: 
-  errors:
-    format: 
+    submit:
+      conference:
+        update: 
+      email_template:
+        update: 
+      invitation:
+        create: 
+      organization:
+        create: 
+      speaker:
+        create: 
+      sponsor:
+        create: 
+      user_horizontal:
+        update: 
+  homepage: 
+  logout: 
+  minutes: 
+  new_speaker: Add new speaker
+  organization:
+    conferences: 
+    info: 
+    logo: 
+    page_title: 
+  organizations: 
+  rejected: 
+  room:
+    name: 
+  simple_form:
+    hints:
+      defaults:
+        body_html: 
+        subject_html: 
+        type_name_html: 
+      email_template:
+        index:
+          body: 
+          subject: 
+          type_name: 
+    labels:
+      defaults:
+        body_html: 
+        subject_html: 
+        type_name_html: 
+      email_template:
+        index:
+          body: 
+          content: 
+          subject: 
+          type_name: 
+      email_template_type:
+        index:
+          subject: 
+    placeholders:
+      defaults:
+        body_html: 
+        subject_html: 
+        type_name_html: 
+      email_template:
+        index:
+          body: 
+          content: 
+          subject: 
+          type_name: 
+      email_template_type:
+        index:
+          subject: 
+  speaker:
+    email: 
+    facebook: 
+    name: Speaker Name
+    phone: 
+    twitter: 
+  speaker_application_header: Speaker Application To %{conference_name}
+  speakers: 
+  subject: 
+  support:
+    array:
+      words_connector: 
+  topic:
+    absract: 
+    abstract: 
+    speakers: 
+    subject: 
+  total_appeals: 
+  update: 
   updated: 
+  user:
+    dont_have_account: 
+    email: 
+    login: 
+    login_to_your_account: 
+    lost_password: 
+    password: 
+    remember_me: 
+    sign_up_to_get_started: 
+  waiting_appeals: 
+  waiting_review: 
+  x: 
