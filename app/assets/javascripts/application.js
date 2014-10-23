@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require jquery-ui/core
 //= require jquery-ui/datepicker
+//= require jquery-ui/datepicker-en-GB
+//= require jquery-ui/datepicker-tr
 //= require jquery.validator
 //= require bootstrap
 //= require best_in_place
@@ -23,6 +25,8 @@
 
 
 $(document).ready(function(){
+    $.datepicker.setDefaults( $.datepicker.regional[ current_locale ] );
+
     $('.disable-enter').keypress(function (event) {
         if (event.keyCode == 13) {
             event.preventDefault();

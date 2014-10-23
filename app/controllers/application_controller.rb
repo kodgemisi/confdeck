@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     if current_user
-      I18n.locale = current_user.settings[:language]
+      I18n.locale = current_user.settings['language']
     else
       if I18n.locale_available? extract_locale.to_sym
         I18n.locale = extract_locale

@@ -46,7 +46,7 @@ $(function () {
         onClose: function (selectedDate) {
             $("#to").datepicker("option", "minDate", selectedDate);
         },
-        dateFormat: 'dd/mm/yy'
+        //dateFormat:  $("#from").attr("placeholder")
     });
     $("#to").datepicker({
         defaultDate: "+1w",
@@ -55,6 +55,6 @@ $(function () {
         onClose: function (selectedDate) {
             $("#from").datepicker("option", "maxDate", selectedDate);
         },
-        dateFormat: 'dd/mm/yy'
+        //dateFormat:  $("#to").attr("placeholder")
     });
 });

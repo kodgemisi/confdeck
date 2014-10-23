@@ -53,8 +53,8 @@ class ConferencesController < ApplicationController
 
   # GET /conferences/1/edit
   def edit
-    @conference.to_date = @conference.days.last.date.strftime("%d/%m/%Y")
-    @conference.from_date = @conference.days.first.date.strftime("%d/%m/%Y")
+    @conference.to_date = @conference.days.last.date.strftime(I18n.t(:"date.formats.default"))
+    @conference.from_date = @conference.days.first.date.strftime(I18n.t(:"date.formats.default"))
 
   end
 
@@ -90,8 +90,8 @@ class ConferencesController < ApplicationController
   def update
 
     if(params[:from] && params[:to])
-     from_date = DateTime.strptime(params[:from], "%m/%d/%Y")
-     to_date = DateTime.strptime(params[:to], "%m/%d/%Y")
+     from_date = DateTime.strptime(params[:from], I18n.t(:"date.formats.default"))
+     to_date = DateTime.strptime(params[:to], I18n.t(:"date.formats.default"))
     end
     respond_to do |format|
       if @conference.update_attributes(conference_params)
