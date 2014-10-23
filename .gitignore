@@ -20,4 +20,6 @@
 /.sass-cache
 /config/initializers/localeapp.rb
 
+/log/localeapp.yml
 .localeapp
+*.swp
