@@ -31,12 +31,18 @@ class ApplicationController < ActionController::Base
     if current_user
       I18n.locale = current_user.settings[:language]
     else
-      #TODO: we should get locale from user agent
-      I18n.locale = I18n.default_locale
+      if I18n.locale_available? extract_locale.to_sym
+        I18n.locale = extract_locale
+      else
+        I18n.locale = I18n.default_locale
+      end
     end
-
   end
 
+  def extract_locale
+    return "en" if request.env['HTTP_ACCEPT_LANGUAGE'].nil?
+    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+  end
 
   # to make accessible across all controllers to use on sidebar
   def set_user_data
