@@ -85,7 +85,7 @@ class Conference < ActiveRecord::Base
   def create_days(from_date, to_date)
    current_date = from_date
    begin
-    day = Day.find_or_create_by_date(current_date)
+    day = Day.where(date: current_date).first_or_create
     self.days << day
     current_date = current_date.next_day
    end while current_date != to_date.next_day
