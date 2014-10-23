@@ -5,10 +5,6 @@ en:
   active_conferences: 
   activerecord:
     attributes:
-      'address/<span class="translation_missing" title="translation missing: en/address':
-        city">City</span>: 
-        info">Info</span>: 
-        location">Location</span>: 
       conference:
         description: 
         email: 
@@ -96,9 +92,10 @@ en:
   are_you_sure: 
   body: 
   close: 
-  conference:
+  conferences:
     address: 
     basic_information: 
+    conferences: Conferences
     contact_info: 
     delete: 
     description: 
@@ -107,10 +104,11 @@ en:
     logo: 
     manage: 
     name: 
-    new: 
+    new: |
+      New Conference
     num_of_appeals: 
     num_of_sponsors: 
-    organization: 
+    organization: Organization
     schedule: 
     show: 
     slug: 
@@ -134,7 +132,6 @@ en:
           text: 
           title: 
       title: 
-  conferences: 
   create: 
   create_appeal: 
   create_organization: 
@@ -236,7 +233,12 @@ en:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
   general:
+    cancel: Cancel
+    close: Close
     create: Create
+    edit: Edit
+    save: Save
+    update: Update
   hello: Hello world
   helpers:
     label:
@@ -252,11 +254,6 @@ en:
         twitter: 
         website: 
       conference[address_attributes]:
-        '<span class="translation_missing" title="translation missing: en':
-          address:
-            city">City</span>: 
-            info">Info</span>: 
-            location">Location</span>: 
         Detay: 
         Konum: 
         "Şehir": 

@@ -5,10 +5,6 @@ tr:
   active_conferences: 
   activerecord:
     attributes:
-      'address/<span class="translation_missing" title="translation missing: en/address':
-        city">City</span>: 
-        info">Info</span>: 
-        location">Location</span>: 
       conference:
         description: Açıklama
         email: Email
@@ -96,9 +92,10 @@ tr:
   are_you_sure: 
   body: Posta
   close: Kapat
-  conference:
+  conferences:
     address: Adres
     basic_information: Temel Bilgiler
+    conferences: Konferanslar
     contact_info: "İletişim Bilgileri"
     delete: Sil
     description: Açıklama
@@ -134,7 +131,6 @@ tr:
           text: 
           title: 
       title: Konferans Oluşturma Sihirbazı
-  conferences: Konferanslar
   create: Oluştur
   create_appeal: Başvuruyu Oluştur
   create_organization: Yeni Organizasyon Oluştur
@@ -303,7 +299,12 @@ tr:
         one: 'Bu %{resource} kaydedilirken 1 hata yakalandı:'
         other: 'Bu %{resource} kaydedilirken %{count} hata yakalandı:'
   general:
+    cancel: "İptal"
+    close: Kapat
     create: Oluştur
+    edit: Düzenl
+    save: Kaydet
+    update: Güncelle
   hello: 
   helpers:
     label:
@@ -319,11 +320,6 @@ tr:
         twitter: 
         website: 
       conference[address_attributes]:
-        '<span class="translation_missing" title="translation missing: en':
-          address:
-            city">City</span>: 
-            info">Info</span>: 
-            location">Location</span>: 
         Detay: 
         Konum: 
         "Şehir": 

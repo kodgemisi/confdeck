@@ -13,12 +13,12 @@
             <li >
                 <a href="javascript:void(0);" data-toggle="submenu" data-target="#sidebar-conferences-menu" data-parent=".topmenu">
                   <span class="figure"><i class="ico-flag5"></i></span>
-                  <span class="text"><%= t "conferences" %></span>
+                  <span class="text"><%= t "conferences.conferences" %></span>
                   <span class="arrow"></span>
                 </a>
                 <!-- START 2nd Level Menu -->
                 <ul id="sidebar-conferences-menu" class="submenu ">
-                  <li class="submenu-header ellipsis"><%= t "conferences" %></li>
+                  <li class="submenu-header ellipsis"><%= t "conferences.conferences" %></li>
                   <% @user_conferences.each do |conference| %>
                       <li >
                         <a href="<%= manage_conference_path(conference) %>">
