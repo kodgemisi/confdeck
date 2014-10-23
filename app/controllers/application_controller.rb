@@ -31,11 +31,8 @@ class ApplicationController < ActionController::Base
     if current_user
       I18n.locale = current_user.settings[:language]
     else
-      if  I18n.locale_available? extract_locale.to_sym
-        I18n.locale = extract_locale
-      else
-        I18n.locale = I18n.default_locale
-      end
+      #TODO: we should get locale from user agent
+      I18n.locale = I18n.default_locale
     end
 
   end
