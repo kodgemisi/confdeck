@@ -101,6 +101,6 @@ class SponsorsController < ApplicationController
   private
 
   def set_conference
-    @conference = Conference.find(params[:conference_id])
+    @conference = Conference.friendly.find(params[:conference_id])
   end
 end

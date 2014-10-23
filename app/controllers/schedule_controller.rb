@@ -2,7 +2,7 @@ class ScheduleController < ApplicationController
   require 'json'
 
   def show
-    @conference = Conference.find(params[:conference_id])
+    @conference = Conference.friendly.find(params[:conference_id])
     @appeal_types = @conference.appeal_types.includes(:appeals).where("appeals.state" => "accepted")
     @room = Room.new
     @slot = Slot.new

@@ -125,7 +125,7 @@ class ConferencesController < ApplicationController
   end
 
   def appeal_types
-    @appeal_types = Conference.find(params[:id]).appeal_types
+    @appeal_types = Conference.friendly.find(params[:id]).appeal_types
     respond_to do |format|
       format.json { render json: @appeal_types }
     end
