@@ -45,6 +45,7 @@ group :test, :development do
   gem "better_errors"
   gem 'guard-rspec'
   gem 'spring-commands-rspec'
+  gem 'simplecov', :require => false
 end
 
 
