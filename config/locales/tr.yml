@@ -216,7 +216,7 @@ tr:
     formats:
       default: "%d/%m/%Y"
       long: "%d %B %Y"
-      placeholder: 
+      placeholder: "gg/aa/yyyy"
       short: "%b %d"
     month_names:
     - 

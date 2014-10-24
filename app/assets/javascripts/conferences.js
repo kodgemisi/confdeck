@@ -1,6 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 //= require schedule
+//= require jquery.typewatch
 //= require gmaps
 
 $(function () {
@@ -10,19 +11,6 @@ $(function () {
         cssClass: "form-wizard",
         headerTag: ".wizard-title",
         bodyTag: ".wizard-container",
-        onInit: function(event, currentIndex){
-            console.log("init")
-            $('[data-validate]').on('keyup', function() {
-                $this = $(this);
-                $.get($this.data('validate'), {
-                    user: $this.val()
-                }).success(function() {
-                    $this.removeClass('error');
-                }).error(function() {
-                    $this.addClass('error');
-                });
-            });
-        },
         onFinished: function () {
             this.submit();
         },
@@ -57,6 +45,17 @@ $(function () {
             $(element).parents("div.form-group").removeClass("has-error").addClass("has-success");
         }
     });
+
+    $("#conference_slug").rules("add", {
+        remote: {
+            url: $("#conference_slug").data("validate"),
+            data: {
+                slug: function() {
+                    return $( "#conference_slug" ).val();
+                }
+            }
+        }
+    })
 
     $("#from").datepicker({
         defaultDate: "+1w",

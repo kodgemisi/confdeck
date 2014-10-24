@@ -37,6 +37,9 @@ Confman::Application.routes.draw do
       get 'appeal_types'
       get 'manage'
     end
+    collection do
+      get 'check_slug'
+    end
   end
 
   resources :organizations do

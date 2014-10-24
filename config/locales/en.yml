@@ -164,9 +164,9 @@ en:
         year: 
     day_names: 
     formats:
-      default: 
-      long: 
-      placeholder: 
+      default: "%m/%d/%Y"
+      long:
+      placeholder: "mm/dd/yyyy"
       short: 
     month_names: 
     order: 

@@ -138,11 +138,10 @@ class ConferencesController < ApplicationController
 
   def check_slug
     if Conference.where(slug: check_slug_params[:slug]).count == 0
-      render :nothing => true, :status => 200
+      render :json => true
     else
-      render :nothing => true, :status => 409
+      render :json => false
     end
-    return
   end
 
   private
