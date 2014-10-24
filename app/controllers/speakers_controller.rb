@@ -58,7 +58,7 @@ class SpeakersController < ApplicationController
     @speaker = Speaker.where(email: params[:speaker][:email]).first
 
     #create a new speaker if not exists
-    @speaker = Speaker.new(params[:speaker]) if @speaker.nil?
+    @speaker = Speaker.new(speaker_params) if @speaker.nil?
 
     respond_to do |format|
       if @speaker.save
@@ -78,7 +78,7 @@ class SpeakersController < ApplicationController
     @speaker = Speaker.find(params[:id])
 
     respond_to do |format|
-      if @speaker.update_attributes(params[:speaker])
+      if @speaker.update_attributes(speaker_params)
         format.html { redirect_to @speaker, notice: 'Speaker was successfully updated.' }
         format.json { head :no_content }
       else
@@ -99,4 +99,9 @@ class SpeakersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private
+    def speaker_params
+      params.require(:speaker).permit(:name, :email, :phone, :twitter, :facebook)
+    end
 end

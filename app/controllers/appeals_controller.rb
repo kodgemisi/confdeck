@@ -60,7 +60,7 @@ class AppealsController < ApplicationController
   # POST /appeals
   # POST /appeals.json
   def create
-    @appeal = Appeal.new(params[:appeal])
+    @appeal = Appeal.new(appeal_params)
     @appeal.conference = @conference
 
     respond_to do |format|
@@ -78,7 +78,7 @@ class AppealsController < ApplicationController
   # PUT /appeals/1.json
   def update
     respond_to do |format|
-      if @appeal.update_attributes(params[:appeal])
+      if @appeal.update_attributes(appeal_params)
         format.html { redirect_to [@conference, @appeal], notice: 'Appeal was successfully updated.' }
         format.json { head :no_content }
       else
@@ -155,5 +155,9 @@ class AppealsController < ApplicationController
     unless @conference.users.include? current_user
       redirect_to root_url, notice: "You shall not pass"
     end
+  end
+
+  def appeal_params
+    params.require(:appeal).permit(topic_attributes: [:subject, :abstract, :detail, :additional_info, speaker_ids: []] )
   end
 end
