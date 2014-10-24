@@ -7,8 +7,22 @@ $(function () {
 
 
     $("#wizard").steps({
+        cssClass: "form-wizard",
         headerTag: ".wizard-title",
         bodyTag: ".wizard-container",
+        onInit: function(event, currentIndex){
+            console.log("init")
+            $('[data-validate]').on('keyup', function() {
+                $this = $(this);
+                $.get($this.data('validate'), {
+                    user: $this.val()
+                }).success(function() {
+                    $this.removeClass('error');
+                }).error(function() {
+                    $this.addClass('error');
+                });
+            });
+        },
         onFinished: function () {
             this.submit();
         },
