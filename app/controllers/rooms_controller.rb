@@ -55,7 +55,7 @@ class RoomsController < ApplicationController
   # POST /rooms
   # POST /rooms.json
   def create
-    @room = Room.new(params[:room])
+    @room = Room.new(room_params)
     @room.conference_id = @conference.id
 
     respond_to do |format|
@@ -77,7 +77,7 @@ class RoomsController < ApplicationController
   def update
 
     respond_to do |format|
-      if @room.update_attributes(params[:room])
+      if @room.update_attributes(room_params)
         format.html { redirect_to [@conference, @room], notice: 'Room was successfully updated.' }
         format.json { head :no_content }
       else
@@ -101,10 +101,14 @@ class RoomsController < ApplicationController
   private
 
   def set_conference
-    @conference = Conference.find(params[:conference_id])
+    @conference = Conference.friendly.find(params[:conference_id])
   end
 
   def set_room
     @room = @conference.rooms.find(params[:id])
+  end
+
+  def room_params
+    params.require(:room).permit(:conference_id, :name)
   end
 end
