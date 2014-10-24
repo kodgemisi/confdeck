@@ -63,7 +63,7 @@ class Conference < ActiveRecord::Base
   validate :valid_to_date?
   def valid_from_date?
     begin
-      DateTime.strptime(from_date, I18n.t(:"date.formats.default"))
+      DateTime.strptime(from_date, I18n.t("date.formats.default"))
     rescue
       errors.add(:from_date, I18n.t("errors.date.invalid"))
     end
@@ -71,7 +71,7 @@ class Conference < ActiveRecord::Base
 
   def valid_to_date?
     begin
-      DateTime.strptime(to_date, I18n.t(:"date.formats.default"))
+      DateTime.strptime(to_date, I18n.t("date.formats.default"))
     rescue
       errors.add(:to_date, I18n.t("errors.date.invalid"))
     end

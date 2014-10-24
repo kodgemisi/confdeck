@@ -53,8 +53,8 @@ class ConferencesController < ApplicationController
 
   # GET /conferences/1/edit
   def edit
-    @conference.to_date = @conference.days.last.date.strftime(I18n.t(:"date.formats.default"))
-    @conference.from_date = @conference.days.first.date.strftime(I18n.t(:"date.formats.default"))
+    @conference.to_date = @conference.days.last.date.strftime(I18n.t("date.formats.default"))
+    @conference.from_date = @conference.days.first.date.strftime(I18n.t("date.formats.default"))
 
   end
 
@@ -64,11 +64,11 @@ class ConferencesController < ApplicationController
     @conference = Conference.new(conference_params)
 
     begin
-      from_date = DateTime.strptime(@conference.from_date, I18n.t(:"date.formats.default"))
+      from_date = DateTime.strptime(@conference.from_date, I18n.t("date.formats.default"))
     rescue
     end
     begin
-      to_date = DateTime.strptime(@conference.to_date, I18n.t(:"date.formats.default"))
+      to_date = DateTime.strptime(@conference.to_date, I18n.t("date.formats.default"))
     rescue
     end
 
@@ -90,8 +90,8 @@ class ConferencesController < ApplicationController
   def update
 
     if(params[:from] && params[:to])
-     from_date = DateTime.strptime(params[:from], I18n.t(:"date.formats.default"))
-     to_date = DateTime.strptime(params[:to], I18n.t(:"date.formats.default"))
+     from_date = DateTime.strptime(params[:from], I18n.t("date.formats.default"))
+     to_date = DateTime.strptime(params[:to], I18n.t("date.formats.default"))
     end
     respond_to do |format|
       if @conference.update_attributes(conference_params)
@@ -136,7 +136,20 @@ class ConferencesController < ApplicationController
 
   end
 
+  def check_slug
+    if Conference.where(slug: check_slug_params[:slug]).count == 0
+      render :nothing => true, :status => 200
+    else
+      render :nothing => true, :status => 409
+    end
+    return
+  end
+
   private
+
+    def check_slug_params
+      params.permit(:slug)
+    end
 
     def set_conference
       @conference = Conference.friendly.find(params[:id])

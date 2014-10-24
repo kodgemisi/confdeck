@@ -10,19 +10,19 @@
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6">
       <div class="form-group nb">
-        <label for="from" class="col-lg-3 control-label"><%= t(:"conferences.start_date") %></label>
+        <label for="from" class="col-lg-3 control-label"><%= t("conferences.start_date") %></label>
 
         <div class="col-lg-9">
-          <%= f.text_field :from_date, :id => "from", :class => "form-control required", :placeholder => I18n.t(:"date.formats.placeholder") %>
+          <%= f.text_field :from_date, :id => "from", :class => "form-control required", :placeholder => I18n.t("date.formats.placeholder") %>
         </div>
       </div>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6">
       <div class="form-group nb">
-        <label for="from" class="col-lg-3 control-label"><%= t(:"conferences.end_date") %></label>
+        <label for="from" class="col-lg-3 control-label"><%= t("conferences.end_date") %></label>
 
         <div class="col-lg-9">
-          <%= f.text_field :to_date, :id => "to", :class => "form-control required", :placeholder => I18n.t(:"date.formats.placeholder") %>
+          <%= f.text_field :to_date, :id => "to", :class => "form-control required", :placeholder => I18n.t("date.formats.placeholder") %>
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
         <%= f.label :slug, :class => "col-lg-3 control-label" %>
 
         <div class="col-lg-9">
-          <%= f.text_field :slug, :class => "form-control" %>
+          <%= f.text_field :slug, :class => "form-control", data: { validate: check_slug_conferences_path } %>
         </div>
       </div>
       <div class="form-group nb">
