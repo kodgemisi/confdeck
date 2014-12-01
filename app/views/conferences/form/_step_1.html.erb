@@ -10,17 +10,20 @@
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6">
       <div class="form-group nb">
-        <label for="from" class="col-lg-3 control-label"><%= t("conferences.start_date") %></label>
+        <label for="from_date" class="col-lg-3 control-label"><%= t("conferences.start_date") %></label>
 
         <div class="col-lg-9">
           <%= f.text_field :from_date, :id => "from", :class => "form-control required", :placeholder => I18n.t("date.formats.placeholder") %>
+          <span class="checkbox custom-checkbox">
+                <input type="checkbox" name="conference_one_day" id="conference_one_day" <%= "checked" if @one_day %>/>
+                <label for="conference_one_day">&nbsp;&nbsp;<%= t("conferences.one_day") %></label>
+            </span>
         </div>
       </div>
     </div>
-    <div class="col-lg-6 col-md-6 col-sm-6">
+    <div class="col-lg-6 col-md-6 col-sm-6" <%= "style=display:none" if @one_day %>>
       <div class="form-group nb">
-        <label for="from" class="col-lg-3 control-label"><%= t("conferences.end_date") %></label>
-
+        <label for="to_date" class="col-lg-3 control-label"><%= t("conferences.end_date") %></label>
         <div class="col-lg-9">
           <%= f.text_field :to_date, :id => "to", :class => "form-control required", :placeholder => I18n.t("date.formats.placeholder") %>
         </div>

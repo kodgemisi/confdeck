@@ -62,6 +62,15 @@ $(function () {
         }
     })
 
+    $('#conference_one_day').change(function() {
+        if($(this).is(":checked")) {
+            $("#to").val($("#from").val());
+            $("#to").closest(".col-lg-6").hide();
+        }else{
+            $("#to").closest(".col-lg-6").show();
+        }
+    });
+
     $("#from").datepicker({
         defaultDate: "+1w",
         changeMonth: true,

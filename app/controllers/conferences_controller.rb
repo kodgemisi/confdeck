@@ -31,7 +31,7 @@ class ConferencesController < ApplicationController
   # GET /conferences/1.json
   def show
     @slot = Slot.new #for schedule showing
-
+    @one_day = (@conference.days.first == @conference.days.last)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -55,6 +55,7 @@ class ConferencesController < ApplicationController
   def edit
     @conference.to_date = @conference.days.last.date.strftime(I18n.t("date.formats.default"))
     @conference.from_date = @conference.days.first.date.strftime(I18n.t("date.formats.default"))
+    @one_day = (@conference.days.first == @conference.days.last)
 
   end
 
@@ -88,14 +89,17 @@ class ConferencesController < ApplicationController
   # PUT /conferences/1
   # PUT /conferences/1.json
   def update
+    from_date = conference_params[:from_date]
+    to_date = conference_params[:to_date]
 
-    if(params[:from] && params[:to])
-     from_date = DateTime.strptime(params[:from], I18n.t("date.formats.default"))
-     to_date = DateTime.strptime(params[:to], I18n.t("date.formats.default"))
+    if(from_date && to_date)
+     from_date = DateTime.strptime(from_date, I18n.t("date.formats.default"))
+     to_date = DateTime.strptime(to_date, I18n.t("date.formats.default"))
     end
+
     respond_to do |format|
       if @conference.update_attributes(conference_params)
-        if (params[:from] && params[:to])
+        if (from_date && to_date)
          @conference.days.destroy_all
          @conference.create_days(from_date, to_date)
         end
