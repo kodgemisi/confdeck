@@ -44,6 +44,7 @@ class ConferencesController < ApplicationController
   def new
     @conference = Conference.new
     @conference.build_address
+    @conference.appeal_types.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -155,6 +156,6 @@ class ConferencesController < ApplicationController
     end
 
     def conference_params
-      params.require(:conference).permit(:from_date, :to_date, :name, :slug, :summary, :description, :website, :twitter, :facebook, :email, :phone, organization_ids: [], address_attributes: [:info, :city, :lat, :lon])
+      params.require(:conference).permit(:from_date, :to_date, :name, :slug, :summary, :description, :website, :twitter, :facebook, :email, :phone, organization_ids: [], address_attributes: [:info, :city, :lat, :lon], appeal_types_attributes: [:id, :type_name])
     end
 end
