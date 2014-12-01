@@ -43,6 +43,11 @@ $(function () {
         },
         unhighlight: function (element, errorClass, validClass) {
             $(element).parents("div.form-group").removeClass("has-error").addClass("has-success");
+        },
+        messages: {
+            "conference[slug]": {
+                remote: $.validator.format("{0} is already in use")
+            }
         }
     });
 
