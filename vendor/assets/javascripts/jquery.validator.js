@@ -1253,6 +1253,10 @@
                     return "dependency-mismatch";
                 }
 
+                if($(element).data("currentvalue") == value){
+                    return true;
+                }
+
                 var previous = this.previousValue( element ),
                     validator, data;
 
