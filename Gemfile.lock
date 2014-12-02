@@ -47,6 +47,7 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.4)
       climate_control (>= 0.0.3, < 1.0)
+    cocoon (1.2.6)
     coderay (1.1.0)
     date_validator (0.7.1)
       activemodel
@@ -191,6 +192,9 @@ GEM
       sprockets-rails (~> 2.0)
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
+    simple_form (3.1.0)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
     simplecov (0.9.1)
       docile (~> 1.1.0)
       multi_json (~> 1.0)
@@ -240,6 +244,7 @@ DEPENDENCIES
   best_in_place
   better_errors
   bootstrap-sass (~> 3.1.0)
+  cocoon
   date_validator
   devise
   devise_invitable
@@ -261,6 +266,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (>= 4.0)
   shoulda-matchers
+  simple_form
   simplecov
   spring-commands-rspec
   sqlite3

@@ -22,6 +22,7 @@
 //= require core
 //= require adminre
 //= require adminre/jquery.steps
+//= require cocoon
 
 
 $(document).ready(function(){
