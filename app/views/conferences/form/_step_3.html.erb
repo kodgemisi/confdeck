@@ -1,12 +1,36 @@
 <!-- Wizard Container 3 -->
 <div class="wizard-title"><%= t "conferences.details" %></div>
 <div class="wizard-container">
-  <div class="form-group">
-    <div class="col-md-12">
-      <h5 class="semibold text-primary nm"><%= t "conferences.wizard.step3.desc.title" %></h5>
-      <p class="text-muted nm"><%= t "conferences.wizard.step3.desc.text" %></p>
+    <div class="form-group">
+        <div class="col-md-12">
+          <h5 class="semibold text-primary nm"><%= t "conferences.wizard.step3.desc.title" %></h5>
+          <p class="text-muted nm"><%= t "conferences.wizard.step3.desc.text" %></p>
+        </div>
     </div>
-  </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group nb">
+            <label for="from" class="col-lg-3 control-label"><%= t("conferences.appeal_types") %></label>
+
+            <div class="col-lg-4 appeal-types">
+              <%= f.simple_fields_for :appeal_types do |at| %>
+                  <%= render 'appeal_type_fields', :f => at %>
+              <% end %>
+            </div>
+            <div class="col-lg-1">
+              <%= link_to_add_association t("conferences.wizard.appeal_type.new"), f, :appeal_types,
+                                          class: "btn btn-primary",
+                                          data: {
+                                                  "association-insertion-method" => "append",
+                                                  #"association-insertion-traversal" => "closest",
+                                                  "association-insertion-node" => ".appeal-types"
+                                          } %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
 
 </div>
 

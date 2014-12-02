@@ -29,6 +29,9 @@ gem 'jbuilder'
 gem 'date_validator'
 gem 'localeapp'
 gem 'metamagic'
+gem 'simple_form'
+gem "cocoon"
+
 
 # gem 'i18n-tasks', '~> 0.7.7'
 
