@@ -113,6 +113,7 @@ tr:
     slug: Kısa İsim
     start_date: Başlangıç Tarihi
     summary: "Özet"
+    too_long: Konferansın tarih aralığı en fazla 60 gün olmalıdır.
     wizard:
       step1:
         desc:

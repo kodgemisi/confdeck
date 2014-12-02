@@ -114,6 +114,7 @@ en:
     slug: 
     start_date: 
     summary: 
+    too_long: Date range for conference must be less than 60 days.
     wizard:
       step1:
         desc:

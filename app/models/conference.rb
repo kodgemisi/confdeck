@@ -13,6 +13,7 @@
 
 class Conference < ActiveRecord::Base
   extend FriendlyId
+  before_save :check_dates
 
   friendly_id :name, use: :slugged
 
@@ -112,4 +113,17 @@ class Conference < ActiveRecord::Base
     liquid_vars[:organization] = organizations.first if organizations.count == 1
     liquid_vars
   end
+
+  private
+    def check_dates
+      from_date = Date.strptime(self.from_date, I18n.t("date.formats.default"))
+      to_date = Date.strptime(self.to_date, I18n.t("date.formats.default"))
+
+      if (to_date - from_date).to_i > 60
+        errors[:base] = I18n.t("conferences.too_long")
+        return false
+      else
+        return true
+      end
+    end
 end
