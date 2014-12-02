@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-md-12">
           <div class="form-group nb">
-            <label for="from" class="col-lg-3 control-label"><%= t("conferences.start_date") %></label>
+            <label for="from" class="col-lg-3 control-label"><%= t("conferences.appeal_types") %></label>
 
             <div class="col-lg-4 appeal-types">
               <%= f.simple_fields_for :appeal_types do |at| %>
@@ -18,8 +18,8 @@
               <% end %>
             </div>
             <div class="col-lg-1">
-
-              <%= link_to_add_association 'add a message', f, :appeal_types,
+              <%= link_to_add_association t("conferences.wizard.appeal_type.new"), f, :appeal_types,
+                                          class: "btn btn-primary",
                                           data: {
                                                   "association-insertion-method" => "append",
                                                   #"association-insertion-traversal" => "closest",
