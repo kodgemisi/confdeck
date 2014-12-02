@@ -53,7 +53,7 @@ class Conference < ActiveRecord::Base
   accepts_nested_attributes_for :organizations
   accepts_nested_attributes_for :days
   accepts_nested_attributes_for :email_templates
-
+  accepts_nested_attributes_for :appeal_types
   validates_presence_of :name, :organizations, :email, :from_date, :to_date
 
 

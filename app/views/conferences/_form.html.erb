@@ -11,7 +11,7 @@
 
 
                 <!-- START Form Wizard -->
-                <%= form_for(@conference, :html => {:class => 'form-horizontal form-bordered conference-wizard', :id => "wizard"}) do |f| %>
+                <%= simple_form_for(@conference, :html => {:class => 'form-horizontal form-bordered conference-wizard', :id => "wizard"}) do |f| %>
                       <% if @conference.errors.any? %>
                           <div class="alert alert-danger">
                             <strong><%= t "error" %></strong>
