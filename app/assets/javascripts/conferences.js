@@ -3,9 +3,9 @@
 //= require schedule
 //= require jquery.typewatch
 //= require gmaps
+//= require speakingurl.min
 
-$(function () {
-
+$(document).ready(function(){
 
     $("#wizard").steps({
         cssClass: "form-wizard",
@@ -92,6 +92,12 @@ $(function () {
             $("#from").datepicker("option", "maxDate", selectedDate);
         },
         //dateFormat:  $("#to").attr("placeholder")
+    });
+
+
+    $("#conference_name").on('change keyup input', function() {
+        slug = getSlug($(this).val());
+        $("#conference_slug").val(slug);
     });
 
     $('#conference-start-time').timepicker({showMeridian: false});
