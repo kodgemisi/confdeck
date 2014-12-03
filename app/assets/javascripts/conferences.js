@@ -29,7 +29,9 @@ $(function () {
         {
             $(this).validate().settings.ignore = ":disabled";
             return $(this).valid();
-        }
+        },
+        showFinishButtonAlways: true,
+        enableAllSteps: true
     }).validate({
         validClass:'has-success',
         errorElement: 'span',
@@ -65,9 +67,11 @@ $(function () {
     $('#conference_one_day').change(function() {
         if($(this).is(":checked")) {
             $("#to").val($("#from").val());
-            $("#to").closest(".col-lg-6").hide();
+            $("#to").closest(".to-date-div").hide();
+            $("#to").closest(".col-lg-6").find(".time-interval").show();
         }else{
-            $("#to").closest(".col-lg-6").show();
+            $("#to").closest(".to-date-div").show();
+            $("#to").closest(".col-lg-6").find(".time-interval").hide();
         }
     });
 
@@ -89,4 +93,7 @@ $(function () {
         },
         //dateFormat:  $("#to").attr("placeholder")
     });
+
+    $('#conference-start-time').timepicker({showMeridian: false});
+    $('#conference-end-time').timepicker({showMeridian: false});
 });

@@ -43,7 +43,7 @@ class OverlapValidator < ActiveModel::Validator
 end
 
 class Slot < ActiveRecord::Base
-  validates_uniqueness_of :appeal_id
+  validates_uniqueness_of :appeal_id, allow_nil: true
 
   belongs_to :conference
   belongs_to :room
