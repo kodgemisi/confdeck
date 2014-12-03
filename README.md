@@ -16,7 +16,7 @@ Only a Few ConfDeck Features:
 Configuration
 -------------
 
-Set LOCALEAPP_KEY environment value.
+* Confdeck uses localeapp for its translation service. You need to add a LoCALEAPP_KEY environment value to work with localeapp correctly. You can get your api key from https://www.localeapp.com/.
 
 
 Contributing
