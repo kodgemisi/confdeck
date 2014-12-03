@@ -31,7 +31,7 @@ class ConferencesController < ApplicationController
   # GET /conferences/1.json
   def show
     @slot = Slot.new #for schedule showing
-
+    @one_day = (@conference.days.first == @conference.days.last)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -56,6 +56,7 @@ class ConferencesController < ApplicationController
   def edit
     @conference.to_date = @conference.days.last.date.strftime(I18n.t("date.formats.default"))
     @conference.from_date = @conference.days.first.date.strftime(I18n.t("date.formats.default"))
+    @one_day = (@conference.days.first == @conference.days.last)
 
   end
 
@@ -64,19 +65,8 @@ class ConferencesController < ApplicationController
   def create
     @conference = Conference.new(conference_params)
 
-    begin
-      from_date = DateTime.strptime(@conference.from_date, I18n.t("date.formats.default"))
-    rescue
-    end
-    begin
-      to_date = DateTime.strptime(@conference.to_date, I18n.t("date.formats.default"))
-    rescue
-    end
-
-
     respond_to do |format|
       if @conference.save
-        @conference.create_days(from_date, to_date)
         format.html { redirect_to @conference, notice: 'Conference was successfully created.' }
         format.json { render json: @conference, status: :created, location: @conference }
       else
@@ -90,16 +80,8 @@ class ConferencesController < ApplicationController
   # PUT /conferences/1.json
   def update
 
-    if(params[:from] && params[:to])
-     from_date = DateTime.strptime(params[:from], I18n.t("date.formats.default"))
-     to_date = DateTime.strptime(params[:to], I18n.t("date.formats.default"))
-    end
     respond_to do |format|
       if @conference.update_attributes(conference_params)
-        if (params[:from] && params[:to])
-         @conference.days.destroy_all
-         @conference.create_days(from_date, to_date)
-        end
         format.html { redirect_to edit_conference_path(@conference), notice: 'Conference was successfully updated.' }
         format.json { head :no_content }
       else
@@ -153,9 +135,20 @@ class ConferencesController < ApplicationController
 
     def set_conference
       @conference = Conference.friendly.find(params[:id])
+
+      if @conference.days.first == @conference.days.last
+        @conference.start_time = @conference.slots.first.start_time.strftime("%H:%M")
+        @conference.end_time = @conference.slots.first.end_time.strftime("%H:%M")
+      end
     end
 
     def conference_params
-      params.require(:conference).permit(:from_date, :to_date, :name, :slug, :summary, :description, :website, :twitter, :facebook, :email, :phone, organization_ids: [], address_attributes: [:info, :city, :lat, :lon], appeal_types_attributes: [:id, :type_name])
+      params.require(:conference).permit(:from_date, :to_date,
+                                         :start_time, :end_time, :name, :slug,
+                                         :summary, :description, :website, :twitter,
+                                         :facebook, :email, :phone,
+                                         organization_ids: [],
+                                         address_attributes: [:info, :city, :lat, :lon],
+                                         appeal_types_attributes: [:id, :type_name, :_destroy])
     end
 end

@@ -29,7 +29,9 @@ $(document).ready(function(){
         {
             $(this).validate().settings.ignore = ":disabled";
             return $(this).valid();
-        }
+        },
+        showFinishButtonAlways: true,
+        enableAllSteps: true
     }).validate({
         validClass:'has-success',
         errorElement: 'span',
@@ -62,6 +64,17 @@ $(document).ready(function(){
         }
     })
 
+    $('#conference_one_day').change(function() {
+        if($(this).is(":checked")) {
+            $("#to").val($("#from").val());
+            $("#to").closest(".to-date-div").hide();
+            $("#to").closest(".col-lg-6").find(".time-interval").show();
+        }else{
+            $("#to").closest(".to-date-div").show();
+            $("#to").closest(".col-lg-6").find(".time-interval").hide();
+        }
+    });
+
     $("#from").datepicker({
         defaultDate: "+1w",
         changeMonth: true,
@@ -82,10 +95,11 @@ $(document).ready(function(){
     });
 
 
-
     $("#conference_name").on('change keyup input', function() {
         slug = getSlug($(this).val());
         $("#conference_slug").val(slug);
     });
 
+    $('#conference-start-time').timepicker({showMeridian: false});
+    $('#conference-end-time').timepicker({showMeridian: false});
 });
