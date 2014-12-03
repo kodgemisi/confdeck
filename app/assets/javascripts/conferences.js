@@ -16,7 +16,9 @@ $(document).ready(function(){
         },
         onStepChanged: function (event, currentIndex, priorIndex) {
             if(currentIndex == 1){
+                var currCenter = window.map.getCenter();
                 google.maps.event.trigger(map, 'resize'); //Refresh map on address step
+                window.map.setCenter(currCenter);
             }
         },
         onStepChanging: function (event, currentIndex, priorIndex) {
