@@ -13,6 +13,12 @@ Only a Few ConfDeck Features:
 * Committee members can vote and comment on applications 
 * Applications can be accepted or rejected and aplicants are informed via email
 
+Configuration
+-------------
+
+Set LOCALEAPP_KEY environment value.
+
+
 Contributing
 ------------
 
