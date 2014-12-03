@@ -22,7 +22,9 @@ $(document).ready(function(){
             }
         },
         onStepChanging: function (event, currentIndex, priorIndex) {
-
+            if(priorIndex < currentIndex){
+                return true
+            }
             $(this).validate().settings.ignore = ":disabled,:hidden";
 
             return $(this).valid();
