@@ -1,4 +1,7 @@
 language: ruby
 rvm:
-  - 2.1.2
-bundler_args: --without production
+- 2.1.2
+bundler_args: "--without production"
+env:
+  global:
+    secure: IARszb0ZUcdwVuXBcbwqH/5hR0hmkB6iQ/Eykc/TRvkFPcdhNIkVOSEfaIjb4bCEDVO0rYDg4hoJEolxz5M6NGyQIR4m/Dqw4KSJADJwa9zYsr32qd5eUN1JM324HeUa/3qf0FfLJ6B7H+eag8gDP6wqK+H5cQb4r4zw7bw7lj4=
