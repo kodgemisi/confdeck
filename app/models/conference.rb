@@ -81,7 +81,7 @@ class Conference < ActiveRecord::Base
     begin
       DateTime.strptime(from_date, I18n.t("date.formats.default"))
     rescue
-      errors.add(:from_date, I18n.t("errors.date.invalid"))
+      errors.add(:from_date, "invalid")
     end
   end
 
@@ -89,7 +89,7 @@ class Conference < ActiveRecord::Base
     begin
       DateTime.strptime(to_date, I18n.t("date.formats.default"))
     rescue
-      errors.add(:to_date, I18n.t("errors.date.invalid"))
+      errors.add(:to_date, "invalid")
     end
   end
 
