@@ -14,11 +14,25 @@
 class Conference < ActiveRecord::Base
   extend FriendlyId
   before_save :check_dates
+  after_save :create_dates_and_slot
+
+  def create_dates_and_slot
+    if (self.from_date && self.to_date)
+      self.days.destroy_all
+    end
+    self.create_days(self.from_date, self.to_date)
+
+    if one_day?
+      create_one_day_slot!
+    end
+  end
 
   friendly_id :name, use: :slugged
 
   attr_accessor :from_date
   attr_accessor :to_date
+  attr_accessor :start_time
+  attr_accessor :end_time
 
   def should_generate_new_friendly_id?
     name_changed?
@@ -53,9 +67,10 @@ class Conference < ActiveRecord::Base
   accepts_nested_attributes_for :organizations
   accepts_nested_attributes_for :days
   accepts_nested_attributes_for :email_templates
-  accepts_nested_attributes_for :appeal_types
+  accepts_nested_attributes_for :appeal_types, :reject_if => :all_blank, :allow_destroy => true
   validates_presence_of :name, :organizations, :email, :from_date, :to_date
-
+  validates_format_of :start_time, :with => /([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]/
+  validates_format_of :end_time, :with => /([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]/
 
   #validates :from_date, date: true
   #validates :to_date, date: true
@@ -77,6 +92,7 @@ class Conference < ActiveRecord::Base
       errors.add(:to_date, I18n.t("errors.date.invalid"))
     end
   end
+
   has_attached_file :logo, :styles => { :medium => "400x400>", :thumb => "200x100>" }, :default_url => "/assets/missing_:style.png"
   has_attached_file :heading_image, :styles => { :default => "1900x254", :thumb => "200x100"}, :default_url => "/assets/heading_missing_:style.png"
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
@@ -114,13 +130,42 @@ class Conference < ActiveRecord::Base
     liquid_vars
   end
 
+  def one_day?
+    (self.from_date == self.to_date)
+  end
+
+  def create_one_day_slot!
+    self.slots.destroy_all #FIXME might be need to removed
+    slot = self.slots.build
+    slot.day = self.days.first
+
+    from_date = slot.day.date
+    start_time = Time.parse(self.start_time)
+    end_time = Time.parse(self.end_time)
+    slot.start_time = (from_date + start_time.seconds_since_midnight.seconds).to_datetime
+    slot.end_time = (from_date + end_time.seconds_since_midnight.seconds).to_datetime
+    slot.save
+  end
+
   private
     def check_dates
-      from_date = Date.strptime(self.from_date, I18n.t("date.formats.default"))
-      to_date = Date.strptime(self.to_date, I18n.t("date.formats.default"))
+      begin
+        self.from_date = DateTime.strptime(self.from_date, I18n.t("date.formats.default"))
+      rescue
+        self.errors.add(:from_date, "invalid");
+        return false
+      end
 
-      if (to_date - from_date).to_i > 60
-        errors[:base] = I18n.t("conferences.too_long")
+      begin
+        self.to_date = DateTime.strptime(self.to_date, I18n.t("date.formats.default"))
+      rescue
+        self.errors.add(:to_date, "invalid");
+        return false
+      end
+
+
+      if (self.to_date - self.from_date).to_i > 60
+        self.errors[:base] = I18n.t("conferences.too_long")
         return false
       else
         return true

@@ -23,6 +23,7 @@
 //= require adminre
 //= require adminre/jquery.steps
 //= require cocoon
+//= require bootstrap.timepicker
 
 
 $(document).ready(function(){
