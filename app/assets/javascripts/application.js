@@ -24,6 +24,7 @@
 //= require adminre/jquery.steps
 //= require cocoon
 //= require bootstrap.timepicker
+//= require summernote
 
 
 $(document).ready(function(){

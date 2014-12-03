@@ -9,12 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require font-awesome
  *= require jquery-ui
  *= require adminre_layout
  *= require adminre_ui
  *= require custom
  *= require bootstrap.timepicker
+ *= require summernote
+ *= require font-awe
  *= stub conference_landing
  */
 
