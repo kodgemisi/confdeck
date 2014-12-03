@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="col-md-12 pt10">
+    <div class="panel panel-primary">
+      <!-- panel heading/header -->
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="ico-envelope-alt mr5"></i><%= t("conferences.wizard.step3.email_templates") %></h3>
+        <!-- panel toolbar -->
+        <div class="panel-toolbar text-right">
+          <!-- option -->
+          <div class="option">
+            <button class="btn up" data-toggle="panelcollapse"><i class="arrow"></i></button>
+          </div>
+          <!--/ option -->
+        </div>
+        <!--/ panel toolbar -->
+      </div>
+      <!--/ panel heading/header -->
+
+      <!-- panel body with collapse capable -->
+      <div class="panel-collapse pull out" style="">
+        <div class="panel-body">
+                <% i = 0 %>
+                <% @template_types.each do |tt| %>
+                      <div class="panel panel-teal">
+                        <!-- panel heading/header -->
+                        <div class="panel-heading">
+                          <h3 class="panel-title"><%= tt.title %></h3>
+                        </div>
+                        <!--/ panel heading/header -->
+                        <div class="panel-collapse pull out" style="">
+                          <div class="panel-body">
+                              <% if @template_hash[tt.type_name].present? && @template_hash[tt.type_name].email_template_type_id == tt.id #saved in database? or get from default templates? %>
+                                <div class="form-group">
+                                    <%= f.label :subject, t(:subject), :class => "col-lg-2 control-label" %>
+                                    <div class="col-lg-10">
+                                      <%= text_field_tag "conference[email_templates_attributes][" + i.to_s + "][subject]", @template_hash[tt.type_name].subject, {:class => "form-control"} %>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <%= f.label :body, t(:body), :class => "col-lg-2 control-label" %>
+                                    <div class="col-lg-10">
+                                      <%= text_area_tag "conference[email_templates_attributes][" + i.to_s + "][body]", @template_hash[tt.type_name].body, {:class => "form-control", :rows => 15} %>
+                                      <span class="help-block"><%= tt.description %></span>
+                                    </div>
+                                  </div>
+                                  <%= hidden_field_tag "conference[email_templates_attributes][" + i.to_s + "][id]", @template_hash[tt.type_name].id %>
+                              <% else %>
+                                  <div class="form-group">
+                                    <%= f.label :subject, t(:subject), :class => "col-lg-2 control-label" %>
+                                    <div class="col-lg-10">
+                                      <%= text_field_tag "conference[email_templates_attributes][" + i.to_s + "][subject]", tt.default_subject, {:class => "form-control"} %>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <%= f.label :body, t(:body), :class => "col-lg-2 control-label" %>
+                                    <div class="col-lg-10">
+                                      <%= text_area_tag "conference[email_templates_attributes][" + i.to_s + "][body]", tt.default_body, {:class => "form-control", :rows => 15} %>
+                                      <span class="help-block"><%= tt.description %></span>
+                                    </div>
+                                  </div>
+                              <% end %>
+                              <%= hidden_field_tag "conference[email_templates_attributes][" + i.to_s + "][email_template_type_id]", tt.id %>
+                          </div>
+                        </div>
+                        <!--/ panel body with collapse capabale -->
+                      </div>
+                  <% i = i + 1 %>
+                <% end %>
+        </div>
+      </div>
+      <!--/ panel body with collapse capabale -->
+
+      <!-- Loading indicator -->
+      <div class="indicator"><span class="spinner"></span></div>
+      <!--/ Loading indicator -->
+    </div>
+  </div>
+</div>

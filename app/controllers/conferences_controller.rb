@@ -14,6 +14,7 @@
 class ConferencesController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
   before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule]
+  before_action :load_data, only: [:new, :edit]
 
   layout 'conference_landing', :only => [:show]
   # GET /conferences
@@ -57,6 +58,7 @@ class ConferencesController < ApplicationController
     @conference.to_date = @conference.days.last.date.strftime(I18n.t("date.formats.default"))
     @conference.from_date = @conference.days.first.date.strftime(I18n.t("date.formats.default"))
     @one_day = (@conference.days.first == @conference.days.last)
+    @conference.email_templates.build
 
   end
 
@@ -129,6 +131,13 @@ class ConferencesController < ApplicationController
 
   private
 
+    def load_data
+      @template_types = EmailTemplateType.all
+      @email_templates = @conference.email_templates
+      @template_hash = {}
+      @email_templates.each { |et| @template_hash[et.email_template_type.type_name] ||= et }
+    end
+
     def check_slug_params
       params.permit(:slug)
     end
@@ -149,6 +158,9 @@ class ConferencesController < ApplicationController
                                          :facebook, :email, :phone,
                                          organization_ids: [],
                                          address_attributes: [:info, :city, :lat, :lon],
-                                         appeal_types_attributes: [:id, :type_name, :_destroy])
+                                         appeal_types_attributes: [:id, :type_name, :_destroy],
+                                         email_templates_attributes: [:id, :subject, :body, :email_template_type_id]
+
+      )
     end
 end
