@@ -4,6 +4,7 @@
 //= require jquery.typewatch
 //= require gmaps
 //= require speakingurl.min
+//= require lib/summernote.plugins
 
 $(document).ready(function(){
 
@@ -32,8 +33,8 @@ $(document).ready(function(){
                     ["para", ["ul", "ol", "paragraph"]],
                     ["height", ["height"]],
                     ["table", ["table"]],
-
-                    ["insert", ["helloDropdown"]],
+                    ["insert2", ["conferenceDropdown"]],
+                    ["insert3", ["topicDropdown"]],
                 ]
                 });
             }
