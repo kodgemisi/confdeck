@@ -25,6 +25,7 @@
 //= require cocoon
 //= require bootstrap.timepicker
 //= require summernote
+//= require rails-timeago-all
 
 
 $(document).ready(function(){

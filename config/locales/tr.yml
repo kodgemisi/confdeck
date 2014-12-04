@@ -138,6 +138,13 @@ tr:
   create_room: 
   create_speaker: Konuşmacı Oluştur
   dashboard: Anasayfa
+  time:
+    am: "öğleden önce"
+    formats:
+      default: "%a %d.%b.%y %H:%M"
+      long: "%e %B %Y, %A, %H:%M"
+      short: "%e %B, %H:%M"
+    pm: "öğleden sonra"
   date:
     abbr_day_names:
     - Sun
@@ -463,4 +470,3 @@ tr:
     sign_up_to_get_started: Hemen yeni bir hesap açın
   waiting_appeals: 
   waiting_review: Beklemede
-  x: 

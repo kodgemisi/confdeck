@@ -142,6 +142,9 @@ GEM
       sprockets-rails (~> 2.0)
     rails-bootstrap-helpers (0.1.0)
       rails (>= 3.2.11)
+    rails-timeago (2.11.1)
+      actionpack (>= 3.1)
+      activesupport (>= 3.1)
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
@@ -259,6 +262,7 @@ DEPENDENCIES
   pg
   rails (= 4.1.6)
   rails-bootstrap-helpers
+  rails-timeago
   rails_12factor
   rspec-rails
   sass-rails (>= 4.0)
