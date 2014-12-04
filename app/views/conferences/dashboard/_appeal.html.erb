@@ -4,21 +4,21 @@
         <%= appeal_ribbon(appeal).html_safe %>
       <!-- User info -->
       <ul class="list-table pa15">
-        <li class="text-left">
+        <li class="text-left pl5">
           <p class="ellipsis nm"><span class="semibold"><%= link_to t("conferences.new_appeal", subject: appeal.topic.subject), [@conference, appeal] %></span></p>
           <p class="text-muted nm"><%= timeago_tag appeal.created_at.to_time, :lang => I18n.locale %></p>
         </li>
-        <li class="text-right" style="width:60px;">
-          <div class="btn-group">
-            <button type="button" class="btn btn-link dropdown-toggle text-default" data-toggle="dropdown"><i class="ico-menu2"></i></button>
-            <ul class="dropdown-menu dropdown-menu-right">
-              <li><a href="javascript:void(0);">Report</a></li>
-              <li><a href="javascript:void(0);">Setting</a></li>
-              <li class="divider"></li>
-              <li><a href="javascript:void(0);" class="text-danger">Delete post</a></li>
-            </ul>
-          </div>
-        </li>
+        <!--<li class="text-right" style="width:60px;">-->
+          <!--<div class="btn-group">-->
+            <!--<button type="button" class="btn btn-link dropdown-toggle text-default" data-toggle="dropdown"><i class="ico-menu2"></i></button>-->
+            <!--<ul class="dropdown-menu dropdown-menu-right">-->
+              <!--<li><a href="javascript:void(0);">Report</a></li>-->
+              <!--<li><a href="javascript:void(0);">Setting</a></li>-->
+              <!--<li class="divider"></li>-->
+              <!--<li><a href="javascript:void(0);" class="text-danger">Delete post</a></li>-->
+            <!--</ul>-->
+          <!--</div>-->
+        <!--</li>-->
       </ul>
       <!--/ User info -->
       <hr class="nm"><!-- horizontal line -->
