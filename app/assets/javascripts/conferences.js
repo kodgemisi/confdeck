@@ -20,6 +20,23 @@ $(document).ready(function(){
                 google.maps.event.trigger(map, 'resize'); //Refresh map on address step
                 window.map.setCenter(currCenter);
             }
+
+            if(currentIndex == 2){ //details tab
+                $(".summernote-editor").summernote({ //must be here, otherwise buttons are not working
+                    height: 200,
+                    toolbar: [
+                    ["style", ["style"]],
+                    ["style", ["bold", "italic", "underline", "clear"]],
+                    ["fontsize", ["fontsize"]],
+                    ["color", ["color"]],
+                    ["para", ["ul", "ol", "paragraph"]],
+                    ["height", ["height"]],
+                    ["table", ["table"]],
+
+                    ["insert", ["helloDropdown"]],
+                ]
+                });
+            }
         },
         onStepChanging: function (event, currentIndex, priorIndex) {
             if(priorIndex < currentIndex){
@@ -32,6 +49,14 @@ $(document).ready(function(){
         onFinishing: function (event, currentIndex)
         {
             $(this).validate().settings.ignore = ":disabled";
+
+            //Set WYSIWYG editor contents to hidden fields before submit
+            var editors = $(".summernote-editor");
+            for(var i = 0; i < editors.size(); i++){
+                var editor = editors[i];
+                var hidden_field = $(editor).next().next();
+                $(hidden_field).val($(editor).code());
+            }
             return $(this).valid();
         },
         showFinishButtonAlways: true,
