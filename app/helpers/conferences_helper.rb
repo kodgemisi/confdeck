@@ -61,4 +61,18 @@ module ConferencesHelper
     (template_hash[tt.type_name].present? && template_hash[tt.type_name].email_template_type_id == tt.id)
   end
 
+  def remaining_days(conference)
+    days = (conference.days.first.date - Date.today).to_i
+    return days <= 0 ? 0 : days
+  end
+
+  def appeal_ribbon(appeal)
+    if appeal.state == "waiting_review"
+      '<a href="javascript:void(0);" class="panel-ribbon panel-ribbon-warning pull-left"><i class="ico-clock3"></i></a>'
+    elsif appeal.state == "accepted"
+      '<a href="javascript:void(0);" class="panel-ribbon panel-ribbon-success pull-left"><i class="ico-ok"></i></a>'
+    else
+      '<a href="javascript:void(0);" class="panel-ribbon panel-ribbon-danger pull-left"><i class="ico-ok"></i></a>'
+    end
+  end
 end

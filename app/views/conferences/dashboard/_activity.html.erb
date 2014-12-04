@@ -1,0 +1,7 @@
+<div class="section-header">
+  <h5 class="semibold title mb15"><i class="ico-health mr5"></i><%= t("conferences.activity") %></h5>
+</div>
+
+<% @latest_appeals.each do |appeal| %>
+    <%= render "conferences/dashboard/appeal", appeal: appeal %>
+<% end %>

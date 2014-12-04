@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-12 pt10">
+    <div class="panel panel-primary conference-sessions">
+      <!-- panel heading/header -->
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-calendar-o mr5"></i><%= t("conferences.wizard.step3.conference_sessions") %></h3>
+        <!-- panel toolbar -->
+        <div class="panel-toolbar text-right">
+          <!-- option -->
+          <div class="option">
+            <button class="btn show-conference-sessions down" data-toggle="panelcollapse"><i class="arrow"></i></button>
+          </div>
+          <!--/ option -->
+        </div>
+        <!--/ panel toolbar -->
+      </div>
+      <!--/ panel heading/header -->
+
+      <!-- panel body with collapse capable -->
+      <div class="panel-collapse pull in" style="">
+        <div class="panel-body">
+          <%= f.simple_fields_for(:appeals) do |appeal| %>
+              <div class="form-group nb">
+                <%= appeal.label :appeal_type, :class => "col-lg-3 control-label" %>
+
+                <div class="col-lg-9">
+                  <%= appeal.input :appeal_type, label: false, collection: [1,2] %>
+                </div>
+              </div>
+
+          <% end  %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
