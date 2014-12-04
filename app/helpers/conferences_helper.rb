@@ -57,4 +57,8 @@ module ConferencesHelper
     end
   end
 
+  def template_saved?(template_hash, tt)
+    (template_hash[tt.type_name].present? && template_hash[tt.type_name].email_template_type_id == tt.id)
+  end
+
 end

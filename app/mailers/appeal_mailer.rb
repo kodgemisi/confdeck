@@ -20,12 +20,12 @@ class AppealMailer < ActionMailer::Base
 
 
   def committee_notification_email(appeal)
-    liquid_template = prepare(appeal.conference, __method__, { "appeal" => appeal})
+    liquid_template = prepare(appeal.conference, __method__, { "appeal" => appeal, "topic" => appeal.topic, "conference" => appeal.conference})
     mail(to: appeal.conference.email, subject: liquid_template.subject, body: liquid_template.body)
   end
 
   def speaker_notification_email(appeal)
-    liquid_template = prepare(appeal.conference, __method__, {"appeal" => appeal})
+    liquid_template = prepare(appeal.conference, __method__, {"appeal" => appeal, "topic" => appeal.topic, "conference" => appeal.conference})
     appeal.topic.speakers.each do |speaker|
       mail(reply_to: appeal.conference.email, to: speaker.email, subject: liquid_template.subject, body: liquid_template.body) if speaker.email?
     end

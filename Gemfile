@@ -23,7 +23,6 @@ gem 'jquery-rails'
 gem "rails-bootstrap-helpers"
 gem 'will_paginate', '~> 3.0'
 gem 'will_paginate-bootstrap'
-gem 'font-awesome-sass'
 gem 'liquid'
 gem 'jbuilder'
 gem 'date_validator'

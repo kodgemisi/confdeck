@@ -3281,7 +3281,7 @@ a.thumbnail.active {
 .panel .panel-toolbar > .option > .btn {
   float: left;
   background-color: transparent;
-  color: #f3f3f3;
+  color: #f3f3f3 !important;
   padding-left: 6px;
   padding-right: 6px;
 }
