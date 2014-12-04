@@ -8,6 +8,11 @@
 
 $(document).ready(function(){
 
+    $(".appeal .show-comments").click(function(e){
+        e.preventDefault();
+        $(this).closest(".appeal").find(".comments").slideToggle();
+    })
+
     if($("#wizard")[0])
     {
         $("#wizard").steps({

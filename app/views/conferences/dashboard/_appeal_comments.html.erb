@@ -1,0 +1,16 @@
+<!--/ Toolbar -->
+<div class="panel-body np comments" style="display:none">
+  <!-- Comment list -->
+  <ul class="media-list">
+    <% comments.each do |comment| %>
+        <%= render "conferences/dashboard/comment", comment: comment %>
+    <% end %>
+  </ul>
+  <!--/ Comment list -->
+</div>
+<hr class="nm"><!-- horizontal line -->
+<!-- Comment box -->
+<%= form_for(Comment.new, url: comment_conference_appeal_path(@conference, appeal), remote: true) do |f| %>
+    <%= f.text_area :comment, :class => "form-control form-control-minimal appeal-comment", placeholder: t("appeals.write_comment"), onkeyup:  "if (event.keyCode == 13) { sendForm(this); }", onkeydown:  "if (event.keyCode == 13) { event.preventDefault(); }" %>
+<% end %>
+<!--/ Comment box -->

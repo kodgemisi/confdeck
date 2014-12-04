@@ -118,7 +118,7 @@ class ConferencesController < ApplicationController
 
   #admin side #show equivalent
   def manage
-    @latest_appeals = @conference.appeals.order("created_at DESC").limit(15)
+    @latest_appeals = @conference.appeals.order("created_at DESC").limit(15).includes(topic: [:speakers]).includes(:comments)
     @total_appeals = @conference.appeals
     @waiting_appeals = @conference.appeals.where(:state => "waiting_review")
   end

@@ -16,6 +16,7 @@
 //= require jquery-ui/datepicker
 //= require jquery-ui/datepicker-en-GB
 //= require jquery-ui/datepicker-tr
+//= require jquery-ui/effect-highlight
 //= require jquery.validator
 //= require bootstrap
 //= require best_in_place
@@ -51,3 +52,9 @@ $(document).ready(function(){
 window.showError = function(msg){
     console.log(msg)
 }
+
+
+function sendForm(item){
+    $(item).trigger("submit.rails");
+}
+

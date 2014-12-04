@@ -100,7 +100,7 @@ class AppealsController < ApplicationController
   end
 
   def comment
-    @comment = @appeal.comments.build(params[:comment])
+    @comment = @appeal.comments.build(comment_params)
     @comment.user = current_user
 
     respond_to do |format|
@@ -159,5 +159,9 @@ class AppealsController < ApplicationController
 
   def appeal_params
     params.require(:appeal).permit(topic_attributes: [:subject, :abstract, :detail, :additional_info, speaker_ids: []] )
+  end
+
+  def comment_params
+    params.require(:comment).permit(:comment)
   end
 end
