@@ -168,7 +168,7 @@ en:
       default: "%m/%d/%Y"
       long:
       placeholder: "mm/dd/yyyy"
-      short: 
+      short: "%b %d"
     month_names: 
     order: 
   description: 
@@ -400,3 +400,10 @@ en:
   x: 
   appeals:
     write_comment: Write a comment
+  activities:
+    actions:
+      appeal_upvote: "%{user} upvoted %{appeal}"
+      appeal_downvote: "%{user} downvoted %{appeal}"
+      appeal_comment: "%{user} commented on %{appeal}"
+      appeal_accept: "%{user} accepted %{appeal}"
+      appeal_reject: "%{user} rejected %{appeal}"
