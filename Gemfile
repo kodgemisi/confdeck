@@ -30,6 +30,7 @@ gem 'localeapp'
 gem 'metamagic'
 gem 'simple_form'
 gem "cocoon"
+gem "rails-timeago"
 
 
 # gem 'i18n-tasks', '~> 0.7.7'

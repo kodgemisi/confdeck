@@ -398,3 +398,5 @@ en:
   waiting_appeals: 
   waiting_review: 
   x: 
+  appeals:
+    write_comment: Write a comment

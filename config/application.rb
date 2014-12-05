@@ -56,5 +56,8 @@ module Confman
 
     WillPaginate.per_page = 10
 
+    Rails::Timeago.default_options :limit => proc { 100.days.ago }, :nojs => true, :date_only => false
+
+
   end
 end

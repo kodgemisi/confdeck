@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="list-group">
+      <a href="<%= conference_appeals_path(@conference) %>" class="list-group-item">
+        <i class="ico-angle-right mr5"></i> <%= t("conferences.appeals") %>
+      </a>
+      <a href="<%= conference_schedule_path(@conference) %>" class="list-group-item">
+        <i class="ico-angle-right mr5"></i> <%= t("conferences.schedule") %>
+      </a>
+      <a href="<%= conference_email_templates_path(@conference) %>" class="list-group-item">
+        <i class="ico-angle-right mr5"></i> <%= t("conferences.email_templates") %>
+      </a>
+      <a href="<%= conference_sponsors_path(@conference) %>" class="list-group-item">
+        <i class="ico-angle-right mr5"></i> <%= t("conferences.sponsors") %>
+      </a>
+      <a href="<%= appeal_types_conference_path(@conference) %>" class="list-group-item">
+        <i class="ico-angle-right mr5"></i> <%= t("conferences.appeal_types") %>
+      </a>
+    </div>
+  </div>
+</div>

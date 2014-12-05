@@ -1,0 +1,7 @@
+$("#<%= dom_id(@appeal) %>").find(".action-upvote").removeClass("text-grey")
+$("#<%= dom_id(@appeal) %>").find(".action-upvote").addClass("text-primary")
+
+$("#<%= dom_id(@appeal) %>").find(".action-downvote").removeClass("text-primary")
+$("#<%= dom_id(@appeal) %>").find(".action-downvote").addClass("text-grey")
+$("#<%= dom_id(@appeal) %>").find(".upvote-count").html("<%= @appeal.upvotes.count %>")
+$("#<%= dom_id(@appeal) %>").find(".downvote-count").html("<%= @appeal.downvotes.count %>")

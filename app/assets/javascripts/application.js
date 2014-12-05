@@ -16,6 +16,7 @@
 //= require jquery-ui/datepicker
 //= require jquery-ui/datepicker-en-GB
 //= require jquery-ui/datepicker-tr
+//= require jquery-ui/effect-highlight
 //= require jquery.validator
 //= require bootstrap
 //= require best_in_place
@@ -25,6 +26,7 @@
 //= require cocoon
 //= require bootstrap.timepicker
 //= require summernote
+//= require rails-timeago-all
 
 
 $(document).ready(function(){
@@ -50,3 +52,9 @@ $(document).ready(function(){
 window.showError = function(msg){
     console.log(msg)
 }
+
+
+function sendForm(item){
+    $(item).trigger("submit.rails");
+}
+

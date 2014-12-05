@@ -1,3 +1,14 @@
 <%
    meta title: t("titles.conferences.manage", conference: @conference.name)
 %>
+
+<div class="row">
+  <div class="col-lg-9">
+    <%= render "conferences/dashboard/heading" %>
+    <%= render "conferences/dashboard/activity" %>
+
+  </div>
+  <div class="col-lg-3">
+    <%= render "conferences/dashboard/sidebar" %>
+  </div>
+</div>

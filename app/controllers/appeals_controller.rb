@@ -100,7 +100,7 @@ class AppealsController < ApplicationController
   end
 
   def comment
-    @comment = @appeal.comments.build(params[:comment])
+    @comment = @appeal.comments.build(comment_params)
     @comment.user = current_user
 
     respond_to do |format|
@@ -117,6 +117,7 @@ class AppealsController < ApplicationController
   def upvote
     @appeal.upvote_from current_user
     respond_to do |format|
+      format.js
       format.html { redirect_to conference_appeals_path(@conference), notice: "This appeal is upvoted" }
     end
   end
@@ -124,6 +125,7 @@ class AppealsController < ApplicationController
   def downvote
     @appeal.downvote_from current_user
     respond_to do |format|
+      format.js
       format.html { redirect_to conference_appeals_path(@conference), notice: "This appeal is downvoted" }
     end
   end
@@ -159,5 +161,9 @@ class AppealsController < ApplicationController
 
   def appeal_params
     params.require(:appeal).permit(topic_attributes: [:subject, :abstract, :detail, :additional_info, speaker_ids: []] )
+  end
+
+  def comment_params
+    params.require(:comment).permit(:comment)
   end
 end
