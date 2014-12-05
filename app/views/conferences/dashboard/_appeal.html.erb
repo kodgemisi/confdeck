@@ -41,7 +41,6 @@
                 <dt><%= t("topics.additional_info") %></dt>
                 <dd><%= appeal.topic.additional_info %></dd>
             <% end %>
-
               <dt><%= t("topics.speakers") %></dt>
               <dd>
                 <% appeal.topic.speakers.each do |speaker| %>
@@ -67,15 +66,8 @@
       <!--/ panel footer -->
       <hr class="nm"><!-- horizontal line -->
       <!-- Toolbar -->
-      <div class="panel-toolbar-wrapper">
-        <div class="panel-toolbar">
-          <a href="#" class="semibold text-default show-comments"><%= appeal.comments.count %>&nbsp; <%= t("appeals.comments") %></a>
-          <span class="text-muted mr5 ml5">&#8226;</span>
-          <a href="javascript:void(0);" class="semibold text-default"><i class="ico-arrow-up mr5"></i><%= t("appeals.upvote") %></a>
-          <span class="text-muted mr5 ml5">&#8226;</span>
-          <a href="javascript:void(0);" class="semibold text-default"><i class="ico-arrow-down mr5"></i><%= t("appeals.downvote") %></a>
-        </div>
-      </div>
+
+      <%= render "conferences/dashboard/appeal_toolbar", appeal: appeal %>
       <%= render "conferences/dashboard/appeal_comments", comments: appeal.comments, appeal: appeal %>
     </div>
   </div>

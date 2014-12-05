@@ -117,6 +117,7 @@ class AppealsController < ApplicationController
   def upvote
     @appeal.upvote_from current_user
     respond_to do |format|
+      format.js
       format.html { redirect_to conference_appeals_path(@conference), notice: "This appeal is upvoted" }
     end
   end
@@ -124,6 +125,7 @@ class AppealsController < ApplicationController
   def downvote
     @appeal.downvote_from current_user
     respond_to do |format|
+      format.js
       format.html { redirect_to conference_appeals_path(@conference), notice: "This appeal is downvoted" }
     end
   end
