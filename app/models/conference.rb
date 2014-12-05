@@ -46,6 +46,7 @@ class Conference < ActiveRecord::Base
   has_many :rooms
   has_many :slots
   has_many :appeals
+  has_many :activities
   #FIXME old one is
   #has_many :waiting_appeals, class_name: "Appeal", conditions: {:state => "waiting_review"}
   has_many :waiting_appeals, class_name: "Appeal"

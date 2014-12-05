@@ -20,6 +20,8 @@ class AppealsController < ApplicationController
 
   before_filter :set_appeal, only: [:show, :edit, :update, :destroy, :comment, :upvote, :downvote, :accept, :reject]
 
+  after_filter :create_action_activity, only: [:create, :comment, :upvote, :downvote, :accept, :reject]
+
   layout "application_no_nav", :only => ["new", "show"]
   # GET /appeals
   # GET /appeals.json
@@ -145,6 +147,21 @@ class AppealsController < ApplicationController
   end
 
   private
+
+  def create_action_activity
+    action = "appeal_" + self.action_name
+    activity = @appeal.conference.activities.new
+    activity.action = action
+    activity.user = current_user
+
+    if action = "appeal_comment"
+      activity.subject = @comment
+    else
+      activity.subject = @appeal
+    end
+    activity.save
+  end
+
   def set_conference
     @conference = Conference.friendly.find(params[:conference_id])
   end
@@ -160,7 +177,7 @@ class AppealsController < ApplicationController
   end
 
   def appeal_params
-    params.require(:appeal).permit(topic_attributes: [:subject, :abstract, :detail, :additional_info, speaker_ids: []] )
+    params.require(:appeal).permit(:appeal_type_id, topic_attributes: [:subject, :abstract, :detail, :additional_info, speaker_ids: []] )
   end
 
   def comment_params

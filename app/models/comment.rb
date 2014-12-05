@@ -16,6 +16,7 @@ class Comment < ActiveRecord::Base
   include ActsAsCommentable::Comment
 
   belongs_to :commentable, :polymorphic => true
+  delegate :topic, :to => :commentable, :allow_nil => true
 
   default_scope { order("created_at DESC") }
   # NOTE: install the acts_as_votable plugin if you
