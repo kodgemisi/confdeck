@@ -41,7 +41,7 @@ class Conference < ActiveRecord::Base
   has_one :address
   has_and_belongs_to_many :organizations
   has_many :users, through: :organizations
-  has_and_belongs_to_many :days
+  has_and_belongs_to_many :days, -> { order 'date ASC' }
   has_many :sponsors
   has_many :rooms
   has_many :slots

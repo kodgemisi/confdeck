@@ -1,0 +1,33 @@
+<div class="col-lg-3">
+    <div class="row">
+      <!-- START Widget Panel -->
+      <div class="widget panel">
+        <!-- panel body -->
+        <div class="panel-body">
+          <h5 class="semibold text-primary"><%= t("home.active_conferences") %></h5>
+        </div>
+        <!--/ panel body -->
+        <table class="table">
+          <tbody>
+            <% @conferences.each do |conference| %>
+              <tr>
+                <td width="5%">
+                  <%= link_to image_tag(conference.logo.url(:thumb), height: "50", width: "50"), conference %>
+                </td>
+                <td width="5%"><%= link_to conference.name, conference %></td>
+                <td width="10%"><%= conference_dates conference %></td>
+                <td width="15%" class="pl0 pr5">
+                  <%= button_group class: "btn-group-sm pull-right" do %>
+                      <%= bs_button_to "", conference, tooltip: "Details", icon: "eye-open", style: "primary", size: "mini" %>
+                      <%= bs_button_to "", conference_schedule_path(conference), tooltip: "Schedule", icon: "calendar", style: "primary", size: "mini" %>
+                      <%= bs_button_to "", edit_conference_path(conference), tooltip: "Edit", icon: "pencil", style: "primary", size: "mini" %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <!--/ END Widget Panel -->
+    </div>
+</div>
