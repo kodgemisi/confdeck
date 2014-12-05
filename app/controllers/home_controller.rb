@@ -25,6 +25,7 @@ class HomeController < ApplicationController
   def dashboard
     @waiting_appeals = Appeal.where(:conference_id => current_user.conferences.pluck(:id), :state => "waiting_review")
     @total_appeals = Appeal.where(:conference_id => current_user.conferences.pluck(:id))
+    @activities = Activity.where(conference_id: [ current_user.conferences.pluck(:id)]).order("created_at DESC").limit(15)
   end
 
 end
