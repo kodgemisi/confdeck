@@ -57,7 +57,7 @@ class SponsorsController < ApplicationController
   # POST /sponsors
   # POST /sponsors.json
   def create
-    @sponsor = @conference.sponsors.new(params[:sponsor])
+    @sponsor = @conference.sponsors.new(sponsor_params)
 
     respond_to do |format|
       if @sponsor.save
@@ -76,7 +76,7 @@ class SponsorsController < ApplicationController
     @sponsor = Sponsor.find(params[:id])
 
     respond_to do |format|
-      if @sponsor.update_attributes(params[:sponsor])
+      if @sponsor.update_attributes(sponsor_params)
         format.html { redirect_to [@conference, @sponsor], notice: 'Sponsor was successfully updated.' }
         format.json { head :no_content }
       else
@@ -102,5 +102,9 @@ class SponsorsController < ApplicationController
 
   def set_conference
     @conference = Conference.friendly.find(params[:conference_id])
+  end
+
+  def sponsor_params
+    params.require(:sponsor).permit(:id, :name, :website, :logo)
   end
 end
