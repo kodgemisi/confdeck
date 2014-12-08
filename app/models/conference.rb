@@ -64,6 +64,7 @@ class Conference < ActiveRecord::Base
 
 
 
+  accepts_nested_attributes_for :sponsors
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :organizations
   accepts_nested_attributes_for :days

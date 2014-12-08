@@ -1,0 +1,39 @@
+<div class="nested-fields">
+  <div class="panel panel-default form-horizontal form-bordered">
+    <!-- panel heading/header -->
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= t("conferences.wizard.sponsor.sponsor_form") %></h3>
+      <div class="panel-toolbar text-right">
+        <!-- option -->
+        <div class="option">
+          <%= link_to_remove_association f do %>
+              <button class="btn btn-primary btn-sm"><%= t("general.remove") %></button>
+          <% end %>
+        </div>
+        <!--/ option -->
+      </div>
+    </div>
+    <!--/ panel heading/header -->
+    <!-- panel body -->
+    <div class="panel-body">
+      <div class="form-group">
+        <label class="control-label col-sm-4"><%= t("sponsors.name") %></label>
+        <div class="col-sm-8">
+          <%= f.input :name, label: false, input_html: {class: "form-control"} %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-4"><%= t("sponsors.website") %></label>
+        <div class="col-sm-8">
+          <%= f.input :website, label: false, input_html: {class: "form-control"} %>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-4"><%= t("sponsors.website") %></label>
+        <div class="col-sm-8">
+          <%= f.input :logo, label: false, as: :file, input_html: {class: "form-control"} %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
