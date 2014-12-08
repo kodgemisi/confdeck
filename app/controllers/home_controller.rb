@@ -17,9 +17,7 @@ class HomeController < ApplicationController
   layout "home_layout", :only => [:index]
 
   def index
-    @days = Day.joins(:conferences).where('date > ?', Date.today).order("date DESC").group("conferences.id")
-    @conferences = current_user.conferences.includes(:days).order('days.date ').where('days.date > ?', Date.today).limit(5).distinct
-
+    
   end
 
   def dashboard
