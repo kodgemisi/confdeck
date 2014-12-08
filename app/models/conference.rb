@@ -19,7 +19,6 @@ class Conference < ActiveRecord::Base
   has_attached_file :heading_image, :styles => { :default => "1900x254", :thumb => "200x100"}, :default_url => "/assets/heading_missing_:style.png"
 
   #== Callbacks
-  before_save :check_dates
   after_save :create_days_and_slot
 
   #== Virtual Attributes
@@ -66,9 +65,10 @@ class Conference < ActiveRecord::Base
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
   validates_attachment_content_type :heading_image, :content_type => /\Aimage\/.*\Z/
   validates_presence_of :name, :organizations, :email, :from_date, :to_date
+  validates_uniqueness_of :slug
   validates_format_of :start_time, :with => /([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]/, :if => :one_day?
   validates_format_of :end_time, :with => /([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]/, :if => :one_day?
-
+  validate :check_dates, if: "to_date.present? && from_date.present?"
 
 
   def should_generate_new_friendly_id?
@@ -142,24 +142,34 @@ class Conference < ActiveRecord::Base
     # Also checks 60 days time range validation
     def check_dates
       begin
+        daaa = self.from_date
         self.from_date = DateTime.strptime(self.from_date, I18n.t("date.formats.default"))
       rescue
         self.errors.add(:from_date, "invalid");
-        return false
+        #return false
       end
 
       begin
         self.to_date = DateTime.strptime(self.to_date, I18n.t("date.formats.default"))
       rescue
         self.errors.add(:to_date, "invalid");
-        return false
+        #return false
       end
 
-      if (self.to_date - self.from_date).to_i > 60
-        self.errors[:base] = I18n.t("conferences.too_long")
-        return false
-      else
-        return true
+      if (self.to_date < self.from_date)
+        self.errors.add(:to_date, "must be after from date")
+        #return false
       end
+
+      if (Date.today > self.from_date)
+        self.errors.add(:from_date, "must be equal to or after from today")
+      end
+
+      # if (self.to_date - self.from_date).to_i > 60
+      #   self.errors[:base] = I18n.t("conferences.too_long")
+      #   #return false
+      # else
+      #   #return true
+      # end
     end
 end

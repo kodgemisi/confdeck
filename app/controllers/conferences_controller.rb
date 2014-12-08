@@ -14,7 +14,7 @@
 class ConferencesController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
   before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule]
-  before_action :load_data, only: [:new, :edit]
+  before_action :load_data, only: [:new, :edit, :create]
 
   layout 'conference_landing', :only => [:show]
   # GET /conferences
