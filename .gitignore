@@ -22,3 +22,4 @@
 /log/localeapp.yml
 .localeapp
 *.swp
+/coverage/
