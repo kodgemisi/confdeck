@@ -135,7 +135,7 @@ class ConferencesController < ApplicationController
 
     def load_data
       @template_types = EmailTemplateType.all
-      @email_templates = @conference.present? @conference.email_templates : []
+      @email_templates = @conference.present? ? @conference.email_templates : []
       @template_hash = {}
       @email_templates.each { |et| @template_hash[et.email_template_type.type_name] ||= et }
     end
