@@ -75,4 +75,13 @@ module ConferencesHelper
       '<a href="javascript:void(0);" class="panel-ribbon panel-ribbon-danger pull-left"><i class="ico-ok"></i></a>'
     end
   end
+
+
+  def date_to_s(date)
+    begin
+      date.strftime(I18n.t("date.formats.default"))
+    rescue
+      nil
+    end
+  end
 end
