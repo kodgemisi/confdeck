@@ -13,39 +13,31 @@
 
 class Conference < ActiveRecord::Base
   extend FriendlyId
-  before_save :check_dates
-  after_save :create_dates_and_slot
-
-  def create_dates_and_slot
-    if (self.from_date && self.to_date)
-      self.days.destroy_all
-    end
-    self.create_days(self.from_date, self.to_date)
-
-    if one_day?
-      create_one_day_slot!
-    end
-  end
-
   friendly_id :name, use: :slugged
 
+  has_attached_file :logo, :styles => { :medium => "400x400>", :thumb => "200x100>" }, :default_url => "/assets/missing_:style.png"
+  has_attached_file :heading_image, :styles => { :default => "1900x254", :thumb => "200x100"}, :default_url => "/assets/heading_missing_:style.png"
+
+  #== Callbacks
+  after_save :create_days_and_slot
+
+  #== Virtual Attributes
   attr_accessor :from_date
   attr_accessor :to_date
   attr_accessor :start_time
   attr_accessor :end_time
 
-  def should_generate_new_friendly_id?
-    name_changed?
-  end
 
+  #== Relations
   has_one :address
   has_and_belongs_to_many :organizations
   has_many :users, through: :organizations
-  has_and_belongs_to_many :days
+  has_and_belongs_to_many :days, -> { order 'date ASC' }
   has_many :sponsors
   has_many :rooms
   has_many :slots
   has_many :appeals
+  has_many :activities
   #FIXME old one is
   #has_many :waiting_appeals, class_name: "Appeal", conditions: {:state => "waiting_review"}
   has_many :waiting_appeals, class_name: "Appeal"
@@ -61,52 +53,65 @@ class Conference < ActiveRecord::Base
     end
   end
 
-
-
+  #== Nested Attributes
   accepts_nested_attributes_for :sponsors
   accepts_nested_attributes_for :address
   accepts_nested_attributes_for :organizations
   accepts_nested_attributes_for :days
   accepts_nested_attributes_for :email_templates
   accepts_nested_attributes_for :appeal_types, :reject_if => :all_blank, :allow_destroy => true
-  validates_presence_of :name, :organizations, :email, :from_date, :to_date
-  validates_format_of :start_time, :with => /([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]/
-  validates_format_of :end_time, :with => /([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]/
 
-  #validates :from_date, date: true
-  #validates :to_date, date: true
-  #validates :from_date, date: { before: :to_date }
-  validate :valid_from_date?
-  validate :valid_to_date?
-  def valid_from_date?
-    begin
-      DateTime.strptime(from_date, I18n.t("date.formats.default"))
-    rescue
-      errors.add(:from_date, "invalid")
-    end
-  end
-
-  def valid_to_date?
-    begin
-      DateTime.strptime(to_date, I18n.t("date.formats.default"))
-    rescue
-      errors.add(:to_date, "invalid")
-    end
-  end
-
-  has_attached_file :logo, :styles => { :medium => "400x400>", :thumb => "200x100>" }, :default_url => "/assets/missing_:style.png"
-  has_attached_file :heading_image, :styles => { :default => "1900x254", :thumb => "200x100"}, :default_url => "/assets/heading_missing_:style.png"
+  #== Validations
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
   validates_attachment_content_type :heading_image, :content_type => /\Aimage\/.*\Z/
+  validates_presence_of :name, :summary, :organizations, :email, :from_date, :to_date
+  validates_uniqueness_of :slug
+  validates_format_of :start_time, :with => /([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]/, :if => :one_day?
+  validates_format_of :end_time, :with => /([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]/, :if => :one_day?
+  validate :check_dates, if: "to_date.present? && from_date.present?"
 
+
+  def should_generate_new_friendly_id?
+    name_changed?
+  end
+
+  def create_days_and_slot
+    #FIXME should be refactored
+    if (self.from_date && self.to_date)
+      self.days.destroy_all
+    end
+
+    self.create_days(self.from_date, self.to_date)
+
+    if one_day?
+      create_one_day_slot!
+    end
+  end
 
   def create_days(from_date, to_date)
-   current_date = from_date
-   begin
-    day = Day.where(date: current_date).first_or_create
-    self.days << day
-    current_date = current_date.next_day
-   end while current_date != to_date.next_day
+    current_date = from_date
+    begin
+      day = Day.where(date: current_date).first_or_create
+      self.days << day
+      current_date = current_date.next_day
+    end while current_date != to_date.next_day
+  end
+
+  def one_day?
+    (self.from_date == self.to_date)
+  end
+
+  def create_one_day_slot!
+    self.slots.destroy_all #FIXME might be need to removed
+    slot = self.slots.build
+    slot.day = self.days.first
+
+    from_date = slot.day.date
+    start_time = Time.parse(self.start_time)
+    end_time = Time.parse(self.end_time)
+    slot.start_time = (from_date + start_time.seconds_since_midnight.seconds).to_datetime
+    slot.end_time = (from_date + end_time.seconds_since_midnight.seconds).to_datetime
+    slot.save
   end
 
   def unassigned_topics
@@ -131,45 +136,39 @@ class Conference < ActiveRecord::Base
     liquid_vars
   end
 
-  def one_day?
-    (self.from_date == self.to_date)
-  end
-
-  def create_one_day_slot!
-    self.slots.destroy_all #FIXME might be need to removed
-    slot = self.slots.build
-    slot.day = self.days.first
-
-    from_date = slot.day.date
-    start_time = Time.parse(self.start_time)
-    end_time = Time.parse(self.end_time)
-    slot.start_time = (from_date + start_time.seconds_since_midnight.seconds).to_datetime
-    slot.end_time = (from_date + end_time.seconds_since_midnight.seconds).to_datetime
-    slot.save
-  end
-
   private
-    def check_dates
-      begin
-        self.from_date = DateTime.strptime(self.from_date, I18n.t("date.formats.default"))
-      rescue
-        self.errors.add(:from_date, "invalid");
-        return false
-      end
 
-      begin
-        self.to_date = DateTime.strptime(self.to_date, I18n.t("date.formats.default"))
-      rescue
-        self.errors.add(:to_date, "invalid");
-        return false
-      end
-
-
-      if (self.to_date - self.from_date).to_i > 60
-        self.errors[:base] = I18n.t("conferences.too_long")
-        return false
-      else
-        return true
-      end
+  # Checks from_date and to_date formats and converts String to Date type
+  # Also checks 60 days time range validation
+  def check_dates
+    begin
+      self.from_date = DateTime.strptime(self.from_date, I18n.t("date.formats.default"))
+    rescue
+      self.errors.add(:from_date, "invalid");
+      #return false
     end
+
+    begin
+      self.to_date = DateTime.strptime(self.to_date, I18n.t("date.formats.default"))
+    rescue
+      self.errors.add(:to_date, "invalid");
+      #return false
+    end
+
+    if (self.to_date < self.from_date)
+      self.errors.add(:to_date, "must be after from date")
+      #return false
+    end
+
+    if (Date.today > self.from_date)
+      self.errors.add(:from_date, "must be equal to or after from today")
+    end
+
+    # if (self.to_date - self.from_date).to_i > 60
+    #   self.errors[:base] = I18n.t("conferences.too_long")
+    #   #return false
+    # else
+    #   #return true
+    # end
+  end
 end
