@@ -33,6 +33,11 @@
     </div>
 </div>
 <!--/ END row -->
+<% if @wizard.present? %>
+    <%= form_for(@wizard, url: sync_wizard_conferences_path, method: :put, html: {id: "conference_wizard_sync", class:"hide"}, remote: true) do |f| %>
+        <%= f.text_field :data %>
+    <% end %>
+<% end %>
 
 
 <div class="modal fade" id="newOrg">

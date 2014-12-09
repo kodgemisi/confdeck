@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :organizations
   has_many :conferences, through: :organizations
+  has_one :conference_wizard #, -> { order("created_at DESC") }
 
   acts_as_voter
 
