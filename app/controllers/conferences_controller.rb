@@ -53,6 +53,8 @@ class ConferencesController < ApplicationController
     if @wizard
       conf_params = Rack::Utils.parse_nested_query @wizard.data
       @conference = Conference.new(conf_params["conference"])
+      @conference.build_address if @conference.address.nil?
+      @conference.appeal_types.build if @conference.appeal_types.nil?
     else
       @conference = Conference.new
       @conference.build_address
@@ -82,6 +84,7 @@ class ConferencesController < ApplicationController
 
     respond_to do |format|
       if @conference.save
+        current_user.conference_wizard.destroy
         format.html { redirect_to @conference, notice: 'Conference was successfully created.' }
         format.json { render json: @conference, status: :created, location: @conference }
       else
