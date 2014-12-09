@@ -19,6 +19,13 @@ describe Conference do
 
   it "from date should be after today" do
     c = Fabricate.build(:conference)
+    c.from_date = date_to_s(Date.today + 3.days)
+    c.to_date =  date_to_s(Date.today + 4.days)
+    expect(c).to be_valid
+  end
+
+  it "from date shouldnt be before today" do
+    c = Fabricate.build(:conference)
     c.from_date = date_to_s(Date.today - 3.days)
     c.to_date =  date_to_s(Date.today + 3.days)
     expect(c).not_to be_valid
