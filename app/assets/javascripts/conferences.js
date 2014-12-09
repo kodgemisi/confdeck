@@ -7,6 +7,12 @@
 //= require lib/summernote.plugins
 
 $(document).ready(function(){
+    var wizardSyncInterval = 10000; //15 seconds
+
+    var syncWizardData = function(){
+        $("#conference_wizard_data").val($("#wizard").serialize());
+        sendForm($("#conference_wizard_sync"))
+    }
 
     $(".appeal .show-comments").click(function(e){
         e.preventDefault();
@@ -138,5 +144,7 @@ $(document).ready(function(){
 
         $('#conference-start-time').timepicker({showMeridian: false});
         $('#conference-end-time').timepicker({showMeridian: false});
+
+        setInterval(syncWizardData, wizardSyncInterval);
     }
 });

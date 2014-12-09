@@ -43,9 +43,24 @@ class ConferencesController < ApplicationController
   # GET /conferences/new
   # GET /conferences/new.json
   def new
-    @conference = Conference.new
-    @conference.build_address
-    @conference.appeal_types.build
+
+    if params[:reset] == "1"
+      @wizard = current_user.build_conference_wizard
+    else
+      @wizard = current_user.conference_wizard
+    end
+
+    if @wizard
+      conf_params = Rack::Utils.parse_nested_query @wizard.data
+      @conference = Conference.new(conf_params["conference"])
+      @conference.build_address if @conference.address.nil?
+      @conference.appeal_types.build if @conference.appeal_types.nil?
+    else
+      @conference = Conference.new
+      @conference.build_address
+      @conference.appeal_types.build
+      @wizard = current_user.build_conference_wizard
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -69,6 +84,7 @@ class ConferencesController < ApplicationController
 
     respond_to do |format|
       if @conference.save
+        current_user.conference_wizard.destroy
         format.html { redirect_to @conference, notice: 'Conference was successfully created.' }
         format.json { render json: @conference, status: :created, location: @conference }
       else
@@ -131,11 +147,24 @@ class ConferencesController < ApplicationController
     end
   end
 
+  def sync_wizard
+    @wizard = current_user.conference_wizard
+    @wizard ||= current_user.build_conference_wizard
+
+    respond_to do |format|
+      if @wizard.update_attribute("data", sync_wizard_params[:data])
+        format.js
+      else
+        format.js
+      end
+    end
+  end
+
   private
 
     def load_data
       @template_types = EmailTemplateType.all
-      @email_templates = @conference.present? @conference.email_templates : []
+      @email_templates = @conference.present? ? @conference.email_templates : []
       @template_hash = {}
       @email_templates.each { |et| @template_hash[et.email_template_type.type_name] ||= et }
     end
@@ -151,6 +180,10 @@ class ConferencesController < ApplicationController
         @conference.start_time = @conference.slots.first.start_time.strftime("%H:%M")
         @conference.end_time = @conference.slots.first.end_time.strftime("%H:%M")
       end
+    end
+
+    def sync_wizard_params
+      params.require(:conference_wizard).permit(:id, :data)
     end
 
     def conference_params
