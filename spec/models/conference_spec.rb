@@ -66,4 +66,17 @@ describe Conference do
   it { should validate_presence_of(:summary) }
   it { should validate_presence_of(:email) }
 
+  it 'requires the presence of the slug' do
+    conference = Fabricate.build(:conference, name: nil, slug: nil)
+    expect(conference).not_to be_valid
+    expect(conference.errors[:slug]).to be_present
+  end
+
+  it 'requires the uniqueness of the slug' do
+    pending
+    conference = Fabricate.create(:conference)
+    another_conference = Fabricate.build(:conference, slug: conference.slug)
+    another_conference.should_not be_valid
+    another_conference.errors[:slug].should == ["is already taken"]
+  end
 end

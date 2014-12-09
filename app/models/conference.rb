@@ -64,7 +64,7 @@ class Conference < ActiveRecord::Base
   #== Validations
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
   validates_attachment_content_type :heading_image, :content_type => /\Aimage\/.*\Z/
-  validates_presence_of :name, :summary, :organizations, :email, :from_date, :to_date
+  validates_presence_of :name, :slug, :summary, :organizations, :email, :from_date, :to_date
   validates_uniqueness_of :slug
   validates_format_of :start_time, :with => /([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]/, :if => :one_day?
   validates_format_of :end_time, :with => /([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]/, :if => :one_day?
