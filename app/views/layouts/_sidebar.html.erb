@@ -36,12 +36,12 @@
             <li >
                 <a href="javascript:void(0);" data-toggle="submenu" data-target="#sidebar-organizations-menu" data-parent=".topmenu">
                   <span class="figure"><i class="ico-users4"></i></span>
-                  <span class="text"><%= t "organizations" %></span>
+                  <span class="text"><%= t("organizations.organizations") %></span>
                   <span class="arrow"></span>
                 </a>
                 <!-- START 2nd Level Menu -->
                 <ul id="sidebar-organizations-menu" class="submenu collapse ">
-                  <li class="submenu-header ellipsis"><%= t "organizations" %></li>
+                  <li class="submenu-header ellipsis"><%= t("organizations.organizations") %></li>
                   <% @user_organizations.each do |organization| %>
                       <li >
                         <a href="<%= organization_path(organization) %>">

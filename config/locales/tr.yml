@@ -102,6 +102,13 @@ tr:
       sponsor: Sponsor
       topic: 
       user: User
+  activities:
+    actions:
+      appeal_accept: 
+      appeal_comment: 
+      appeal_downvote: 
+      appeal_reject: 
+      appeal_upvote: 
   additional_info: Ek Bilgi
   address:
     city: "Şehir"
@@ -137,6 +144,9 @@ tr:
     num_of_appeals: Başvurular
     num_of_sponsors: Sponsorlar
     organization: Organizasyon
+    reset_info: 
+    reset_title: 
+    reset_wizard: 
     schedule: Program
     show: Konferans Sayfası
     slug: Kısa İsim
@@ -397,6 +407,7 @@ tr:
     create: Yeni Organizasyon Oluştur
     info: Organizasyon Detayları
     logo: Logo
+    organizations: Organizasyonlar
     page_title: "%{organization} Organizasyonu"
   rejected: Reddedildi
   room:
