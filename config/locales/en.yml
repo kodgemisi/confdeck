@@ -5,6 +5,25 @@ en:
   active_conferences: 
   activerecord:
     attributes:
+      address:
+        City*: 
+        Detay: 
+        Info*: 
+        Konum: 
+        Location*: 
+        "Şehir": 
+      'address/<span class="translation_missing" title="translation missing: en/address':
+        city">City</span>: 
+        info">Info</span>: 
+        location">Location</span>: 
+      appeal:
+        topic: 
+      appeal/topic:
+        abstract: 
+        detail: 
+        subject: 
+      comment:
+        comment: 
       conference:
         description: 
         email: 
@@ -32,6 +51,16 @@ en:
         organization_name: 
         website: 
       speaker:
+        E-posta: 
+        Email*: 
+        Facebook: 
+        Facebook*: 
+        Konuşmacı İsmi: 
+        Phone*: 
+        Speaker Name: 
+        Telefon Numarası: 
+        Twitter: 
+        Twitter*: 
         bio: 
         email: 
         facebook: 
@@ -43,12 +72,31 @@ en:
         logo: 
         name: 
         website: 
+      topic:
+        Abstract*: 
+        Additional info*: 
+        Detail*: 
+        Ek Bilgi: 
+        Konu Başlığı: 
+        Konu Özeti: 
+        Konuşmacılar: 
+        Konuşmanın Ana Hatları: 
+        Speakers*: 
+        Subject*: 
+        abstract: 
+        detail: 
+        subject: 
       user:
         current_password: 
+        email: 
         password: 
         password_confirmation: 
     errors:
       models:
+        appeal:
+          attributes:
+            topic:
+              blank: 
         conference:
           attributes:
             organizations:
@@ -56,6 +104,14 @@ en:
         speaker:
           attributes:
             phone:
+              blank: 
+        topic:
+          attributes:
+            abstract:
+              blank: 
+            detail:
+              blank: 
+            subject:
               blank: 
         user:
           attributes:
@@ -67,19 +123,22 @@ en:
             password_confirmation:
               confirmation: 
     models:
+      appeal: 
+      comment: 
       conference: 
       email_template: 
       invitation: 
       organization: 
       speaker: 
       sponsor: 
+      topic: 
       user: 
   additional_info: 
   address:
     city: 
     info: 
     location: 
-  appeal:
+  appeals:
     abstract: 
     actions: 
     additional_info: 
@@ -88,6 +147,7 @@ en:
     detail: 
     state: 
     subject: 
+    write_comment: Write a comment
   application_received: 
   are_you_sure: 
   body: 
@@ -166,8 +226,8 @@ en:
     day_names: 
     formats:
       default: "%m/%d/%Y"
-      long:
-      placeholder: "mm/dd/yyyy"
+      long: 
+      placeholder: mm/dd/yyyy
       short: 
     month_names: 
     order: 
@@ -238,11 +298,25 @@ en:
     close: Close
     create: Create
     edit: Edit
+    homepage: 
     save: Save
+    settings: Settings
     update: Update
-  hello: Hello world
   helpers:
     label:
+      appeal[topic_attributes]:
+        Abstract*: 
+        Additional info*: 
+        Detail*: 
+        Ek Bilgi: 
+        Konu Başlığı: 
+        Konu Özeti: 
+        Konuşmacılar: 
+        Konuşmanın Ana Hatları: 
+        Speakers*: 
+        Subject*: 
+      comment:
+        comment: 
       conference:
         description: 
         email: 
@@ -255,8 +329,11 @@ en:
         twitter: 
         website: 
       conference[address_attributes]:
+        City*: 
         Detay: 
+        Info*: 
         Konum: 
+        Location*: 
         "Şehir": 
       organization:
         logo: 
@@ -264,6 +341,16 @@ en:
         organization_name: 
         website: 
       speaker:
+        E-posta: 
+        Email*: 
+        Facebook: 
+        Facebook*: 
+        Konuşmacı İsmi: 
+        Phone*: 
+        Speaker Name: 
+        Telefon Numarası: 
+        Twitter: 
+        Twitter*: 
         bio: 
         email: 
         facebook: 
@@ -276,6 +363,10 @@ en:
         name: 
         website: 
     submit:
+      appeal:
+        create: 
+      comment:
+        create: 
       conference:
         update: 
       email_template:
@@ -290,16 +381,16 @@ en:
         create: 
       user_horizontal:
         update: 
-  homepage: 
-  logout: 
+  home:
+    active_conferences: Active Conferences
   minutes: 
   new_speaker: Add new speaker
-  organization:
+  organizations:
     conferences: 
+    create: 
     info: 
     logo: 
     page_title: 
-  organizations: 
   rejected: 
   room:
     name: 
@@ -321,6 +412,8 @@ en:
     hints:
       defaults:
         body_html: 
+        end_time_html: 
+        start_time_html: 
         subject_html: 
         type_name_html: 
       email_template:
@@ -330,9 +423,24 @@ en:
           type_name: 
     labels:
       defaults:
+        '<span class="translation_missing" title="translation missing: en':
+          address:
+            city">City</span>_html: 
+            info">Info</span>_html: 
+            location">Location</span>_html: 
         body_html: 
+        description_html: 
+        email_html: 
+        facebook_html: 
+        name_html: 
+        organization_html: 
+        phone_html: 
+        slug_html: 
         subject_html: 
+        summary_html: 
+        twitter_html: 
         type_name_html: 
+        website_html: 
       email_template:
         index:
           body: 
@@ -345,6 +453,8 @@ en:
     placeholders:
       defaults:
         body_html: 
+        end_time_html: 
+        start_time_html: 
         subject_html: 
         type_name_html: 
       email_template:
@@ -356,6 +466,8 @@ en:
       email_template_type:
         index:
           subject: 
+    required:
+      html: 
   speaker:
     email: 
     facebook: 
@@ -368,6 +480,13 @@ en:
   support:
     array:
       words_connector: 
+  time:
+    am: 
+    formats:
+      default: 
+      long: 
+      short: 
+    pm: 
   titles:
     conferences:
       edit: 'Edit %{conference} '
@@ -398,5 +517,3 @@ en:
   waiting_appeals: 
   waiting_review: 
   x: 
-  appeals:
-    write_comment: Write a comment

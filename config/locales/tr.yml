@@ -5,6 +5,25 @@ tr:
   active_conferences: 
   activerecord:
     attributes:
+      address:
+        City*: 
+        Detay: 
+        Info*: 
+        Konum: 
+        Location*: 
+        "Şehir": 
+      'address/<span class="translation_missing" title="translation missing: en/address':
+        city">City</span>: 
+        info">Info</span>: 
+        location">Location</span>: 
+      appeal:
+        topic: 
+      appeal/topic:
+        abstract: 
+        detail: 
+        subject: 
+      comment:
+        comment: 
       conference:
         description: Açıklama
         email: Email
@@ -32,6 +51,16 @@ tr:
         organization_name: Organization name
         website: Website
       speaker:
+        E-posta: 
+        Email*: 
+        Facebook: 
+        Facebook*: 
+        Konuşmacı İsmi: 
+        Phone*: 
+        Speaker Name: 
+        Telefon Numarası: 
+        Twitter: 
+        Twitter*: 
         bio: Bio
         email: Email
         facebook: Facebook
@@ -43,12 +72,31 @@ tr:
         logo: Logo
         name: Name
         website: Website
+      topic:
+        Abstract*: 
+        Additional info*: 
+        Detail*: 
+        Ek Bilgi: 
+        Konu Başlığı: 
+        Konu Özeti: 
+        Konuşmacılar: 
+        Konuşmanın Ana Hatları: 
+        Speakers*: 
+        Subject*: 
+        abstract: 
+        detail: 
+        subject: 
       user:
         current_password: Current password
+        email: 
         password: Password
         password_confirmation: Password confirmation
     errors:
       models:
+        appeal:
+          attributes:
+            topic:
+              blank: 
         conference:
           attributes:
             organizations:
@@ -57,6 +105,14 @@ tr:
           attributes:
             phone:
               blank: boş bırakılamaz.
+        topic:
+          attributes:
+            abstract:
+              blank: 
+            detail:
+              blank: 
+            subject:
+              blank: 
         user:
           attributes:
             current_password:
@@ -67,19 +123,22 @@ tr:
             password_confirmation:
               confirmation: 
     models:
+      appeal: 
+      comment: 
       conference: Konferans
       email_template: Email template
       invitation: Invitation
       organization: Organization
       speaker: Speaker
       sponsor: Sponsor
+      topic: 
       user: User
   additional_info: Ek Bilgi
   address:
     city: "Şehir"
     info: Detay
     location: Konum
-  appeal:
+  appeals:
     abstract: Konu Özeti
     actions: "İşlem"
     additional_info: 
@@ -88,6 +147,7 @@ tr:
     detail: Konuşmanın Ana Hatları
     state: Durum
     subject: Konu Başlığı
+    write_comment: 
   application_received: "%{topic} Başvurunuz alınmıştır"
   are_you_sure: 
   body: Posta
@@ -138,13 +198,6 @@ tr:
   create_room: 
   create_speaker: Konuşmacı Oluştur
   dashboard: Anasayfa
-  time:
-    am: "öğleden önce"
-    formats:
-      default: "%a %d.%b.%y %H:%M"
-      long: "%e %B %Y, %A, %H:%M"
-      short: "%e %B, %H:%M"
-    pm: "öğleden sonra"
   date:
     abbr_day_names:
     - Sun
@@ -224,7 +277,7 @@ tr:
     formats:
       default: "%d/%m/%Y"
       long: "%d %B %Y"
-      placeholder: "gg/aa/yyyy"
+      placeholder: gg/aa/yyyy
       short: "%b %d"
     month_names:
     - 
@@ -311,11 +364,25 @@ tr:
     close: Kapat
     create: Oluştur
     edit: Düzenl
+    homepage: Anasayfa
     save: Kaydet
+    settings: Ayarlar
     update: Güncelle
-  hello: 
   helpers:
     label:
+      appeal[topic_attributes]:
+        Abstract*: 
+        Additional info*: 
+        Detail*: 
+        Ek Bilgi: 
+        Konu Başlığı: 
+        Konu Özeti: 
+        Konuşmacılar: 
+        Konuşmanın Ana Hatları: 
+        Speakers*: 
+        Subject*: 
+      comment:
+        comment: 
       conference:
         description: 
         email: 
@@ -328,8 +395,11 @@ tr:
         twitter: 
         website: 
       conference[address_attributes]:
+        City*: 
         Detay: 
+        Info*: 
         Konum: 
+        Location*: 
         "Şehir": 
       organization:
         logo: 
@@ -337,6 +407,16 @@ tr:
         organization_name: 
         website: 
       speaker:
+        E-posta: 
+        Email*: 
+        Facebook: 
+        Facebook*: 
+        Konuşmacı İsmi: 
+        Phone*: 
+        Speaker Name: 
+        Telefon Numarası: 
+        Twitter: 
+        Twitter*: 
         bio: 
         email: 
         facebook: 
@@ -349,6 +429,10 @@ tr:
         name: 
         website: 
     submit:
+      appeal:
+        create: 
+      comment:
+        create: 
       conference:
         update: Update Konferans
       email_template:
@@ -363,16 +447,16 @@ tr:
         create: Create Sponsor
       user_horizontal:
         update: Update Email template
-  homepage: Anasayfa
-  logout: 
+  home:
+    active_conferences: 
   minutes: 
   new_speaker: Yeni Konuşmacı Ekle
-  organization:
+  organizations:
     conferences: Konferanslar
+    create: Yeni Organizasyon Oluştur
     info: Organizasyon Detayları
     logo: Logo
     page_title: "%{organization} Organizasyonu"
-  organizations: Organizasyonlar
   rejected: Reddedildi
   room:
     name: Oda Adı
@@ -394,6 +478,8 @@ tr:
     hints:
       defaults:
         body_html: 
+        end_time_html: 
+        start_time_html: 
         subject_html: 
         type_name_html: 
       email_template:
@@ -403,9 +489,24 @@ tr:
           type_name: 
     labels:
       defaults:
+        '<span class="translation_missing" title="translation missing: en':
+          address:
+            city">City</span>_html: 
+            info">Info</span>_html: 
+            location">Location</span>_html: 
         body_html: 
+        description_html: 
+        email_html: 
+        facebook_html: 
+        name_html: 
+        organization_html: 
+        phone_html: 
+        slug_html: 
         subject_html: 
+        summary_html: 
+        twitter_html: 
         type_name_html: 
+        website_html: 
       email_template:
         index:
           body: 
@@ -418,6 +519,8 @@ tr:
     placeholders:
       defaults:
         body_html: 
+        end_time_html: 
+        start_time_html: 
         subject_html: 
         type_name_html: 
       email_template:
@@ -429,6 +532,8 @@ tr:
       email_template_type:
         index:
           subject: 
+    required:
+      html: 
   speaker:
     email: E-posta
     facebook: Facebook
@@ -441,6 +546,13 @@ tr:
   support:
     array:
       words_connector: 
+  time:
+    am: "öğleden önce"
+    formats:
+      default: "%a %d.%b.%y %H:%M"
+      long: "%e %B %Y, %A, %H:%M"
+      short: "%e %B, %H:%M"
+    pm: "öğleden sonra"
   titles:
     conferences:
       edit: "%{conference} Düzenle"
@@ -470,3 +582,4 @@ tr:
     sign_up_to_get_started: Hemen yeni bir hesap açın
   waiting_appeals: 
   waiting_review: Beklemede
+  x: 

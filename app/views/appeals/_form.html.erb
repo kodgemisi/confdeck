@@ -21,7 +21,7 @@
                     <div class="panel-body">
                         <% if @conference.appeal_types.size > 0 %>
                           <div class="form-group">
-                            <%= f.label t('appeal.appeal_type'), :class => "col-lg-3 control-label" %>
+                            <%= f.label t('appeals.appeal_type'), :class => "col-lg-3 control-label" %>
 
                             <div class="col-lg-9">
                               <%= f.collection_select :appeal_type_id, @conference.appeal_types, :id, :type_name, {}, {:class => "form-control"} %>
@@ -42,21 +42,21 @@
                             </div>
                           </div>
                           <div class="form-group">
-                            <%= topic_form.label t('appeal.subject'), :class => "col-lg-3 control-label" %>
+                            <%= topic_form.label t('appeals.subject'), :class => "col-lg-3 control-label" %>
 
                             <div class="col-lg-9">
                               <%= topic_form.text_field :subject, :class => "form-control" %>
                             </div>
                           </div>
                           <div class="form-group">
-                            <%= topic_form.label t('appeal.abstract'), :class => "col-lg-3 control-label" %>
+                            <%= topic_form.label t('appeals.abstract'), :class => "col-lg-3 control-label" %>
 
                             <div class="col-lg-9">
                               <%= topic_form.text_field :abstract, :class => "form-control" %>
                             </div>
                           </div>
                           <div class="form-group">
-                            <%= topic_form.label t('appeal.detail'), :class => "col-lg-3 control-label" %>
+                            <%= topic_form.label t('appeals.detail'), :class => "col-lg-3 control-label" %>
 
                             <div class="col-lg-9">
                               <%= topic_form.text_area :detail, :class => "form-control", :style => "height: 200px" %>
