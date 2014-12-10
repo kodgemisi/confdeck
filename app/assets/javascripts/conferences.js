@@ -7,7 +7,7 @@
 //= require lib/summernote.plugins
 
 $(document).ready(function(){
-    var wizardSyncInterval = 10000; //15 seconds
+    var wizardSyncInterval = 10000; //10 seconds
 
     var syncWizardData = function(){
         $("#conference_wizard_data").val($("#wizard").serialize());
