@@ -75,4 +75,12 @@ module ConferencesHelper
       '<a href="javascript:void(0);" class="panel-ribbon panel-ribbon-danger pull-left"><i class="ico-ok"></i></a>'
     end
   end
+
+  def conference_dates(conference)
+    if conference.days.first.date == conference.days.last.date
+      "#{conference.days.first.date.strftime(t('date.formats.short'))}".html_safe
+    else
+      "#{conference.days.first.date.strftime(t('date.formats.short'))} #{conference.days.last.date.strftime(t('date.formats.short'))}".html_safe
+    end
+  end
 end

@@ -17,14 +17,14 @@ class HomeController < ApplicationController
   layout "home_layout", :only => [:index]
 
   def index
-    @days = Day.joins(:conferences).where('date > ?', Date.today).order("date DESC").group("conferences.id")
-    @conferences = Conference.includes(:days).order('days.date ').where('days.date > ?', Date.today).group("conferences.id").limit(5)
-
+    
   end
 
   def dashboard
+    @conferences = current_user.conferences.includes(:days).order('days.date ').where('days.date > ?', Date.today).limit(5).distinct
     @waiting_appeals = Appeal.where(:conference_id => current_user.conferences.pluck(:id), :state => "waiting_review")
     @total_appeals = Appeal.where(:conference_id => current_user.conferences.pluck(:id))
+    @activities = Activity.where(conference_id: [ current_user.conferences.pluck(:id)]).order("created_at DESC").limit(15)
   end
 
 end

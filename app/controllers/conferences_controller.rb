@@ -121,6 +121,7 @@ class ConferencesController < ApplicationController
     @latest_appeals = @conference.appeals.order("created_at DESC").limit(15).includes(topic: [:speakers]).includes(:comments)
     @total_appeals = @conference.appeals
     @waiting_appeals = @conference.appeals.where(:state => "waiting_review")
+    @activities = @conference.activities.order("created_at DESC").limit(15)
   end
 
   def check_slug
