@@ -7,7 +7,7 @@
             <li class="active open">
               <a href="<%= root_path %>" data-parent=".topmenu">
                 <span class="figure"><i class="ico-home2"></i></span>
-                <span class="text"><%= t "homepage" %></span>
+                <span class="text"><%= t("general.homepage") %></span>
               </a>
             </li>
             <li >
@@ -18,7 +18,7 @@
                 </a>
                 <!-- START 2nd Level Menu -->
                 <ul id="sidebar-conferences-menu" class="submenu ">
-                  <li class="submenu-header ellipsis"><%= t "conferences.conferences" %></li>
+                  <li class="submenu-header ellipsis"><%= t("conferences.conferences") %></li>
                   <% @user_conferences.each do |conference| %>
                       <li >
                         <a href="<%= manage_conference_path(conference) %>">

@@ -5,6 +5,14 @@ en:
   active_conferences: 
   activerecord:
     attributes:
+      appeal:
+        topic: 
+      appeal/topic:
+        abstract: 
+        detail: 
+        subject: 
+      comment:
+        comment: 
       conference:
         description: 
         email: 
@@ -43,12 +51,21 @@ en:
         logo: 
         name: 
         website: 
+      topic:
+        abstract: 
+        detail: 
+        subject: 
       user:
         current_password: 
+        email: 
         password: 
         password_confirmation: 
     errors:
       models:
+        appeal:
+          attributes:
+            topic:
+              blank: 
         conference:
           attributes:
             organizations:
@@ -56,6 +73,14 @@ en:
         speaker:
           attributes:
             phone:
+              blank: 
+        topic:
+          attributes:
+            abstract:
+              blank: 
+            detail:
+              blank: 
+            subject:
               blank: 
         user:
           attributes:
@@ -67,19 +92,22 @@ en:
             password_confirmation:
               confirmation: 
     models:
+      appeal: 
+      comment: 
       conference: 
       email_template: 
       invitation: 
       organization: 
       speaker: 
       sponsor: 
+      topic: 
       user: 
   additional_info: 
   address:
     city: 
     info: 
     location: 
-  appeal:
+  appeals:
     abstract: 
     actions: 
     additional_info: 
@@ -88,6 +116,7 @@ en:
     detail: 
     state: 
     subject: 
+    write_comment: Write a comment
   application_received: 
   are_you_sure: 
   body: 
@@ -241,11 +270,14 @@ en:
     close: Close
     create: Create
     edit: Edit
+    homepage: 
     save: Save
+    settings: Settings
     update: Update
-  hello: Hello world
   helpers:
     label:
+      comment:
+        comment: 
       conference:
         description: 
         email: 
@@ -257,10 +289,6 @@ en:
         summary: 
         twitter: 
         website: 
-      conference[address_attributes]:
-        Detay: 
-        Konum: 
-        "Şehir": 
       organization:
         logo: 
         name: 
@@ -279,6 +307,10 @@ en:
         name: 
         website: 
     submit:
+      appeal:
+        create: 
+      comment:
+        create: 
       conference:
         update: 
       email_template:
@@ -293,16 +325,16 @@ en:
         create: 
       user_horizontal:
         update: 
-  homepage: 
-  logout: 
+  home:
+    active_conferences: Active Conferences
   minutes: 
   new_speaker: Add new speaker
-  organization:
+  organizations:
     conferences: 
+    create: 
     info: 
     logo: 
     page_title: 
-  organizations: 
   rejected: 
   room:
     name: 
@@ -324,6 +356,8 @@ en:
     hints:
       defaults:
         body_html: 
+        end_time_html: 
+        start_time_html: 
         subject_html: 
         type_name_html: 
       email_template:
@@ -334,8 +368,18 @@ en:
     labels:
       defaults:
         body_html: 
+        description_html: 
+        email_html: 
+        facebook_html: 
+        name_html: 
+        organization_html: 
+        phone_html: 
+        slug_html: 
         subject_html: 
+        summary_html: 
+        twitter_html: 
         type_name_html: 
+        website_html: 
       email_template:
         index:
           body: 
@@ -348,6 +392,8 @@ en:
     placeholders:
       defaults:
         body_html: 
+        end_time_html: 
+        start_time_html: 
         subject_html: 
         type_name_html: 
       email_template:
@@ -359,6 +405,8 @@ en:
       email_template_type:
         index:
           subject: 
+    required:
+      html: 
   speaker:
     email: 
     facebook: 
@@ -371,6 +419,13 @@ en:
   support:
     array:
       words_connector: 
+  time:
+    am: am
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      long: "%B %d, %Y %H:%M"
+      short: "%d %b %H:%M"
+    pm: pm
   titles:
     conferences:
       edit: 'Edit %{conference} '
@@ -400,7 +455,6 @@ en:
     sign_up_to_get_started: Sign up to get started
   waiting_appeals: 
   waiting_review: 
-  x: 
   appeals:
     write_comment: Write a comment
   activities:

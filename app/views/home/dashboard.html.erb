@@ -14,6 +14,7 @@
           <div class="col-xs-8 panel">
             <div class="panel-body text-center">
               <h4 class="semibold nm"><%= @total_appeals.count %></h4>
+
               <p class="semibold text-muted mb0 mt5"><%= t "total_appeals" %></p>
             </div>
           </div>
@@ -28,7 +29,8 @@
           </div>
           <div class="col-xs-8 panel">
             <div class="panel-body text-center">
-              <h4 class="semibold nm"><%= link_to @waiting_appeals.count,  conferences_path %></h4>
+              <h4 class="semibold nm"><%= link_to @waiting_appeals.count, conferences_path %></h4>
+
               <p class="semibold text-muted mb0 mt5"><%= t "waiting_appeals" %></p>
             </div>
           </div>
@@ -44,11 +46,12 @@
           <div class="col-xs-8 panel">
             <div class="panel-body text-center">
               <h4 class="semibold nm">0<!-- #TODO Active Conferences count --></h4>
-              <p class="semibold text-muted mb0 mt5"><%= t "active_conferences" %></p>
+
+              <p class="semibold text-muted mb0 mt5"><%= t("home.active_conferences") %></p>
             </div>
+            <!--/ END Statistic Widget -->
           </div>
         </div>
-        <!--/ END Statistic Widget -->
       </div>
     </div>
 
