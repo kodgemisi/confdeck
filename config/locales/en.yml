@@ -5,17 +5,6 @@ en:
   active_conferences: 
   activerecord:
     attributes:
-      address:
-        City*: 
-        Detay: 
-        Info*: 
-        Konum: 
-        Location*: 
-        "Şehir": 
-      'address/<span class="translation_missing" title="translation missing: en/address':
-        city">City</span>: 
-        info">Info</span>: 
-        location">Location</span>: 
       appeal:
         topic: 
       appeal/topic:
@@ -51,16 +40,6 @@ en:
         organization_name: 
         website: 
       speaker:
-        E-posta: 
-        Email*: 
-        Facebook: 
-        Facebook*: 
-        Konuşmacı İsmi: 
-        Phone*: 
-        Speaker Name: 
-        Telefon Numarası: 
-        Twitter: 
-        Twitter*: 
         bio: 
         email: 
         facebook: 
@@ -73,16 +52,6 @@ en:
         name: 
         website: 
       topic:
-        Abstract*: 
-        Additional info*: 
-        Detail*: 
-        Ek Bilgi: 
-        Konu Başlığı: 
-        Konu Özeti: 
-        Konuşmacılar: 
-        Konuşmanın Ana Hatları: 
-        Speakers*: 
-        Subject*: 
         abstract: 
         detail: 
         subject: 
@@ -304,17 +273,6 @@ en:
     update: Update
   helpers:
     label:
-      appeal[topic_attributes]:
-        Abstract*: 
-        Additional info*: 
-        Detail*: 
-        Ek Bilgi: 
-        Konu Başlığı: 
-        Konu Özeti: 
-        Konuşmacılar: 
-        Konuşmanın Ana Hatları: 
-        Speakers*: 
-        Subject*: 
       comment:
         comment: 
       conference:
@@ -328,29 +286,12 @@ en:
         summary: 
         twitter: 
         website: 
-      conference[address_attributes]:
-        City*: 
-        Detay: 
-        Info*: 
-        Konum: 
-        Location*: 
-        "Şehir": 
       organization:
         logo: 
         name: 
         organization_name: 
         website: 
       speaker:
-        E-posta: 
-        Email*: 
-        Facebook: 
-        Facebook*: 
-        Konuşmacı İsmi: 
-        Phone*: 
-        Speaker Name: 
-        Telefon Numarası: 
-        Twitter: 
-        Twitter*: 
         bio: 
         email: 
         facebook: 
@@ -423,11 +364,6 @@ en:
           type_name: 
     labels:
       defaults:
-        '<span class="translation_missing" title="translation missing: en':
-          address:
-            city">City</span>_html: 
-            info">Info</span>_html: 
-            location">Location</span>_html: 
         body_html: 
         description_html: 
         email_html: 
@@ -516,4 +452,3 @@ en:
     sign_up_to_get_started: Sign up to get started
   waiting_appeals: 
   waiting_review: 
-  x: 
