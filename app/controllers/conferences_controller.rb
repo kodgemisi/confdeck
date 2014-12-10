@@ -80,7 +80,7 @@ class ConferencesController < ApplicationController
 
     respond_to do |format|
       if @conference.save
-        current_user.conference_wizard.destroy
+        current_user.conference_wizard.destroy if current_user.conference_wizard
         format.html { redirect_to @conference, notice: 'Conference was successfully created.' }
         format.json { render json: @conference, status: :created, location: @conference }
       else
