@@ -44,13 +44,9 @@ class ConferencesController < ApplicationController
   # GET /conferences/new.json
   def new
 
-    if params[:reset] == "1"
-      @wizard = current_user.build_conference_wizard
-    else
-      @wizard = current_user.conference_wizard
-    end
+    @wizard = current_user.conference_wizard
 
-    if @wizard
+    if @wizard.present?
       conf_params = Rack::Utils.parse_nested_query @wizard.data
       @conference = Conference.new(conf_params["conference"])
       @conference.build_address if @conference.address.nil?
@@ -158,6 +154,12 @@ class ConferencesController < ApplicationController
         format.js
       end
     end
+  end
+
+  def reset_wizard
+    current_user.conference_wizard.destroy if current_user.conference_wizard
+
+    redirect_to new_conference_path
   end
 
   private

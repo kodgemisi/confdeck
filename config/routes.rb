@@ -16,6 +16,7 @@ Confman::Application.routes.draw do
   resources :conferences do
     collection do
       get 'check_slug'
+      get 'reset_wizard'
       put 'sync_wizard'
     end
     resources :addresses

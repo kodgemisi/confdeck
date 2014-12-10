@@ -6,7 +6,7 @@
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <h4 class="semibold"><%= t("conferences.reset_title") %></h4>
             <p class="mb10"><%= t("conferences.reset_info") %></p>
-            <%= link_to t("conference.reset_wizard"), new_conference_path(reset: "1"), class: "btn btn-info" %>
+            <%= link_to t("conference.reset_wizard"), reset_wizard_conferences_path, class: "btn btn-info" %>
           </div>
       <% end %>
         <!-- START Panel -->
