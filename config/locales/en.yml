@@ -93,6 +93,9 @@ en:
   body: 
   close: 
   conferences:
+    reset_title: ""
+    reset_info: "You have an unsaved conference draft. You can clear it and start over by clicking the button below"
+    reset_wizard: "Clear Wizard"
     address: 
     basic_information: 
     conferences: Conferences

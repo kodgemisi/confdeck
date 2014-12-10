@@ -14,6 +14,11 @@ Confman::Application.routes.draw do
   get "invitations/accept"
   get '/dashboard', to: 'home#dashboard'
   resources :conferences do
+    collection do
+      get 'check_slug'
+      get 'reset_wizard'
+      put 'sync_wizard'
+    end
     resources :addresses
     resources :sponsors
     resources :rooms
@@ -36,9 +41,6 @@ Confman::Application.routes.draw do
     member do
       get 'appeal_types'
       get 'manage'
-    end
-    collection do
-      get 'check_slug'
     end
   end
 
