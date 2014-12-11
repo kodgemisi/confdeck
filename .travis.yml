@@ -5,3 +5,13 @@ bundler_args: "--without production"
 env:
   global:
     secure: IARszb0ZUcdwVuXBcbwqH/5hR0hmkB6iQ/Eykc/TRvkFPcdhNIkVOSEfaIjb4bCEDVO0rYDg4hoJEolxz5M6NGyQIR4m/Dqw4KSJADJwa9zYsr32qd5eUN1JM324HeUa/3qf0FfLJ6B7H+eag8gDP6wqK+H5cQb4r4zw7bw7lj4=
+deploy:
+  provider: openshift
+  user: hesap@kodgemisi.com
+  password:
+    secure: gR5Y3/gqRSfxgt4lQ7q2mvGAmffohlA4PetHCFIblacquEUBJi//RMKM1YuL+ye/84sVpZ8tbhhM0MHsIOkON+EfLnPDYB1pafGSRK+HPf5nd7IXS3XI+I0Lz138+HkiW11ZFfLnJPYj6YsBl7gsJhcOfuNlt2MfCV12M1LmS2k=
+  app: confdeck
+  domain: stating
+  on:
+    repo: kodgemisi/confdeck
+    branch: development

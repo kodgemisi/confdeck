@@ -141,8 +141,8 @@ class Conference < ActiveRecord::Base
 
   def set_dates
     if self.from_date.nil? && self.to_date.nil?
-      self.from_date = self.days.first.formatted
-      self.to_date = self.days.last.formatted
+      self.from_date = self.days.first.try(:formatted)
+      self.to_date = self.days.last.try(:formatted)
     end
   end
 
