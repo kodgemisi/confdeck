@@ -154,6 +154,9 @@ en:
     start_date: 
     summary: 
     too_long: Date range for conference must be less than 60 days.
+    total_appeals: Total Applications
+    waiting_appeals: |
+      Waiting Applications
     wizard:
       step1:
         desc:
@@ -449,7 +452,6 @@ en:
     abstract: 
     speakers: 
     subject: 
-  total_appeals: 
   update: 
   updated: 
   user:
@@ -461,5 +463,4 @@ en:
     password: Password
     remember_me: Remember me
     sign_up_to_get_started: Sign up to get started
-  waiting_appeals: 
   waiting_review: 

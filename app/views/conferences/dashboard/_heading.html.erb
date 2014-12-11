@@ -8,7 +8,7 @@
       <div class="col-xs-8 panel">
         <div class="panel-body text-center">
           <h4 class="semibold nm"><%= @total_appeals.count %></h4>
-          <p class="semibold text-muted mb0 mt5"><%= t "total_appeals" %></p>
+          <p class="semibold text-muted mb0 mt5"><%= t "conferences.total_appeals" %></p>
         </div>
       </div>
     </div>
@@ -23,7 +23,7 @@
       <div class="col-xs-8 panel">
         <div class="panel-body text-center">
           <h4 class="semibold nm"><%= link_to @waiting_appeals.count, conference_appeals_path(@conference) %></h4>
-          <p class="semibold text-muted mb0 mt5"><%= t "waiting_appeals" %></p>
+          <p class="semibold text-muted mb0 mt5"><%= t "conferences.waiting_appeals" %></p>
         </div>
       </div>
     </div>
