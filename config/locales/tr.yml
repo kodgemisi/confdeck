@@ -506,6 +506,7 @@ tr:
     conferences:
       address: "%{conference} Adres Bilgileri"
       basic_information: "%{conference} Temel Bilgiler"
+      contact: "%{conference} İletişim Bilgileri"
       edit: "%{conference} Düzenle"
       manage: "%{conference} Güvertesi"
       schedule: "%{conference} Programı"

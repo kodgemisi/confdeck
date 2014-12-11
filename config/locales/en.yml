@@ -441,6 +441,7 @@ en:
     conferences:
       address: "%{conference} Address Information"
       basic_information: "%{conference} Basic Information"
+      contact: "%{conference} Contact"
       edit: 'Edit %{conference} '
       manage: 'Deck of %{conference} '
       schedule: Schedule of %{conference}
