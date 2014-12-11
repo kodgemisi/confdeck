@@ -1,4 +1,9 @@
-== ConfDeck
+#ConfDeck
+
+[![Build Status](https://travis-ci.org/kodgemisi/confdeck.svg?branch=development)](https://travis-ci.org/kodgemisi/confdeck)
+[![Code Climate](https://codeclimate.com/github/kodgemisi/confdeck/badges/gpa.svg)](https://codeclimate.com/github/kodgemisi/confdeck)
+[![Test Coverage](https://codeclimate.com/github/kodgemisi/confdeck/badges/coverage.svg)](https://codeclimate.com/github/kodgemisi/confdeck)
+
 ConfDeck is a conference management tool for small or big organizations. It's especially good for conferences where speakers are expected to apply first and then they are evaluated by a committee and then accepted or rejected. ConfDeck aims to ease this speaker application process.
 
 Only a Few ConfDeck Features:
