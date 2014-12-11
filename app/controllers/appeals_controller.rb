@@ -154,7 +154,7 @@ class AppealsController < ApplicationController
     activity.action = action
     activity.user = current_user
 
-    if action = "appeal_comment"
+    if action == "appeal_comment"
       activity.subject = @comment
     else
       activity.subject = @appeal
