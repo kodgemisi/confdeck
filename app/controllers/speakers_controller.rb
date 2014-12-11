@@ -13,6 +13,7 @@
 
 class SpeakersController < ApplicationController
   before_filter :authenticate_user!, except: [:new, :create]
+  before_action :set_speaker, only: [:show, :edit, :update, :destroy]
   # GET /speakers
   # GET /speakers.json
   def index
@@ -27,8 +28,6 @@ class SpeakersController < ApplicationController
   # GET /speakers/1
   # GET /speakers/1.json
   def show
-    @speaker = Speaker.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @speaker }
@@ -48,7 +47,6 @@ class SpeakersController < ApplicationController
 
   # GET /speakers/1/edit
   def edit
-    @speaker = Speaker.find(params[:id])
   end
 
   # POST /speakers
@@ -75,8 +73,6 @@ class SpeakersController < ApplicationController
   # PUT /speakers/1
   # PUT /speakers/1.json
   def update
-    @speaker = Speaker.find(params[:id])
-
     respond_to do |format|
       if @speaker.update_attributes(speaker_params)
         format.html { redirect_to @speaker, notice: 'Speaker was successfully updated.' }
@@ -91,7 +87,6 @@ class SpeakersController < ApplicationController
   # DELETE /speakers/1
   # DELETE /speakers/1.json
   def destroy
-    @speaker = Speaker.find(params[:id])
     @speaker.destroy
 
     respond_to do |format|
@@ -101,6 +96,10 @@ class SpeakersController < ApplicationController
   end
 
   private
+    def set_speaker
+      @speaker = Speaker.find(params[:id])
+    end
+
     def speaker_params
       params.require(:speaker).permit(:name, :email, :phone, :twitter, :facebook)
     end
