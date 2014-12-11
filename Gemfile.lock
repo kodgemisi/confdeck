@@ -65,6 +65,7 @@ GEM
     docile (1.1.5)
     erubis (2.7.0)
     execjs (2.2.2)
+    fabrication (2.11.3)
     faker (1.4.3)
       i18n (~> 0.5)
     ffi (1.9.6)
@@ -249,6 +250,7 @@ DEPENDENCIES
   date_validator
   devise
   devise_invitable
+  fabrication
   faker
   friendly_id (~> 5.0.0)
   guard-rspec

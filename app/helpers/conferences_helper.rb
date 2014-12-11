@@ -83,4 +83,12 @@ module ConferencesHelper
       "#{conference.days.first.date.strftime(t('date.formats.short'))} #{conference.days.last.date.strftime(t('date.formats.short'))}".html_safe
     end
   end
+
+  def date_to_s(date)
+    begin
+      date.strftime(I18n.t("date.formats.default"))
+    rescue
+      nil
+    end
+  end
 end
