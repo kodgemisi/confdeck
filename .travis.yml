@@ -10,11 +10,9 @@ deploy:
   user: hesap@kodgemisi.com
   password:
     secure: gR5Y3/gqRSfxgt4lQ7q2mvGAmffohlA4PetHCFIblacquEUBJi//RMKM1YuL+ye/84sVpZ8tbhhM0MHsIOkON+EfLnPDYB1pafGSRK+HPf5nd7IXS3XI+I0Lz138+HkiW11ZFfLnJPYj6YsBl7gsJhcOfuNlt2MfCV12M1LmS2k=
-  app: confdeck
-  domain: stating
-  on:
-    repo: kodgemisi/confdeck
-    branch: development
+  domain: kodgemisi
+  app:
+    development: confdeckstaging
 addons:
   code_climate:
     repo_token:
