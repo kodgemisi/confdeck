@@ -13,7 +13,7 @@
 
 class ConferencesController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
-  before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule, :basic_information]
+  before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule, :basic_information, :address]
   before_action :load_data, only: [:new, :edit, :update]
   before_action :parse_dates, only: [:edit, :basic_information]
 
@@ -161,8 +161,11 @@ class ConferencesController < ApplicationController
   end
 
   def basic_information
-
     render template: "conferences/edit/basic_information"
+  end
+
+  def address
+    render template: "conferences/edit/address"
   end
 
   private

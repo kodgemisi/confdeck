@@ -20,6 +20,7 @@ class Conference < ActiveRecord::Base
 
   #== Callbacks
   after_save :create_days_and_slot
+  before_validation :set_dates
 
   #== Virtual Attributes
   attr_accessor :from_date
@@ -137,6 +138,13 @@ class Conference < ActiveRecord::Base
   end
 
   private
+
+  def set_dates
+    if self.from_date.nil? && self.to_date.nil?
+      self.from_date = self.days.first.formatted
+      self.to_date = self.days.last.formatted
+    end
+  end
 
   # Checks from_date and to_date formats and converts String to Date type
   # Also checks 60 days time range validation
