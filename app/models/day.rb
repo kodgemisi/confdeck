@@ -15,4 +15,8 @@ class Day < ActiveRecord::Base
   has_many :slots
   has_and_belongs_to_many :conferences
 
+
+  def formatted
+    self.date.strftime(I18n.t("date.formats.default"))
+  end
 end

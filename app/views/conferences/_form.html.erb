@@ -16,10 +16,8 @@
               <h3 class="panel-title"><i class="ico-tshirt mr5"></i> <%= t "conferences.wizard.title" %></h3>
             </div>
             <!--/ panel heading/header -->
-
-
                 <!-- START Form Wizard -->
-                <%= simple_form_for(@conference, :html => {:class => 'form-horizontal form-bordered conference-wizard', :id => "wizard"}) do |f| %>
+                <%= simple_form_for(@conference, :html => {:class => 'form-horizontal form-bordered conference-wizard validate-me', :id => "wizard"}) do |f| %>
                       <% if @conference.errors.any? %>
                           <div class="alert alert-danger">
                             <strong><%= t "error" %></strong>

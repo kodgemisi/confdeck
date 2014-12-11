@@ -42,6 +42,7 @@ Confman::Application.routes.draw do
       get 'appeal_types'
       get 'manage'
       get 'basic_information'
+      get 'address'
     end
   end
 
