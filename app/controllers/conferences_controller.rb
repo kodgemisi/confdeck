@@ -13,8 +13,9 @@
 
 class ConferencesController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
-  before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule]
-  before_action :load_data, only: [:new, :edit]
+  before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule, :basic_information]
+  before_action :load_data, only: [:new, :edit, :update]
+  before_action :parse_dates, only: [:edit, :basic_information]
 
   layout 'conference_landing', :only => [:show]
   # GET /conferences
@@ -66,11 +67,7 @@ class ConferencesController < ApplicationController
 
   # GET /conferences/1/edit
   def edit
-    @conference.to_date = @conference.days.last.date.strftime(I18n.t("date.formats.default"))
-    @conference.from_date = @conference.days.first.date.strftime(I18n.t("date.formats.default"))
-    @one_day = (@conference.days.first == @conference.days.last)
     @conference.email_templates.build
-
   end
 
   # POST /conferences
@@ -96,7 +93,7 @@ class ConferencesController < ApplicationController
 
     respond_to do |format|
       if @conference.update_attributes(conference_params)
-        format.html { redirect_to edit_conference_path(@conference), notice: 'Conference was successfully updated.' }
+        format.html { redirect_to manage_conference_path(@conference), notice: 'Conference was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -163,7 +160,18 @@ class ConferencesController < ApplicationController
     redirect_to new_conference_path
   end
 
+  def basic_information
+
+    render template: "conferences/edit/basic_information"
+  end
+
   private
+
+    def parse_dates
+      @conference.to_date = @conference.days.last.date.strftime(I18n.t("date.formats.default"))
+      @conference.from_date = @conference.days.first.date.strftime(I18n.t("date.formats.default"))
+      @one_day = (@conference.days.first == @conference.days.last)
+    end
 
     def load_data
       @template_types = EmailTemplateType.all
