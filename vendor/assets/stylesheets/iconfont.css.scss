@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'iconfont';
-	src:url('iconfont.eot');
-	src:url('iconfont.eot?#iefix') format('embedded-opentype'),
-    url('iconfont.svg#iconfont') format('svg'),
-    url('iconfont.woff') format('woff'),
-    url('iconfont.ttf') format('truetype');
+	src:asset-url('iconfont.eot', font);
+	src:asset-url('iconfont.eot?#iefix', font) format('embedded-opentype'),
+    asset-url('iconfont.svg#iconfont', font) format('svg'),
+    asset-url('iconfont.woff', font) format('woff'),
+    asset-url('iconfont.ttf', font) format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }
