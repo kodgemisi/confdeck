@@ -13,6 +13,7 @@
 
 class OrganizationsController < ApplicationController
   before_filter :authenticate_user!
+  before_action :set_organization, only: [:edit, :update, :destroy]
 
   # GET /organizations
   # GET /organizations.json
@@ -49,7 +50,6 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations/1/edit
   def edit
-    @organization = Organization.find(params[:id])
   end
 
   # POST /organizations
@@ -73,8 +73,6 @@ class OrganizationsController < ApplicationController
   # PUT /organizations/1
   # PUT /organizations/1.json
   def update
-    @organization = Organization.find(params[:id])
-
     respond_to do |format|
       if @organization.update_attributes(organization_params)
         format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
@@ -89,7 +87,6 @@ class OrganizationsController < ApplicationController
   # DELETE /organizations/1
   # DELETE /organizations/1.json
   def destroy
-    @organization = Organization.find(params[:id])
     @organization.destroy
 
     respond_to do |format|
@@ -109,6 +106,9 @@ class OrganizationsController < ApplicationController
   end
 
   private
+    def set_organization
+      @organization = Organization.find(params[:id])
+    end
 
     def organization_params
       params.require(:organization).permit(:name, :website, :logo)
