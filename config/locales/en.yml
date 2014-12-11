@@ -439,6 +439,7 @@ en:
     pm: pm
   titles:
     conferences:
+      basic_information: "%{conference} Basic Information"
       edit: 'Edit %{conference} '
       manage: 'Deck of %{conference} '
       schedule: Schedule of %{conference}

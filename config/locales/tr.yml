@@ -504,6 +504,7 @@ tr:
     pm: "öğleden sonra"
   titles:
     conferences:
+      basic_information: "%{conference} Temel Bilgiler"
       edit: "%{conference} Düzenle"
       manage: "%{conference} Güvertesi"
       schedule: "%{conference} Programı"

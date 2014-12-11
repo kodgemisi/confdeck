@@ -74,77 +74,83 @@ $(document).ready(function(){
             },
             showFinishButtonAlways: true,
             enableAllSteps: true
-        }).validate({
-            validClass: 'has-success',
-            errorElement: 'span',
-            errorClass: 'help-block mt10',
-            errorPlacement: function errorPlacement(error, element) {
-                element.after(error);
-            },
-            highlight: function (element, errorClass, validClass) {
-                $(element).parents("div.form-group").addClass("has-error").removeClass("has-success");
-
-            },
-            unhighlight: function (element, errorClass, validClass) {
-                $(element).parents("div.form-group").removeClass("has-error").addClass("has-success");
-            },
-            messages: {
-                "conference[slug]": {
-                    remote: $.validator.format("{0} is already in use")
-                }
-            }
-        });
-
-        $("#conference_slug").rules("add", {
-            remote: {
-                url: $("#conference_slug").data("validate"),
-                data: {
-                    slug: function () {
-                        return $("#conference_slug").val();
-                    }
-                }
-            }
         })
 
-        $('#conference_one_day').change(function () {
-            if ($(this).is(":checked")) {
-                $("#to").val($("#from").val());
-                $("#to").closest(".to-date-div").hide();
-                $("#to").closest(".col-lg-6").find(".time-interval").show();
-            } else {
-                $("#to").closest(".to-date-div").show();
-                $("#to").closest(".col-lg-6").find(".time-interval").hide();
-            }
-        });
-
-        $("#from").datepicker({
-            defaultDate: "+1w",
-            changeMonth: true,
-            numberOfMonths: 1,
-            onClose: function (selectedDate) {
-                $("#to").datepicker("option", "minDate", selectedDate);
-            },
-            //dateFormat:  $("#from").attr("placeholder")
-        });
-        $("#to").datepicker({
-            defaultDate: "+1w",
-            changeMonth: true,
-            numberOfMonths: 1,
-            onClose: function (selectedDate) {
-                $("#from").datepicker("option", "maxDate", selectedDate);
-            },
-            //dateFormat:  $("#to").attr("placeholder")
-        });
-
-
-        $("#conference_name").on('change keyup input', function () {
-            slug = getSlug($(this).val());
-            $("#conference_slug").val(slug);
-        });
-
-        $('#conference-start-time').timepicker({showMeridian: false});
-        $('#conference-end-time').timepicker({showMeridian: false});
 
         setInterval(syncWizardData, wizardSyncInterval);
     }
+
+    $("#from").datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 1,
+        onClose: function (selectedDate) {
+            $("#to").datepicker("option", "minDate", selectedDate);
+        }
+        //dateFormat:  $("#from").attr("placeholder")
+    });
+    $("#to").datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 1,
+        onClose: function (selectedDate) {
+            $("#from").datepicker("option", "maxDate", selectedDate);
+        }
+        //dateFormat:  $("#to").attr("placeholder")
+    });
+
+    $("#conference_name").on('change keyup input', function () {
+        slug = getSlug($(this).val());
+        $("#conference_slug").val(slug);
+    });
+
+    $('#conference-start-time').timepicker({showMeridian: false});
+    $('#conference-end-time').timepicker({showMeridian: false});
+
+
+    $(".validate-me").validate({
+        validClass: 'has-success',
+        errorElement: 'span',
+        errorClass: 'help-block mt10',
+        errorPlacement: function errorPlacement(error, element) {
+            element.after(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).parents("div.form-group").addClass("has-error").removeClass("has-success");
+
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).parents("div.form-group").removeClass("has-error").addClass("has-success");
+        },
+        messages: {
+            "conference[slug]": {
+                remote: $.validator.format("{0} is already in use")
+            }
+        }
+    });
+
+
+    $("#conference_slug").rules("add", {
+        remote: {
+            url: $("#conference_slug").data("validate"),
+            data: {
+                slug: function () {
+                    return $("#conference_slug").val();
+                }
+            }
+        }
+    })
+
+
+    $('#conference_one_day').change(function () {
+        if ($(this).is(":checked")) {
+            $("#to").val($("#from").val());
+            $("#to").closest(".to-date-div").hide();
+            $("#to").closest(".col-lg-6").find(".time-interval").show();
+        } else {
+            $("#to").closest(".to-date-div").show();
+            $("#to").closest(".col-lg-6").find(".time-interval").hide();
+        }
+    });
+
 });

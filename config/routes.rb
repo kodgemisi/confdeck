@@ -41,6 +41,7 @@ Confman::Application.routes.draw do
     member do
       get 'appeal_types'
       get 'manage'
+      get 'basic_information'
     end
   end
 
