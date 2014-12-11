@@ -153,6 +153,8 @@ tr:
     start_date: Başlangıç Tarihi
     summary: "Özet"
     too_long: Konferansın tarih aralığı en fazla 60 gün olmalıdır.
+    total_appeals: Toplam Başvuru
+    waiting_appeals: Bekleyen Başvurular
     wizard:
       step1:
         desc:
@@ -515,7 +517,6 @@ tr:
     abstract: Konu Özeti
     speakers: Konuşmacılar
     subject: Konu Başlığı
-  total_appeals: 
   update: Güncelle
   updated: 
   user:
@@ -527,5 +528,4 @@ tr:
     password: "Şifre"
     remember_me: Beni Hatırla
     sign_up_to_get_started: Hemen yeni bir hesap açın
-  waiting_appeals: 
   waiting_review: Beklemede
