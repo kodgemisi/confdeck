@@ -276,10 +276,14 @@ en:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
   general:
+    are_you_sure: Are You Sure?
     cancel: Cancel
     close: Close
     create: Create
+    delete: Delete
+    details: Details
     edit: Edit
+    error: Some error(s) occurred!
     homepage: 
     save: Save
     settings: Settings
@@ -426,6 +430,12 @@ en:
     twitter: 
   speaker_application_header: Speaker Application To %{conference_name}
   speakers: 
+  sponsors:
+    actions: Actions
+    logo: Logo
+    name: Name
+    new: New Sponsor
+    website: Website
   subject: 
   support:
     array:
@@ -441,6 +451,7 @@ en:
     conferences:
       address: "%{conference} Address Information"
       basic_information: "%{conference} Basic Information"
+      contact_information: "%{conference} Contact Information"
       edit: 'Edit %{conference} '
       manage: 'Deck of %{conference} '
       schedule: Schedule of %{conference}
@@ -449,6 +460,9 @@ en:
       dashboard: Dashboard
     settings:
       index: Settings
+    sponsors:
+      index: Sponsors of %{conference}
+      new: New Sponsor
   topic:
     absract: 
     abstract: 

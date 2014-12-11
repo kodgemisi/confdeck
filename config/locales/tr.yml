@@ -341,10 +341,14 @@ tr:
         one: 'Bu %{resource} kaydedilirken 1 hata yakalandı:'
         other: 'Bu %{resource} kaydedilirken %{count} hata yakalandı:'
   general:
+    are_you_sure: Emin Misiniz?
     cancel: "İptal"
     close: Kapat
     create: Oluştur
+    delete: Sil
+    details: Detaylar
     edit: Düzenl
+    error: Hata oluştu!
     homepage: Anasayfa
     save: Kaydet
     settings: Ayarlar
@@ -491,6 +495,12 @@ tr:
     twitter: Twitter
   speaker_application_header: "%{conference_name} Konuşmacı Başvurusu"
   speakers: Konuşmacılar
+  sponsors:
+    actions: "İşlemler"
+    logo: 
+    name: 
+    new: Yeni Sponsor Oluştur
+    website: 
   subject: Başlık
   support:
     array:
@@ -506,6 +516,7 @@ tr:
     conferences:
       address: "%{conference} Adres Bilgileri"
       basic_information: "%{conference} Temel Bilgiler"
+      contact_information: "%{conference} İletişim Bilgileri"
       edit: "%{conference} Düzenle"
       manage: "%{conference} Güvertesi"
       schedule: "%{conference} Programı"
@@ -514,6 +525,9 @@ tr:
       dashboard: Anasayfa
     settings:
       index: Ayarlar
+    sponsors:
+      index: "%{conference} Sponsorları"
+      new: Yeni Sponsor Oluştur
   topic:
     absract: 
     abstract: Konu Özeti

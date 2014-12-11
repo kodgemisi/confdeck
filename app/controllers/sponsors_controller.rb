@@ -20,6 +20,7 @@ class SponsorsController < ApplicationController
   # GET /sponsors.json
   def index
     @sponsors = @conference.sponsors.paginate(:page => params[:page])
+    @sponsor = @conference.sponsors.build
 
     respond_to do |format|
       format.html # index.html.erb
@@ -60,13 +61,14 @@ class SponsorsController < ApplicationController
     @sponsor = @conference.sponsors.new(sponsor_params)
 
     respond_to do |format|
-      if @sponsor.save
+      if @result = @sponsor.save
         format.html { redirect_to [@conference, @sponsor], notice: 'Sponsor was successfully created.' }
         format.json { render json: @sponsor, status: :created, location: @sponsor }
       else
         format.html { render action: "new" }
         format.json { render json: @sponsor.errors, status: :unprocessable_entity }
       end
+      format.js
     end
   end
 

@@ -24,7 +24,11 @@
               <div class="page-header-section">
                 <h4 class="title semibold"><%= get_title %></h4>
               </div>
+              <div class="page-header-section text-right">
+                <%= yield :header_actions %>
+              </div>
             </div>
+
             <%= render "layouts/messages" %>
             <%= yield %>
       </div>

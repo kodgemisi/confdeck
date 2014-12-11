@@ -14,6 +14,8 @@
 class Sponsor < ActiveRecord::Base
   belongs_to :conference
 
+  validates_presence_of :name, :website
+
   has_attached_file :logo, :styles => { :default => "360x230>", :thumb => "200x200", :small => "50x50"}
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
 end
