@@ -38,8 +38,6 @@ gem "rails-timeago"
 group :production do
   gem 'pg'
   gem 'therubyracer'
-  gem 'rails_12factor' #adds heroku enhanchments
-  #gem 'mysql2'
 end
 
 
