@@ -149,6 +149,7 @@ tr:
     reset_wizard: 
     schedule: Program
     show: Konferans Sayfası
+    show_landing: "Konferans Sayfasını Aç\n "
     slug: Kısa İsim
     start_date: Başlangıç Tarihi
     summary: "Özet"
@@ -341,6 +342,7 @@ tr:
         one: 'Bu %{resource} kaydedilirken 1 hata yakalandı:'
         other: 'Bu %{resource} kaydedilirken %{count} hata yakalandı:'
   general:
+    active: Aktif
     are_you_sure: Emin Misiniz?
     cancel: "İptal"
     close: Kapat
@@ -350,6 +352,7 @@ tr:
     edit: Düzenl
     error: Hata oluştu!
     homepage: Anasayfa
+    inactive: Aktif Değil
     save: Kaydet
     settings: Ayarlar
     update: Güncelle
