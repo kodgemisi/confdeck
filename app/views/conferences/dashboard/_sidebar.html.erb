@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-xs-12">
+    <h5 class="semibold mt0 text-primary"><i class="ico-cabinet pr5"></i><%= t("general.management") %></h5>
     <div class="list-group">
       <a href="<%= conference_appeals_path(@conference) %>" class="list-group-item">
         <i class="ico-angle-right mr5"></i> <%= t("conferences.appeals") %>
@@ -7,6 +8,14 @@
       <a href="<%= conference_schedule_path(@conference) %>" class="list-group-item">
         <i class="ico-angle-right mr5"></i> <%= t("conferences.schedule") %>
       </a>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <h5 class="semibold mt0 text-primary"><i class="ico-equalizer pr5"></i><%= t("general.settings") %></h5>
+    <div class="list-group">
       <a href="<%= conference_email_templates_path(@conference) %>" class="list-group-item">
         <i class="ico-angle-right mr5"></i> <%= t("conferences.email_templates") %>
       </a>
