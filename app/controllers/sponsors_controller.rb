@@ -61,14 +61,13 @@ class SponsorsController < ApplicationController
     @sponsor = @conference.sponsors.new(sponsor_params)
 
     respond_to do |format|
-      if @result = @sponsor.save
+      if @sponsor.save
         format.html { redirect_to [@conference, @sponsor], notice: 'Sponsor was successfully created.' }
         format.json { render json: @sponsor, status: :created, location: @sponsor }
       else
         format.html { render action: "new" }
         format.json { render json: @sponsor.errors, status: :unprocessable_entity }
       end
-      format.js
     end
   end
 
