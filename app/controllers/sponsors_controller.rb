@@ -20,6 +20,7 @@ class SponsorsController < ApplicationController
   # GET /sponsors.json
   def index
     @sponsors = @conference.sponsors.paginate(:page => params[:page])
+    @sponsor = @conference.sponsors.build
 
     respond_to do |format|
       format.html # index.html.erb
