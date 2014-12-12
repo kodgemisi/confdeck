@@ -183,16 +183,6 @@ class ConferencesController < ApplicationController
     ]
   end
 
-
-  def populate_settings_options
-    @options = {
-        language: [
-            ["Türkçe","tr"],
-            ["English","en"]
-        ]
-    }
-  end
-
   private
 
     def parse_dates
