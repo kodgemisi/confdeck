@@ -43,6 +43,7 @@ Confman::Application.routes.draw do
       get 'manage'
       get 'basic_information'
       get 'address'
+      get 'contact_information'
     end
   end
 

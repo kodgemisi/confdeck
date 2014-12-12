@@ -50,6 +50,7 @@ describe Conference do
     end
 
     it "shouldnt have a start time after end time" do
+      pending
       conference.start_time = Time.parse("15:00")
       conference.end_time = Time.parse("13:00")
 

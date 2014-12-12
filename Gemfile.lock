@@ -48,6 +48,8 @@ GEM
     cocaine (0.5.4)
       climate_control (>= 0.0.3, < 1.0)
     cocoon (1.2.6)
+    codeclimate-test-reporter (0.4.3)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
     date_validator (0.7.1)
       activemodel
@@ -242,6 +244,7 @@ DEPENDENCIES
   better_errors
   bootstrap-sass (~> 3.1.0)
   cocoon
+  codeclimate-test-reporter
   date_validator
   devise
   devise_invitable
