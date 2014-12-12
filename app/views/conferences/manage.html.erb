@@ -1,6 +1,9 @@
 <%
    meta title: t("titles.conferences.manage", conference: @conference.name)
 %>
+<% content_for :header_actions do %>
+    <%= bs_button_to t("conferences.preview"), @conference, icon: "eye-open", style: "primary"%>
+<% end %>
 
 <div class="row">
   <div class="col-lg-9">
