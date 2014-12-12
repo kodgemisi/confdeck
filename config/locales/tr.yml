@@ -526,6 +526,7 @@ tr:
     settings:
       index: Ayarlar
     sponsors:
+      edit: "%{sponsor} Düzenleniyor"
       index: "%{conference} Sponsorları"
       new: Yeni Sponsor Oluştur
   topic:

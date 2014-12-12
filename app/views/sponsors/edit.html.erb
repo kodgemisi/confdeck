@@ -1,6 +1,5 @@
-<h1>Editing sponsor</h1>
+<%
+   meta title: t("titles.sponsors.edit", sponsor: @sponsor.name)
+%>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', [@conference, @sponsor] %> |
-<%= link_to 'Back', conference_sponsors_path(@conference) %>

@@ -461,6 +461,7 @@ en:
     settings:
       index: Settings
     sponsors:
+      edit: Edit %{sponsor}
       index: Sponsors of %{conference}
       new: New Sponsor
   topic:
