@@ -91,4 +91,21 @@ module ConferencesHelper
       nil
     end
   end
+
+  def module_active?(module_name)
+    case module_name
+      when "sponsors"
+        @conference.sponsors.present? && @conference.module_enabled?(module_name)
+      when "speakers"
+        @conference.speakers.accepted.present? && @conference.module_enabled?(module_name)
+      when "schedule"
+        !(@conference.slots.empty?) && @conference.module_enabled?(module_name)
+      when "organizators"
+        @conference.module_enabled?(module_name)
+      when "map"
+        @conference.module_enabled?(module_name)
+      when "application"
+        @conference.module_enabled?(module_name)
+    end
+  end
 end

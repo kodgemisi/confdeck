@@ -178,7 +178,8 @@ class ConferencesController < ApplicationController
         "sponsors",
         "map",
         "organizators",
-        "speakers"
+        "speakers",
+        "schedule"
     ]
   end
 
@@ -236,6 +237,7 @@ class ConferencesController < ApplicationController
                                              :speakers_module,
                                              :map_module,
                                              :organizators_module,
+                                             :schedule_module,
                                          ],
                                          address_attributes: [:info, :city, :lat, :lon],
                                          appeal_types_attributes: [:id, :type_name, :_destroy],

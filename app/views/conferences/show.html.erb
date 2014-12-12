@@ -18,7 +18,6 @@
         <% if @conference.speakers.accepted.present? %>
             <li><a href="#speakers">Speakers</a></li>
         <% end %>
-
         <% if @conference.slots.present? %>
             <li><a href="#schedule">Schedule</a></li>
         <% end %>
@@ -74,7 +73,7 @@
 
 </div><!-- /.section-colored -->
 
-<% if @conference.sponsors.present? %>
+<% if module_active?("sponsors") %>
     <div class="section color2" id="sponsors">
 
       <div class="container">
@@ -100,7 +99,7 @@
 <% end %>
 
 
-<% if @conference.speakers.accepted.present? %>
+<% if module_active?("speakers") %>
 
     <div class="section-colored color3" id="speakers">
       <div class="container text-center">
@@ -142,7 +141,9 @@
           </div>
       </div>
     </div>
-<% else %>
+<% end %>
+
+<% if module_active?("application") %>
     <div class="section-colored color3" id="speakers">
       <div class="container text-center">
         <div class="row text-center">
@@ -159,7 +160,7 @@
     </div>
 <% end %>
 
-<% if !(@conference.slots.empty?) %>
+<% if module_active?("schedule") %>
 <div class="section color4" id="schedule">
   <div class="container">
     <% #render partial: 'schedule_table', locals: {editable: false} %>
@@ -168,77 +169,81 @@
 <% end %>
 
 
-<div class="section color5" id="location">
+<% if module_active?("maps") %>
+    <div class="section color5" id="location">
 
-  <div class="container">
+      <div class="container">
 
-    <div class="row">
-      <div class="col-lg-6 col-md-6 col-sm-6">
-        <h2>Location</h2>
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6">
+            <h2>Location</h2>
 
-        <%= best_in_place_if current_user && @conference.organizations && current_user.organizations, @conference.address, :info, :type => :textarea, :path => conference_address_path(@conference, @conference.address) %>
+            <%= best_in_place_if current_user && @conference.organizations && current_user.organizations, @conference.address, :info, :type => :textarea, :path => conference_address_path(@conference, @conference.address) %>
 
-      </div>
-      <div class="col-lg-6 col-md-6 col-sm-6" id="address_map">
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" id="address_map">
 
-      </div>
-
-      <script type="text/javascript">
-
-          function initialize() {
-              var myLatlng = new google.maps.LatLng(<%=@conference.address.lat%>, <%=@conference.address.lon%>);
-              var mapOptions = {
-                  zoom: 4,
-                  center: myLatlng,
-                  mapTypeId: google.maps.MapTypeId.ROADMAP
-              }
-              var map = new google.maps.Map(document.getElementById('address_map'), mapOptions);
-
-              var marker = new google.maps.Marker({
-                  position: myLatlng,
-                  map: map,
-                  title: '<%=@conference.name%>'
-              });
-          }
-
-          google.maps.event.addDomListener(window, 'load', initialize);
-      </script>
-    </div>
-    <!-- /.row -->
-
-  </div>
-  <!-- /.container -->
-
-</div><!-- /.section-colored -->
-
-
-
-<div class="container" id="organizators" style="margin-top: 20px">
-
-  <div class="row well">
-    <div class="col-lg-12 col-md-12">
-      <h2>Organizators</h2>
-
-      <% @conference.organizations.each do |org| %>
-          <div class="col-lg-3 col-sm-3 organization text-center">
-            <%= image_tag org.logo.url(:thumb), height: "200", width: "200", class: "img-circle img-responsive"%>
-
-
-            <h4><%= org.name %></h4>
-
-            <% if org.website %>
-                 <p><i class="icon-external-link">&nbsp;</i><%= link_to org.website, org.website %></p>
-            <% end %>
           </div>
 
-      <% end %>
+          <script type="text/javascript">
 
-    </div>
-  </div>
-  <!-- /.row -->
+              function initialize() {
+                  var myLatlng = new google.maps.LatLng(<%=@conference.address.lat%>, <%=@conference.address.lon%>);
+                  var mapOptions = {
+                      zoom: 4,
+                      center: myLatlng,
+                      mapTypeId: google.maps.MapTypeId.ROADMAP
+                  }
+                  var map = new google.maps.Map(document.getElementById('address_map'), mapOptions);
 
-</div><!-- /.container -->
+                  var marker = new google.maps.Marker({
+                      position: myLatlng,
+                      map: map,
+                      title: '<%=@conference.name%>'
+                  });
+              }
 
+              google.maps.event.addDomListener(window, 'load', initialize);
+          </script>
+        </div>
+        <!-- /.row -->
+
+      </div>
+      <!-- /.container -->
+
+    </div><!-- /.section-colored -->
+<% end %>
+
+
+
+<% if module_active?("organizators") %>
+    <div class="container" id="organizators" style="margin-top: 20px">
+
+      <div class="row well">
+        <div class="col-lg-12 col-md-12">
+          <h2>Organizators</h2>
+
+          <% @conference.organizations.each do |org| %>
+              <div class="col-lg-3 col-sm-3 organization text-center">
+                <%= image_tag org.logo.url(:thumb), height: "200", width: "200", class: "img-circle img-responsive"%>
+
+
+                <h4><%= org.name %></h4>
+
+                <% if org.website %>
+                     <p><i class="icon-external-link">&nbsp;</i><%= link_to org.website, org.website %></p>
+                <% end %>
+              </div>
+
+          <% end %>
+
+        </div>
+      </div>
+      <!-- /.row -->
+
+    </div><!-- /.container -->
+
+<% end %>
 
 <div class="container">
 
