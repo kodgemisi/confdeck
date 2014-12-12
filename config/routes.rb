@@ -44,6 +44,7 @@ Confman::Application.routes.draw do
       get 'basic_information'
       get 'address'
       get 'contact_information'
+      get 'landing_settings'
     end
   end
 

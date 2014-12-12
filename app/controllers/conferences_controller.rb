@@ -13,7 +13,7 @@
 
 class ConferencesController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
-  before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule, :basic_information, :address, :contact_information]
+  before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule, :basic_information, :address, :contact_information, :landing_settings]
   before_action :load_data, only: [:new, :edit, :update]
   before_action :parse_dates, only: [:edit, :basic_information]
 
@@ -172,6 +172,26 @@ class ConferencesController < ApplicationController
     render template: "conferences/edit/contact_information"
   end
 
+  def landing_settings
+    @modules = [
+        "application",
+        "sponsors",
+        "map",
+        "organizators",
+        "speakers"
+    ]
+  end
+
+
+  def populate_settings_options
+    @options = {
+        language: [
+            ["Türkçe","tr"],
+            ["English","en"]
+        ]
+    }
+  end
+
   private
 
     def parse_dates
@@ -210,6 +230,13 @@ class ConferencesController < ApplicationController
                                          :summary, :description, :website, :twitter,
                                          :facebook, :email, :phone,
                                          organization_ids: [],
+                                         settings: [
+                                             :application_module,
+                                             :sponsors_module,
+                                             :speakers_module,
+                                             :map_module,
+                                             :organizators_module,
+                                         ],
                                          address_attributes: [:info, :city, :lat, :lon],
                                          appeal_types_attributes: [:id, :type_name, :_destroy],
                                          sponsors_attributes: [:id, :name, :website, :logo, :_destroy],

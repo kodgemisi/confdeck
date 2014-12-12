@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141209110348) do
+ActiveRecord::Schema.define(version: 20141212133539) do
 
   create_table "activities", force: true do |t|
     t.integer  "subject_id"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(version: 20141209110348) do
     t.datetime "heading_image_updated_at"
     t.string   "keywords"
     t.string   "slug"
+    t.string   "settings"
   end
 
   add_index "conferences", ["slug"], name: "index_conferences_on_slug", unique: true

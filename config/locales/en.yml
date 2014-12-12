@@ -145,6 +145,7 @@ en:
     num_of_appeals: 
     num_of_sponsors: 
     organization: Organization
+    preview: Preview Conference Page
     reset_info: You have an unsaved conference draft. You can clear it and start over by clicking the button below
     reset_title: 
     reset_wizard: Clear Wizard
@@ -276,6 +277,7 @@ en:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
   general:
+    active: Active
     are_you_sure: Are You Sure?
     cancel: Cancel
     close: Close
@@ -285,6 +287,7 @@ en:
     edit: Edit
     error: Some error(s) occurred!
     homepage: 
+    inactive: Inactive
     save: Save
     settings: Settings
     update: Update
@@ -450,6 +453,7 @@ en:
   titles:
     conferences:
       address: "%{conference} Address Information"
+      appeal_types: Session Types
       basic_information: "%{conference} Basic Information"
       contact_information: "%{conference} Contact Information"
       edit: 'Edit %{conference} '

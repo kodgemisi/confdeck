@@ -144,6 +144,7 @@ tr:
     num_of_appeals: Başvurular
     num_of_sponsors: Sponsorlar
     organization: Organizasyon
+    preview: "Konferans Sayfası Önizleme\n "
     reset_info: 
     reset_title: 
     reset_wizard: 
@@ -341,6 +342,7 @@ tr:
         one: 'Bu %{resource} kaydedilirken 1 hata yakalandı:'
         other: 'Bu %{resource} kaydedilirken %{count} hata yakalandı:'
   general:
+    active: Aktif
     are_you_sure: Emin Misiniz?
     cancel: "İptal"
     close: Kapat
@@ -350,6 +352,7 @@ tr:
     edit: Düzenl
     error: Hata oluştu!
     homepage: Anasayfa
+    inactive: Aktif Değil
     save: Kaydet
     settings: Ayarlar
     update: Güncelle
@@ -515,6 +518,7 @@ tr:
   titles:
     conferences:
       address: "%{conference} Adres Bilgileri"
+      appeal_types: Oturum Tipleri
       basic_information: "%{conference} Temel Bilgiler"
       contact_information: "%{conference} İletişim Bilgileri"
       edit: "%{conference} Düzenle"
