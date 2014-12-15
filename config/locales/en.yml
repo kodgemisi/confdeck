@@ -145,6 +145,7 @@ en:
     num_of_appeals: 
     num_of_sponsors: 
     organization: Organization
+    preview: Preview Conference Page
     reset_info: You have an unsaved conference draft. You can clear it and start over by clicking the button below
     reset_title: 
     reset_wizard: Clear Wizard

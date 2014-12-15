@@ -28,6 +28,7 @@ class Conference < ActiveRecord::Base
   attr_accessor :start_time
   attr_accessor :end_time
 
+  serialize :settings
 
   #== Relations
   has_one :address
@@ -117,6 +118,10 @@ class Conference < ActiveRecord::Base
 
   def unassigned_topics
     self.appeals.accepted.map {|a| a unless self.slots.pluck(:topic_id).include? a.topic_id }.reject { |a| a.nil? }
+  end
+
+  def module_enabled?(module_name)
+    (self.settings["#{module_name}_module"] == "true")
   end
 
   def to_liquid
