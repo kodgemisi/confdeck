@@ -12,18 +12,25 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#about">About</a></li>
-        <% if @conference.sponsors.present? %>
+        <% if  module_active?("sponsors") %>
             <li><a href="#sponsors">Sponsors</a></li>
         <% end %>
-        <% if @conference.speakers.accepted.present? %>
+
+        <% if module_active?("speakers") %>
             <li><a href="#speakers">Speakers</a></li>
         <% end %>
-        <% if @conference.slots.present? %>
+
+        <% if module_active?("schedule") %>
             <li><a href="#schedule">Schedule</a></li>
         <% end %>
 
-        <li><a href="#location">Location</a></li>
-        <li><a href="#organizators">Organizators</a></li>
+        <% if module_active?("location") %>
+            <li><a href="#location">Location</a></li>
+        <% end %>
+
+        <% if module_active?("organizators") %>
+            <li><a href="#organizations">Organizations</a></li>
+        <% end %>
       </ul>
     </div>
     <!-- /.navbar-collapse -->
@@ -217,11 +224,11 @@
 
 
 <% if module_active?("organizators") %>
-    <div class="container" id="organizators" style="margin-top: 20px">
+    <div class="container" id="organizations" style="margin-top: 20px">
 
       <div class="row well">
         <div class="col-lg-12 col-md-12">
-          <h2>Organizators</h2>
+          <h2>Organizations</h2>
 
           <% @conference.organizations.each do |org| %>
               <div class="col-lg-3 col-sm-3 organization text-center">
