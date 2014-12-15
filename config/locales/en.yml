@@ -121,8 +121,10 @@ en:
     appeal_type: 
     appeal_types: 
     detail: 
+    speakers: Speakers
     state: 
     subject: 
+    success: Application Sent Successfully!
     write_comment: Write a comment
   application_received: 
   are_you_sure: 
@@ -137,15 +139,19 @@ en:
     description: 
     details: 
     end_date: 
+    landing:
+      new_application: New Application
+      send_application: Send Application
+      speaker_application: Speaker Application
     logo: 
     manage: 
     name: 
     new: |
       New Conference
+    new_speaker: Add New Speaker
     num_of_appeals: 
     num_of_sponsors: 
     organization: Organization
-    preview: Preview Conference Page
     reset_info: You have an unsaved conference draft. You can clear it and start over by clicking the button below
     reset_title: 
     reset_wizard: Clear Wizard
@@ -287,6 +293,10 @@ en:
     details: Details
     edit: Edit
     error: Some error(s) occurred!
+    error_count:
+      one: 1 Error
+      other: "%{count} Errors"
+      zero: No Error
     homepage: 
     inactive: Inactive
     save: Save
@@ -469,11 +479,12 @@ en:
       edit: Edit %{sponsor}
       index: Sponsors of %{conference}
       new: New Sponsor
-  topic:
-    absract: 
+  topics:
     abstract: 
-    speakers: 
-    subject: 
+    additional_info: Additional Info
+    detail: Detail
+    speakers: Speakers
+    subject: Subject
   update: 
   updated: 
   user:

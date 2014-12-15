@@ -52,6 +52,7 @@ class AppealsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @appeal }
+      format.js
     end
   end
 
@@ -69,9 +70,11 @@ class AppealsController < ApplicationController
       if @appeal.save
         format.html
         format.json { render json: @appeal, status: :created, location: @appeal }
+        format.js
       else
         format.html { render layout: "application_no_nav",action: "new" }
         format.json { render json: @appeal.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

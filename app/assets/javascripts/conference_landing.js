@@ -1,4 +1,7 @@
 //= require best_in_place
+//= require bootstrap/modal
+//= require jquery_ujs
+//= require sweet-alert
 
 $(function () {
     $('a[href*=#]:not([href=#])').click(function () {

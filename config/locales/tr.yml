@@ -121,8 +121,10 @@ tr:
     appeal_type: Başvuru Tipi
     appeal_types: Başvuru Tipleri
     detail: Konuşmanın Ana Hatları
+    speakers: Konuşmacıları
     state: Durum
     subject: Konu Başlığı
+    success: Başvuru Başarıyla Gönderildi!
     write_comment: 
   application_received: "%{topic} Başvurunuz alınmıştır"
   are_you_sure: 
@@ -137,14 +139,18 @@ tr:
     description: Açıklama
     details: Detaylar
     end_date: Bitiş Tarihi
+    landing:
+      new_application: Yeni Başvuru
+      send_application: Başvuruyu Gönder
+      speaker_application: Konuşmacı Başvurusu
     logo: Logo
     manage: Yönetim/Düzenleme
     name: Başlık
     new: Yeni Konferans
+    new_speaker: Yeni Konuşmacı Ekle
     num_of_appeals: Başvurular
     num_of_sponsors: Sponsorlar
     organization: Organizasyon
-    preview: "Konferans Sayfası Önizleme\n "
     reset_info: 
     reset_title: 
     reset_wizard: 
@@ -352,6 +358,7 @@ tr:
     details: Detaylar
     edit: Düzenl
     error: Hata oluştu!
+    error_count: "%{count} Hata"
     homepage: Anasayfa
     inactive: Aktif Değil
     save: Kaydet
@@ -534,9 +541,10 @@ tr:
       edit: "%{sponsor} Düzenleniyor"
       index: "%{conference} Sponsorları"
       new: Yeni Sponsor Oluştur
-  topic:
-    absract: 
+  topics:
     abstract: Konu Özeti
+    additional_info: Ek Bilgi
+    detail: Detay
     speakers: Konuşmacılar
     subject: Konu Başlığı
   update: Güncelle

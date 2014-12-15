@@ -1,0 +1,47 @@
+    <div class="row">
+      <!-- Left Col -->
+      <div class="col-lg-12 col-md-12 col-sm-12">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <% if @conference.appeal_types.size > 0 %>
+                <div class="form-group">
+                  <%= f.label t('appeals.appeal_type'), :class => "col-lg-3 control-label" %>
+
+                    <%= f.collection_select :appeal_type_id, @conference.appeal_types, :id, :type_name, {}, {:class => "form-control"} %>
+                </div>
+            <% end %>
+            <%= f.fields_for :topic do |topic_form| %>
+                <div class="form-group">
+                  <%= topic_form.label t('topics.speakers'), :class => "col-lg-3 control-label" %>
+                  <%= topic_form.collection_select :speaker_ids, @appeal.topic.speakers, :id, :name, {}, {:multiple => true, :class => "form-control"} %>
+                </div>
+                <div class="form-group">
+                  <div class="col-lg-3 col-lg-offset-8">
+                    <a data-toggle="modal" href="#" data-target="#newSpeaker" class="btn btn-primary"><%= t("conferences.new_speaker") %></a>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= topic_form.label t('topics.subject'), :class => "col-lg-3 control-label" %>
+
+                    <%= topic_form.text_field :subject, :class => "form-control" %>
+                </div>
+                <div class="form-group">
+                  <%= topic_form.label t('topics.abstract'), :class => "col-lg-3 control-label" %>
+
+                    <%= topic_form.text_field :abstract, :class => "form-control" %>
+                </div>
+                <div class="form-group">
+                  <%= topic_form.label t('topics.detail'), :class => "col-lg-3 control-label" %>
+
+                    <%= topic_form.text_area :detail, :class => "form-control", :style => "height: 200px" %>
+                </div>
+                <div class="form-group">
+                  <%= topic_form.label t('topics.additional_info'), :class => "col-lg-3 control-label" %>
+
+                    <%= topic_form.text_area :additional_info, :class => "form-control" , :style => "height: 200px" %>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>

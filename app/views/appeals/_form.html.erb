@@ -38,7 +38,7 @@
                           </div>
                           <div class="form-group">
                             <div class="col-lg-9 col-lg-offset-3">
-                              <a data-toggle="modal" href="#newSpeaker" class="btn btn-primary btn-lg"><%= t :new_speaker %></a>
+                              <a data-toggle="modal" href="#" data-target="#newSpeaker" class="btn btn-primary btn-lg"><%= t :new_speaker %></a>
                             </div>
                           </div>
                           <div class="form-group">
@@ -82,60 +82,4 @@
             </div>
         </div>
 
-
-
-
 <% end %>
-
-<div class="modal fade" id="newSpeaker">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title"></h4>
-      </div>
-      <div class="modal-body">
-        <%= form_for(Speaker.new, url: speakers_url, remote: true, :html => {:class => 'form-horizontal speaker-form'}) do |sf| %>
-            <div class="form-group">
-              <%= sf.label t('speaker.name'), :class => "col-lg-3 control-label" %>
-
-              <div class="col-lg-9">
-                <%= sf.text_field :name, :class => "form-control" %>
-              </div>
-            </div>
-            <div class="form-group">
-              <%= sf.label t('speaker.email'), :class => "col-lg-3 control-label" %>
-
-              <div class="col-lg-9">
-                <%= sf.email_field :email, :class => "form-control" %>
-              </div>
-            </div>
-            <div class="form-group">
-              <%= sf.label t('speaker.phone'), :class => "col-lg-3 control-label" %>
-
-              <div class="col-lg-9">
-                <%= sf.text_field :phone, :class => "form-control" %>
-              </div>
-            </div>
-            <div class="form-group">
-              <%= sf.label t('speaker.twitter'), :class => "col-lg-3 control-label" %>
-
-              <div class="col-lg-9">
-                <%= sf.text_field :twitter, :class => "form-control" %>
-              </div>
-            </div>
-            <div class="form-group">
-              <%= sf.label t('speaker.facebook'), :class => "col-lg-3 control-label" %>
-
-              <div class="col-lg-9">
-                <%= sf.text_field :facebook, :class => "form-control" %>
-              </div>
-            </div>
-      </div>
-      <div class="modal-footer">
-          <%= sf.submit class: "btn btn-primary" %>
-        <% end %>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
