@@ -124,6 +124,11 @@ class Conference < ActiveRecord::Base
     (self.settings["#{module_name}_module"] == "true")
   end
 
+  def set!(key, val)
+    self.settings ||= {}
+    self.settings[key] = val
+  end
+
   def to_liquid
     liquid_vars = {
         'name' => name,
