@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  after_create :set_default_settings
+  before_create :set_default_settings
 
   has_and_belongs_to_many :organizations
   has_many :conferences, through: :organizations
