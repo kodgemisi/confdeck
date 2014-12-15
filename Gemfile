@@ -56,5 +56,6 @@ group :test do
   gem 'shoulda-matchers'
   gem 'fabrication'
   gem "codeclimate-test-reporter", require: nil
+  gem "capybara"
 end
 

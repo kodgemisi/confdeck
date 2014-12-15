@@ -41,6 +41,12 @@ GEM
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
     builder (3.2.2)
+    capybara (2.4.4)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
     celluloid (0.16.0)
       timers (~> 4.0.0)
     climate_control (0.0.3)
@@ -116,9 +122,12 @@ GEM
       rails (>= 3.0.0)
     method_source (0.8.2)
     mime-types (2.4.3)
+    mini_portile (0.6.1)
     minitest (5.4.2)
     multi_json (1.10.1)
     netrc (0.8.0)
+    nokogiri (1.6.5)
+      mini_portile (~> 0.6.0)
     orm_adapter (0.5.0)
     paperclip (4.2.0)
       activemodel (>= 3.0.0)
@@ -232,6 +241,8 @@ GEM
     will_paginate (3.0.7)
     will_paginate-bootstrap (1.0.1)
       will_paginate (>= 3.0.3)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
     ya2yaml (0.31)
 
 PLATFORMS
@@ -243,6 +254,7 @@ DEPENDENCIES
   best_in_place
   better_errors
   bootstrap-sass (~> 3.1.0)
+  capybara
   cocoon
   codeclimate-test-reporter
   date_validator
