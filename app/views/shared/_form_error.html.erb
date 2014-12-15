@@ -1,0 +1,8 @@
+<div class="alert alert-danger animation animating flipInX">
+    <h4 class="semibold mb5"><%= t("general.error_count", count: errors.count) %></h4>
+    <p class="nm">
+        <% errors.full_messages.each do |msg| %>
+            <%= msg %></br>
+        <% end %>
+    </p>
+</div>

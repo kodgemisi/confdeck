@@ -150,8 +150,11 @@
           <div class="col-lg-12 text-center">
 
             <div class="">
-              <a class="btn btn-lg btn-primary" href="<%= new_conference_appeal_url(@conference) %>">Speaker
-                Application</a>
+              <a class="btn btn-lg btn-primary" href="#"
+                 data-toggle="modal" data-target="#applicationModal">
+                <i class="ico-pencil5"></i>
+                <%= t("conferences.landing.speaker_application") %>
+              </a>
             </div>
             <div class="clearfix"></div>
           </div>
@@ -271,3 +274,6 @@
   </footer>
 
 </div><!-- /.container -->
+
+<%= render "conferences/show/application_modal" %>
+
