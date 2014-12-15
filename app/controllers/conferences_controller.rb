@@ -13,7 +13,7 @@
 
 class ConferencesController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
-  before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule, :basic_information, :address, :contact_information, :landing_settings]
+  before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule, :basic_information, :address, :contact_information, :appeal_types, :landing_settings]
   before_action :load_data, only: [:new, :edit, :update]
   before_action :parse_dates, only: [:edit, :basic_information]
 
@@ -119,9 +119,11 @@ class ConferencesController < ApplicationController
   end
 
   def appeal_types
-    @appeal_types = Conference.friendly.find(params[:id]).appeal_types
+    @appeal_types = @conference.appeal_types
+
     respond_to do |format|
       format.json { render json: @appeal_types }
+      format.html { render template: "conferences/edit/appeal_types"}
     end
   end
 

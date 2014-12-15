@@ -4,7 +4,6 @@
 //= require jquery.typewatch
 //= require gmaps
 //= require speakingurl.min
-//= require lib/summernote.plugins
 
 $(document).ready(function(){
     var wizardSyncInterval = 10000; //10 seconds
@@ -12,12 +11,12 @@ $(document).ready(function(){
     var syncWizardData = function(){
         $("#conference_wizard_data").val($("#wizard").serialize());
         sendForm($("#conference_wizard_sync"))
-    }
+    };
 
     $(".appeal .show-comments").click(function(e){
         e.preventDefault();
         $(this).closest(".appeal").find(".comments").slideToggle();
-    })
+    });
 
     if($("#wizard")[0])
     {
@@ -36,20 +35,7 @@ $(document).ready(function(){
                 }
 
                 if (currentIndex == 2) { //details tab
-                    $(".summernote-editor").summernote({ //must be here, otherwise buttons are not working
-                        height: 200,
-                        toolbar: [
-                            ["style", ["style"]],
-                            ["style", ["bold", "italic", "underline", "clear"]],
-                            ["fontsize", ["fontsize"]],
-                            ["color", ["color"]],
-                            ["para", ["ul", "ol", "paragraph"]],
-                            ["height", ["height"]],
-                            ["table", ["table"]],
-                            ["insert2", ["conferenceDropdown"]],
-                            ["insert3", ["topicDropdown"]],
-                        ]
-                    });
+                    initializeEditors()
                 }
             },
             onStepChanging: function (event, currentIndex, priorIndex) {

@@ -27,7 +27,7 @@
 //= require bootstrap.timepicker
 //= require summernote
 //= require rails-timeago-all
-
+//= require lib/summernote.plugins
 
 $(document).ready(function(){
     $.datepicker.setDefaults( $.datepicker.regional[ current_locale ] );
@@ -56,5 +56,24 @@ window.showError = function(msg){
 
 function sendForm(item){
     $(item).trigger("submit.rails");
+}
+
+
+var initializeEditors = function(){
+    $(".summernote-editor").summernote({ //must be here, otherwise buttons are not working
+        height: 200,
+        toolbar: [
+            ["style", ["style"]],
+            ["style", ["bold", "italic", "underline", "clear"]],
+            ["fontsize", ["fontsize"]],
+            ["color", ["color"]],
+            ["para", ["ul", "ol", "paragraph"]],
+            ["height", ["height"]],
+            ["table", ["table"]],
+            ["insert2", ["conferenceDropdown"]],
+            ["insert3", ["topicDropdown"]]
+        ]
+    });
+
 }
 

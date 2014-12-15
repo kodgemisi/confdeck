@@ -1,55 +1,9 @@
 <%= form_for(@conference, :html => {:class => 'form-horizontal email-templates'}) do |f| %>
-    <% @template_types.each do |tt| %>
-        <div class="panel panel-default">
-            <div class="panel-heading"><%= tt.title %></div>
-            <div class="panel-body">
+    <%= render "conferences/form/step_3/email_templates_fields", f: f %>
 
-              <div class="form-row">
-
-                <div class="col-lg-9">
-                  <% if @template_hash[tt.type_name].present? && @template_hash[tt.type_name].email_template_type_id == tt.id %>
-                      <div class="form-group">
-                        <%= f.label :subject, t(:subject), :class => "col-lg-2 control-label" %>
-                        <div class="col-lg-10">
-                          <%= text_field_tag "conference[email_templates_attributes][][subject]", @template_hash[tt.type_name].subject, {:class => "form-control"} %>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <%= f.label :body, t(:body), :class => "col-lg-2 control-label" %>
-                        <div class="col-lg-10">
-                          <%= text_area_tag "conference[email_templates_attributes][][body]", @template_hash[tt.type_name].body, {:class => "form-control", :rows => 15} %>
-                        </div>
-                      </div>
-                      <%= hidden_field_tag "conference[email_templates_attributes][][id]", @template_hash[tt.type_name].id %>
-                  <% else %>
-                      <div class="form-group">
-                        <%= f.label :subject, t(:subject), :class => "col-lg-2 control-label" %>
-                        <div class="col-lg-10">
-                          <%= text_field_tag "conference[email_templates_attributes][][subject]", tt.default_subject, {:class => "form-control"} %>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <%= f.label :body, t(:body), :class => "col-lg-2 control-label" %>
-                        <div class="col-lg-10">
-                          <%= text_area_tag "conference[email_templates_attributes][][body]", tt.default_body, {:class => "form-control", :rows => 15} %>
-                        </div>
-                      </div>
-                  <% end %>
-                  <%= hidden_field_tag "conference[email_templates_attributes][][email_template_type_id]", tt.id %>
-                </div>
-                <div class="col-lg-3 description">
-                  <h4><%= t :description %></h4>
-                  <p><%= tt.description %>&nbsp;</p>
-                </div>
-              </div>
-
-
-            </div>
-        </div>
-    <% end %>
     <div class="form-group">
       <div class="col-lg-offset-2 col-lg-10">
-        <%= f.submit :class => "btn btn-primary pull-right", :value => t(:update) %>
+        <%= f.submit :class => "btn btn-primary pull-right" %>
       </div>
     </div>
 <% end %>

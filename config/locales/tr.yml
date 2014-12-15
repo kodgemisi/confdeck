@@ -150,6 +150,7 @@ tr:
     reset_wizard: 
     schedule: Program
     show: Konferans Sayfası
+    show_landing: "Konferans Sayfasını Aç\n "
     slug: Kısa İsim
     start_date: Başlangıç Tarihi
     summary: "Özet"
