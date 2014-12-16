@@ -57,5 +57,7 @@ group :test do
   gem 'fabrication'
   gem "codeclimate-test-reporter", require: nil
   gem "capybara"
+  gem "capybara-webkit"
+
 end
 
