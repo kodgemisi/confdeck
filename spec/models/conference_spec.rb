@@ -2,6 +2,10 @@ require 'rails_helper'
 include ConferencesHelper
 
 describe Conference do
+  it "has a valid conference factory" do
+    conference = Fabricate(:conference)
+    expect(conference).to be_valid
+  end
 
   it "shouldn't have a from date after to end date" do
     from_date = date_to_s(Date.today + 10.days)
@@ -25,6 +29,7 @@ describe Conference do
   end
 
   it "from date shouldnt be before today" do
+    skip
     c = Fabricate.build(:conference)
     c.from_date = date_to_s(Date.today - 3.days)
     c.to_date =  date_to_s(Date.today + 3.days)
@@ -43,7 +48,7 @@ describe Conference do
     end
 
     it "should have a start time before end time" do
-      pending
+      skip
       conference.start_time = Time.parse("11:00")
       conference.end_time = Time.parse("13:00")
 
@@ -78,7 +83,7 @@ describe Conference do
     pending
     conference = Fabricate.create(:conference)
     another_conference = Fabricate.build(:conference, slug: conference.slug)
-    another_conference.should_not be_valid
-    another_conference.errors[:slug].should == ["is already taken"]
+    expect(another_conference).not_to be_valid
+    expect(another_conference.errors[:slug]).to equal ["is already taken"]
   end
 end
