@@ -18,9 +18,13 @@ class Conference < ActiveRecord::Base
   has_attached_file :logo, :styles => { :medium => "400x400>", :thumb => "200x100>" }, :default_url => "/assets/missing_:style.png"
   has_attached_file :heading_image, :styles => { :default => "1900x254", :thumb => "200x100"}, :default_url => "/assets/heading_missing_:style.png"
 
+  MODULES = %w{ application sponsors map organizators speakers schedule }
+
   #== Callbacks
   after_save :create_days_and_slot
   before_validation :set_dates
+  before_save :set_default_settings
+  after_create :set_virtual_dates
 
   #== Virtual Attributes
   attr_accessor :from_date
@@ -70,7 +74,8 @@ class Conference < ActiveRecord::Base
   validates_uniqueness_of :slug
   validates_format_of :start_time, :with => /([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]/, :if => :one_day?
   validates_format_of :end_time, :with => /([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]/, :if => :one_day?
-  validate :check_dates, if: "to_date.present? && from_date.present?"
+  validate :check_date_formats, if: "to_date.present? && from_date.present? "
+  validate :check_date_interval, if: "to_date.present? && from_date.present?"
 
 
   def should_generate_new_friendly_id?
@@ -91,12 +96,15 @@ class Conference < ActiveRecord::Base
   end
 
   def create_days(from_date, to_date)
-    current_date = from_date
+    _from_date = DateTime.strptime(from_date, I18n.t("date.formats.default"))
+    _to_date = DateTime.strptime(to_date, I18n.t("date.formats.default"))
+
+    current_date = _from_date
     begin
       day = Day.where(date: current_date).first_or_create
       self.days << day
       current_date = current_date.next_day
-    end while current_date != to_date.next_day
+    end while current_date != _to_date.next_day
   end
 
   def one_day?
@@ -158,35 +166,43 @@ class Conference < ActiveRecord::Base
 
   # Checks from_date and to_date formats and converts String to Date type
   # Also checks 60 days time range validation
-  def check_dates
+  def check_date_formats
     begin
-      self.from_date = DateTime.strptime(self.from_date, I18n.t("date.formats.default"))
+      DateTime.strptime(self.from_date, I18n.t("date.formats.default"))
     rescue
       self.errors.add(:from_date, "invalid");
       #return false
     end
 
     begin
-      self.to_date = DateTime.strptime(self.to_date, I18n.t("date.formats.default"))
+      DateTime.strptime(self.to_date, I18n.t("date.formats.default"))
     rescue
       self.errors.add(:to_date, "invalid");
-      #return false
     end
-
-    if (self.to_date < self.from_date)
-      self.errors.add(:to_date, "must be after from date")
-      #return false
-    end
-
-    if (Date.today > self.from_date)
-      self.errors.add(:from_date, "must be equal to or after from today")
-    end
-
-    # if (self.to_date - self.from_date).to_i > 60
-    #   self.errors[:base] = I18n.t("conferences.too_long")
-    #   #return false
-    # else
-    #   #return true
-    # end
   end
+
+  def check_date_interval
+    _from_date = DateTime.strptime(self.from_date, I18n.t("date.formats.default"))
+    _to_date = DateTime.strptime(self.to_date, I18n.t("date.formats.default"))
+
+    if (_to_date < _from_date)
+      self.errors.add(:to_date, "must be after from date")
+    end
+
+  end
+
+  def set_virtual_dates
+    set_dates
+  end
+
+  def set_default_settings
+    if self.settings.nil?
+      _settings = {}
+      Conference::MODULES.each do |m|
+        _settings["#{m}_module"] = "true".to_s
+      end
+      self.settings = _settings
+    end
+  end
+
 end

@@ -176,14 +176,7 @@ class ConferencesController < ApplicationController
   end
 
   def landing_settings
-    @modules = [
-        "application",
-        "sponsors",
-        "map",
-        "organizators",
-        "speakers",
-        "schedule"
-    ]
+    @modules = Conference::MODULES
   end
 
   private
