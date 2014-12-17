@@ -70,7 +70,7 @@ describe "Conference landing page", :type => :feature do
         @appeal4 = Fabricate(:appeal, conference: conference, state: "rejected")
       end
 
-      it "should display list of speakers" do
+      it "should display list of speakers if module is active" do
         visit(conference_path(id: conference.slug))
         @appeal1.topic.speakers.each do |speaker|
           expect(page).to have_content speaker.name
@@ -78,6 +78,15 @@ describe "Conference landing page", :type => :feature do
 
         @appeal2.topic.speakers.each do |speaker|
           expect(page).to have_content speaker.name
+        end
+      end
+
+      it "should not display list of speakers if module is not active" do
+        conference.set!("speakers_module", "false")
+        conference.save
+        visit(conference_path(id: conference.slug))
+        @appeal1.topic.speakers.each do |speaker|
+          expect(page).not_to have_content speaker.name
         end
       end
 
@@ -99,6 +108,21 @@ describe "Conference landing page", :type => :feature do
         @appeal3.topic.speakers.each do |speaker|
           expect(page).not_to have_content speaker.name
         end
+      end
+    end
+
+
+    context "map" do
+      it "should display address if module is active" do
+        visit(conference_path(id: conference.slug))
+        expect(page).to have_content conference.address.info
+      end
+
+      it "should not display address if module is not active" do
+        conference.set!("map_module", "false")
+        conference.save
+        visit(conference_path(id: conference.slug))
+        expect(page).not_to have_content conference.address.info
       end
     end
   end
