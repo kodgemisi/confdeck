@@ -1,4 +1,3 @@
-
     json.array! @conference.slots do |slot|
        json.(slot, :id)
        #json.start "Date(" + (slot.start_time.to_i * 1000).to_s + ")"

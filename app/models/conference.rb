@@ -155,6 +155,14 @@ class Conference < ActiveRecord::Base
     liquid_vars
   end
 
+  def start_date
+    self.days.first.date
+  end
+
+  def end_date
+    self.days.last.date
+  end
+
   private
 
   def set_dates

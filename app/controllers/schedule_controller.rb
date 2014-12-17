@@ -47,7 +47,7 @@ class ScheduleController < ApplicationController
   end
 
   def create
-    @conference = Conference.find(params[:conference_id])
+    @conference = Conference.friendly.find(params[:conference_id])
 
     attributes = {
         room_id: params["room_id"],

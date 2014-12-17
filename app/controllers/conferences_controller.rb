@@ -36,6 +36,7 @@ class ConferencesController < ApplicationController
     @one_day = (@conference.days.first == @conference.days.last)
     @appeal = @conference.appeals.new
     @appeal.build_topic
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @conference }

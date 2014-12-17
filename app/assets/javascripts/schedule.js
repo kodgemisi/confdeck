@@ -150,7 +150,7 @@ $(function(){
 
 
     $("#scheduler").kendoScheduler({
-        date: new Date(1392796800000),
+        date: new Date(window.conference.start_date),
         dataSource: dataSource,
         majorTick: 30,
         timezone: "UTC",
@@ -287,6 +287,15 @@ $(function(){
         win.center();
         win.open();
     }
+
+
+    window.scheduler.bind("navigate", function(e){
+        start_date = new Date(new Date(window.conference.start_date).toDateString()); //monkey patch for timezone offsets
+        end_date = new Date(new Date(window.conference.end_date).toDateString());
+        if (e.date < start_date || e.date > end_date ) {
+            e.preventDefault();
+        }
+    })
 
 
 
