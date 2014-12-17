@@ -3,5 +3,5 @@ Fabricator(:topic) do
   additional_info { Faker::Lorem.paragraph }
   detail { Faker::Lorem.paragraph }
   subject { Faker::Lorem.sentence }
-  speakers { [Fabricate(:speaker)] }
+  speakers(count: 3)
 end

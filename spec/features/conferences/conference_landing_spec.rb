@@ -62,16 +62,33 @@ describe "Conference landing page", :type => :feature do
 
       it "should display list of speakers" do
         visit(conference_path(id: conference.slug))
-        expect(page).to have_content @appeal1.topic.speakers.first.name
-        expect(page).to have_content @appeal2.topic.speakers.first.name
+        @appeal1.topic.speakers.each do |speaker|
+          expect(page).to have_content speaker.name
+        end
+
+        @appeal2.topic.speakers.each do |speaker|
+          expect(page).to have_content speaker.name
+        end
       end
 
       it "should display list of speakers of only accepted topic" do
         visit(conference_path(id: conference.slug))
-        expect(page).to have_content @appeal1.topic.speakers.first.name
-        expect(page).to have_content @appeal2.topic.speakers.first.name
-        expect(page).not_to have_content @appeal3.topic.speakers.first.name
-        expect(page).not_to have_content @appeal4.topic.speakers.first.name
+
+        @appeal1.topic.speakers.each do |speaker|
+          expect(page).to have_content speaker.name
+        end
+
+        @appeal2.topic.speakers.each do |speaker|
+          expect(page).to have_content speaker.name
+        end
+
+        @appeal3.topic.speakers.each do |speaker|
+          expect(page).not_to have_content speaker.name
+        end
+
+        @appeal3.topic.speakers.each do |speaker|
+          expect(page).not_to have_content speaker.name
+        end
       end
     end
   end
