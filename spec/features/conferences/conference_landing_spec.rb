@@ -1,6 +1,16 @@
 require 'rails_helper'
 
 describe "Conference landing page", :type => :feature do
+  let(:conference) { Fabricate(:conference) }
+
+  it "should display conference details" do
+    visit(conference_path(id: conference.slug))
+    expect(page).to have_content conference.name
+    expect(page).to have_content conference.summary
+    expect(page).to have_content conference.description
+    expect(page).to have_content conference.keywords
+    expect(page).to have_content conference.address.city
+  end
 
   context "modules" do
 
