@@ -255,31 +255,26 @@
 
 <% end %>
 
-<div class="container">
-
+<div class="container footer">
   <hr>
-
   <footer>
     <div class="row">
       <div class="col-lg-12">
         <p class="pull-left"><%=@conference.name %> <br /></p>
-        <p class="pull-right footer-social-links" style="font-color: #428bca">
-
-          <% if @conference.twitter %>
-              <a href="http://www.twitter.com/<%= @conference.twitter %>"><i class="icon-twitter" style="font-size: 30px"></i></a>
+        <p class="pull-right footer-social-links">
+          <% if @conference.twitter != "" %>
+              <a href="http://www.twitter.com/<%= @conference.twitter %>"><i class="ico-twitter" ></i></a>
           <% end %>
-          <% if @conference.facebook %>
-              <a href="http://www.facebook.com/<%= @conference.facebook %>"><i class="icon-facebook" style="font-size: 30px"></i></a>
+          <% if @conference.facebook != "" %>
+              <a href="http://www.facebook.com/<%= @conference.facebook %>"><i class="ico-facebook" ></i></a>
           <% end %>
           <% if @conference.email %>
-              <a href="mailto:<%= @conference.email %>"><i class="icon-envelope-alt" style="font-size: 30px"></i></a>
+              <a href="mailto:<%= @conference.email %>"><i class="ico-envelope-alt" ></i></a>
           <% end %>
         </p>
       </div>
     </div>
-
   </footer>
-
 </div><!-- /.container -->
 
 <%= render "conferences/show/application_modal" %>
