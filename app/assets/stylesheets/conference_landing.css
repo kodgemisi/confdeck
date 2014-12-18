@@ -185,6 +185,7 @@ footer {
 .footer-social-links a {
     text-decoration: none;
     color: #428bca;
+    margin-right: 2px;
 }
 
 

@@ -12,6 +12,13 @@ describe "Conference landing page", :type => :feature do
     expect(page).to have_content conference.address.city
   end
 
+
+  it "should display conference email mailto link" do
+    visit(conference_path(id: conference.slug))
+    expect(page).to have_link("",href:"mailto:#{conference.email}")
+  end
+
+
   context "modules" do
 
     context "organizations" do
