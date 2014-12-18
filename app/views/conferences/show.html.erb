@@ -179,7 +179,7 @@
 <% end %>
 
 
-<% if module_active?("maps") %>
+<% if module_active?("map") %>
     <div class="section color5" id="location">
 
       <div class="container">
@@ -187,9 +187,7 @@
         <div class="row">
           <div class="col-lg-6 col-md-6 col-sm-6">
             <h2>Location</h2>
-
             <%= best_in_place_if current_user && @conference.organizations && current_user.organizations, @conference.address, :info, :type => :textarea, :path => conference_address_path(@conference, @conference.address) %>
-
           </div>
           <div class="col-lg-6 col-md-6 col-sm-6" id="address_map">
 
