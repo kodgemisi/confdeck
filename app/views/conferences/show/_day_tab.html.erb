@@ -1,0 +1,17 @@
+<div class="tab-pane day-tab <%= "active" if first %>" id="<%= day %>">
+  <div class="day">
+        <ul class="nav nav-tabs nav-justified rooms-nav">
+          <% rooms.each do |room, slots| %>
+            <li class="<%= "active" if rooms.first[0] == room%>"><a href="#<%= day %>_<%= dom_id(room) %>" data-toggle="tab"><%= room.name %></a></li>
+          <% end %>
+        </ul>
+    <!--/ tab -->
+    <!-- tab content -->
+    <div class="tab-content panel room-tabs">
+      <% rooms.each do |room, slots| %>
+          <%= render "conferences/show/room_tab", day: day, room: room, slots: slots, first: rooms.first == room %>
+      <% end %>
+    </div>
+    <!--/ tab content -->
+  </div>
+</div>

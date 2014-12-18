@@ -49,6 +49,7 @@ class Slot < ActiveRecord::Base
   belongs_to :room
   belongs_to :day
   belongs_to :appeal
+  has_one :topic, through: :appeal
   delegate :appeal_type, :to => :appeal, :allow_nil => true
   #validates_with OverlapValidator
 
