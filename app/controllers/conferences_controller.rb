@@ -32,10 +32,19 @@ class ConferencesController < ApplicationController
   # GET /conferences/1
   # GET /conferences/1.json
   def show
-    @slot = Slot.new #for schedule showing
     @one_day = (@conference.days.first == @conference.days.last)
     @speech = @conference.speeches.new
     @speech.build_topic
+    @days = @conference.days
+    @slots = @conference.slots.group_by(&:day)
+
+    @data = {}
+
+    @days.each do |day|
+      @data[day.date] = day.slots.group_by(&:room)
+    end
+
+>>>>>>> development
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @conference }

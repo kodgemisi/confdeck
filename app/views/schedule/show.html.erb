@@ -2,12 +2,11 @@
    meta title: t("titles.conferences.schedule", conference: @conference.name)
 %>
 
-
-<p id="notice"><%= notice %></p>
 <%= javascript_tag do %>
     window.schedule_url = '<%= j conference_schedule_url(@conference)%>';
     window.rooms_url = '<%= j conference_rooms_url(@conference)%>';
     window.speech_types_url = '<%= j speech_types_conference_url(@conference)%>';
+    window.conference = <%= raw @conference.to_json(methods: [:start_date, :end_date]) %>
 <% end %>
 
 <div class="row">

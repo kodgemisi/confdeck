@@ -47,8 +47,9 @@ class Slot < ActiveRecord::Base
 
   belongs_to :conference
   belongs_to :room
-  belongs_to :day
+  belongs_to :day 
   belongs_to :speech
+  has_one :topic, through: :speech
   delegate :speech_type, :to => :speech, :allow_nil => true
   #validates_with OverlapValidator
 

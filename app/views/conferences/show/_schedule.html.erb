@@ -1,0 +1,23 @@
+
+
+    <div class="days">
+      <ul class="nav nav-tabs nav-justified days-nav bgcolor-primary">
+        <% count = 1 %>
+        <% @data.each do |day, rooms| %>
+            <li class="<%= "active" if @data.first[0] == day %>">
+              <a href="#<%= day %>" data-toggle="tab">
+                <%= date_to_s(day) %> <br/>
+                <strong>Day <%= count %></strong></a>
+            </li>
+        <% count=count+1 %>
+        <% end %>
+      </ul>
+      <!--/ tab -->
+      <!-- tab content -->
+          <div class="tab-content panel day-tabs">
+            <% @data.each do |day, rooms| %>
+                <%= render "conferences/show/day_tab", day: day, rooms: rooms, first: @data.first[0] == day %>
+            <% end %>
+          </div>
+      <!--/ tab content -->
+    </div>

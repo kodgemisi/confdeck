@@ -101,7 +101,7 @@ class Conference < ActiveRecord::Base
 
     current_date = _from_date
     begin
-      day = Day.where(date: current_date).first_or_create
+      day = Day.where(date: current_date.to_date).first_or_create
       self.days << day
       current_date = current_date.next_day
     end while current_date != _to_date.next_day
@@ -153,6 +153,14 @@ class Conference < ActiveRecord::Base
 
     liquid_vars[:organization] = organizations.first if organizations.count == 1
     liquid_vars
+  end
+
+  def start_date
+    self.days.first.date
+  end
+
+  def end_date
+    self.days.last.date
   end
 
   private

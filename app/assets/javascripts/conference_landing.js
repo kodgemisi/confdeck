@@ -1,23 +1,25 @@
 //= require best_in_place
 //= require bootstrap/modal
+//= require bootstrap/tab
+//= require bootstrap/collapse
 //= require jquery_ujs
 //= require sweet-alert
 
 $(function () {
-    $('a[href*=#]:not([href=#])').click(function () {
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
-            || location.hostname == this.hostname) {
-
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-            if (target.length) {
-                $('html,body').animate({
-                    scrollTop: target.offset().top
-                }, 1000);
-                return false;
-            }
-        }
-    });
+//    $('a[href*=#]:not([href=#])').click(function () {
+//        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+//            || location.hostname == this.hostname) {
+//
+//            var target = $(this.hash);
+//            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+//            if (target.length) {
+//                $('html,body').animate({
+//                    scrollTop: target.offset().top
+//                }, 1000);
+//                return false;
+//            }
+//        }
+//    });
 
 
     /* Activating Best In Place */

@@ -5,11 +5,11 @@
  *= require_self
 */
 
-/* 
+/*
 Custom CSS for...
 'Modern Business' HTML Theme by Start Bootstrap
 
-All Start Bootstrap themes are licensed under Apache 2.0. 
+All Start Bootstrap themes are licensed under Apache 2.0.
 For more info and more free Bootstrap 3 HTML themes, visit http://startbootstrap.com!
 */
 
@@ -27,10 +27,6 @@ body {
 .img-customer,
 .portfolio-item {
     margin-bottom: 30px;
-}
-
-.tab-pane {
-    margin-top: 15px;
 }
 
 /* Page Sections */
@@ -207,4 +203,67 @@ footer {
 .color5{
     background-color: #6b6359;
     color: white;
+}
+
+.arrow {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #000;
+    margin-left: 15px;
+    display: none;
+}
+
+.day-tab{
+    padding: 0px !important;
+}
+
+.days-nav > li{
+    padding-bottom: 10px;
+}
+
+.days-nav > li > a{
+    color: #FFFFFF;
+    height: 50px;
+    border-bottom: 0px !important;
+}
+
+.days-nav > li.active{
+    border:0px ;
+}
+
+.days-nav > li.active > a, .days-nav > li.active > a:hover{
+    background: transparent;
+    border: 0px !important;
+}
+
+.days-nav > li.active:after {
+    content:"";
+    border-style: solid;
+    position: absolute;
+    left: 47%;
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-color: transparent transparent #FFFFFF transparent;
+    bottom: 0px;
+    z-index: 555;
+}
+
+.day-tabs > .day-tab > .day > .nav-tabs > li.active{
+    #border: 2px solid red;
+}
+
+.rooms-nav{
+    border-radius: 0 !important;
+}
+
+.room-tabs{
+    border: 0px !important;
+}
+
+.rooms-nav > li > a{
+    border: 0px !important;
+    border-radius: 0 !important;
 }
