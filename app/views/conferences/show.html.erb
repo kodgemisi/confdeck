@@ -173,7 +173,7 @@
 <% if module_active?("schedule") %>
 <div class="section color4" id="schedule">
   <div class="container">
-    <% #render partial: 'schedule_table', locals: {editable: false} %>
+    <%= render "conferences/show/schedule" %>
   </div>
 </div>
 <% end %>
