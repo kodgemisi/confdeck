@@ -1,15 +1,15 @@
-Your application is rejected for <%= @appeal.conference.name %><br /><br/>
+Your application is rejected for <%= @speech.conference.name %><br /><br/>
 
 
 <b>Speakers:</b> <br/>
 <ul>
-  <% @appeal.topic.speakers.each do |speaker| %>
+  <% @speech.topic.speakers.each do |speaker| %>
       <li><%= speaker.name %> </li>
   <% end %>
 </ul>
-<b>Topic:</b> <%= @appeal.topic.subject %> <br/>
-<b>Details: </b><%= @appeal.topic.detail %> <br/>
-<b>Additional Info:</b> <%= @appeal.topic.additional_info %> <br/> <br/>
+<b>Topic:</b> <%= @speech.topic.subject %> <br/>
+<b>Details: </b><%= @speech.topic.detail %> <br/>
+<b>Additional Info:</b> <%= @speech.topic.additional_info %> <br/> <br/>
 
 <br/><br/>
 

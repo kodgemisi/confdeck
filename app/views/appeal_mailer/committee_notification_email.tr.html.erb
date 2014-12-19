@@ -1,18 +1,18 @@
-<%=@appeal.conference.name %> için yeni bir başvuru gelmiştir.<br /><br />
+<%=@speech.conference.name %> için yeni bir başvuru gelmiştir.<br /><br />
 
 
 <b><%=t :speakers %></b> <br />
     <ul>
-        <% @appeal.topic.speakers.each do |speaker| %>
+        <% @speech.topic.speakers.each do |speaker| %>
           <li><%= speaker.name %> (<%= speaker.email %> - <%= speaker.phone %>) </li>
         <% end %>
     </ul>
-    <b><%=t 'speeches.subject' %>:</b> <%=@appeal.topic.subject %> <br />
-    <b><%=t 'speeches.abstract' %>:</b> <%=@appeal.topic.abstract %> <br />
-    <b><%=t 'speeches.detail' %>:</b> <%=@appeal.topic.detail%> <br />
-    <b><%=t 'speeches.additional_info' %>:</b> <%=@appeal.topic.additional_info%> <br/> <br/>
+    <b><%=t 'speeches.subject' %>:</b> <%=@speech.topic.subject %> <br />
+    <b><%=t 'speeches.abstract' %>:</b> <%=@speech.topic.abstract %> <br />
+    <b><%=t 'speeches.detail' %>:</b> <%=@speech.topic.detail%> <br />
+    <b><%=t 'speeches.additional_info' %>:</b> <%=@speech.topic.additional_info%> <br/> <br/>
 
-<%= link_to "Değerlendirmek için tıklayınız", conference_appeal_url(@appeal.conference, @appeal) %>
+<%= link_to "Değerlendirmek için tıklayınız", conference_speech_url(@speech.conference, @speech) %>
 <br/><br/>
 
 -ConfDeck
