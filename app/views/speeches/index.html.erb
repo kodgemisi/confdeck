@@ -1,0 +1,76 @@
+<h1>Listing speeches for conference <%= @conference.name %></h1>
+
+<p id="notice"><%= notice %></p>
+
+<div class="speeches-list">
+  <% @speech_types.each do |speech_type| %>
+    <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+        <h3 class="panel-title"><%= speech_type.type_name %> (<%= speech_type.speeches.count %> Başvuru)</h3>
+          <div class="pull-right">
+            <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+              <i class="glyphicon glyphicon-filter"></i>
+            </span>
+          </div>
+        </div>
+        <div class="panel-body">
+          <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#table<%= speech_type.id %>" placeholder="Filter Developers" />
+        </div>
+        <table class="table table-hover" id="table<%= speech_type.id %>">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th><%= t "topic.subject" %></th>
+              <th><%= t "topic.absract" %></th>
+              <th><%= t "topic.speakers" %></th>
+              <th><%= t "speeches.state" %></th>
+              <th><%= t "speeches.actions" %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% speech_type.speeches.each do |speech| %>
+            <tr class="<%= speech.state %>">
+              <td><%= speech.id %></td>
+              <td><%= speech.topic.subject %></td>
+              <td><%= speech.topic.abstract %></td>
+              <td class="text-center">
+                <% speech.topic.speakers.each do |speaker| %>
+                  <div class="speaker">
+                  <%= link_to image_tag(speaker.avatar_url(20), class: "img-circle"), speaker_path(speaker), title: speaker.info, class: "tt" %>
+                </div>
+              <% end %>
+              </td>
+              <td><%=t speech.state %></td>
+              <td class="actions">
+                <div class="updown">
+                  <% unless current_user.voted_up_on? speech %>
+                      <%= link_to upvote_conference_speech_path(speech.conference, speech) do %>
+                          <i class="icon-thumbs-up" style="font-size: 24px;color: gray;"> <%= speech.upvotes.count %></i>
+                      <% end %>
+                  <% else %>
+                      <i class="icon-thumbs-up" style="font-size: 24px;"> <%= speech.upvotes.count %></i>
+                  <% end %>
+                  <% unless current_user.voted_down_on? speech %>
+                      <%= link_to downvote_conference_speech_path(speech.conference, speech) do %>
+                          <i class="icon-thumbs-down" style="font-size: 24px;color: gray;"> <%= speech.downvotes.count %></i>
+                      <% end %>
+                  <% else %>
+                      <i class="icon-thumbs-down" style="font-size: 24px;"> <%= speech.downvotes.count %></i>
+                  <% end %>
+                </div>
+                <%= link_to "#{speech.comments.count} comments", [speech.conference, speech] %>
+                <%= link_to :show, conference_speech_path(speech.conference, speech), class: "btn btn-success button" %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
+
+<%= link_to 'New Speech', new_conference_speech_path(@conference) %>

@@ -1,7 +1,0 @@
-<% if @appeal.persisted? %>
-    $("#applicationModal").modal("hide");
-    swal("<%= t("appeals.success") %>");
-<% else %>
-    $(".message-container").html("<%= escape_javascript(render "shared/form_error", errors: @appeal.errors) %>");
-<% end %>
-

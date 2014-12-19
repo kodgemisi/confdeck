@@ -13,7 +13,7 @@
 
 class Topic < ActiveRecord::Base
   has_and_belongs_to_many :speakers
-  has_one :appeal
+  has_one :speech
 
   validates_presence_of :speakers, :subject, :abstract, :detail
 

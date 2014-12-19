@@ -24,7 +24,7 @@ Confman::Application.routes.draw do
     resources :rooms
     resources :slots
     resources :email_templates
-    resources :appeals do
+    resources :speeches do
       member do
         post 'comment'
         get 'upvote'
@@ -35,11 +35,11 @@ Confman::Application.routes.draw do
     end
     resource :schedule, :controller => 'schedule' do
       member do
-        get 'appeal_list'
+        get 'speech_list'
       end
     end
     member do
-      get 'appeal_types'
+      get 'speech_types'
       get 'manage'
       get 'basic_information'
       get 'address'

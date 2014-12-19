@@ -1,4 +1,4 @@
-<%= @appeal.conference.name %> başvurunuz kaydedilmiştir
+<%= @speech.conference.name %> başvurunuz kaydedilmiştir
 <br/>
 <br/>
 Başvuru sonucunuz, son başvuru tarihinden(28 Şubat 2014 Cuma) sonra program kurulu tarafından incelenerek tarafınıza iletilecektir.
@@ -6,22 +6,22 @@ Başvuru sonucunuz, son başvuru tarihinden(28 Şubat 2014 Cuma) sonra program k
 <br/>
 Bilgilerinize,
 <br/>
-<%= @appeal.conference.name %> Program Kurulu
+<%= @speech.conference.name %> Program Kurulu
 <br/>
 <br/>
 
 Başvuru Bilgileriniz:<br/>
-<b>Başvuru Tipi:</b> <%= @appeal.appeal_type.type_name %> <br/>
+<b>Başvuru Tipi:</b> <%= @speech.speech_type.type_name %> <br/>
 <b>Konuşmacılar:</b> <br/>
 <ul>
-  <% @appeal.topic.speakers.each do |speaker| %>
+  <% @speech.topic.speakers.each do |speaker| %>
       <li><%= speaker.name %> </li>
   <% end %>
 </ul>
-<b>Konu Başlığı:</b> <%= @appeal.topic.subject %> <br/>
-<b>Konu Özeti:</b> <%= @appeal.topic.abstract %> <br/>
-<b>Konuşmanın Ana Hatları: </b><%= @appeal.topic.detail %> <br/>
-<b>Ek Bilgi:</b> <%= @appeal.topic.additional_info %> <br/> <br/>
+<b>Konu Başlığı:</b> <%= @speech.topic.subject %> <br/>
+<b>Konu Özeti:</b> <%= @speech.topic.abstract %> <br/>
+<b>Konuşmanın Ana Hatları: </b><%= @speech.topic.detail %> <br/>
+<b>Ek Bilgi:</b> <%= @speech.topic.additional_info %> <br/> <br/>
 
 <br/><br/>
 

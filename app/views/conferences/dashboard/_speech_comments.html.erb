@@ -10,7 +10,7 @@
 </div>
 <hr class="nm"><!-- horizontal line -->
 <!-- Comment box -->
-<%= form_for(Comment.new, url: comment_conference_appeal_path(appeal.conference, appeal), remote: true) do |f| %>
-    <%= f.text_area :comment, :class => "form-control form-control-minimal appeal-comment", placeholder: t("appeals.write_comment"), onkeyup:  "if (event.keyCode == 13) { sendForm(this); }", onkeydown:  "if (event.keyCode == 13) { event.preventDefault(); }" %>
+<%= form_for(Comment.new, url: comment_conference_speech_path(speech.conference, speech), remote: true) do |f| %>
+    <%= f.text_area :comment, :class => "form-control form-control-minimal speech-comment", placeholder: t("speeches.write_comment"), onkeyup:  "if (event.keyCode == 13) { sendForm(this); }", onkeydown:  "if (event.keyCode == 13) { event.preventDefault(); }" %>
 <% end %>
 <!--/ Comment box -->

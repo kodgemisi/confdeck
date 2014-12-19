@@ -13,9 +13,9 @@ $(document).ready(function(){
         sendForm($("#conference_wizard_sync"))
     };
 
-    $(".appeal .show-comments").click(function(e){
+    $(".speech .show-comments").click(function(e){
         e.preventDefault();
-        $(this).closest(".appeal").find(".comments").slideToggle();
+        $(this).closest(".speech").find(".comments").slideToggle();
     });
 
     if($("#wizard")[0])

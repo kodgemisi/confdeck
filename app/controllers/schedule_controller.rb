@@ -3,17 +3,17 @@ class ScheduleController < ApplicationController
 
   def show
     @conference = Conference.friendly.find(params[:conference_id])
-    @appeal_types = @conference.appeal_types.includes(:appeals).where("appeals.state" => "accepted")
+    @speech_types = @conference.speech_types.includes(:speeches).where("speeches.state" => "accepted")
     @room = Room.new
     @slot = Slot.new
   end
 
-  def appeal_list
+  def speech_list
     @conference = Conference.find(params[:conference_id])
-    @appeal_types = @conference.appeal_types.includes(:appeals).where("appeals.state" => "accepted")
+    @speech_types = @conference.speech_types.includes(:speeches).where("speeches.state" => "accepted")
 
     respond_to do |format|
-      format.html { render partial:"schedule/appeal_list", locals: {appeal_types: @appeal_types} }
+      format.html { render partial:"schedule/speech_list", locals: {speech_types: @speech_types} }
     end
   end
 
@@ -53,7 +53,7 @@ class ScheduleController < ApplicationController
         room_id: params["room_id"],
         start_time: DateTime.parse(params["start"]),
         end_time: DateTime.parse(params["end"]),
-        appeal_id: params["appeal_id"]
+        speech_id: params["speech_id"]
 
     }
 

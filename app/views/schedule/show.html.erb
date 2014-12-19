@@ -5,7 +5,7 @@
 <%= javascript_tag do %>
     window.schedule_url = '<%= j conference_schedule_url(@conference)%>';
     window.rooms_url = '<%= j conference_rooms_url(@conference)%>';
-    window.appeal_types_url = '<%= j appeal_types_conference_url(@conference)%>';
+    window.speech_types_url = '<%= j speech_types_conference_url(@conference)%>';
     window.conference = <%= raw @conference.to_json(methods: [:start_date, :end_date]) %>
 <% end %>
 
@@ -15,8 +15,8 @@
   </div>
   <div class="col-lg-3">
     <button type="button" class="btn btn-primary btn-block create-room-button" ><%= t("rooms.create") %></button>
-    <div class="appeal-list">
-        <%= render "schedule/appeal_list", appeal_types: @appeal_types %>
+    <div class="speech-list">
+        <%= render "schedule/speech_list", speech_types: @speech_list %>
     </div>
   </div>
 </div>

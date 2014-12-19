@@ -71,19 +71,19 @@ describe "Conference landing page", :type => :feature do
       let!(:conference) { Fabricate(:conference) }
 
       before :each do
-        @appeal1 = Fabricate(:appeal, conference: conference, state: "accepted")
-        @appeal2 = Fabricate(:appeal, conference: conference, state: "accepted")
-        @appeal3 = Fabricate(:appeal, conference: conference, state: "waiting_review")
-        @appeal4 = Fabricate(:appeal, conference: conference, state: "rejected")
+        @speech1 = Fabricate(:speech, conference: conference, state: "accepted")
+        @speech2 = Fabricate(:speech, conference: conference, state: "accepted")
+        @speech3 = Fabricate(:speech, conference: conference, state: "waiting_review")
+        @speech4 = Fabricate(:speech, conference: conference, state: "rejected")
       end
 
       it "should display list of speakers if module is active" do
         visit(conference_path(id: conference.slug))
-        @appeal1.topic.speakers.each do |speaker|
+        @speech1.topic.speakers.each do |speaker|
           expect(page).to have_content speaker.name
         end
 
-        @appeal2.topic.speakers.each do |speaker|
+        @speech2.topic.speakers.each do |speaker|
           expect(page).to have_content speaker.name
         end
       end
@@ -92,7 +92,7 @@ describe "Conference landing page", :type => :feature do
         conference.set!("speakers_module", "false")
         conference.save
         visit(conference_path(id: conference.slug))
-        @appeal1.topic.speakers.each do |speaker|
+        @speech1.topic.speakers.each do |speaker|
           expect(page).not_to have_content speaker.name
         end
       end
@@ -100,19 +100,19 @@ describe "Conference landing page", :type => :feature do
       it "should display list of speakers of only accepted topic" do
         visit(conference_path(id: conference.slug))
 
-        @appeal1.topic.speakers.each do |speaker|
+        @speech1.topic.speakers.each do |speaker|
           expect(page).to have_content speaker.name
         end
 
-        @appeal2.topic.speakers.each do |speaker|
+        @speech2.topic.speakers.each do |speaker|
           expect(page).to have_content speaker.name
         end
 
-        @appeal3.topic.speakers.each do |speaker|
+        @speech3.topic.speakers.each do |speaker|
           expect(page).not_to have_content speaker.name
         end
 
-        @appeal3.topic.speakers.each do |speaker|
+        @speech3.topic.speakers.each do |speaker|
           expect(page).not_to have_content speaker.name
         end
       end

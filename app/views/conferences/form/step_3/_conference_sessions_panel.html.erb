@@ -19,12 +19,12 @@
       <!-- panel body with collapse capable -->
       <div class="panel-collapse pull in" style="">
         <div class="panel-body">
-          <%= f.simple_fields_for(:appeals) do |appeal| %>
+          <%= f.simple_fields_for(:speeches) do |speech| %>
               <div class="form-group nb">
-                <%= appeal.label :appeal_type, :class => "col-lg-3 control-label" %>
+                <%= speech.label :speech_type, :class => "col-lg-3 control-label" %>
 
                 <div class="col-lg-9">
-                  <%= appeal.input :appeal_type, label: false, collection: [1,2] %>
+                  <%= speech.input :speech_type, label: false, collection: [1,2] %>
                 </div>
               </div>
 

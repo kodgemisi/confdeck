@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-sm-12 col-md-12 col-lg-12">
-    <div class="panel appeal" id="<%= dom_id(appeal) %>">
-        <%= appeal_ribbon(appeal).html_safe %>
+    <div class="panel speech" id="<%= dom_id(speech) %>">
+        <%= speech_ribbon(speech).html_safe %>
       <!-- User info -->
       <ul class="list-table pa15">
         <li class="text-left pl5">
-          <p class="ellipsis nm"><span class="semibold"><%= link_to t("conferences.new_appeal", subject: appeal.topic.subject), [appeal.conference, appeal] %></span></p>
-          <p class="text-muted nm"><%= timeago_tag appeal.created_at.to_time, :lang => I18n.locale %></p>
+          <p class="ellipsis nm"><span class="semibold"><%= link_to t("conferences.new_speech", subject: speech.topic.subject), [speech.conference, speech] %></span></p>
+          <p class="text-muted nm"><%= timeago_tag speech.created_at.to_time, :lang => I18n.locale %></p>
         </li>
         <!--<li class="text-right" style="width:60px;">-->
           <!--<div class="btn-group">-->
@@ -25,25 +25,25 @@
       <div class="panel-body">
         <dl class="dl-horizontal">
           <dt><%= t("topics.subject") %></dt>
-          <dd><%= appeal.topic.subject %></dd>
+          <dd><%= speech.topic.subject %></dd>
 
-            <% if appeal.topic.detail %>
+            <% if speech.topic.detail %>
               <dt><%= t("topics.abstract") %></dt>
-              <dd><%= appeal.topic.abstract %></dd>
+              <dd><%= speech.topic.abstract %></dd>
             <% end %>
 
-            <% if appeal.topic.detail %>
+            <% if speech.topic.detail %>
               <dt><%= t("topics.details") %></dt>
-              <dd><%= appeal.topic.detail %></dd>
+              <dd><%= speech.topic.detail %></dd>
             <% end %>
 
-            <% if appeal.topic.additional_info %>
+            <% if speech.topic.additional_info %>
                 <dt><%= t("topics.additional_info") %></dt>
-                <dd><%= appeal.topic.additional_info %></dd>
+                <dd><%= speech.topic.additional_info %></dd>
             <% end %>
               <dt><%= t("topics.speakers") %></dt>
               <dd>
-                <% appeal.topic.speakers.each do |speaker| %>
+                <% speech.topic.speakers.each do |speaker| %>
                     <%= link_to speaker.name, speaker_path(speaker) %> - <%= speaker.email %> - <%= speaker.phone %>
                 <% end %>
               </dd>
@@ -54,7 +54,7 @@
         <ul class="list-table">
           <li>
             <div class="img-group img-group-stack">
-              <% appeal.topic.speakers.each do |speaker| %>
+              <% speech.topic.speakers.each do |speaker| %>
                   <div class="speaker">
                     <%= link_to image_tag(speaker.avatar_url(35), class: "img-circle"), speaker_path(speaker), title: speaker.name, class: "tt" %>
                   </div>
@@ -67,8 +67,8 @@
       <hr class="nm"><!-- horizontal line -->
       <!-- Toolbar -->
 
-      <%= render "conferences/dashboard/appeal_toolbar", appeal: appeal %>
-      <%= render "conferences/dashboard/appeal_comments", comments: appeal.comments, appeal: appeal %>
+      <%= render "conferences/dashboard/speech_toolbar", speech: speech %>
+      <%= render "conferences/dashboard/speech_comments", comments: speech.comments, speech: speech %>
     </div>
   </div>
 

@@ -1,0 +1,29 @@
+  <% speech_type.each do |speech_type| %>
+      <div class="panel panel-default speech_type-type" data-type_id="<%= speech_type.id %>">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= speech_type.type_name %> </h3>
+        </div>
+        <div class="panel-body">
+          <table class="table table-bordered">
+            <thead>
+            <tr>
+              <th><%= t :subject %></th>
+              <th><%= t :speakers %></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% speech_type.speeches.each do |speech| %>
+                <tr class="draggable"
+                    data-subject="<%= speech.topic.subject %>"
+                    data-speech_id="<%= speech.id %>" <%= "style=display:none" if speech.slot.present? %>
+                >
+                  <td><%= speech.topic.subject %></td>
+                  <td><%= speech.topic.subject %></td>
+                </tr>
+
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  <% end %>

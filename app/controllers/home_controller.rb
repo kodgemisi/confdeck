@@ -22,8 +22,8 @@ class HomeController < ApplicationController
 
   def dashboard
     @conferences = current_user.conferences.includes(:days).order('days.date ').where('days.date > ?', Date.today).limit(5).distinct
-    @waiting_appeals = Appeal.where(:conference_id => current_user.conferences.pluck(:id), :state => "waiting_review")
-    @total_appeals = Appeal.where(:conference_id => current_user.conferences.pluck(:id))
+    @waiting_speeches = Speech.where(:conference_id => current_user.conferences.pluck(:id), :state => "waiting_review")
+    @total_speeches = Speech.where(:conference_id => current_user.conferences.pluck(:id))
     @activities = Activity.where(conference_id: [ current_user.conferences.pluck(:id)]).order("created_at DESC").limit(15)
   end
 

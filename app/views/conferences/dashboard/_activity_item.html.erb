@@ -1,6 +1,6 @@
-<% if activity.action == "appeal_create" %>
-    <%= render "conferences/dashboard/appeal", appeal: activity.subject %>
-<% elsif activity.action == "appeal_comment" %>
+<% if activity.action == "speech_create" %>
+    <%= render "conferences/dashboard/speech", speech: activity.subject %>
+<% elsif activity.action == "speech_comment" %>
     <div class="row">
       <div class="col-lg-12">
         <div class="panel">
@@ -13,14 +13,14 @@
                 <p class="nm">
                   <%= t("activities.actions.#{activity.action}",
                         user: "<span class=semibold>#{activity.user.display_name}</span>",
-                        appeal: link_to(activity.subject.topic.subject, [activity.conference, activity.subject.commentable])
+                        speech: link_to(activity.subject.topic.subject, [activity.conference, activity.subject.commentable])
                       ).html_safe
                   %>
                 </p>
                 <h5 class="semibold text-muted nm"><%= timeago_tag activity.created_at.to_time, :lang => I18n.locale %></h5>
               </li>
             </ul>
-            <% if activity.action == "appeal_comment"  %>
+            <% if activity.action == "speech_comment"  %>
                 <blockquote class="mb0">
                   <p><%= activity.subject.comment %></p>
                 </blockquote>
@@ -42,7 +42,7 @@
                 <p class="nm">
                   <%= t("activities.actions.#{activity.action}",
                         user: "<span class=semibold>#{activity.user.display_name}</span>",
-                        appeal: link_to(activity.subject.topic.subject, [activity.conference, activity.subject])
+                        speech: link_to(activity.subject.topic.subject, [activity.conference, activity.subject])
                       ).html_safe
                   %>
                 </p>

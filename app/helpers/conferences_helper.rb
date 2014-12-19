@@ -66,10 +66,10 @@ module ConferencesHelper
     return days <= 0 ? 0 : days
   end
 
-  def appeal_ribbon(appeal)
-    if appeal.state == "waiting_review"
+  def speech_ribbon(speech)
+    if speech.state == "waiting_review"
       '<a href="javascript:void(0);" class="panel-ribbon panel-ribbon-warning pull-left"><i class="ico-clock3"></i></a>'
-    elsif appeal.state == "accepted"
+    elsif speech.state == "accepted"
       '<a href="javascript:void(0);" class="panel-ribbon panel-ribbon-success pull-left"><i class="ico-ok"></i></a>'
     else
       '<a href="javascript:void(0);" class="panel-ribbon panel-ribbon-danger pull-left"><i class="ico-ok"></i></a>'

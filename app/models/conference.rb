@@ -42,20 +42,20 @@ class Conference < ActiveRecord::Base
   has_many :sponsors
   has_many :rooms
   has_many :slots
-  has_many :appeals
+  has_many :speeches
   has_many :activities
   #FIXME old one is
-  #has_many :waiting_appeals, class_name: "Appeal", conditions: {:state => "waiting_review"}
-  has_many :waiting_appeals, class_name: "Appeal"
+  #has_many :waiting_speeches, class_name: "Speech", conditions: {:state => "waiting_review"}
+  has_many :waiting_speeches, class_name: "Speech"
   #FIXME old one is
-  #has_many :accepted_appeals, class_name: "Appeal", conditions: {:state => "accepted"}
-  has_many :accepted_appeals, class_name: "Appeal"
-  has_many :appeal_types
-  has_many :topics, through: :appeals
+  #has_many :accepted_speeches, class_name: "Speech", conditions: {:state => "accepted"}
+  has_many :accepted_speeches, class_name: "Speech"
+  has_many :speech_types
+  has_many :topics, through: :speeches
   has_many :email_templates
   has_many :speakers, through: :topics do
     def accepted
-      where("appeals.state = ?", "accepted")
+      where("speeches.state = ?", "accepted")
     end
   end
 
@@ -65,7 +65,7 @@ class Conference < ActiveRecord::Base
   accepts_nested_attributes_for :organizations
   accepts_nested_attributes_for :days
   accepts_nested_attributes_for :email_templates
-  accepts_nested_attributes_for :appeal_types, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :speech_types, :reject_if => :all_blank, :allow_destroy => true
 
   #== Validations
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/
@@ -125,7 +125,7 @@ class Conference < ActiveRecord::Base
   end
 
   def unassigned_topics
-    self.appeals.accepted.map {|a| a unless self.slots.pluck(:topic_id).include? a.topic_id }.reject { |a| a.nil? }
+    self.speeches.accepted.map {|a| a unless self.slots.pluck(:topic_id).include? a.topic_id }.reject { |a| a.nil? }
   end
 
   def module_enabled?(module_name)

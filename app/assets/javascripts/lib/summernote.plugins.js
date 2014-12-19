@@ -85,7 +85,7 @@
                     },
                     {
                         title: "Speakers List",
-                        value: " <ul>\n                 {% for speaker in appeal.speakers %}\n\n                      <li> {{ speaker.name }}</li>\n                 {% endfor %}\n                </ul>\n",
+                        value: " <ul>\n                 {% for speaker in speech.speakers %}\n\n                      <li> {{ speaker.name }}</li>\n                 {% endfor %}\n                </ul>\n",
                         html: true
                     },
                 ]

@@ -24,8 +24,8 @@
                         <a href="<%= manage_conference_path(conference) %>">
                           <span class="text"><%= conference.name %></span>
 
-                          <span class="number <%= "hidden" if conference.waiting_appeals.count == 0 %>"> <!-- hide if no waiting appeal -->
-                            <span class="label label-danger"><%= conference.waiting_appeals.count %></span>
+                          <span class="number <%= "hidden" if conference.waiting_speeches.count == 0 %>"> <!-- hide if no waiting speech -->
+                            <span class="label label-danger"><%= conference.waiting_speeches.count %></span>
                           </span>
                         </a>
                       </li>
