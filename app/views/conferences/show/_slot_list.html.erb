@@ -1,9 +1,4 @@
 <% slots.each do |slot| %>
-
-    <%= slot.topic.id %>
-    <%= slot.topic.subject %> <br/>
-    <%= slot.topic.detail %> <br/>
-    <% slot.topic.speakers.each do |speaker| %>
-        <%= speaker.name %><br/>
-    <% end %>
+    <%= render "conferences/show/slot", slot: slot %>
 <% end %>
+

@@ -4,7 +4,11 @@
       <ul class="nav nav-tabs nav-justified days-nav bgcolor-primary">
         <% count = 1 %>
         <% @data.each do |day, rooms| %>
-            <li class="<%= "active" if @data.first[0] == day %>"><a href="#<%= day %>" data-toggle="tab"><%= day %> Day <%= count %></a></li>
+            <li class="<%= "active" if @data.first[0] == day %>">
+              <a href="#<%= day %>" data-toggle="tab">
+                <%= date_to_s(day) %> <br/>
+                <strong>Day <%= count %></strong></a>
+            </li>
         <% count=count+1 %>
         <% end %>
       </ul>

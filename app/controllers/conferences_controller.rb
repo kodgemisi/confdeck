@@ -41,7 +41,7 @@ class ConferencesController < ApplicationController
     @data = {}
 
     @days.each do |day|
-      @data[day.date.to_s] = day.slots.group_by(&:room)
+      @data[day.date] = day.slots.group_by(&:room)
     end
 
     respond_to do |format|

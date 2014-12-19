@@ -1,0 +1,25 @@
+<div class="panel panel-default">
+  <!-- panel heading/header -->
+  <div class="panel-heading">
+    <h3 class="panel-title"><i class="ico-quotes-left mr5"></i> <%= slot.topic.subject %></h3>
+  </div>
+  <!--/ panel heading/header -->
+
+  <!-- panel body with collapse capable -->
+  <div class="panel-collapse pull out">
+    <div class="panel-body">
+
+      <%= slot.topic.id %>
+      <%= slot.topic.subject %> <br/>
+      <%= slot.topic.detail %> <br/>
+      <% slot.topic.speakers.each do |speaker| %>
+          <%= speaker.name %><br/>
+      <% end %>
+    </div>
+  </div>
+  <!--/ panel body with collapse capabale -->
+
+  <!-- Loading indicator -->
+  <div class="indicator"><span class="spinner"></span></div>
+  <!--/ Loading indicator -->
+</div>

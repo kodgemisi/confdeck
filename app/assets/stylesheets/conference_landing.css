@@ -218,6 +218,9 @@ footer {
     padding: 0px !important;
 }
 
+.days-nav > li{
+    padding-bottom: 10px;
+}
 
 .days-nav > li > a{
     color: #FFFFFF;
@@ -238,7 +241,7 @@ footer {
     content:"";
     border-style: solid;
     position: absolute;
-    left: 50%;
+    left: 47%;
     width: 0;
     height: 0;
     border-width: 10px;
