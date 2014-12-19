@@ -17,47 +17,47 @@
   width: 120px;
 }
 
-.appeals-list .panel-body a, .panel-body a:hover {
+.speeches-list .panel-body a, .panel-body a:hover {
     text-decoration: none;
 }
 
-.appeals-list .row {
+.speeches-list .row {
     margin-top: 40px;
 }
 
-.appeals-list .clickable {
+.speeches-list .clickable {
     cursor: pointer;
 }
 
-.appeals-list .panel-heading div {
+.speeches-list .panel-heading div {
     margin-top: -18px;
     font-size: 15px;
 }
 
-.appeals-list .panel-heading div span {
+.speeches-list .panel-heading div span {
     margin-left: 5px;
 }
 
-.appeals-list .panel-body {
+.speeches-list .panel-body {
     display: none;
 }
 
-.appeals-list .accepted {
+.speeches-list .accepted {
     background-color: #BBFAAB;
 }
 
-.appeals-list .rejected {
+.speeches-list .rejected {
     background-color: #FACCCC;
 }
 
-.appeals-list .actions {
+.speeches-list .actions {
     width: 150px;
 }
 
-.appeals-list .icon-thumbs-down {
+.speeches-list .icon-thumbs-down {
     font-size: 20px !important;
 }
 
-.appeals-list .icon-thumbs-up {
+.speeches-list .icon-thumbs-up {
     font-size: 20px !important;
 }

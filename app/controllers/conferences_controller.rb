@@ -13,7 +13,7 @@
 
 class ConferencesController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
-  before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule, :basic_information, :address, :contact_information, :appeal_types, :landing_settings]
+  before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule, :basic_information, :address, :contact_information, :speech_types, :landing_settings]
   before_action :load_data, only: [:new, :edit, :update]
   before_action :parse_dates, only: [:edit, :basic_information]
 
@@ -34,8 +34,8 @@ class ConferencesController < ApplicationController
   def show
     @slot = Slot.new #for schedule showing
     @one_day = (@conference.days.first == @conference.days.last)
-    @appeal = @conference.appeals.new
-    @appeal.build_topic
+    @speech = @conference.speeches.new
+    @speech.build_topic
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @conference }
@@ -52,11 +52,11 @@ class ConferencesController < ApplicationController
       conf_params = Rack::Utils.parse_nested_query @wizard.data
       @conference = Conference.new(conf_params["conference"])
       @conference.build_address if @conference.address.nil?
-      @conference.appeal_types.build if @conference.appeal_types.nil?
+      @conference.speech_types.build if @conference.speech_types.nil?
     else
       @conference = Conference.new
       @conference.build_address
-      @conference.appeal_types.build
+      @conference.speech_types.build
       @wizard = current_user.build_conference_wizard
     end
 
@@ -119,20 +119,20 @@ class ConferencesController < ApplicationController
     @slot = Slot.new
   end
 
-  def appeal_types
-    @appeal_types = @conference.appeal_types
+  def speech_types
+    @speech_types = @conference.speech_types
 
     respond_to do |format|
-      format.json { render json: @appeal_types }
-      format.html { render template: "conferences/edit/appeal_types"}
+      format.json { render json: @speech_types }
+      format.html { render template: "conferences/edit/speech_types"}
     end
   end
 
   #admin side #show equivalent
   def manage
-    @latest_appeals = @conference.appeals.order("created_at DESC").limit(15).includes(topic: [:speakers]).includes(:comments)
-    @total_appeals = @conference.appeals
-    @waiting_appeals = @conference.appeals.where(:state => "waiting_review")
+    @latest_speeches = @conference.speeches.order("created_at DESC").limit(15).includes(topic: [:speakers]).includes(:comments)
+    @total_speeches = @conference.speeches
+    @waiting_speeches = @conference.speeches.where(:state => "waiting_review")
     @activities = @conference.activities.order("created_at DESC").limit(15)
   end
 
@@ -226,7 +226,7 @@ class ConferencesController < ApplicationController
                                              :schedule_module,
                                          ],
                                          address_attributes: [:info, :city, :lat, :lon],
-                                         appeal_types_attributes: [:id, :type_name, :_destroy],
+                                         speech_types_attributes: [:id, :type_name, :_destroy],
                                          sponsors_attributes: [:id, :name, :website, :logo, :_destroy],
                                          email_templates_attributes: [:id, :subject, :body, :email_template_type_id]
 

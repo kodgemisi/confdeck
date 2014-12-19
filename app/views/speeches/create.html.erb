@@ -1,44 +1,44 @@
 <p id="notice">Başvurunuz alınmıştır. Teşekkürler</p>
 
 <div class="panel panel-default">
-  <div class="panel-heading">Details of <%= @appeal.topic.subject %></div>
+  <div class="panel-heading">Details of <%= @speech.topic.subject %></div>
   <div class="panel-body">
     <table class="table table-bordered">
       <tr>
         <td class="span2" style="font-weight: bold">Conference</td>
-        <td><%= @appeal.conference.name %></td>
+        <td><%= @speech.conference.name %></td>
       </tr>
       <tr>
-        <td class="span2" style="font-weight: bold">Appeal Type</td>
-        <td><%= @appeal.appeal_type.try(:type_name) %></td>
+        <td class="span2" style="font-weight: bold">Speech Type</td>
+        <td><%= @speech.speech_type.try(:type_name) %></td>
       </tr>
       <tr>
         <td class="span2" style="font-weight: bold">Subject</td>
-        <td><%= @appeal.topic.subject %></td>
+        <td><%= @speech.topic.subject %></td>
       </tr>
-      <% if @appeal.topic.abstract? %>
+      <% if @speech.topic.abstract? %>
           <tr>
             <td class="span2" style="font-weight: bold">Abstract</td>
-            <td><%= @appeal.topic.abstract %></td>
+            <td><%= @speech.topic.abstract %></td>
           </tr>
       <% end %>
-      <% if @appeal.topic.additional_info? %>
+      <% if @speech.topic.additional_info? %>
           <tr>
             <td class="span2" style="font-weight: bold">Additional Info</td>
-            <td><%= @appeal.topic.additional_info %></td>
+            <td><%= @speech.topic.additional_info %></td>
           </tr>
       <% end %>
-      <% if @appeal.topic.detail? %>
+      <% if @speech.topic.detail? %>
           <tr>
             <td class="span2" style="font-weight: bold">Detail</td>
-            <td><%= @appeal.topic.detail %></td>
+            <td><%= @speech.topic.detail %></td>
           </tr>
       <% end %>
 
       <tr>
         <td class="span2" style="font-weight: bold">Speakers</td>
         <td>
-          <% @appeal.topic.speakers.each do |speaker| %>
+          <% @speech.topic.speakers.each do |speaker| %>
               <%= link_to speaker.name, speaker_path(speaker) %>
           <% end %>
         </td>

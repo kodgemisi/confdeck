@@ -1,0 +1,7 @@
+<% if @speech.persisted? %>
+    $("#applicationModal").modal("hide");
+    swal("<%= t("speeches.success") %>");
+<% else %>
+    $(".message-container").html("<%= escape_javascript(render "shared/form_error", errors: @speech.errors) %>");
+<% end %>
+

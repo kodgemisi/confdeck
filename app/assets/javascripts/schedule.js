@@ -9,7 +9,7 @@
 $(function(){
     if ($("#scheduler").length == 0)
         return;
-    var appealTypeColors = ["#59ace2", "#A9D86E", "#8175c7", "#FCB322", "#FF6C60", "#a1a1a1", "#344860"]
+    var speechTypeColors = ["#59ace2", "#A9D86E", "#8175c7", "#FCB322", "#FF6C60", "#a1a1a1", "#344860"]
 
     function dataSource_error(e) {
         if(e.xhr.status == 422){  // if unprocessable entry
@@ -56,7 +56,7 @@ $(function(){
                     end: { type: "date", from: "end" },
                     room_id: { type: "number", from: "room_id", defaultValue: 1 },
                     type_id: { type: "number", from: "type_id", defaultValue: 25 },
-                    appeal_id: { type: "number", from: "appeal_id" }
+                    speech_id: { type: "number", from: "speech_id" }
                 }
             },
             parse: function (response) {
@@ -67,7 +67,7 @@ $(function(){
                         title: response[i].title,
                         room_id: response[i].room_id,
                         type_id: response[i].type_id,
-                        appeal_id: response[i].appeal_id,
+                        speech_id: response[i].speech_id,
                         start: new Date(parseInt(response[i].start)),
                         end: new Date(parseInt(response[i].end))
                     };
@@ -78,7 +78,7 @@ $(function(){
         },
         requestEnd: function (e) {
             if(e.type == "destroy"){
-                $(".appeal-list").load("http://localhost:3000/conferences/dedecon/schedule/appeal_list", function(){
+                $(".speech-list").load("http://localhost:3000/conferences/dedecon/schedule/speech_list", function(){
                     $(".draggable").kendoDraggable(draggableConfig);
 
                 });
@@ -116,11 +116,11 @@ $(function(){
         }
     });
 
-    var appealTypeSource = new kendo.data.SchedulerDataSource({
+    var speechTypeSource = new kendo.data.SchedulerDataSource({
         batch: true,
         transport: {
             read: {
-                url: appeal_types_url,
+                url: speech_types_url,
                 dataType: "json"
             }
         },
@@ -139,7 +139,7 @@ $(function(){
                     var type = {
                         id: response[i].id,
                         text: response[i].type_name,
-                        color: appealTypeColors[i]
+                        color: speechTypeColors[i]
                     };
                     types.push(type);
                 }
@@ -179,7 +179,7 @@ $(function(){
             {
                 field: "type_id",
                 dataValueField: "id",
-                dataSource: appealTypeSource
+                dataSource: speechTypeSource
             },
             {
                 field: "room_id",
@@ -231,7 +231,7 @@ $(function(){
                 var startSlot = view._slotByPosition(offset.left, offset.top);
                 var startResources = view._resourceBySlot(startSlot);
                 var room_id = startResources.room_id
-                var appeal_id = startResources.appeal_id
+                var speech_id = startResources.speech_id
 
                 //Check whether a new event
                 if (dataItem && slot && dataItem.attr("class").indexOf("draggable") != -1) {
@@ -242,7 +242,7 @@ $(function(){
                         start: slot.startDate,
                         isAllDay: slot.isDaySlot,
                         room_id: room_id,
-                        appeal_id: dataItem.data("appeal_id")
+                        speech_id: dataItem.data("speech_id")
                     };
 
                     scheduler.dataSource.add(newEvent);

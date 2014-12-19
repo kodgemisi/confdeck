@@ -11,106 +11,106 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-class AppealsController < ApplicationController
+class SpeechesController < ApplicationController
   before_filter :authenticate_user!, except: [:new, :create]
 
   before_filter :set_conference
 
   before_filter :authorize_user, except: [:new, :create]
 
-  before_filter :set_appeal, only: [:show, :edit, :update, :destroy, :comment, :upvote, :downvote, :accept, :reject]
+  before_filter :set_speech, only: [:show, :edit, :update, :destroy, :comment, :upvote, :downvote, :accept, :reject]
 
   after_filter :create_action_activity, only: [:create, :comment, :upvote, :downvote, :accept, :reject]
 
   layout "application_no_nav", :only => ["new", "show"]
-  # GET /appeals
-  # GET /appeals.json
+  # GET /speeches
+  # GET /speeches.json
   def index
-    @appeal_types = @conference.appeal_types.includes(:appeals)
+    @speech_types = @conference.speech_types.includes(:speeches)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @appeal_types }
+      format.json { render json: @speech_types }
     end
   end
 
-  # GET /appeals/1
-  # GET /appeals/1.json
+  # GET /speeches/1
+  # GET /speeches/1.json
   def show
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @appeal }
+      format.json { render json: @speech }
     end
   end
 
-  # GET /appeals/new
-  # GET /appeals/new.json
+  # GET /speeches/new
+  # GET /speeches/new.json
   def new
-    @appeal = Appeal.new
-    @appeal.build_topic
+    @speech = Speech.new
+    @speech.build_topic
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @appeal }
+      format.json { render json: @speech }
       format.js
     end
   end
 
-  # GET /appeals/1/edit
+  # GET /speeches/1/edit
   def edit
   end
 
-  # POST /appeals
-  # POST /appeals.json
+  # POST /speeches
+  # POST /speeches.json
   def create
-    @appeal = Appeal.new(appeal_params)
-    @appeal.conference = @conference
+    @speech = Speech.new(speech_params)
+    @speech.conference = @conference
 
     respond_to do |format|
-      if @appeal.save
+      if @speech.save
         format.html
-        format.json { render json: @appeal, status: :created, location: @appeal }
+        format.json { render json: @speech, status: :created, location: @speech }
         format.js
       else
         format.html { render layout: "application_no_nav",action: "new" }
-        format.json { render json: @appeal.errors, status: :unprocessable_entity }
+        format.json { render json: @speech.errors, status: :unprocessable_entity }
         format.js
       end
     end
   end
 
-  # PUT /appeals/1
-  # PUT /appeals/1.json
+  # PUT /speeches/1
+  # PUT /speeches/1.json
   def update
     respond_to do |format|
-      if @appeal.update_attributes(appeal_params)
-        format.html { redirect_to [@conference, @appeal], notice: 'Appeal was successfully updated.' }
+      if @speech.update_attributes(speech_params)
+        format.html { redirect_to [@conference, @speech], notice: 'Speech was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @appeal.errors, status: :unprocessable_entity }
+        format.json { render json: @speech.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /appeals/1
-  # DELETE /appeals/1.json
+  # DELETE /speeches/1
+  # DELETE /speeches/1.json
   def destroy
-    @appeal.destroy
+    @speech.destroy
 
     respond_to do |format|
-      format.html { redirect_to conference_appeals_path(@conference) }
+      format.html { redirect_to conference_speeches_path(@conference) }
       format.json { head :no_content }
     end
   end
 
   def comment
-    @comment = @appeal.comments.build(comment_params)
+    @comment = @speech.comments.build(comment_params)
     @comment.user = current_user
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to [@conference, @appeal], notice: "Your comment is successfully created"}
+        format.html { redirect_to [@conference, @speech], notice: "Your comment is successfully created"}
       else
         format.html { render :action => 'show' }
       end
@@ -120,47 +120,47 @@ class AppealsController < ApplicationController
   end
 
   def upvote
-    @appeal.upvote_from current_user
+    @speech.upvote_from current_user
     respond_to do |format|
       format.js
-      format.html { redirect_to conference_appeals_path(@conference), notice: "This appeal is upvoted" }
+      format.html { redirect_to conference_speeches_path(@conference), notice: "This speech is upvoted" }
     end
   end
 
   def downvote
-    @appeal.downvote_from current_user
+    @speech.downvote_from current_user
     respond_to do |format|
       format.js
-      format.html { redirect_to conference_appeals_path(@conference), notice: "This appeal is downvoted" }
+      format.html { redirect_to conference_speeches_path(@conference), notice: "This speech is downvoted" }
     end
   end
 
   def accept
-    @appeal.accept
+    @speech.accept
     respond_to do |format|
-      format.html { redirect_to conference_appeals_path(@conference), notice: "This appeal is accepted" }
+      format.html { redirect_to conference_speeches_path(@conference), notice: "This speech is accepted" }
     end
   end
 
   def reject
-    @appeal.reject
+    @speech.reject
     respond_to do |format|
-      format.html { redirect_to conference_appeals_path(@conference), notice: "This appeal is rejected" }
+      format.html { redirect_to conference_speeches_path(@conference), notice: "This speech is rejected" }
     end
   end
 
   private
 
   def create_action_activity
-    action = "appeal_" + self.action_name
-    activity = @appeal.conference.activities.new
+    action = "speech_" + self.action_name
+    activity = @speech.conference.activities.new
     activity.action = action
     activity.user = current_user
 
-    if action == "appeal_comment"
+    if action == "speech_comment"
       activity.subject = @comment
     else
-      activity.subject = @appeal
+      activity.subject = @speech
     end
     activity.save
   end
@@ -169,8 +169,8 @@ class AppealsController < ApplicationController
     @conference = Conference.friendly.find(params[:conference_id])
   end
 
-  def set_appeal
-    @appeal = @conference.appeals.find(params[:id])
+  def set_speech
+    @speech = @conference.speeches.find(params[:id])
   end
 
   def authorize_user
@@ -179,8 +179,8 @@ class AppealsController < ApplicationController
     end
   end
 
-  def appeal_params
-    params.require(:appeal).permit(:appeal_type_id, topic_attributes: [:subject, :abstract, :detail, :additional_info, speaker_ids: []] )
+  def speech_params
+    params.require(:speech).permit(:speech_type_id, topic_attributes: [:subject, :abstract, :detail, :additional_info, speaker_ids: []] )
   end
 
   def comment_params

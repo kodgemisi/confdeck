@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141212133539) do
+ActiveRecord::Schema.define(version: 20141219151214) do
 
   create_table "activities", force: true do |t|
     t.integer  "subject_id"
@@ -34,22 +34,6 @@ ActiveRecord::Schema.define(version: 20141212133539) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.string   "city"
-  end
-
-  create_table "appeal_types", force: true do |t|
-    t.integer  "conference_id"
-    t.string   "type_name"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  create_table "appeals", force: true do |t|
-    t.integer  "conference_id"
-    t.integer  "topic_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.string   "state"
-    t.integer  "appeal_type_id"
   end
 
   create_table "comments", force: true do |t|
@@ -176,7 +160,7 @@ ActiveRecord::Schema.define(version: 20141212133539) do
     t.datetime "updated_at",    null: false
     t.datetime "end_time"
     t.datetime "start_time"
-    t.integer  "appeal_id"
+    t.integer  "speech_id"
   end
 
   create_table "speakers", force: true do |t|
@@ -194,6 +178,22 @@ ActiveRecord::Schema.define(version: 20141212133539) do
   create_table "speakers_topics", id: false, force: true do |t|
     t.integer "speaker_id"
     t.integer "topic_id"
+  end
+
+  create_table "speech_types", force: true do |t|
+    t.integer  "conference_id"
+    t.string   "type_name"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "speeches", force: true do |t|
+    t.integer  "conference_id"
+    t.integer  "topic_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "state"
+    t.integer  "speech_type_id"
   end
 
   create_table "sponsors", force: true do |t|

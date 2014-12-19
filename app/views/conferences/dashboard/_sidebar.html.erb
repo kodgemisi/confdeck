@@ -2,8 +2,8 @@
   <div class="col-xs-12">
     <h5 class="semibold mt0 text-primary"><i class="ico-cabinet pr5"></i><%= t("general.management") %></h5>
     <div class="list-group">
-      <a href="<%= conference_appeals_path(@conference) %>" class="list-group-item">
-        <i class="ico-angle-right mr5"></i> <%= t("conferences.appeals") %>
+      <a href="<%= conference_speeches_path(@conference) %>" class="list-group-item">
+        <i class="ico-angle-right mr5"></i> <%= t("conferences.speeches") %>
       </a>
       <a href="<%= conference_schedule_path(@conference) %>" class="list-group-item">
         <i class="ico-angle-right mr5"></i> <%= t("conferences.schedule") %>
@@ -22,8 +22,8 @@
       <a href="<%= conference_sponsors_path(@conference) %>" class="list-group-item">
         <i class="ico-angle-right mr5"></i> <%= t("conferences.sponsors") %>
       </a>
-      <a href="<%= appeal_types_conference_path(@conference) %>" class="list-group-item">
-        <i class="ico-angle-right mr5"></i> <%= t("conferences.appeal_types") %>
+      <a href="<%= speech_types_conference_path(@conference) %>" class="list-group-item">
+        <i class="ico-angle-right mr5"></i> <%= t("conferences.speech_types") %>
       </a>
       <a href="<%= basic_information_conference_path(@conference) %>" class="list-group-item">
         <i class="ico-angle-right mr5"></i> <%= t("conferences.basic_information") %>

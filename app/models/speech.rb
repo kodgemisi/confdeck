@@ -11,12 +11,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-class Appeal < ActiveRecord::Base
+class Speech < ActiveRecord::Base
   after_create :send_notifications
 
   belongs_to :conference
   belongs_to :topic
-  belongs_to :appeal_type
+  belongs_to :speech_type
   has_one :slot
 
   accepts_nested_attributes_for :topic
@@ -43,23 +43,23 @@ class Appeal < ActiveRecord::Base
   end
 
   def send_accept_notification
-    AppealMailer.accept_notification_email(self).deliver
+    SpeechMailer.accept_notification_email(self).deliver
   end
 
   def send_reject_notification
-    AppealMailer.reject_notification_email(self).deliver
+    SpeechMailer.reject_notification_email(self).deliver
   end
 
   def send_notifications
-    AppealMailer.speaker_notification_email(self).deliver
-    AppealMailer.committee_notification_email(self).deliver
+    SpeechMailer.speaker_notification_email(self).deliver
+    SpeechMailer.committee_notification_email(self).deliver
   end
 
   def to_liquid
     {
         'conference' => conference,
         'topic' => topic,
-        'appeal_type' => appeal_type,
+        'speech_type' => speech_type,
         'state' => state,
         'speakers' => topic.speakers
     }
