@@ -44,7 +44,6 @@ class ConferencesController < ApplicationController
       @data[day.date] = day.slots.group_by(&:room)
     end
 
->>>>>>> development
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @conference }
