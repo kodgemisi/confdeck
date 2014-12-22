@@ -22,7 +22,6 @@ class SpeechesController < ApplicationController
 
   after_filter :create_action_activity, only: [:create, :comment, :upvote, :downvote, :accept, :reject]
 
-  layout "application_no_nav", :only => ["new", "show"]
   # GET /speeches
   # GET /speeches.json
   def index
@@ -68,9 +67,13 @@ class SpeechesController < ApplicationController
 
     respond_to do |format|
       if @speech.save
-        format.html
-        format.json { render json: @speech, status: :created, location: @speech }
-        format.js
+        if params[:add_another]
+          format.html { redirect_to new_conference_speech_path(@conference), notice: 'Speech was successfully created.' }
+        else
+          format.html
+          format.json { render json: @speech, status: :created, location: @speech }
+          format.js
+        end
       else
         format.html { render layout: "application_no_nav",action: "new" }
         format.json { render json: @speech.errors, status: :unprocessable_entity }
@@ -180,7 +183,7 @@ class SpeechesController < ApplicationController
   end
 
   def speech_params
-    params.require(:speech).permit(:speech_type_id, topic_attributes: [:subject, :abstract, :detail, :additional_info, speaker_ids: []] )
+    params.require(:speech).permit(:speech_type_id, :state, topic_attributes: [:subject, :abstract, :detail, :additional_info, speaker_ids: []])
   end
 
   def comment_params

@@ -5,9 +5,9 @@ en:
   active_conferences: 
   activerecord:
     attributes:
-      speech:
+      appeal:
         topic: 
-      speech/topic:
+      appeal/topic:
         abstract: 
         detail: 
         subject: 
@@ -62,7 +62,7 @@ en:
         password_confirmation: 
     errors:
       models:
-        speech:
+        appeal:
           attributes:
             topic:
               blank: 
@@ -92,7 +92,7 @@ en:
             password_confirmation:
               confirmation: 
     models:
-      speech: 
+      appeal: 
       comment: 
       conference: 
       email_template: 
@@ -104,28 +104,16 @@ en:
       user: 
   activities:
     actions:
-      speech_accept: "%{user} accepted %{speech}"
-      speech_comment: "%{user} commented on %{speech}"
-      speech_downvote: "%{user} downvoted %{speech}"
-      speech_reject: "%{user} rejected %{speech}"
-      speech_upvote: "%{user} upvoted %{speech}"
+      appeal_accept: "%{user} accepted %{appeal}"
+      appeal_comment: "%{user} commented on %{appeal}"
+      appeal_downvote: "%{user} downvoted %{appeal}"
+      appeal_reject: "%{user} rejected %{appeal}"
+      appeal_upvote: "%{user} upvoted %{appeal}"
   additional_info: 
   address:
     city: 
     info: 
     location: 
-  speeches:
-    abstract: 
-    actions: 
-    additional_info: 
-    speech_type: 
-    speech_types: 
-    detail: 
-    speakers: Speakers
-    state: 
-    subject: 
-    success: Application Sent Successfully!
-    write_comment: Write a comment
   application_received: 
   are_you_sure: 
   body: 
@@ -149,7 +137,7 @@ en:
     new: |
       New Conference
     new_speaker: Add New Speaker
-    num_of_speeches: 
+    num_of_appeals: 
     num_of_sponsors: 
     organization: Organization
     reset_info: You have an unsaved conference draft. You can clear it and start over by clicking the button below
@@ -162,8 +150,8 @@ en:
     start_date: 
     summary: 
     too_long: Date range for conference must be less than 60 days.
-    total_speeches: Total Applications
-    waiting_speeches: |
+    total_appeals: Total Applications
+    waiting_appeals: |
       Waiting Applications
     wizard:
       step1:
@@ -184,7 +172,7 @@ en:
           title: 
       title: 
   create: 
-  create_speech: 
+  create_appeal: 
   create_organization: 
   create_room: 
   create_speaker: Create a new speaker
@@ -285,6 +273,7 @@ en:
         other: "%{count} errors prohibited this %{resource} from being saved:"
   general:
     active: Active
+    add_another: Save and Add Another
     are_you_sure: Are You Sure?
     cancel: Cancel
     close: Close
@@ -335,7 +324,7 @@ en:
         name: 
         website: 
     submit:
-      speech:
+      appeal:
         create: 
       comment:
         create: 
@@ -437,13 +426,26 @@ en:
     required:
       html: 
   speaker:
-    email: 
-    facebook: 
+    email: Email
+    facebook: Facebook
     name: Speaker Name
-    phone: 
-    twitter: 
+    phone: Phone Number
+    twitter: Twitter
   speaker_application_header: Speaker Application To %{conference_name}
   speakers: 
+  speeches:
+    abstract: Abstract
+    actions: Actions
+    additional_info: Additional Info
+    detail: Details
+    new: New Speech
+    speakers: Speakers
+    speech_type: Speech Type
+    speech_types: Speech Types
+    state: State
+    subject: Subject
+    success: Application Sent Successfully!
+    write_comment: Write a comment
   sponsors:
     actions: Actions
     logo: Logo
@@ -464,7 +466,7 @@ en:
   titles:
     conferences:
       address: "%{conference} Address Information"
-      speech_types: Session Types
+      appeal_types: Session Types
       basic_information: "%{conference} Basic Information"
       contact_information: "%{conference} Contact Information"
       edit: 'Edit %{conference} '
@@ -475,6 +477,9 @@ en:
       dashboard: Dashboard
     settings:
       index: Settings
+    speeches:
+      index: Speeches of %{conference}
+      new: New Speech
     sponsors:
       edit: Edit %{sponsor}
       index: Sponsors of %{conference}
