@@ -46,9 +46,8 @@ group :test, :development do
   gem "rspec-rails"
   gem "sqlite3"
   gem "better_errors"
-  gem 'guard-rspec'
-  gem 'spring-commands-rspec'
   gem 'simplecov', :require => false
+
 end
 
 
@@ -58,6 +57,7 @@ group :test do
   gem "codeclimate-test-reporter", require: nil
   gem "capybara"
   gem "capybara-webkit"
-
+  gem 'selenium-webdriver'
+  gem 'database_cleaner'
 end
 
