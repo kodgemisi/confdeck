@@ -60,8 +60,13 @@ $(document).ready(function(){
             },
             showFinishButtonAlways: true,
             enableAllSteps: true
-        })
+        });
 
+        $("#wizard").on("cocoon:after-remove", function(e, item) {
+            if($(".speech-types .nested-fields")[0] == undefined){
+                $(".speech-types ").append(item)
+            }
+        });
 
         setInterval(syncWizardData, wizardSyncInterval);
     }
