@@ -1,4 +1,5 @@
 Confman::Application.routes.draw do
+  mount RailsAdmin::Engine => '/deck', as: 'rails_admin'
   get "schedule/show"
 
   get "schedule/update"

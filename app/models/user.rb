@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  enum role: [ :admin, :confadmin, :confuser, :speaker]
   before_create :set_default_settings
 
   has_and_belongs_to_many :organizations
@@ -41,10 +42,16 @@ class User < ActiveRecord::Base
     self.settings = {
         language: "en"
     } if self.settings.nil?
+
+    self.role = :confadmin if self.role.nil?
   end
 
   def set!(key, val)
     self.settings ||= {}
     self.settings[key] = val
+  end
+
+  def is?(role)
+    self.role == role
   end
 end
