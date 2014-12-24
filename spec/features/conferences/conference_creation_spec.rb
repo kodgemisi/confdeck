@@ -14,43 +14,43 @@ describe "Conference creation wizard", :type => :feature do
   end
 
 
-  # it "should validate required fields are working properly" do
-  #   visit(new_conference_path)
-  #   sleep 10
-  #   page.execute_script("$('#from').datepicker('setDate', '#{@conference.from_date}')")
-  #   page.execute_script("$('#to').datepicker('setDate', '#{@conference.to_date}')")
-  #   page.select(@organization.name, from: 'conference[organization_ids][]')
-  #   page.fill_in("conference[name]", with: @conference.name)
-  #   page.fill_in("conference[description]", with: @conference.description)
-  #   #We are testing only summary field here but assuming all fields with 'required' class have same behaviour
-  #   page.fill_in("conference[summary]", with: "")
-  #   page.click_link ("Next")
-  #   expect(page).to have_content("This field is required")
-  #   page.fill_in("conference[summary]", with: @conference.summary)
-  #   page.click_link ("Next")
-  #   expect(page).to have_content("info")
-  # end
-  #
-  # # We assume every field that has 'required' class is required and they are being validated by jquery.validator in previous spec
-  # it "should validate presence of name" do
-  #   visit(new_conference_path)
-  #   expect(page.find("input[name='conference[name]']")[:class]).to include("required")
-  # end
-  #
-  # it "should validate presence of summary" do
-  #   visit(new_conference_path)
-  #   expect(page.find("input[name='conference[summary]']")[:class]).to include("required")
-  # end
-  #
-  # it "should validate presence of from date" do
-  #   visit(new_conference_path)
-  #   expect(page.find("#from")[:class]).to include("required")
-  # end
-  #
-  # it "should validate presence of to date" do
-  #   visit(new_conference_path)
-  #   expect(page.find("#to")[:class]).to include("required")
-  # end
+  it "should validate required fields are working properly" do
+    visit(new_conference_path)
+    sleep 10
+    page.execute_script("$('#from').datepicker('setDate', '#{@conference.from_date}')")
+    page.execute_script("$('#to').datepicker('setDate', '#{@conference.to_date}')")
+    page.select(@organization.name, from: 'conference[organization_ids][]')
+    page.fill_in("conference[name]", with: @conference.name)
+    page.fill_in("conference[description]", with: @conference.description)
+    #We are testing only summary field here but assuming all fields with 'required' class have same behaviour
+    page.fill_in("conference[summary]", with: "")
+    page.click_link ("Next")
+    expect(page).to have_content("This field is required")
+    page.fill_in("conference[summary]", with: @conference.summary)
+    page.click_link ("Next")
+    expect(page).to have_content("info")
+  end
+
+  # We assume every field that has 'required' class is required and they are being validated by jquery.validator in previous spec
+  it "should validate presence of name" do
+    visit(new_conference_path)
+    expect(page.find("input[name='conference[name]']")[:class]).to include("required")
+  end
+
+  it "should validate presence of summary" do
+    visit(new_conference_path)
+    expect(page.find("input[name='conference[summary]']")[:class]).to include("required")
+  end
+
+  it "should validate presence of from date" do
+    visit(new_conference_path)
+    expect(page.find("#from")[:class]).to include("required")
+  end
+
+  it "should validate presence of to date" do
+    visit(new_conference_path)
+    expect(page.find("#to")[:class]).to include("required")
+  end
 
 
   #== Step 1
