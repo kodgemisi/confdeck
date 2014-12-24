@@ -64,7 +64,7 @@ class SpeechesController < ApplicationController
   def create
     @speech = Speech.new(speech_params)
     @speech.conference = @conference
-
+    @speech.state = "accepted"
     respond_to do |format|
       if @speech.save
         if params[:add_another]
@@ -183,7 +183,7 @@ class SpeechesController < ApplicationController
   end
 
   def speech_params
-    params.require(:speech).permit(:speech_type_id, :state, topic_attributes: [:subject, :abstract, :detail, :additional_info, speaker_ids: []])
+    params.require(:speech).permit(:speech_type_id, topic_attributes: [:subject, :abstract, :detail, :additional_info, speaker_ids: []])
   end
 
   def comment_params
