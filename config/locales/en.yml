@@ -150,8 +150,8 @@ en:
     start_date: Start Dat
     summary: Summary
     too_long: Date range for conference must be less than 60 days.
-    total_speeches: Total Applications
-    waiting_speeches: |
+    total_appeals: Total Applications
+    waiting_appeals: |
       Waiting Applications
     wizard:
       step1:
@@ -467,6 +467,7 @@ en:
   titles:
     conferences:
       address: "%{conference} Address Information"
+      appeal_types: Session Types
       basic_information: "%{conference} Basic Information"
       contact_information: "%{conference} Contact Information"
       edit: 'Edit %{conference} '
