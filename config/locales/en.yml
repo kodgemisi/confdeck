@@ -5,9 +5,9 @@ en:
   active_conferences: 
   activerecord:
     attributes:
-      speech:
+      appeal:
         topic: 
-      speech/topic:
+      appeal/topic:
         abstract: 
         detail: 
         subject: 
@@ -62,7 +62,7 @@ en:
         password_confirmation: 
     errors:
       models:
-        speech:
+        appeal:
           attributes:
             topic:
               blank: 
@@ -92,7 +92,7 @@ en:
             password_confirmation:
               confirmation: 
     models:
-      speech: 
+      appeal: 
       comment: 
       conference: 
       email_template: 
@@ -107,60 +107,48 @@ en:
       speech_accept: "%{user} accepted %{speech}"
       speech_comment: "%{user} commented on %{speech}"
       speech_downvote: "%{user} downvoted %{speech}"
-      speech_reject: "%{user} rejected %{speech}"
+      speech_reject: "%{user} rejected %{speech}."
       speech_upvote: "%{user} upvoted %{speech}"
   additional_info: 
   address:
     city: 
     info: 
     location: 
-  speeches:
-    abstract: 
-    actions: 
-    additional_info: 
-    speech_type: 
-    speech_types: 
-    detail: 
-    speakers: Speakers
-    state: 
-    subject: 
-    success: Application Sent Successfully!
-    write_comment: Write a comment
   application_received: 
   are_you_sure: 
   body: 
   close: 
   conferences:
-    address: 
-    basic_information: 
+    address: Address
+    basic_information: Basic Information
     conferences: Conferences
-    contact_info: 
-    delete: 
-    description: 
-    details: 
-    end_date: 
+    contact_info: Contact Info
+    delete: Delete
+    description: Description
+    details: Details
+    end_date: End Date
     landing:
       new_application: New Application
       send_application: Send Application
       speaker_application: Speaker Application
-    logo: 
-    manage: 
-    name: 
+    logo: Logo
+    manage: Manage
+    name: Nam
     new: |
       New Conference
     new_speaker: Add New Speaker
-    num_of_speeches: 
-    num_of_sponsors: 
+    num_of_speeches: Applications
+    num_of_sponsors: Sponsors
     organization: Organization
-    reset_info: You have an unsaved conference draft. You can clear it and start over by clicking the button below
+    reset_info: You have an unsaved conference draft. You can clear it and start over by clicking the button below.
     reset_title: 
     reset_wizard: Clear Wizard
-    schedule: 
-    show: 
+    schedule: Schedule
+    show: Conference Page
     show_landing: Open Conference Page
-    slug: 
-    start_date: 
-    summary: 
+    slug: Slug
+    start_date: Start Dat
+    summary: Summary
     too_long: Date range for conference must be less than 60 days.
     total_speeches: Total Applications
     waiting_speeches: |
@@ -172,8 +160,8 @@ en:
           title: 
       step2:
         desc:
-          text: 
-          title: 
+          text: You can use search form on the map
+          title: Information about conference location
       step3:
         desc:
           text: 
@@ -182,9 +170,9 @@ en:
         desc:
           text: 
           title: 
-      title: 
+      title: Conference Wizard
   create: 
-  create_speech: 
+  create_appeal: 
   create_organization: 
   create_room: 
   create_speaker: Create a new speaker
@@ -216,6 +204,7 @@ en:
     day_names: 
     formats:
       default: "%m/%d/%Y"
+      jsformat: mm/dd/yy
       long: 
       placeholder: mm/dd/yyyy
       short: "%b %d"
@@ -285,6 +274,7 @@ en:
         other: "%{count} errors prohibited this %{resource} from being saved:"
   general:
     active: Active
+    add_another: Save and Add Another
     are_you_sure: Are You Sure?
     cancel: Cancel
     close: Close
@@ -335,7 +325,7 @@ en:
         name: 
         website: 
     submit:
-      speech:
+      appeal:
         create: 
       comment:
         create: 
@@ -437,13 +427,26 @@ en:
     required:
       html: 
   speaker:
-    email: 
-    facebook: 
+    email: Email
+    facebook: Facebook
     name: Speaker Name
-    phone: 
-    twitter: 
+    phone: Phone Number
+    twitter: Twitter
   speaker_application_header: Speaker Application To %{conference_name}
   speakers: 
+  speeches:
+    abstract: Abstract
+    actions: Actions
+    additional_info: Additional Info
+    detail: Details
+    new: New Speech
+    speakers: Speakers
+    speech_type: Speech Type
+    speech_types: Speech Types
+    state: State
+    subject: Subject
+    success: Application Sent Successfully!
+    write_comment: Write a comment
   sponsors:
     actions: Actions
     logo: Logo
@@ -464,17 +467,20 @@ en:
   titles:
     conferences:
       address: "%{conference} Address Information"
-      speech_types: Session Types
       basic_information: "%{conference} Basic Information"
       contact_information: "%{conference} Contact Information"
       edit: 'Edit %{conference} '
       manage: 'Deck of %{conference} '
       schedule: Schedule of %{conference}
+      speech_types: Speech Types
     default_short: ConfDeck
     home:
       dashboard: Dashboard
     settings:
       index: Settings
+    speeches:
+      index: Speeches of %{conference}
+      new: New Speech
     sponsors:
       edit: Edit %{sponsor}
       index: Sponsors of %{conference}

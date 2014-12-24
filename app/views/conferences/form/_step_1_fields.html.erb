@@ -4,7 +4,7 @@
       <label for="from_date" class="col-lg-3 control-label"><%= t("conferences.start_date") %></label>
 
       <div class="col-lg-9">
-        <%= f.text_field :from_date, :id => "from", :class => "form-control required", :placeholder => I18n.t("date.formats.placeholder") %>
+        <%= f.text_field :from_date, :id => "from", :class => "form-control required", :placeholder => I18n.t("date.formats.placeholder"), data: {format: I18n.t("date.formats.jsformat")} %>
         <span class="checkbox custom-checkbox">
                 <input type="checkbox" name="conference[one_day]" id="conference_one_day" <%= "checked" if @one_day %>/>
                 <label for="conference_one_day">&nbsp;&nbsp;<%= t("conferences.one_day") %></label>

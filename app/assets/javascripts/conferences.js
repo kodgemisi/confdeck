@@ -72,8 +72,8 @@ $(document).ready(function(){
         numberOfMonths: 1,
         onClose: function (selectedDate) {
             $("#to").datepicker("option", "minDate", selectedDate);
-        }
-        //dateFormat:  $("#from").attr("placeholder")
+        },
+        dateFormat:  $("#from").data("format")
     });
     $("#to").datepicker({
         defaultDate: "+1w",
@@ -81,8 +81,8 @@ $(document).ready(function(){
         numberOfMonths: 1,
         onClose: function (selectedDate) {
             $("#from").datepicker("option", "maxDate", selectedDate);
-        }
-        //dateFormat:  $("#to").attr("placeholder")
+        },
+        dateFormat:  $("#to").data("format")
     });
 
     $("#conference_name").on('change keyup input', function () {
