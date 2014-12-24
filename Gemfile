@@ -47,7 +47,9 @@ group :test, :development do
   gem "sqlite3"
   gem "better_errors"
   gem 'simplecov', :require => false
-
+  gem 'sauce', '~> 3.1.1'
+  gem 'sauce-connect'
+  gem 'parallel_tests'
 end
 
 

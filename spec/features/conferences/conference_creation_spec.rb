@@ -2,7 +2,7 @@ require 'rails_helper'
 include Warden::Test::Helpers
 Warden.test_mode!
 
-describe "Conference creation wizard", :type => :feature do
+describe "Conference creation wizard", :type => :feature, :sauce => true do
 
   before :each do
     @user = Fabricate(:user)
@@ -54,7 +54,7 @@ describe "Conference creation wizard", :type => :feature do
 
 
   #== Step 1
-  context "with valid data in step 1", js: true do
+  context "with valid data in step 1" do
     #Fill fields in step 1
     before do
       visit(new_conference_path)
