@@ -5,9 +5,9 @@ tr:
   active_conferences: 
   activerecord:
     attributes:
-      speech:
+      appeal:
         topic: 
-      speech/topic:
+      appeal/topic:
         abstract: 
         detail: 
         subject: 
@@ -62,7 +62,7 @@ tr:
         password_confirmation: Password confirmation
     errors:
       models:
-        speech:
+        appeal:
           attributes:
             topic:
               blank: 
@@ -92,7 +92,7 @@ tr:
             password_confirmation:
               confirmation: 
     models:
-      speech: 
+      appeal: 
       comment: 
       conference: Konferans
       email_template: Email template
@@ -104,28 +104,16 @@ tr:
       user: User
   activities:
     actions:
-      speech_accept: 
-      speech_comment: 
-      speech_downvote: 
-      speech_reject: 
-      speech_upvote: 
+      appeal_accept: 
+      appeal_comment: 
+      appeal_downvote: 
+      appeal_reject: 
+      appeal_upvote: 
   additional_info: Ek Bilgi
   address:
     city: "Şehir"
     info: Detay
     location: Konum
-  speeches:
-    abstract: Konu Özeti
-    actions: "İşlem"
-    additional_info: 
-    speech_type: Başvuru Tipi
-    speech_types: Başvuru Tipleri
-    detail: Konuşmanın Ana Hatları
-    speakers: Konuşmacıları
-    state: Durum
-    subject: Konu Başlığı
-    success: Başvuru Başarıyla Gönderildi!
-    write_comment: 
   application_received: "%{topic} Başvurunuz alınmıştır"
   are_you_sure: 
   body: Posta
@@ -148,7 +136,7 @@ tr:
     name: Başlık
     new: Yeni Konferans
     new_speaker: Yeni Konuşmacı Ekle
-    num_of_speeches: Başvurular
+    num_of_appeals: Başvurular
     num_of_sponsors: Sponsorlar
     organization: Organizasyon
     reset_info: 
@@ -161,8 +149,8 @@ tr:
     start_date: Başlangıç Tarihi
     summary: "Özet"
     too_long: Konferansın tarih aralığı en fazla 60 gün olmalıdır.
-    total_speeches: Toplam Başvuru
-    waiting_speeches: Bekleyen Başvurular
+    total_appeals: Toplam Başvuru
+    waiting_appeals: Bekleyen Başvurular
     wizard:
       step1:
         desc:
@@ -182,7 +170,7 @@ tr:
           title: 
       title: Konferans Oluşturma Sihirbazı
   create: Oluştur
-  create_speech: Başvuruyu Oluştur
+  create_appeal: Başvuruyu Oluştur
   create_organization: Yeni Organizasyon Oluştur
   create_room: 
   create_speaker: Konuşmacı Oluştur
@@ -350,6 +338,7 @@ tr:
         other: 'Bu %{resource} kaydedilirken %{count} hata yakalandı:'
   general:
     active: Aktif
+    add_another: Kaydet ve Yeni Ekle
     are_you_sure: Emin Misiniz?
     cancel: "İptal"
     close: Kapat
@@ -397,7 +386,7 @@ tr:
         name: 
         website: 
     submit:
-      speech:
+      appeal:
         create: 
       comment:
         create: 
@@ -506,6 +495,19 @@ tr:
     twitter: Twitter
   speaker_application_header: "%{conference_name} Konuşmacı Başvurusu"
   speakers: Konuşmacılar
+  speeches:
+    abstract: Konu Özeti
+    actions: "İşlem"
+    additional_info: Ek Bilgiler
+    detail: Konuşmanın Ana Hatları
+    new: Yeni Konuşma
+    speakers: Konuşmacıları
+    speech_type: Konuşma Türü
+    speech_types: Konuşma Türleri
+    state: Durum
+    subject: Konu Başlığı
+    success: Başvuru Başarıyla Gönderildi!
+    write_comment: Yorum Yaz
   sponsors:
     actions: "İşlemler"
     logo: 
@@ -526,7 +528,7 @@ tr:
   titles:
     conferences:
       address: "%{conference} Adres Bilgileri"
-      speech_types: Oturum Tipleri
+      appeal_types: Oturum Tipleri
       basic_information: "%{conference} Temel Bilgiler"
       contact_information: "%{conference} İletişim Bilgileri"
       edit: "%{conference} Düzenle"
@@ -537,6 +539,9 @@ tr:
       dashboard: Anasayfa
     settings:
       index: Ayarlar
+    speeches:
+      index: "%{conference} Konuşmaları"
+      new: Yeni Konuşma
     sponsors:
       edit: "%{sponsor} Düzenleniyor"
       index: "%{conference} Sponsorları"
