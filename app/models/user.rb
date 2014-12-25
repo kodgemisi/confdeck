@@ -16,13 +16,13 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  enum role: [ :admin, :confadmin, :confuser, :speaker]
+  enum role: [ :admin, :user]
   before_create :set_default_settings
 
   has_and_belongs_to_many :organizations
-  has_many :conferences, through: :organizations
+  has_many :conference_roles
+  has_many :conferences, through: :conference_roles
   has_one :conference_wizard #, -> { order("created_at DESC") }
-
   acts_as_voter
 
   serialize :settings

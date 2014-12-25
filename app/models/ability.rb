@@ -8,12 +8,7 @@ class Ability
       if user.is? "admin"
         can :access, :rails_admin
         can :manage, :all
-      elsif user.is? "confadmin"
-
-      elsif user.is? "confuser"
-
-      elsif user.is? "speaker"
-
+      elsif user.is? "user"
       else
 
       end
