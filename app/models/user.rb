@@ -54,4 +54,12 @@ class User < ActiveRecord::Base
   def is?(role)
     self.role == role
   end
+
+  def is_admin_of?(conference)
+    conference_roles.where(conference: conference).first.confadmin?
+  end
+
+  def is_user_of?(conference)
+    conference_roles.where(conference: conference).first.confuser?
+  end
 end
