@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
         language: "en"
     } if self.settings.nil?
 
-    self.role = :confadmin if self.role.nil?
+    self.role = :user if self.role.nil?
   end
 
   def set!(key, val)
@@ -56,10 +56,10 @@ class User < ActiveRecord::Base
   end
 
   def is_admin_of?(conference)
-    conference_roles.where(conference: conference).first.confadmin?
+    conference_roles.where(conference: conference).first.try(:confadmin?)
   end
 
   def is_user_of?(conference)
-    conference_roles.where(conference: conference).first.confuser?
+    conference_roles.where(conference: conference).first.try(:confuser?)
   end
 end

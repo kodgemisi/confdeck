@@ -53,6 +53,7 @@ class ConferencesController < ApplicationController
   # GET /conferences/new
   # GET /conferences/new.json
   def new
+    authorize Conference
 
     @wizard = current_user.conference_wizard
 
@@ -76,12 +77,16 @@ class ConferencesController < ApplicationController
 
   # GET /conferences/1/edit
   def edit
+    authorize @conference, :manage?
+
     @conference.email_templates.build
   end
 
   # POST /conferences
   # POST /conferences.json
   def create
+    authorize Conference
+
     @conference = Conference.new(conference_params)
 
     respond_to do |format|
@@ -99,6 +104,7 @@ class ConferencesController < ApplicationController
   # PUT /conferences/1
   # PUT /conferences/1.json
   def update
+    authorize @conference, :manage?
 
     respond_to do |format|
       if @conference.update_attributes(conference_params)
@@ -114,6 +120,8 @@ class ConferencesController < ApplicationController
   # DELETE /conferences/1
   # DELETE /conferences/1.json
   def destroy
+    authorize @conference, :manage?
+
     @conference.destroy
 
     respond_to do |format|
@@ -123,13 +131,14 @@ class ConferencesController < ApplicationController
   end
 
   def schedule
+    authorize @conference, :manage?
     @room = Room.new
     @slot = Slot.new
   end
 
   def speech_types
+    authorize @conference, :manage?
     @speech_types = @conference.speech_types
-
     respond_to do |format|
       format.json { render json: @speech_types }
       format.html { render template: "conferences/edit/speech_types"}
@@ -138,6 +147,7 @@ class ConferencesController < ApplicationController
 
   #admin side #show equivalent
   def manage
+    authorize @conference, :manage?
     @latest_speeches = @conference.speeches.order("created_at DESC").limit(15).includes(topic: [:speakers]).includes(:comments)
     @total_speeches = @conference.speeches
     @waiting_speeches = @conference.speeches.where(:state => "waiting_review")

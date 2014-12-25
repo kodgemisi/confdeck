@@ -31,7 +31,7 @@ gem 'metamagic'
 gem 'simple_form'
 gem "cocoon"
 gem "rails-timeago"
-gem "cancancan"
+gem "pundit"
 gem "rails_admin"
 
 
