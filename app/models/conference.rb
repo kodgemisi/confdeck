@@ -74,6 +74,10 @@ class Conference < ActiveRecord::Base
   accepts_nested_attributes_for :days
   accepts_nested_attributes_for :email_templates
   accepts_nested_attributes_for :speech_types, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :users
+  accepts_nested_attributes_for :conference_roles
+  accepts_nested_attributes_for :conference_admins
+  accepts_nested_attributes_for :conference_users
 
   #== Validations
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/

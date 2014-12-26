@@ -108,7 +108,7 @@ tr:
       speech_comment: "%{user}, %{speech} hakkında yorum yaptı."
       speech_downvote: 
       speech_reject: "%{user}, %{appeal} reddetti."
-      speech_upvote:
+      speech_upvote: 
   additional_info: Ek Bilgi
   address:
     city: "Şehir"
@@ -136,7 +136,7 @@ tr:
     name: Başlık
     new: Yeni Konferans
     new_speaker: Yeni Konuşmacı Ekle
-    num_of_appeals: Başvurular
+    num_of_speeches: Başvurular
     num_of_sponsors: Sponsorlar
     organization: Organizasyon
     reset_info: 'Bir adet yayınlanmamış konferans taslağınız var. Aşağıdaki butona tıklayarak silip baştan başlayabilirsiniz.  '
@@ -149,8 +149,8 @@ tr:
     start_date: Başlangıç Tarihi
     summary: "Özet"
     too_long: Konferansın tarih aralığı en fazla 60 gün olmalıdır.
-    total_appeals: Toplam Başvuru
-    waiting_appeals: Bekleyen Başvurular
+    total_speeches: Toplam Başvuru
+    waiting_speeches: Bekleyen Başvurular
     wizard:
       step1:
         desc:
@@ -417,6 +417,10 @@ tr:
     organizations: Organizasyonlar
     page_title: "%{organization} Organizasyonu"
   rejected: Reddedildi
+  roles:
+    confadmins: Konferans Yöneticileri
+    confusers: Konferans Kullanıcıları
+    type_to_search: Kullanıcı aramak için yazın...
   room:
     name: Oda Adı
   rooms:
@@ -529,7 +533,6 @@ tr:
   titles:
     conferences:
       address: "%{conference} Adres Bilgileri"
-      appeal_types: Oturum Tipleri
       basic_information: "%{conference} Temel Bilgiler"
       contact_information: "%{conference} İletişim Bilgileri"
       edit: "%{conference} Düzenle"
@@ -539,6 +542,8 @@ tr:
     default_short: ConfDeck
     home:
       dashboard: Anasayfa
+    roles:
+      index: "%{conference} İçin Kullanıcı Görev Yönetimi"
     settings:
       index: Ayarlar
     speeches:

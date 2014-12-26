@@ -13,7 +13,7 @@
 
 class ConferencesController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
-  before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule, :basic_information, :address, :contact_information, :speech_types, :landing_settings]
+  before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule, :basic_information, :address, :contact_information, :speech_types, :landing_settings, :search_users, :roles]
   before_action :load_data, only: [:new, :edit, :update]
   before_action :parse_dates, only: [:edit, :basic_information]
 
@@ -195,6 +195,16 @@ class ConferencesController < ApplicationController
 
   def landing_settings
     @modules = Conference::MODULES
+  end
+
+  def search_users
+    query = params[:query]
+    @users = User.joins(:organizations)
+                .where("organizations.id" => @conference.organizations.ids)
+                .where("email LIKE ?", "%#{query}%")
+    respond_to do |format|
+      format.json
+    end
   end
 
   private

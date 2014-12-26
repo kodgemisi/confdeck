@@ -20,6 +20,7 @@ Confman::Application.routes.draw do
       get 'reset_wizard'
       put 'sync_wizard'
     end
+    resources :roles
     resources :addresses
     resources :sponsors
     resources :rooms
@@ -46,6 +47,7 @@ Confman::Application.routes.draw do
       get 'address'
       get 'contact_information'
       get 'landing_settings'
+      get 'search_users'
     end
   end
 

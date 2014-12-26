@@ -4,8 +4,10 @@
 //= require jquery.typewatch
 //= require gmaps
 //= require speakingurl.min
+//= require selectize
 
 $(document).ready(function(){
+
     var wizardSyncInterval = 10000; //10 seconds
 
     var syncWizardData = function(){

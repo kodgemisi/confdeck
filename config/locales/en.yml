@@ -150,8 +150,8 @@ en:
     start_date: Start Dat
     summary: Summary
     too_long: Date range for conference must be less than 60 days.
-    total_appeals: Total Applications
-    waiting_appeals: |
+    total_speeches: Total Applications
+    waiting_speeches: |
       Waiting Applications
     wizard:
       step1:
@@ -355,6 +355,10 @@ en:
     organizations: Organizations
     page_title: 
   rejected: 
+  roles:
+    confadmins: Conference Admins
+    confusers: Conference Users
+    type_to_search: Type to search user...
   room:
     name: 
   rooms:
@@ -467,7 +471,6 @@ en:
   titles:
     conferences:
       address: "%{conference} Address Information"
-      appeal_types: Session Types
       basic_information: "%{conference} Basic Information"
       contact_information: "%{conference} Contact Information"
       edit: 'Edit %{conference} '
@@ -477,6 +480,8 @@ en:
     default_short: ConfDeck
     home:
       dashboard: Dashboard
+    roles:
+      index: User Role Management for %{conference}
     settings:
       index: Settings
     speeches:
