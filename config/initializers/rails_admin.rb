@@ -8,8 +8,9 @@ RailsAdmin.config do |config|
   end
   config.current_user_method(&:current_user)
 
-  ## == Cancan ==
-  config.authorize_with :cancan
+  config.authorize_with do |controller|
+    redirect_to(main_app.root_path, {notice: t("general.unauthorized")}) unless current_user.try(:admin?)
+  end
 
   ## == PaperTrail ==
   # config.audit_with :paper_trail, 'User', 'PaperTrail::Version' # PaperTrail >= 3.0.0
