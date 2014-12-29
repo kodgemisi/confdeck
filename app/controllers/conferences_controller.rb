@@ -16,7 +16,6 @@ class ConferencesController < ApplicationController
   before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule, :basic_information, :address, :contact_information, :speech_types, :landing_settings, :search_users, :roles]
   before_action :load_data, only: [:new, :edit, :update]
   before_action :parse_dates, only: [:edit, :basic_information]
-
   layout 'conference_landing', :only => [:show]
   # GET /conferences
   # GET /conferences.json
@@ -147,7 +146,7 @@ class ConferencesController < ApplicationController
 
   #admin side #show equivalent
   def manage
-    authorize @conference, :manage?
+    authorize @conference, :dashboard?
     @latest_speeches = @conference.speeches.order("created_at DESC").limit(15).includes(topic: [:speakers]).includes(:comments)
     @total_speeches = @conference.speeches
     @waiting_speeches = @conference.speeches.where(:state => "waiting_review")
