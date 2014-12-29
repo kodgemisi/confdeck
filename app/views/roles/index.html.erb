@@ -4,7 +4,7 @@
 
 <div class="row">
   <div class="col-lg-12">
-    <%= form_tag({path: conference_roles_path(@conference)}, {class: "panel form-horizontal form-bordered"}) do %>
+    <%= form_tag({path: conference_roles_path(@conference)}, {method: :post, class: "panel form-horizontal form-bordered"}) do %>
         <div class="panel-body">
             <div class="form-group">
               <label class="col-sm-3 control-label"><%= t("roles.confadmins") %></label>
