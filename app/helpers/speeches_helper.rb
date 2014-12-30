@@ -12,4 +12,14 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 module SpeechesHelper
+
+  def state_label(state)
+    if state == "accepted"
+      "<span class=\"label label-success\">#{t("speeches.states.accepted")}</span>"
+    elsif state == "rejected"
+      "<span class=\"label label-danger\">#{t("speeches.states.rejected")}</span>"
+    elsif state == "waiting_review"
+      "<span class=\"label label-teal\">#{t("speeches.states.waiting_review")}</span>"
+    end
+  end
 end

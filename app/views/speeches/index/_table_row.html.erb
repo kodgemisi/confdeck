@@ -1,4 +1,4 @@
-<tr class="<%= speech.state %>"
+<tr class="<%= speech.state %>" id="<%= dom_id(speech) %>"
 >
 
   <td width="5%"><%= speech.id %></td>
@@ -12,25 +12,19 @@
         </div>
     <% end %>
   </td>
-  <td width="10%"><%=t speech.state %></td>
-  <td width="10%" class="actions">
+  <td width="5%" class="text-center" >
+    <%= state_label(speech.state).html_safe %>
+  </td>
+  <td width="15%" class="actions">
     <div class="updown">
-      <% unless current_user.voted_up_on? speech %>
-          <%= link_to upvote_conference_speech_path(speech.conference, speech) do %>
-              <i class="icon-thumbs-up" style="font-size: 24px;color: gray;"> <%= speech.upvotes.count %></i>
-          <% end %>
-      <% else %>
-          <i class="icon-thumbs-up" style="font-size: 24px;"> <%= speech.upvotes.count %></i>
+      <%= link_to upvote_conference_speech_path(speech.conference, speech), remote: true, class: "semibold text-default" do %>
+          <i class="ico-arrow-up mr5 action-upvote <%= 'text-primary' if current_user.voted_up_on? speech %>"></i><span class="upvote-count"><%= speech.upvotes.count %></span>
       <% end %>
-      <% unless current_user.voted_down_on? speech %>
-          <%= link_to downvote_conference_speech_path(speech.conference, speech) do %>
-              <i class="icon-thumbs-down" style="font-size: 24px;color: gray;"> <%= speech.downvotes.count %></i>
-          <% end %>
-      <% else %>
-          <i class="icon-thumbs-down" style="font-size: 24px;"> <%= speech.downvotes.count %></i>
+      <%= link_to downvote_conference_speech_path(speech.conference, speech), remote: true, class: "semibold text-default" do %>
+          <i class="ico-arrow-down mr5 action-downvote <%= 'text-primary' if current_user.voted_down_on? speech %>"></i><span class="downvote-count"><%= speech.downvotes.count %></span>
       <% end %>
     </div>
-    <%= link_to "#{speech.comments.count} comments", [speech.conference, speech] %>
-    <%= link_to :show, conference_speech_path(speech.conference, speech), class: "btn btn-success button" %>
+    <%= link_to "#{speech.comments.count} comments", [speech.conference, speech], class: "btn btn-default" %>
+    <%= link_to t("speeches.show_details"), conference_speech_path(speech.conference, speech), class: "btn btn-primary button" %>
   </td>
 </tr>

@@ -8,7 +8,6 @@ $(document).ready(function(){
         $(this).closest(".speech").find(".comments").slideToggle();
     });
 
-
     $(".speech-table").dataTable({
         "columns": [
             null,
@@ -17,8 +16,15 @@ $(document).ready(function(){
             { "sortable": false },
             null,
             { "sortable": false }
-        ]
+        ],
+        "initComplete": function(){
+            $('.tt').tooltip();
+        }
     });
+
+    $(".speech-table").on( 'draw.dt', function () {
+        $('.tt').tooltip();
+    } );
 
 })
 

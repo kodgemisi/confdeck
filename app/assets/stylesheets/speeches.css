@@ -8,9 +8,15 @@
 }
 
 .updown {
-  float:left;
-  width: 50px;
+    float:left;
+    width: 65px;
+    line-height: 34px;
+    margin-right: 5px;
 }
+.updown > a {
+    margin-right: 5px;
+}
+
 
 .state {
   float:right;
@@ -42,17 +48,17 @@
     display: none;
 }
 
-.speeches-list .accepted {
-    background-color: #BBFAAB;
-}
+/*.speeches-list .accepted {*/
+    /*background-color: #BBFAAB;*/
+/*}*/
 
-.speeches-list .rejected {
-    background-color: #FACCCC;
-}
+/*.speeches-list .rejected {*/
+    /*background-color: #FACCCC;*/
+/*}*/
 
-.speeches-list .actions {
-    width: 150px;
-}
+/*.speeches-list .actions {*/
+    /*width: 150px;*/
+/*}*/
 
 .speeches-list .icon-thumbs-down {
     font-size: 20px !important;
