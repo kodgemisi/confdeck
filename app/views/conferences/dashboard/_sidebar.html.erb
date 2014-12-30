@@ -5,35 +5,39 @@
       <a href="<%= conference_speeches_path(@conference) %>" class="list-group-item">
         <i class="ico-angle-right mr5"></i> <%= t("conferences.speeches") %>
       </a>
-      <a href="<%= conference_schedule_path(@conference) %>" class="list-group-item">
-        <i class="ico-angle-right mr5"></i> <%= t("conferences.schedule") %>
-      </a>
+      <% if current_user.is_admin_of?(@conference) %>
+        <a href="<%= conference_schedule_path(@conference) %>" class="list-group-item">
+            <i class="ico-angle-right mr5"></i> <%= t("conferences.schedule") %>
+        </a>
+      <% end %>
     </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-xs-12">
-    <h5 class="semibold mt0 text-primary"><i class="ico-equalizer pr5"></i><%= t("general.settings") %></h5>
-    <div class="list-group">
-      <a href="<%= conference_email_templates_path(@conference) %>" class="list-group-item">
-        <i class="ico-angle-right mr5"></i> <%= t("conferences.email_templates") %>
-      </a>
-      <a href="<%= conference_sponsors_path(@conference) %>" class="list-group-item">
-        <i class="ico-angle-right mr5"></i> <%= t("conferences.sponsors") %>
-      </a>
-      <a href="<%= speech_types_conference_path(@conference) %>" class="list-group-item">
-        <i class="ico-angle-right mr5"></i> <%= t("conferences.speech_types") %>
-      </a>
-      <a href="<%= basic_information_conference_path(@conference) %>" class="list-group-item">
-        <i class="ico-angle-right mr5"></i> <%= t("conferences.basic_information") %>
-      </a>
-      <a href="<%= address_conference_path(@conference) %>" class="list-group-item">
-        <i class="ico-angle-right mr5"></i> <%= t("conferences.address") %>
-      </a>
-      <a href="<%= contact_information_conference_path(@conference) %>" class="list-group-item">
-        <i class="ico-angle-right mr5"></i> <%= t("conferences.contact_information") %>
-      </a>
+<% if current_user.is_admin_of?(@conference) %>
+    <div class="row">
+      <div class="col-xs-12">
+        <h5 class="semibold mt0 text-primary"><i class="ico-equalizer pr5"></i><%= t("general.settings") %></h5>
+        <div class="list-group">
+          <a href="<%= conference_email_templates_path(@conference) %>" class="list-group-item">
+            <i class="ico-angle-right mr5"></i> <%= t("conferences.email_templates") %>
+          </a>
+          <a href="<%= conference_sponsors_path(@conference) %>" class="list-group-item">
+            <i class="ico-angle-right mr5"></i> <%= t("conferences.sponsors") %>
+          </a>
+          <a href="<%= speech_types_conference_path(@conference) %>" class="list-group-item">
+            <i class="ico-angle-right mr5"></i> <%= t("conferences.speech_types") %>
+          </a>
+          <a href="<%= basic_information_conference_path(@conference) %>" class="list-group-item">
+            <i class="ico-angle-right mr5"></i> <%= t("conferences.basic_information") %>
+          </a>
+          <a href="<%= address_conference_path(@conference) %>" class="list-group-item">
+            <i class="ico-angle-right mr5"></i> <%= t("conferences.address") %>
+          </a>
+          <a href="<%= contact_information_conference_path(@conference) %>" class="list-group-item">
+            <i class="ico-angle-right mr5"></i> <%= t("conferences.contact_information") %>
+          </a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+<% end %>
