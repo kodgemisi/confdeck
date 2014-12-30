@@ -1,5 +1,5 @@
 class ConferencePolicy < ApplicationPolicy
-  def dashboard?
+  def user?
     @user.is_admin_of?(@record) || @user.is_user_of?(@record)
   end
 

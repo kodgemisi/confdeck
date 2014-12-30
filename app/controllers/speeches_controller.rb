@@ -108,6 +108,7 @@ class SpeechesController < ApplicationController
   end
 
   def comment
+    authorize @conference, :user?
     @comment = @speech.comments.build(comment_params)
     @comment.user = current_user
 
@@ -123,6 +124,7 @@ class SpeechesController < ApplicationController
   end
 
   def upvote
+    authorize @conference, :user?
     @speech.upvote_from current_user
     respond_to do |format|
       format.js
@@ -139,16 +141,18 @@ class SpeechesController < ApplicationController
   end
 
   def accept
+    authorize @conference, :manage?
     @speech.accept
     respond_to do |format|
-      format.html { redirect_to conference_speeches_path(@conference), notice: "This speech is accepted" }
+      format.html { redirect_to conference_speech_path(@conference, @speech), notice: t("speeches.is_accepted") }
     end
   end
 
   def reject
+    authorize @conference, :manage?
     @speech.reject
     respond_to do |format|
-      format.html { redirect_to conference_speeches_path(@conference), notice: "This speech is rejected" }
+      format.html { redirect_to conference_speech_path(@conference, @speech), notice: t("speeches.is_rejected") }
     end
   end
 

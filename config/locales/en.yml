@@ -440,11 +440,15 @@ en:
   speakers: 
   speeches:
     abstract: Abstract
+    accept: Accept
     actions: Actions
     additional_info: Additional Info
     comments: Comments
     detail: Details
+    is_accepted: Speech is accepted.
+    is_rejected: Speech is rejected.
     new: New Speech
+    reject: Reject
     show_details: Details
     speakers: Speakers
     speech_title: "%{subject}"

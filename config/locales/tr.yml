@@ -502,11 +502,15 @@ tr:
   speakers: Konuşmacılar
   speeches:
     abstract: Konu Özeti
+    accept: Kabul Et
     actions: "İşlem"
     additional_info: Ek Bilgiler
     comments: Yorumlar
     detail: Konuşmanın Ana Hatları
+    is_accepted: Konuşma Kabul Edildi.
+    is_rejected: Konuşma Reddedildi.
     new: Yeni Konuşma
+    reject: Reddet
     show_details: Detaylar
     speakers: Konuşmacıları
     speech_title: "%{subject}"

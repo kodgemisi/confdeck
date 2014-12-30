@@ -12,17 +12,21 @@
           <p class="ellipsis nm"><span class="semibold"><%= link_to t("speeches.speech_title", subject: @speech.topic.subject), [@speech.conference, @speech] %></span></p>
           <p class="text-muted nm"><%= timeago_tag @speech.created_at.to_time, :lang => I18n.locale %></p>
         </li>
-        <!--<li class="text-right" style="width:60px;">-->
-        <!--<div class="btn-group">-->
-        <!--<button type="button" class="btn btn-link dropdown-toggle text-default" data-toggle="dropdown"><i class="ico-menu2"></i></button>-->
-        <!--<ul class="dropdown-menu dropdown-menu-right">-->
-        <!--<li><a href="javascript:void(0);">Report</a></li>-->
-        <!--<li><a href="javascript:void(0);">Setting</a></li>-->
-        <!--<li class="divider"></li>-->
-        <!--<li><a href="javascript:void(0);" class="text-danger">Delete post</a></li>-->
-        <!--</ul>-->
-        <!--</div>-->
-        <!--</li>-->
+        <li class="text-right">
+        <div class="btn-group">
+            <% if @speech.accepted? %>
+              <button type="button" class="btn btn-success btn-disabled mb5"><i class="ico-ok-sign"></i> <%= t("speeches.states.accepted") %></button>
+              <%= link_to t("speeches.reject"), reject_conference_speech_path(@conference, @speech), class: "btn btn-default" %>
+            <% elsif @speech.rejected?  %>
+              <button type="button" class="btn btn-danger btn-disabled mb5"><i class="ico-remove-sign"></i> <%= t("speeches.states.rejected") %></button>
+              <%= link_to t("speeches.accept"), accept_conference_speech_path(@conference, @speech), class: "btn btn-default" %>
+            <% else  %>
+              <button type="button" class="btn btn-warning btn-disabled mb5"><i class="ico-remove-sign"></i> <%= t("speeches.states.waiting_review") %></button>
+              <%= link_to t("speeches.accept"), accept_conference_speech_path(@conference, @speech), class: "btn btn-default" %>
+              <%= link_to t("speeches.reject"), reject_conference_speech_path(@conference, @speech), class: "btn btn-default" %>
+            <% end  %>
+        </div>
+        </li>
       </ul>
       <!--/ User info -->
       <hr class="nm"><!-- horizontal line -->
