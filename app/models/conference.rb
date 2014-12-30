@@ -37,7 +37,15 @@ class Conference < ActiveRecord::Base
   #== Relations
   has_one :address
   has_and_belongs_to_many :organizations
-  has_many :users, through: :organizations
+  has_many :conference_roles
+  has_many :users, through: :conference_roles
+  has_many :conference_admins, -> { where(conference_roles: {role: ConferenceRole.roles[:confadmin] }) },
+           :through => :conference_roles,
+           :source => :user
+  has_many :conference_users, -> { where(conference_roles: {role: ConferenceRole.roles[:confuser] }) },
+           :through => :conference_roles,
+           :source => :user
+
   has_and_belongs_to_many :days, -> { order 'date ASC' }
   has_many :sponsors
   has_many :rooms
@@ -66,6 +74,10 @@ class Conference < ActiveRecord::Base
   accepts_nested_attributes_for :days
   accepts_nested_attributes_for :email_templates
   accepts_nested_attributes_for :speech_types, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :users
+  accepts_nested_attributes_for :conference_roles, allow_destroy: :true
+  accepts_nested_attributes_for :conference_admins, allow_destroy: :true
+  accepts_nested_attributes_for :conference_users, allow_destroy: :true
 
   #== Validations
   validates_attachment_content_type :logo, :content_type => /\Aimage\/.*\Z/

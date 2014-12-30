@@ -31,6 +31,8 @@ gem 'metamagic'
 gem 'simple_form'
 gem "cocoon"
 gem "rails-timeago"
+gem "pundit"
+gem "rails_admin"
 
 
 # gem 'i18n-tasks', '~> 0.7.7'

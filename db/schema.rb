@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141219151214) do
+ActiveRecord::Schema.define(version: 20141225094819) do
 
   create_table "activities", force: true do |t|
     t.integer  "subject_id"
@@ -49,6 +49,17 @@ ActiveRecord::Schema.define(version: 20141219151214) do
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "conference_roles", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "conference_id"
+    t.integer  "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "conference_roles", ["conference_id"], name: "index_conference_roles_on_conference_id"
+  add_index "conference_roles", ["user_id"], name: "index_conference_roles_on_user_id"
 
   create_table "conference_wizards", force: true do |t|
     t.text     "data"
@@ -238,6 +249,7 @@ ActiveRecord::Schema.define(version: 20141219151214) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.string   "settings"
+    t.integer  "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

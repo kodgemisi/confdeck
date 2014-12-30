@@ -16,12 +16,13 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  enum role: [ :admin, :user]
   before_create :set_default_settings
 
   has_and_belongs_to_many :organizations
-  has_many :conferences, through: :organizations
+  has_many :conference_roles
+  has_many :conferences, through: :conference_roles
   has_one :conference_wizard #, -> { order("created_at DESC") }
-
   acts_as_voter
 
   serialize :settings
@@ -41,10 +42,24 @@ class User < ActiveRecord::Base
     self.settings = {
         language: "en"
     } if self.settings.nil?
+
+    self.role = :user if self.role.nil?
   end
 
   def set!(key, val)
     self.settings ||= {}
     self.settings[key] = val
+  end
+
+  def is?(role)
+    self.role == role
+  end
+
+  def is_admin_of?(conference)
+    conference_roles.where(conference: conference).first.try(:confadmin?)
+  end
+
+  def is_user_of?(conference)
+    conference_roles.where(conference: conference).first.try(:confuser?)
   end
 end

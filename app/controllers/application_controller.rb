@@ -12,10 +12,19 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class ApplicationController < ActionController::Base
+  include Pundit
   protect_from_forgery
   before_filter :set_user_data
   before_filter :set_locale
   layout :layout_for_devise
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  private
+
+  def user_not_authorized
+    flash[:error] = t("general.not_authorized")
+    redirect_to root_path
+  end
 
   protected
 

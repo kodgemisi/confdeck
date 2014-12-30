@@ -1,4 +1,5 @@
 Confman::Application.routes.draw do
+  mount RailsAdmin::Engine => '/deck', as: 'rails_admin'
   get "schedule/show"
 
   get "schedule/update"
@@ -19,6 +20,7 @@ Confman::Application.routes.draw do
       get 'reset_wizard'
       put 'sync_wizard'
     end
+    resources :roles
     resources :addresses
     resources :sponsors
     resources :rooms
@@ -45,6 +47,7 @@ Confman::Application.routes.draw do
       get 'address'
       get 'contact_information'
       get 'landing_settings'
+      get 'search_users'
     end
   end
 
