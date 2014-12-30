@@ -1,6 +1,14 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+$(document).ready(function(){
+    $(".speech .show-comments").click(function(e){
+        e.preventDefault();
+        $(this).closest(".speech").find(".comments").slideToggle();
+    });
+})
+
+
 
 (function () {
     'use strict';

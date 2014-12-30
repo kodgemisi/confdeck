@@ -504,9 +504,11 @@ tr:
     abstract: Konu Özeti
     actions: "İşlem"
     additional_info: Ek Bilgiler
+    comments: Yorumlar
     detail: Konuşmanın Ana Hatları
     new: Yeni Konuşma
     speakers: Konuşmacıları
+    speech_title: "%{subject}"
     speech_type: Konuşma Türü
     speech_types: Konuşma Türleri
     state: Durum
@@ -549,6 +551,7 @@ tr:
     speeches:
       index: "%{conference} Konuşmaları"
       new: Yeni Konuşma
+      show: "%{subject}"
     sponsors:
       edit: "%{sponsor} Düzenleniyor"
       index: "%{conference} Sponsorları"

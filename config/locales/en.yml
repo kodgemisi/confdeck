@@ -442,9 +442,11 @@ en:
     abstract: Abstract
     actions: Actions
     additional_info: Additional Info
+    comments: Comments
     detail: Details
     new: New Speech
     speakers: Speakers
+    speech_title: "%{subject}"
     speech_type: Speech Type
     speech_types: Speech Types
     state: State
@@ -487,6 +489,7 @@ en:
     speeches:
       index: Speeches of %{conference}
       new: New Speech
+      show: "%{subject}"
     sponsors:
       edit: Edit %{sponsor}
       index: Sponsors of %{conference}
