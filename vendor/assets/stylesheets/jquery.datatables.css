@@ -1,0 +1,171 @@
+/* ----------------------------
+ *
+ * DataTable
+ *
+ * --------------------------- */
+.dataTables_wrapper {
+  position: relative;
+}
+.dataTables_wrapper .dataTables_filter {
+  text-align: right;
+  padding: 10px 15px;
+}
+.dataTables_wrapper .dataTables_filter > label {
+  margin: 0px;
+  color: #5e5e5e;
+  font-weight: normal;
+}
+.dataTables_wrapper .dataTables_filter > label > input {
+  display: inline-block;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 13px;
+  line-height: normal;
+  color: #444444;
+  vertical-align: middle;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #c6d2d5;
+  border-radius: 4px;
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.dataTables_wrapper .dataTables_filter > label > input:focus {
+  border-color: #00b1e1;
+  outline: 0;
+}
+.dataTables_wrapper .dataTables_length {
+  text-align: left;
+  padding: 10px 15px;
+}
+.dataTables_wrapper .dataTables_length > label {
+  margin: 0px;
+  color: #5e5e5e;
+  font-weight: normal;
+}
+.dataTables_wrapper .dataTables_length > label > select {
+  display: inline-block;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 13px;
+  line-height: normal;
+  color: #444444;
+  vertical-align: middle;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #c6d2d5;
+  border-radius: 4px;
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.dataTables_wrapper .dataTables_length > label > select:focus {
+  border-color: #00b1e1;
+  outline: 0;
+}
+.dataTables_wrapper .dataTables_info {
+  text-align: right;
+  padding: 10px 15px;
+  line-height: 32px;
+}
+.dataTables_wrapper .dataTables_paginate {
+  text-align: left;
+  padding: 10px 15px;
+}
+.dataTables_wrapper .dataTables_paginate > .pagination {
+  margin: 0px;
+}
+.dataTables_wrapper .DTTT {
+  padding: 10px 15px;
+}
+.dataTables_wrapper .dataTables_processing {
+  position: absolute;
+  z-index: 1;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  min-height: 100px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.dataTables_wrapper .dataTables_processing:after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  margin-top: -9px;
+  margin-left: -9px;
+  width: 18px;
+  height: 18px;
+  background-image: url("../../../image/loading/spinner.gif");
+  background-repeat: no-repeat;
+}
+.dataTables_wrapper .dataTable > thead > tr > th:active,
+.dataTables_wrapper .dataTable > thead > tr > th:focus {
+  outline: 0;
+}
+.dataTables_wrapper .dataTable > thead > tr > th.sorting,
+.dataTables_wrapper .dataTable > thead > tr > th.sorting_asc,
+.dataTables_wrapper .dataTable > thead > tr > th.sorting_desc {
+  cursor: pointer;
+}
+.dataTables_wrapper .dataTable > thead > tr > th.sorting:before,
+.dataTables_wrapper .dataTable > thead > tr > th.sorting_asc:before,
+.dataTables_wrapper .dataTable > thead > tr > th.sorting_desc:before {
+  font-family: "iconfont";
+  font-size: 14px;
+  color: #999;
+  position: relative;
+  margin-right: 10px;
+}
+.dataTables_wrapper .dataTable > thead > tr > th.sorting:before {
+  content: "\e6c3";
+}
+.dataTables_wrapper .dataTable > thead > tr > th.sorting_asc:before {
+  content: "\e6c4";
+}
+.dataTables_wrapper .dataTable > thead > tr > th.sorting_desc:before {
+  content: "\e6c5";
+}
+/* inside panel */
+.panel > .dataTables_wrapper {
+  border: 0px;
+}
+.panel > .dataTables_wrapper .table {
+  border-left-width: 0px;
+  border-right-width: 0px;
+  border-top: 1px solid #cfd9db;
+  border-bottom: 1px solid #cfd9db;
+}
+.panel > .dataTables_wrapper .table > tbody > tr > td.center {
+  text-align: center;
+}
+.panel > .dataTables_wrapper .table > tbody > tr > td:first-child {
+  border-left: 0px;
+}
+.panel > .dataTables_wrapper .table > tbody > tr > td:last-child {
+  border-right: 0px;
+}
+.panel > .dataTables_wrapper .table > thead > tr > th {
+  border-top: 1px solid #cfd9db;
+}
+.panel > .dataTables_wrapper .table > thead > tr > th.center {
+  text-align: center;
+}
+.panel > .dataTables_wrapper .table > thead > tr > th:first-child {
+  border-left: 0px;
+}
+.panel > .dataTables_wrapper .table > thead > tr > th:last-child {
+  border-right: 0px;
+}
+@media (max-width: 768px) {
+  .dataTables_wrapper .DTTT {
+    display: none;
+  }
+  .dataTables_wrapper .dataTables_filter,
+  .dataTables_wrapper .dataTables_info,
+  .dataTables_wrapper .dataTables_length,
+  .dataTables_wrapper .dataTables_paginate {
+    text-align: center;
+  }
+}

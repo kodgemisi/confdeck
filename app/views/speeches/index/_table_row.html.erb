@@ -1,0 +1,36 @@
+<tr class="<%= speech.state %>"
+>
+
+  <td width="5%"><%= speech.id %></td>
+  <td width="15%"><%= speech.topic.subject %></td>
+  <td width="35%"><%= truncate(speech.topic.abstract, length:60, seperator: ' ') %></td>
+  <!--make them searcable-->
+  <td width="10%" class="text-center" data-search="<%= speech.topic.speakers.collect(&:name).join(", ")  %>">
+    <% speech.topic.speakers.each do |speaker| %>
+        <div class="speaker">
+          <%= link_to image_tag(speaker.avatar_url(20), class: "img-circle"), speaker_path(speaker), title: speaker.info, class: "tt" %>
+        </div>
+    <% end %>
+  </td>
+  <td width="10%"><%=t speech.state %></td>
+  <td width="10%" class="actions">
+    <div class="updown">
+      <% unless current_user.voted_up_on? speech %>
+          <%= link_to upvote_conference_speech_path(speech.conference, speech) do %>
+              <i class="icon-thumbs-up" style="font-size: 24px;color: gray;"> <%= speech.upvotes.count %></i>
+          <% end %>
+      <% else %>
+          <i class="icon-thumbs-up" style="font-size: 24px;"> <%= speech.upvotes.count %></i>
+      <% end %>
+      <% unless current_user.voted_down_on? speech %>
+          <%= link_to downvote_conference_speech_path(speech.conference, speech) do %>
+              <i class="icon-thumbs-down" style="font-size: 24px;color: gray;"> <%= speech.downvotes.count %></i>
+          <% end %>
+      <% else %>
+          <i class="icon-thumbs-down" style="font-size: 24px;"> <%= speech.downvotes.count %></i>
+      <% end %>
+    </div>
+    <%= link_to "#{speech.comments.count} comments", [speech.conference, speech] %>
+    <%= link_to :show, conference_speech_path(speech.conference, speech), class: "btn btn-success button" %>
+  </td>
+</tr>
