@@ -42,6 +42,39 @@ describe "Conference roles ", :type => :feature do
         expect(page).to have_content(comment)
         expect(Comment.last.comment).to eq(comment)
       end
+
+      it "can upvote to one on speech page", js: true do
+        expect(@user.voted_up_on?(@speech1)).to be false
+        visit(conference_speech_path(@conference, @speech1))
+        find("#speech_#{@speech1.id}").find(".action-upvote").click
+        sleep(3)
+        expect(@user.voted_up_on?(@speech1)).to be true
+      end
+
+      it "can upvote to one on speech list page", js: true do
+        expect(@user.voted_up_on?(@speech1)).to be false
+        visit(conference_speeches_path(@conference))
+        find("#speech_#{@speech1.id}").find(".action-upvote").click
+        sleep(3)
+        expect(@user.voted_up_on?(@speech1)).to be true
+      end
+
+      it "can downvote to one on speech page", js: true do
+        expect(@user.voted_down_on?(@speech1)).to be false
+        visit(conference_speech_path(@conference, @speech1))
+        find("#speech_#{@speech1.id}").find(".action-downvote").click
+        sleep(3)
+        expect(@user.voted_down_on?(@speech1)).to be true
+      end
+
+      it "can downvote to one on speech list page", js: true do
+        expect(@user.voted_down_on?(@speech1)).to be false
+        visit(conference_speeches_path(@conference))
+        find("#speech_#{@speech1.id}").find(".action-downvote").click
+        sleep(3)
+        expect(@user.voted_down_on?(@speech1)).to be true
+      end
+
     end
 
   end

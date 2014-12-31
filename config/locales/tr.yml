@@ -507,11 +507,16 @@ tr:
     comments: Yorumlar
     detail: Konuşmanın Ana Hatları
     new: Yeni Konuşma
+    show_details: Detaylar
     speakers: Konuşmacıları
     speech_title: "%{subject}"
     speech_type: Konuşma Türü
     speech_types: Konuşma Türleri
     state: Durum
+    states:
+      accepted: Kabul Edildi
+      rejected: Reddedildi
+      waiting_review: "İnceleniyor"
     subject: Konu Başlığı
     success: Başvuru Başarıyla Gönderildi!
     write_comment: Yorum Yaz

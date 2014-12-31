@@ -445,11 +445,16 @@ en:
     comments: Comments
     detail: Details
     new: New Speech
+    show_details: Details
     speakers: Speakers
     speech_title: "%{subject}"
     speech_type: Speech Type
     speech_types: Speech Types
     state: State
+    states:
+      accepted: Accepted
+      rejected: Rejected
+      waiting_review: Waiting Review
     subject: Subject
     success: Application Sent Successfully!
     write_comment: Write a comment
