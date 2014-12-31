@@ -33,6 +33,8 @@ Confman::Application.routes.draw do
         get 'downvote'
         get 'accept'
         get 'reject'
+        get 'send_accept_mail'
+        get 'send_reject_mail'
       end
     end
     resource :schedule, :controller => 'schedule' do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141225094819) do
+ActiveRecord::Schema.define(version: 20141231092112) do
 
   create_table "activities", force: true do |t|
     t.integer  "subject_id"
@@ -201,10 +201,11 @@ ActiveRecord::Schema.define(version: 20141225094819) do
   create_table "speeches", force: true do |t|
     t.integer  "conference_id"
     t.integer  "topic_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "state"
     t.integer  "speech_type_id"
+    t.integer  "email_status",   default: 0
   end
 
   create_table "sponsors", force: true do |t|

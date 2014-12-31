@@ -503,6 +503,7 @@ tr:
   speeches:
     abstract: Konu Özeti
     accept: Kabul Et
+    accept_mail_sent: Konuşma kabul edildi epostası gönderildi.
     actions: "İşlem"
     additional_info: Ek Bilgiler
     comments: Yorumlar
@@ -510,7 +511,11 @@ tr:
     is_accepted: Konuşma Kabul Edildi.
     is_rejected: Konuşma Reddedildi.
     new: Yeni Konuşma
+    not_sent: Eposta gönderilmedi.
     reject: Reddet
+    reject_mail_sent: Konuşma reddedildi epostası gönderildi.
+    send_accept_mail: Konuşma kabul edildi epostası gönder
+    send_reject_mail: Konuşma rededildi epostası gönder
     show_details: Detaylar
     speakers: Konuşmacıları
     speech_title: "%{subject}"
