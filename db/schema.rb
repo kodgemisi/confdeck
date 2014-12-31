@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141231092112) do
+ActiveRecord::Schema.define(version: 20141231101958) do
 
   create_table "activities", force: true do |t|
     t.integer  "subject_id"
@@ -130,6 +130,18 @@ ActiveRecord::Schema.define(version: 20141231092112) do
     t.datetime "updated_at",             null: false
     t.integer  "email_template_type_id"
   end
+
+  create_table "identities", force: true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "token"
+    t.string   "secret"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id"
 
   create_table "invitations", force: true do |t|
     t.string   "email"

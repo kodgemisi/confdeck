@@ -1,0 +1,16 @@
+<!-- Social button -->
+<ul class="list-table">
+  <li><%= link_to omniauth_authorize_path(resource_name, "facebook") do %>
+        <button type="button" class="btn btn-block btn-facebook">Login with <i class="ico-facebook2 ml5"></i></button>
+    <% end %>
+  </li>
+  <li><%= link_to omniauth_authorize_path(resource_name, "google_oauth2") do %>
+        <button type="button" class="btn btn-block btn-google">Login with <i class="ico-google-plus2 ml5"></i></button>
+    <% end %>
+  </li>
+  <li><%= link_to omniauth_authorize_path(resource_name, "github") do %>
+        <button type="button" class="btn btn-block btn-github">Login with <i class="ico-github2 ml5"></i></button>
+    <% end %>
+  </li>
+</ul>
+<!-- Social button -->

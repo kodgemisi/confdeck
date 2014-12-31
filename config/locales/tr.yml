@@ -585,6 +585,8 @@ tr:
     login_to_your_account: Giriş Yap
     lost_password: "Şifremi Unuttum"
     password: "Şifre"
+    password_confirmation: "Şifre Doğrulama"
     remember_me: Beni Hatırla
     sign_up_to_get_started: Hemen yeni bir hesap açın
+    signup: Kayıt Ol
   waiting_review: Beklemede
