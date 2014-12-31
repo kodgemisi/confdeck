@@ -18,7 +18,7 @@ class SpeechesController < ApplicationController
 
   before_filter :authorize_user, except: [:new, :create]
 
-  before_filter :set_speech, only: [:show, :edit, :update, :destroy, :comment, :upvote, :downvote, :accept, :reject]
+  before_filter :set_speech, only: [:show, :edit, :update, :destroy, :comment, :upvote, :downvote, :accept, :reject, :send_accept_mail, :send_reject_mail]
 
   after_filter :create_action_activity, only: [:create, :comment, :upvote, :downvote, :accept, :reject]
 
@@ -153,6 +153,22 @@ class SpeechesController < ApplicationController
     @speech.reject
     respond_to do |format|
       format.html { redirect_to conference_speech_path(@conference, @speech), notice: t("speeches.is_rejected") }
+    end
+  end
+
+  def send_accept_mail
+    authorize @conference, :manage?
+    SpeechMailer.accept_notification_email(@speech).deliver
+    respond_to do |format|
+      format.html { redirect_to conference_speech_path(@conference, @speech), notice: t("speeches.accept_mail_sent") }
+    end
+  end
+
+  def send_reject_mail
+    authorize @conference, :manage?
+    SpeechMailer.reject_notification_email(@speech).deliver
+    respond_to do |format|
+      format.html { redirect_to conference_speech_path(@conference, @speech), notice: t("speeches.reject_mail_sent") }
     end
   end
 

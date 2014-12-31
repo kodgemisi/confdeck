@@ -12,6 +12,10 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class Speech < ActiveRecord::Base
+  enum email_status: [:not_sent, :accept_mail_sent, :reject_mail_sent]
+  acts_as_commentable
+  acts_as_votable
+
   after_create :send_notifications
 
   belongs_to :conference
@@ -24,18 +28,17 @@ class Speech < ActiveRecord::Base
   validates_presence_of :conference, :topic
 
   scope :accepted, -> { where(state: :accepted) }
-
   delegate :subject, to: :topic, prefix: true
 
-  acts_as_commentable
-  acts_as_votable
 
   state_machine :state, :initial => :waiting_review do
     event :accept do
       transition :waiting_review => :accepted
+      transition :rejected => :accepted
     end
     event :reject do
       transition :waiting_review => :rejected
+      transition :accepted => :rejected
     end
 
     #after_transition :waiting_review => :accepted, :do => :send_accept_notification
