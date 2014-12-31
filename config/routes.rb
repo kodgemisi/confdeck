@@ -50,6 +50,8 @@ Confman::Application.routes.draw do
       get 'contact_information'
       get 'landing_settings'
       get 'search_users'
+      get 'apply'
+      post 'apply' => "conferences#save_apply"
     end
   end
 

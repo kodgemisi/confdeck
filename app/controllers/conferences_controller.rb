@@ -12,11 +12,11 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class ConferencesController < ApplicationController
-  before_filter :authenticate_user!, except: [:show]
-  before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule, :basic_information, :address, :contact_information, :speech_types, :landing_settings, :search_users, :roles]
+  before_filter :authenticate_user!, except: [:show, :apply, :save_apply]
+  before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule, :basic_information, :address, :contact_information, :speech_types, :landing_settings, :search_users, :roles, :apply, :save_apply]
   before_action :load_data, only: [:new, :edit, :update]
   before_action :parse_dates, only: [:edit, :basic_information]
-  layout 'conference_landing', :only => [:show]
+  layout 'conference_landing', :only => [:show, :apply, :save_apply]
   # GET /conferences
   # GET /conferences.json
   def index
@@ -32,8 +32,6 @@ class ConferencesController < ApplicationController
   # GET /conferences/1.json
   def show
     @one_day = (@conference.days.first == @conference.days.last)
-    @speech = @conference.speeches.new
-    @speech.build_topic
     @days = @conference.days
     @slots = @conference.slots.group_by(&:day)
 
@@ -206,7 +204,29 @@ class ConferencesController < ApplicationController
     end
   end
 
+  def apply
+    @speech = @conference.speeches.new
+    @speech.build_topic
+  end
+
+  #TODO must be reviewed
+  def save_apply
+    @speech = Speech.new(speech_params)
+    @speech.conference = @conference
+    respond_to do |format|
+      if @speech.save
+        format.html { redirect_to apply_conference_path(@conference), notice: t("application_received") }
+      else
+        format.html { render action: "apply" }
+      end
+    end
+  end
+
   private
+
+    def speech_params
+      params.require(:speech).permit(:speech_type_id, topic_attributes: [:subject, :abstract, :detail, :additional_info, speaker_ids: []])
+    end
 
     def parse_dates
       @conference.to_date = @conference.days.last.date.strftime(I18n.t("date.formats.default"))

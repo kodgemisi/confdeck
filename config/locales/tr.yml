@@ -549,6 +549,7 @@ tr:
   titles:
     conferences:
       address: "%{conference} Adres Bilgileri"
+      apply: Yeni Konuşma Başvurusu
       basic_information: "%{conference} Temel Bilgiler"
       contact_information: "%{conference} İletişim Bilgileri"
       edit: "%{conference} Düzenle"
