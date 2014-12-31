@@ -1,20 +1,57 @@
 
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "form-signin form-signup"}) do |f| %>
-    <%= devise_error_messages! %>
+<section id="main" role="main">
+  <!-- START Template Container -->
+  <section class="container">
+    <!-- START row -->
+    <div class="row">
+      <div class="col-lg-4 col-lg-offset-4">
+        <!-- Brand -->
+        <div class="text-center" style="margin-bottom:40px;">
+          <span class="logo-figure inverse"></span>
+          <span class="logo-text inverse"></span>
+          <h5 class="semibold text-muted mt-5"><%= t("user.sign_up_to_get_started") %></h5>
+        </div>
+        <!--/ Brand -->
 
-    <h2 class="form-signin-heading">Sign Up</h2>
-    <%= f.text_field :email, :autofocus => true, :class => "form-control", :placeholder => "Email" %>
-    <%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
-    <%= f.password_field :password_confirmation, :class => "form-control", :placeholder => "Password" %>
+        <%= render "devise/shared/social" %>
 
-    <div><%= f.submit "Sign Up", :class => "btn btn-lg btn-primary btn-block", :style => "margin-top: 10px" %></div>
+        <hr><!-- horizontal line -->
 
-<% end %>
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "panel"}) do |f| %>
+            <%= devise_error_messages! %>
 
-<div class="row">
-  <div class="col-lg-4 col-lg-offset-8">
-    <%= render "devise/shared/links" %>
-  </div>
-</div>
+            <div class="panel-body">
+              <!-- Alert message -->
+              <%= render "layouts/messages" %>
+              <!--/ Alert message -->
+                <div class="form-group">
+                <div class="form-stack has-icon pull-left">
+                  <%= f.text_field :email, :autofocus => true, :class => "form-control input-lg", :placeholder => t("user.email") %>
+                  <i class="ico-user2 form-control-icon"></i>
+                </div>
+                <div class="form-stack has-icon pull-left">
+                    <%= f.password_field :password,:class => "form-control input-lg",  :placeholder => t("user.password") %>
+                    <i class="ico-lock2 form-control-icon"></i>
+                </div>
+                <div class="form-stack has-icon pull-left">
+                    <%= f.password_field :password_confirmation,:class => "form-control input-lg",  :placeholder => t("user.password_confirmation") %>
+                    <i class="ico-lock2 form-control-icon"></i>
+                </div>
+                </div>
+
+                  <div class="form-group nm">
+                    <%= f.submit t("user.signup"), :class => "btn btn-block btn-success" %>
+                  </div>
+            <div>
+
+        <% end %>
+
+      </div>
+    </div>
+      <!--/ END row -->
+  </section>
+  <!--/ END Template Container -->
+</section>
+
 

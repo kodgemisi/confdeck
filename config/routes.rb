@@ -63,7 +63,7 @@ Confman::Application.routes.draw do
 
   get "home/index"
 
-  devise_for :users
+  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
 
   authenticated :user do
     root :to => "home#dashboard", as: :authenticated_root

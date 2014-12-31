@@ -523,6 +523,8 @@ en:
     login_to_your_account: Login to your account
     lost_password: Lost Your Password?
     password: Password
+    password_confirmation: Password Confirmation
     remember_me: Remember me
     sign_up_to_get_started: Sign up to get started
+    signup: Signup
   waiting_review: 
