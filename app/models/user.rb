@@ -56,10 +56,10 @@ class User < ActiveRecord::Base
   end
 
   def is_admin_of?(conference)
-    conference_roles.where(conference: conference).first.try(:confadmin?)
+    conference_roles.where(conference: conference, role: ConferenceRole.roles[:confadmin]).first.present?
   end
 
   def is_user_of?(conference)
-    conference_roles.where(conference: conference).first.try(:confuser?)
+    conference_roles.where(conference: conference, role: ConferenceRole.roles[:confuser]).first.present?
   end
 end

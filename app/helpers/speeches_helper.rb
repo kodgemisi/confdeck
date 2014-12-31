@@ -19,7 +19,7 @@ module SpeechesHelper
     elsif state == "rejected"
       "<span class=\"label label-danger\">#{t("speeches.states.rejected")}</span>"
     elsif state == "waiting_review"
-      "<span class=\"label label-teal\">#{t("speeches.states.waiting_review")}</span>"
+      "<span class=\"label label-warning\">#{t("speeches.states.waiting_review")}</span>"
     end
   end
 end
