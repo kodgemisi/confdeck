@@ -115,9 +115,6 @@
             <div class="col-lg-12 text-center">
               <h2>Speakers</h2>
 
-              <div class="">
-                <a class="btn btn-lg btn-primary" href="<%= new_conference_speech_url(@conference) %>">Speaker Application</a>
-              </div>
               <div class="clearfix"></div>
               <hr>
             </div>
@@ -155,19 +152,15 @@
       <div class="container text-center">
         <div class="row text-center">
           <div class="col-lg-12 text-center">
-
-            <div class="">
-              <a class="btn btn-lg btn-primary" href="#"
-                 data-toggle="modal" data-target="#applicationModal">
-                <i class="ico-pencil5"></i>
-                <%= t("conferences.landing.speaker_application") %>
-              </a>
+                <a class="btn btn-lg btn-primary" href="<%= apply_conference_path(@conference) %>">
+                  <i class="ico-pencil5"></i>
+                  <%= t("conferences.landing.speaker_application") %>
+                </a>
             </div>
             <div class="clearfix"></div>
           </div>
         </div>
       </div>
-    </div>
 <% end %>
 
 <% if module_active?("schedule") %>
