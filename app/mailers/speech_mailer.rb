@@ -27,7 +27,7 @@ class SpeechMailer < ActionMailer::Base
   def speaker_notification_email(speech)
     liquid_template = prepare(speech.conference, __method__, {"speech" => speech, "topic" => speech.topic, "conference" => speech.conference})
     speech.topic.speakers.each do |speaker|
-      mail(reply_to: speech.conference.email, to: speaker.email, subject: liquid_template.subject, body: liquid_template.body) if speaker.email?
+      mail(reply_to: speech.conference.email, to: speaker.user.email, subject: liquid_template.subject, body: liquid_template.body) if speaker.email?
     end
   end
 
@@ -35,7 +35,7 @@ class SpeechMailer < ActionMailer::Base
     speech.accept_mail_sent!
     liquid_template = prepare(speech.conference, __method__, {"speech" => speech, "topic" => speech.topic, "conference" => speech.conference})
     speech.topic.speakers.each do |speaker|
-      mail(reply_to: speech.conference.email, to: speaker.email, subject: liquid_template.subject, body: liquid_template.body) if speaker.email?
+      mail(reply_to: speech.conference.email, to: speaker.user.email, subject: liquid_template.subject, body: liquid_template.body) if speaker.email?
     end
   end
 
@@ -43,7 +43,7 @@ class SpeechMailer < ActionMailer::Base
     speech.reject_mail_sent!
     liquid_template = prepare(speech.conference, __method__, {"speech" => speech, "topic" => speech.topic, "conference" => speech.conference})
     speech.topic.speakers.each do |speaker|
-      mail(reply_to: speech.conference.email, to: speaker.email, subject: liquid_template.subject, body: liquid_template.body) if speaker.email?
+      mail(reply_to: speech.conference.email, to: speaker.user.email, subject: liquid_template.subject, body: liquid_template.body) if speaker.email?
     end
   end
 end

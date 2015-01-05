@@ -44,7 +44,7 @@
               <dt><%= t("topics.speakers") %></dt>
               <dd>
                 <% speech.topic.speakers.each do |speaker| %>
-                    <%= link_to speaker.name, speaker_path(speaker) %> - <%= speaker.email %> - <%= speaker.phone %>
+                    <%= link_to speaker.name, speaker_path(speaker) %> - <%= speaker.user.email %> - <%= speaker.phone %>
                 <% end %>
               </dd>
         </dl>

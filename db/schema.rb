@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141231101958) do
+ActiveRecord::Schema.define(version: 20150105144005) do
 
   create_table "activities", force: true do |t|
     t.integer  "subject_id"
@@ -187,7 +187,6 @@ ActiveRecord::Schema.define(version: 20141231101958) do
   end
 
   create_table "speakers", force: true do |t|
-    t.string   "email"
     t.string   "name"
     t.string   "phone"
     t.string   "twitter"
@@ -196,7 +195,10 @@ ActiveRecord::Schema.define(version: 20141231101958) do
     t.datetime "updated_at", null: false
     t.text     "bio"
     t.string   "github"
+    t.integer  "user_id"
   end
+
+  add_index "speakers", ["user_id"], name: "index_speakers_on_user_id"
 
   create_table "speakers_topics", id: false, force: true do |t|
     t.integer "speaker_id"

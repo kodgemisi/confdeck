@@ -13,17 +13,16 @@
 
 class Speaker < ActiveRecord::Base
   has_and_belongs_to_many :topics
-
-  validates_presence_of :email, :name, :phone
-  validates_uniqueness_of :email
+  belongs_to :user
+  validates_presence_of :name, :phone
 
   def avatar_url(size=150)
-    gravatar_id = Digest::MD5::hexdigest(self.email).downcase
+    gravatar_id = Digest::MD5::hexdigest(self.user.email).downcase
     "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
   end
 
   def info
-    "#{self.name} - #{self.email}"
+    "#{self.name}"
   end
 
   def to_liquid
