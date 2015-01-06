@@ -1,6 +1,5 @@
-<h1>Editing speech</h1>
+<%
+   meta title: t("titles.speeches.edit", subject: @speech.topic.subject)
+%>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', [@conference, @speech] %> |
-<%= link_to 'Back', conference_speeches_path(@conference) %>
+<%= render 'form', add_new: false %>

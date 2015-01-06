@@ -96,3 +96,28 @@ fieldset[disabled] .btn-github.active,
   color: #ffffff;
   background-color: #454545;
 }
+
+.user-profile .jumbotron{
+  height: 90px;
+}
+.user-profile .ellipsis{
+  line-height: 25px;
+}
+.user-profile .header{
+  background: rgba(0, 0, 0, 0.6);
+  color: #FFFFFF;
+  padding: 10px;
+}
+.user-profile .nav-tabs{
+  padding-left: 3px;
+  padding-top: 3px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.user-profile > .panel {
+  border-radius: 0;
+}
+.user-profile .panel-body .panel-footer {
+  margin: 0;
+}

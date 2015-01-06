@@ -56,11 +56,10 @@ group :test, :development do
 
 end
 
-
 group :test do
   gem 'shoulda-matchers'
   gem 'fabrication'
-  gem "codeclimate-test-reporter", require: nil
+  gem "codeclimate-test-reporter", require: false
   gem "capybara"
   gem "capybara-webkit"
   gem 'selenium-webdriver'
