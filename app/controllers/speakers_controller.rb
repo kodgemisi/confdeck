@@ -53,7 +53,7 @@ class SpeakersController < ApplicationController
   # POST /speakers.json
   def create
     #check if speaker exists in db
-    @speaker = Speakers::CreateSpeakerService.new(speaker_params).call
+    @speaker = Speakers::CreateSpeakerService.call(speaker_params)
 
 
     respond_to do |format|

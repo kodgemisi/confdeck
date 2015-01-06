@@ -2,14 +2,13 @@ require 'spec_helper'
 
 describe Speakers::CreateSpeakerService  do
 
-
   it "returns speaker if it exists" do
     @speaker = Fabricate(:speaker)
     speaker_params = {
         email: @speaker.user.email
     }
 
-    @response = Speakers::CreateSpeakerService.new(speaker_params).call()
+    @response = Speakers::CreateSpeakerService.call(speaker_params)
     expect(@response.id).to eq @speaker.id
   end
 
@@ -19,7 +18,7 @@ describe Speakers::CreateSpeakerService  do
         email: @user.email
     }
 
-    @response = Speakers::CreateSpeakerService.new(speaker_params).call()
+    @response = Speakers::CreateSpeakerService.call(speaker_params)
     expect(@response.user.id).to eq @user.id
   end
 
@@ -32,7 +31,7 @@ describe Speakers::CreateSpeakerService  do
         phone: @speaker.phone
     }
 
-    @response = Speakers::CreateSpeakerService.new(speaker_params).call()
+    @response = Speakers::CreateSpeakerService.call(speaker_params)
     expect(User.find_by(email: @speaker.user.email)).not_to be_nil
     expect( ActionMailer::Base.deliveries.count ).to eq(mail+1)
   end

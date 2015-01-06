@@ -1,11 +1,9 @@
+
 module Speakers
   class CreateSpeakerService < BaseService
 
-    def initialize(params)
+    def self.call(params)
       @params = params
-    end
-
-    def call
       @user = User.where(email: @params[:email]).first
 
       if @user
