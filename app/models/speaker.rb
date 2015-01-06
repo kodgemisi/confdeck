@@ -13,8 +13,11 @@
 
 class Speaker < ActiveRecord::Base
   has_and_belongs_to_many :topics
+  has_many :speeches, through: :topics
   belongs_to :user
   validates_presence_of :name, :phone
+
+  attr_accessor :email
 
   def avatar_url(size=150)
     gravatar_id = Digest::MD5::hexdigest(self.user.email).downcase
@@ -22,6 +25,10 @@ class Speaker < ActiveRecord::Base
   end
 
   def info
+    "#{self.name}"
+  end
+
+  def display
     "#{self.name}"
   end
 

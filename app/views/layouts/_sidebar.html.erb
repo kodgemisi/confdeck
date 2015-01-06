@@ -10,6 +10,12 @@
                 <span class="text"><%= t("general.homepage") %></span>
               </a>
             </li>
+          <li class=" open">
+              <a href="<%= user_path(current_user.id) %>" data-parent=".topmenu">
+                <span class="figure"><i class="ico-megaphone"></i></span>
+                <span class="text"><%= t("conferences.speeches") %></span>
+              </a>
+            </li>
             <li >
                 <a href="javascript:void(0);" data-toggle="submenu" data-target="#sidebar-conferences-menu" data-parent=".topmenu">
                   <span class="figure"><i class="ico-flag5"></i></span>

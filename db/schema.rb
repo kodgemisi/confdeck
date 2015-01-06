@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150105144005) do
+ActiveRecord::Schema.define(version: 20150105151003) do
 
   create_table "activities", force: true do |t|
     t.integer  "subject_id"
@@ -265,6 +265,7 @@ ActiveRecord::Schema.define(version: 20150105144005) do
     t.string   "invited_by_type"
     t.string   "settings"
     t.integer  "role"
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

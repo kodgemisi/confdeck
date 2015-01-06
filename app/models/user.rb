@@ -12,6 +12,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class User < ActiveRecord::Base
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -23,6 +24,8 @@ class User < ActiveRecord::Base
   has_many :conference_roles
   has_many :conferences, through: :conference_roles
   has_one :conference_wizard #, -> { order("created_at DESC") }
+  has_one :speaker
+  has_many :speeches, through: :speaker
   acts_as_voter
 
   serialize :settings
@@ -39,7 +42,11 @@ class User < ActiveRecord::Base
   end
 
   def display_name
-    email
+    if speaker
+      speaker.display
+    else
+      email
+    end
   end
 
   def set_default_settings
