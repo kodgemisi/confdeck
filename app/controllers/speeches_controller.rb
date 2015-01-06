@@ -12,14 +12,9 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class SpeechesController < ApplicationController
-  before_filter :authenticate_user!, except: [:new, :create]
-
+  before_filter :authenticate_user!
   before_filter :set_conference
-
-  before_filter :authorize_user, except: [:new, :create]
-
   before_filter :set_speech, only: [:show, :edit, :update, :destroy, :comment, :upvote, :downvote, :accept, :reject, :send_accept_mail, :send_reject_mail]
-
   after_filter :create_action_activity, only: [:create, :comment, :upvote, :downvote, :accept, :reject]
 
   # GET /speeches
@@ -71,13 +66,9 @@ class SpeechesController < ApplicationController
           format.html { redirect_to new_conference_speech_path(@conference), notice: 'Speech was successfully created.' }
         else
           format.html
-          format.json { render json: @speech, status: :created, location: @speech }
-          format.js
         end
       else
-        format.html { render layout: "application_no_nav",action: "new" }
-        format.json { render json: @speech.errors, status: :unprocessable_entity }
-        format.js
+        format.html { render action: "new" }
       end
     end
   end

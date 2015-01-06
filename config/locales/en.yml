@@ -487,6 +487,7 @@ en:
   titles:
     conferences:
       address: "%{conference} Address Information"
+      apply: New Speech Application
       basic_information: "%{conference} Basic Information"
       contact_information: "%{conference} Contact Information"
       edit: 'Edit %{conference} '
@@ -509,7 +510,7 @@ en:
       index: Sponsors of %{conference}
       new: New Sponsor
   topics:
-    abstract: 
+    abstract: Abstract
     additional_info: Additional Info
     detail: Detail
     speakers: Speakers
