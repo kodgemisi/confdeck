@@ -31,6 +31,8 @@ class SpeechesController < ApplicationController
   # GET /speeches/1
   # GET /speeches/1.json
   def show
+    authorize @speech, :see?
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @speech }
@@ -185,12 +187,6 @@ class SpeechesController < ApplicationController
 
   def set_speech
     @speech = @conference.speeches.find(params[:id])
-  end
-
-  def authorize_user
-    unless @conference.users.include? current_user
-      redirect_to root_url, notice: "You shall not pass"
-    end
   end
 
   def speech_params

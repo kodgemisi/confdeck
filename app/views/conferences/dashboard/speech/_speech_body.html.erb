@@ -1,0 +1,25 @@
+<dl class="dl-horizontal">
+  <dt><%= t("topics.subject") %></dt>
+  <dd><%= speech.topic.subject %></dd>
+
+  <% if speech.topic.detail %>
+      <dt><%= t("topics.abstract") %></dt>
+      <dd><%= speech.topic.abstract %></dd>
+  <% end %>
+
+  <% if speech.topic.detail %>
+      <dt><%= t("topics.details") %></dt>
+      <dd><%= speech.topic.detail %></dd>
+  <% end %>
+
+  <% if speech.topic.additional_info %>
+      <dt><%= t("topics.additional_info") %></dt>
+      <dd><%= speech.topic.additional_info %></dd>
+  <% end %>
+  <dt><%= t("topics.speakers") %></dt>
+  <dd>
+    <% speech.topic.speakers.each do |speaker| %>
+        <%= link_to speaker.name, speaker_path(speaker) %> - <%= speaker.user.email %> - <%= speaker.phone %>
+    <% end %>
+  </dd>
+</dl>
