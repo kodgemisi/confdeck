@@ -407,6 +407,9 @@ tr:
         update: Update Email template
   home:
     active_conferences: 
+  mailers:
+    speaker_mailer:
+      new_speaker_subject: Confdeck'e Hoşgeldiniz
   minutes: 
   new_speaker: Yeni Konuşmacı Ekle
   organizations:
@@ -564,6 +567,7 @@ tr:
     settings:
       index: Ayarlar
     speeches:
+      edit: "%{subject} Düzenle"
       index: "%{conference} Konuşmaları"
       new: Yeni Konuşma
       show: "%{subject}"
