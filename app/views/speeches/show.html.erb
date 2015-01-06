@@ -2,6 +2,13 @@
    meta title: t("titles.speeches.show", subject: @speech.topic.subject)
 %>
 
+<% if policy(@speech).manage? %>
+    <% content_for :header_actions do %>
+        <%= bs_button_to t("speeches.edit"), edit_conference_speech_path(@conference, @speech), icon: "pencil", style: "primary"%>
+    <% end %>
+<% end %>
+
+
 <div class="row">
   <div class="col-sm-12 col-md-12 col-lg-12">
     <div class="panel speech" id="<%= dom_id(@speech) %>">
