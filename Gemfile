@@ -59,7 +59,7 @@ end
 group :test do
   gem 'shoulda-matchers'
   gem 'fabrication'
-  gem "codeclimate-test-reporter", require: false
+  gem "codeclimate-test-reporter"
   gem "capybara"
   gem "capybara-webkit"
   gem 'selenium-webdriver'
