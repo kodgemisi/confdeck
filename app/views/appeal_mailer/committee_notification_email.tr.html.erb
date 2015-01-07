@@ -4,7 +4,7 @@
 <b><%=t :speakers %></b> <br />
     <ul>
         <% @speech.topic.speakers.each do |speaker| %>
-          <li><%= speaker.name %> (<%= speaker.email %> - <%= speaker.phone %>) </li>
+          <li><%= speaker.name %> (<%= speaker.user.email %> - <%= speaker.phone %>) </li>
         <% end %>
     </ul>
     <b><%=t 'speeches.subject' %>:</b> <%=@speech.topic.subject %> <br />

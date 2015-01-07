@@ -67,7 +67,7 @@
           <% end %>
           <div class="panel-footer">
             <%= f.submit :class => "btn btn-primary pull-right" %>
-            <%= submit_tag t("general.add_another"), :class => "btn btn-primary pull-right mr10", name: :add_another %>
+            <%= submit_tag t("general.add_another"), :class => "btn btn-primary pull-right mr10", name: :add_another if (defined? add_new) && add_new %>
           </div>
         </div>
 

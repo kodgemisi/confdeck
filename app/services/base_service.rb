@@ -1,4 +1,7 @@
+require 'singleton'
+
 class BaseService
+  include Singleton
 
   private
 

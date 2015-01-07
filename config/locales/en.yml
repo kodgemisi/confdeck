@@ -345,6 +345,9 @@ en:
         update: 
   home:
     active_conferences: Active Conferences
+  mailers:
+    speaker_mailer:
+      new_speaker_subject: Welcome to Confdeck
   minutes: 
   new_speaker: Add new speaker
   organizations:
@@ -502,6 +505,7 @@ en:
     settings:
       index: Settings
     speeches:
+      edit: Edit %{subject}
       index: Speeches of %{conference}
       new: New Speech
       show: "%{subject}"

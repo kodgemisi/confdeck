@@ -1,1 +1,6 @@
+<% if @body.present? %>
 <%= raw @body %>
+<% else %>
+<%= yield %>
+<% end %>
+
