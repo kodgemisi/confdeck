@@ -4,9 +4,9 @@
        #json.end "Date(" + (slot.end_time.to_i * 1000).to_s + ")"
        json.start (slot.start_time.to_i * 1000).to_s
        json.end (slot.end_time.to_i * 1000).to_s
-       json.title slot.appeal.topic.subject
+       json.title slot.speech.topic.subject
        json.room_id slot.room_id
-       json.type_id slot.appeal_type.id
-       json.appeal_id slot.appeal.id
+       json.type_id slot.speech_type.id
+       json.appeal_id slot.speech.id
     end
 
