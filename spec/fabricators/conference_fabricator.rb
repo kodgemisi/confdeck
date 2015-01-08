@@ -9,6 +9,7 @@ Fabricator(:conference) do
   to_date { date_to_s Date.tomorrow }
   organizations { [Fabricate(:organization)] }
   address { Fabricate(:address) }
+  conference_admins { [Fabricate(:user)]}
 end
 
 
