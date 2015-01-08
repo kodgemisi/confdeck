@@ -1,5 +1,5 @@
 <!-- Wizard Container 3 -->
-<div class="wizard-title"><%= t "conferences.details" %></div>
+<div class="wizard-title"><%= t "conferences.wizard.step3.email_templates" %></div>
 <div class="wizard-container">
     <div class="form-group">
         <div class="col-md-12">
@@ -8,11 +8,7 @@
         </div>
     </div>
 
-    <%= render "conferences/form/step_3/speech_types", f: f %>
     <%= render "conferences/form/step_3/email_templates_panel", f: f %>
-
-
-    <%= render "conferences/form/step_3/sponsors_panel", f: f %>
 </div>
 
 <!--/ Wizard Container 3 -->

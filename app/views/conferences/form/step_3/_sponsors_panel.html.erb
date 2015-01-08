@@ -1,46 +1,18 @@
-<div class="row">
-  <div class="col-md-12 pt10">
-    <div class="panel panel-primary">
-      <!-- panel heading/header -->
-      <div class="panel-heading">
-        <h3 class="panel-title"><i class="ico-crown mr5"></i><%= t("conferences.wizard.sponsor.sponsors") %></h3>
-        <!-- panel toolbar -->
-        <div class="panel-toolbar text-right">
-          <!-- option -->
-          <div class="option">
-            <button class="btn down" data-toggle="panelcollapse"><i class="arrow"></i></button>
-          </div>
-          <!--/ option -->
-        </div>
-        <!--/ panel toolbar -->
-      </div>
-      <!--/ panel heading/header -->
+<div class="form-group nb">
+    <label for="from" class="col-lg-3 control-label"><%= t("conferences.sponsors") %></label>
 
-      <!-- panel body with collapse capable -->
-      <div class="panel-collapse pull in" style="">
-        <div class="panel-body">
-          <div class="form-group nb">
-            <label for="from" class="col-lg-3 control-label"><%= t("conferences.sponsors") %></label>
-
-            <div class="col-lg-4 sponsors">
-              <%= f.simple_fields_for :sponsors do |at| %>
-                  <%= render 'conferences/sponsor_fields', :f => at %>
-              <% end %>
-            </div>
-            <div class="col-lg-1">
-              <%= link_to_add_association t("conferences.wizard.sponsors.new"), f, :sponsors,
-                                          class: "btn btn-primary",
-                                          data: {
-                                                  "association-insertion-method" => "append",
-                                                  #"association-insertion-traversal" => "closest",
-                                                  "association-insertion-node" => ".sponsors"
-                                          } %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--/ panel body with collapse capabale -->
-
+    <div class="col-lg-4 sponsors">
+      <%= f.simple_fields_for :sponsors do |at| %>
+          <%= render 'conferences/sponsor_fields', :f => at %>
+      <% end %>
     </div>
-  </div>
+    <div class="col-lg-1">
+      <%= link_to_add_association t("conferences.wizard.sponsors.new"), f, :sponsors,
+                                  class: "btn btn-primary",
+                                  data: {
+                                          "association-insertion-method" => "append",
+                                          #"association-insertion-traversal" => "closest",
+                                          "association-insertion-node" => ".sponsors"
+                                  } %>
+    </div>
 </div>
