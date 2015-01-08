@@ -69,7 +69,6 @@ RSpec.describe ConferencesController do
       end
 
       it "redirects to deck of new conference" do
-        pending
         post :create, { conference: valid_attributes }
         expect(response).to redirect_to manage_conference_path(Conference.last)
       end
