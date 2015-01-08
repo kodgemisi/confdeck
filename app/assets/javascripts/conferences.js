@@ -8,8 +8,6 @@
 
 $(document).ready(function(){
 
-    var wizardSyncInterval = 10000; //10 seconds
-
     var syncWizardData = function(){
         $("#conference_wizard_data").val($("#wizard").serialize());
         sendForm($("#conference_wizard_sync"))
@@ -70,7 +68,11 @@ $(document).ready(function(){
             }
         });
 
-        setInterval(syncWizardData, wizardSyncInterval);
+
+        $("#wizard input").on("focusout", function(){
+            syncWizardData();
+        });
+
     }
 
     $("#from").datepicker({
