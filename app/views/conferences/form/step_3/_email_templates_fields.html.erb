@@ -1,9 +1,14 @@
 <% i = 0 %>
 <% @template_types.each do |tt| %>
-    <div class="panel panel-teal">
+    <div class="panel panel-teal email-template">
       <!-- panel heading/header -->
       <div class="panel-heading">
         <h3 class="panel-title"><%= tt.title %></h3>
+        <div class="panel-toolbar text-right">
+          <div class="btn-group">
+            <button type="button" class="btn btn-sm btn-default reset-template"><%= t("conferences.wizard.step3.reset_email") %></button>
+          </div>
+        </div>
       </div>
       <!--/ panel heading/header -->
       <div class="panel-collapse pull out" style="">
@@ -30,6 +35,10 @@
         </div>
       </div>
       <!--/ panel body with collapse capabale -->
+
+      <div class="original-template" style="display:none">
+        <%= (template_saved?(@template_hash, tt)) ? @template_hash[tt.type_name].body.html_safe : tt.default_body.html_safe %>
+      </div>
     </div>
     <% i = i + 1 %>
 <% end %>
