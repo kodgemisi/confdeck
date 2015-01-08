@@ -84,17 +84,13 @@ class ConferencesController < ApplicationController
   def create
     authorize Conference
 
-    @conference = Conference.new(conference_params)
+    @conference = Conferences::CreateConferenceService.instance.call(conference_params, current_user)
 
-    respond_to do |format|
-      if @conference.save
-        current_user.conference_wizard.destroy if current_user.conference_wizard
-        format.html { redirect_to @conference, notice: 'Conference was successfully created.' }
-        format.json { render json: @conference, status: :created, location: @conference }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @conference.errors, status: :unprocessable_entity }
-      end
+    if @conference.errors.empty?
+      redirect_to @conference, notice: 'Conference was successfully created.'
+    else
+      load_data
+      render action: "new"
     end
   end
 
