@@ -4,7 +4,7 @@ module Conferences
     def call(params, current_user)
       @conference = Conference.new(params)
 
-      Conference.transaction do
+      ActiveRecord::Base.transaction do
         @result = @conference.save
         if @result
           @conference.conference_admins << current_user
