@@ -61,7 +61,7 @@ function sendForm(item){
 
 var initializeEditors = function(){
     $(".summernote-editor").summernote({ //must be here, otherwise buttons are not working
-        height: 200,
+        height: 400,
         toolbar: [
             ["style", ["style"]],
             ["style", ["bold", "italic", "underline", "clear"]],

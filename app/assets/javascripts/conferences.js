@@ -36,7 +36,7 @@ $(document).ready(function(){
                     window.map.setCenter(currCenter);
                 }
 
-                if (currentIndex == 2) { //details tab
+                if (currentIndex == 3) { //details tab
                     initializeEditors()
                 }
             },
