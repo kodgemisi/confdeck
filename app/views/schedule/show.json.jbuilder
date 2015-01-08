@@ -7,6 +7,6 @@
        json.title slot.speech.topic.subject
        json.room_id slot.room_id
        json.type_id slot.speech_type.id
-       json.appeal_id slot.speech.id
+       json.speech_id slot.speech.id
     end
 

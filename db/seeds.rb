@@ -4,19 +4,19 @@
 
 EmailTemplateType.create({
                              type_name: "accept_notification_email",
-                             title: "Appeal Accept Notification Email",
+                             title: "Speech Accept Notification Email",
                              default_subject: "[{{conference.name}}] {{ topic.subject }} is accepted",
-                             default_body: "Your application is accepted for {{ appeal.conference.name }} <br /><br/>
+                             default_body: "Your application is accepted for {{ speech.conference.name }} <br /><br/>
                 <b>Speakers:</b> <br/>
                 <ul>
-                 {% for speaker in appeal.speakers %}
+                 {% for speaker in speech.speakers %}
 
                       <li> {{ speaker.name }}</li>
                  {% endfor %}
                 </ul>
-                <b>Topic:</b>  {{ appeal.topic.subject }} <br/>
-                <b>Details: </b>{{ appeal.topic.detail }} <br/>
-                <b>Additional Info:</b> {{ appeal.topic.additional_info }} <br/> <br/>
+                <b>Topic:</b>  {{ speech.topic.subject }} <br/>
+                <b>Details: </b>{{ speech.topic.detail }} <br/>
+                <b>Additional Info:</b> {{ speech.topic.additional_info }} <br/> <br/>
 
                 <br/><br/>
 
@@ -25,19 +25,19 @@ EmailTemplateType.create({
 
 EmailTemplateType.create({
                              type_name: "reject_notification_email",
-                             title: "Appeal Reject Notification Email",
+                             title: "Speech Reject Notification Email",
                              default_subject: "[{{conference.name}}] {{ topic.subject }} is rejected",
-                             default_body: "Your application is rejected for {{ appeal.conference.name }} <br /><br/>
+                             default_body: "Your application is rejected for {{ speech.conference.name }} <br /><br/>
             <b>Speakers:</b> <br/>
             <ul>
-             {% for speaker in appeal.speakers %}
+             {% for speaker in speech.speakers %}
 
                   <li> {{ speaker.name }}</li>
              {% endfor %}
             </ul>
-            <b>Topic:</b>  {{ appeal.topic.subject }} <br/>
-            <b>Details: </b>{{ appeal.topic.detail }} <br/>
-            <b>Additional Info:</b> {{ appeal.topic.additional_info }} <br/> <br/>
+            <b>Topic:</b>  {{ speech.topic.subject }} <br/>
+            <b>Details: </b>{{ speech.topic.detail }} <br/>
+            <b>Additional Info:</b> {{ speech.topic.additional_info }} <br/> <br/>
 
             <br/><br/>
 
@@ -48,17 +48,17 @@ EmailTemplateType.create({
                              type_name: "speaker_notification_email",
                              title: "Speaker Notification Email",
                              default_subject: "[{{conference.name}}] {{ topic.subject }} is received",
-                             default_body: "Your application is received for {{ appeal.conference.name }} <br /><br/>
+                             default_body: "Your application is received for {{ speech.conference.name }} <br /><br/>
             <b>Speakers:</b> <br/>
             <ul>
-             {% for speaker in appeal.speakers %}
+             {% for speaker in speech.speakers %}
 
                   <li> {{ speaker.name }}</li>
              {% endfor %}
             </ul>
-            <b>Topic:</b>  {{ appeal.topic.subject }} <br/>
-            <b>Details: </b>{{ appeal.topic.detail }} <br/>
-            <b>Additional Info:</b> {{ appeal.topic.additional_info }} <br/> <br/>
+            <b>Topic:</b>  {{ speech.topic.subject }} <br/>
+            <b>Details: </b>{{ speech.topic.detail }} <br/>
+            <b>Additional Info:</b> {{ speech.topic.additional_info }} <br/> <br/>
 
             <br/><br/>
 
@@ -69,17 +69,17 @@ EmailTemplateType.create({
                              type_name: "committee_notification_email",
                              title: "New Application Notification Email To Committee",
                              default_subject: "[{{conference.name}}] New application is received",
-                             default_body: "New application is received for {{ appeal.conference.name }} <br /><br/>
+                             default_body: "New application is received for {{ speech.conference.name }} <br /><br/>
             <b>Speakers:</b> <br/>
             <ul>
-             {% for speaker in appeal.speakers %}
+             {% for speaker in speech.speakers %}
 
                   <li> {{ speaker.name }}</li>
              {% endfor %}
             </ul>
-            <b>Topic:</b>  {{ appeal.topic.subject }} <br/>
-            <b>Details: </b>{{ appeal.topic.detail }} <br/>
-            <b>Additional Info:</b> {{ appeal.topic.additional_info }} <br/> <br/>
+            <b>Topic:</b>  {{ speech.topic.subject }} <br/>
+            <b>Details: </b>{{ speech.topic.detail }} <br/>
+            <b>Additional Info:</b> {{ speech.topic.additional_info }} <br/> <br/>
 
             <br/><br/>
 
@@ -168,10 +168,10 @@ EmailTemplateType.create({
 #
 # topic.save
 #
-# appeal = Appeal.new(
+# speech = Speech.new(
 #   :topic_id => topic.id,
 #   :conference_id => c.id,
 #   :state => "accepted"
 # )
 #
-# appeal.save
+# speech.save
