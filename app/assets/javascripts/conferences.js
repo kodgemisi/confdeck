@@ -146,4 +146,9 @@ $(document).ready(function(){
         }
     });
 
+
+    $(".reset-template").on("click", function(){
+        content = $(this).closest(".email-template").find(".original-template").html()
+        $(this).closest(".email-template").find(".summernote-editor").code(content)
+    })
 });
