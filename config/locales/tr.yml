@@ -118,6 +118,9 @@ tr:
   are_you_sure: 
   body: Posta
   close: Kapat
+  conference:
+    wizard:
+      map_search_box: Arama
   conferences:
     address: Adres
     basic_information: Temel Bilgiler
@@ -136,6 +139,7 @@ tr:
     name: Başlık
     new: Yeni Konferans
     new_speaker: Yeni Konuşmacı Ekle
+    no_activity: Gösterilecek Hareketlilik Yok
     num_of_speeches: Başvurular
     num_of_sponsors: Sponsorlar
     organization: Organizasyon

@@ -111,13 +111,16 @@ en:
       speech_upvote: "%{user} upvoted %{speech}"
   additional_info: 
   address:
-    city: 
-    info: 
-    location: 
+    city: City
+    info: Info
+    location: Locaiton
   application_received: 
   are_you_sure: 
   body: 
   close: 
+  conference:
+    wizard:
+      map_search_box: Search
   conferences:
     address: Address
     basic_information: Basic Information
@@ -137,6 +140,7 @@ en:
     new: |
       New Conference
     new_speaker: Add New Speaker
+    no_activity: No Activity Yet
     num_of_speeches: Applications
     num_of_sponsors: Sponsors
     organization: Organization
