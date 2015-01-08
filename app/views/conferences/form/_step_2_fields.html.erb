@@ -17,8 +17,8 @@
       <div class="form-group">
         <%= address_form.label t("address.location"), :class => "col-lg-3 control-label" %>
         <div class="col-lg-9 address-map">
-          <div id="panel">
-            <input id="target" type="text" placeholder="<%= t("conference.wizard.map_search_box") %>" class="disable-enter">
+          <div id="map-search-area">
+            <input id="target" class="form-control" type="text" placeholder="<%= t("conference.wizard.map_search_box") %>" class="disable-enter">
           </div>
           <div id="map-canvas"></div>
         </div>
