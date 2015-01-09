@@ -88,8 +88,8 @@ class ConferencesController < ApplicationController
 
     @conference = Conferences::CreateConferenceService.instance.call(conference_params, current_user)
 
-    if @conference.errors.empty?
-      redirect_to @conference, notice: 'Conference was successfully created.'
+    if @conference.persisted? && @conference.errors.empty?
+      redirect_to manage_conference_path(@conference), notice: 'Conference was successfully created.'
     else
       load_data
       render action: "new"

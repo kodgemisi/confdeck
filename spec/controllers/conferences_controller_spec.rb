@@ -69,10 +69,17 @@ RSpec.describe ConferencesController do
       end
 
       it "redirects to deck of new conference" do
-        pending
         post :create, { conference: valid_attributes }
         expect(response).to redirect_to manage_conference_path(Conference.last)
       end
+
+      it "deletes saved wizard" do
+        @user.create_conference_wizard
+        post :create, { conference: valid_attributes }
+        @user.clear_association_cache
+        expect(@user.conference_wizard).to be_nil
+      end
+
     end
 
 
