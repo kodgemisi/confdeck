@@ -137,6 +137,7 @@ en:
     new: |
       New Conference
     new_speaker: Add New Speaker
+    no_activity: No Activity Yet
     num_of_speeches: Applications
     num_of_sponsors: Sponsors
     organization: Organization
