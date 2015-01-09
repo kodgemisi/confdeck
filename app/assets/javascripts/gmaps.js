@@ -63,22 +63,14 @@ function initialize() {
             }
 
             // For each place, get the icon, place name, and location.
-            markers = [];
             var bounds = new google.maps.LatLngBounds();
-            for (var i = 0, place; place = places[i]; i++) {
-                var image = {
-                    url: place.icon,
-                    size: new google.maps.Size(71, 71),
-                    origin: new google.maps.Point(0, 0),
-                    anchor: new google.maps.Point(17, 34),
-                    scaledSize: new google.maps.Size(25, 25)
-                };
 
-
-                bounds.extend(place.geometry.location);
-            }
+            place = places[0];
+            bounds.extend(place.geometry.location);
 
             map.fitBounds(bounds);
+            map.setZoom(10)
+
         });
         // [END region_getplaces]
 

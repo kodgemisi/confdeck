@@ -118,6 +118,9 @@ tr:
   are_you_sure: 
   body: Posta
   close: Kapat
+  conference:
+    wizard:
+      map_search_box: Arama
   conferences:
     address: Adres
     basic_information: Temel Bilgiler
