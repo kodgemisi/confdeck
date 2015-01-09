@@ -12,6 +12,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class ConferencesController < ApplicationController
+  include Activitable
   before_filter :authenticate_user!, except: [:show, :apply, :save_apply]
   before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule, :basic_information, :address, :contact_information, :speech_types, :landing_settings, :search_users, :roles, :apply, :save_apply]
   before_action :load_data, only: [:new, :edit, :update]
@@ -209,8 +210,12 @@ class ConferencesController < ApplicationController
 
   #TODO must be reviewed
   def save_apply
-    @speech = Speech.new(speech_params)
-    @speech.conference = @conference
+    Speech.transaction do
+      @speech = Speech.new(speech_params)
+      @speech.conference = @conference
+      create_activity!(current_user, @conference, @speech, "speech_apply")
+    end
+
     respond_to do |format|
       if @speech.save
         format.html { redirect_to apply_conference_path(@conference), notice: t("application_received") }

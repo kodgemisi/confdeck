@@ -17,8 +17,11 @@ RSpec.describe ConferencesController do
     }
   end
 
-  before :each do
+  before :all do
     @user = Fabricate(:user)
+  end
+
+  before :each do
     sign_in @user
   end
 
