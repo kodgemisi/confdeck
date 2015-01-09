@@ -8,6 +8,10 @@ class ConferencePolicy < ApplicationPolicy
   end
 
   def create?
-    @user.is? "user"
+    @user.present?
+  end
+
+  def new?
+    @user.present?
   end
 end
