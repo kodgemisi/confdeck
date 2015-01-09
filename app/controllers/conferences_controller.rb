@@ -59,10 +59,12 @@ class ConferencesController < ApplicationController
       @conference = Conference.new(conf_params["conference"])
       @conference.build_address if @conference.address.nil?
       @conference.speech_types.build if @conference.speech_types.nil?
+      @conference.sponsors.build if @conference.sponsors.nil?
     else
       @conference = Conference.new
       @conference.build_address
       @conference.speech_types.build
+      @conference.sponsors.build
       @wizard = current_user.build_conference_wizard
     end
 
@@ -84,17 +86,13 @@ class ConferencesController < ApplicationController
   def create
     authorize Conference
 
-    @conference = Conference.new(conference_params)
+    @conference = Conferences::CreateConferenceService.instance.call(conference_params, current_user)
 
-    respond_to do |format|
-      if @conference.save
-        current_user.conference_wizard.destroy if current_user.conference_wizard
-        format.html { redirect_to @conference, notice: 'Conference was successfully created.' }
-        format.json { render json: @conference, status: :created, location: @conference }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @conference.errors, status: :unprocessable_entity }
-      end
+    if @conference.persisted? && @conference.errors.empty?
+      redirect_to manage_conference_path(@conference), notice: 'Conference was successfully created.'
+    else
+      load_data
+      render action: "new"
     end
   end
 

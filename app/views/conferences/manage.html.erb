@@ -2,7 +2,7 @@
    meta title: t("titles.conferences.manage", conference: @conference.name)
 %>
 <% content_for :header_actions do %>
-    <%= bs_button_to t("conferences.show_landing"), @conference, icon: "eye-open", style: "primary"%>
+    <a href="<%= conference_path(@conference) %>" target="_blank" class="btn btn-primary"><i class="ico-eye-open"></i>&nbsp; <%= t("conferences.show_landing") %></a>
 <% end %>
 
 <div class="row">

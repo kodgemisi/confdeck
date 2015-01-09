@@ -8,8 +8,6 @@
 
 $(document).ready(function(){
 
-    var wizardSyncInterval = 10000; //10 seconds
-
     var syncWizardData = function(){
         $("#conference_wizard_data").val($("#wizard").serialize());
         sendForm($("#conference_wizard_sync"))
@@ -36,7 +34,7 @@ $(document).ready(function(){
                     window.map.setCenter(currCenter);
                 }
 
-                if (currentIndex == 2) { //details tab
+                if (currentIndex == 3) { //details tab
                     initializeEditors()
                 }
             },
@@ -70,7 +68,11 @@ $(document).ready(function(){
             }
         });
 
-        setInterval(syncWizardData, wizardSyncInterval);
+
+        $("#wizard input").on("focusout", function(){
+            syncWizardData();
+        });
+
     }
 
     $("#from").datepicker({
@@ -109,11 +111,11 @@ $(document).ready(function(){
             element.after(error);
         },
         highlight: function (element, errorClass, validClass) {
-            $(element).parents("div.form-group").addClass("has-error").removeClass("has-success");
+            $(element).closest("div.form-group").addClass("has-error").removeClass("has-success");
 
         },
         unhighlight: function (element, errorClass, validClass) {
-            $(element).parents("div.form-group").removeClass("has-error").addClass("has-success");
+            $(element).closest("div.form-group").removeClass("has-error").addClass("has-success");
         },
         messages: {
             "conference[slug]": {

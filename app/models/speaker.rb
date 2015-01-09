@@ -16,7 +16,7 @@ class Speaker < ActiveRecord::Base
   has_many :speeches, through: :topics
   belongs_to :user
   validates_presence_of :name, :phone
-
+  #TODO refactor
   attr_accessor :email
 
   def avatar_url(size=150)

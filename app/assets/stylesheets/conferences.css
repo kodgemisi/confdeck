@@ -23,13 +23,18 @@
     padding: 0px
 }
 
-#panel {
+#map-search-area {
     position: absolute;
-    left: 50%;
     z-index: 5;
     background-color: #fff;
     padding: 5px;
-    border: 1px solid #999;
+    border: 1px solid #EFEFEF;
+    border-top: 0;
+    width: 250px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .conference-wizard .row {
