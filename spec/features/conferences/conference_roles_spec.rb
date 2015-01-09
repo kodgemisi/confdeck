@@ -44,7 +44,7 @@ describe "Conference roles ", :type => :feature do
       @user = Fabricate(:user)
       @user.set!("language", "en")
       login_as(@user, :scope => :user)
-      @conference = Fabricate.build(:conference)
+      @conference = Fabricate(:conference)
       @conference.conference_users << @user
     end
 
@@ -75,7 +75,7 @@ describe "Conference roles ", :type => :feature do
         click_button "Create Comment"
         sleep(3)
         expect(page).to have_content(comment)
-        expect(Comment.last.comment).to eq(comment)
+        expect(@speech1.comments.last.comment).to eq(comment)
       end
 
       it "can upvote to one on speech page", js: true do

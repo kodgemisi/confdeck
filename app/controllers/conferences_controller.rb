@@ -59,12 +59,12 @@ class ConferencesController < ApplicationController
       @conference = Conference.new(conf_params["conference"])
       @conference.build_address if @conference.address.nil?
       @conference.speech_types.build if @conference.speech_types.nil?
-      @conference.sponsors.build if @conference.sponsors.nil?
+      #@conference.sponsors.build if @conference.sponsors.nil?
     else
       @conference = Conference.new
       @conference.build_address
       @conference.speech_types.build
-      @conference.sponsors.build
+      #@conference.sponsors.build
       @wizard = current_user.build_conference_wizard
     end
 

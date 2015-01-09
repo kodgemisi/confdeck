@@ -11,24 +11,29 @@ describe "Conference creation wizard", :type => :feature do
     @conference = Fabricate.build(:conference)
     @organization = @conference.organizations.first
     @user.organizations << @organization
+    @user.conference_wizard.destroy! if @user.conference_wizard
   end
 
-
-  it "should validate required fields are working properly" do
+  it "should validate required fields are working properly", js: true do
     visit(new_conference_path)
-    sleep 10
     page.execute_script("$('#from').datepicker('setDate', '#{@conference.from_date}')")
     page.execute_script("$('#to').datepicker('setDate', '#{@conference.to_date}')")
     page.select(@organization.name, from: 'conference[organization_ids][]')
     page.fill_in("conference[name]", with: @conference.name)
+    sleep 2
     page.fill_in("conference[description]", with: @conference.description)
+    sleep 2
+    page.fill_in("conference[email]", with: @conference.email)
+    sleep 2
     #We are testing only summary field here but assuming all fields with 'required' class have same behaviour
     page.fill_in("conference[summary]", with: "")
+    sleep 2
     page.click_link ("Next")
     expect(page).to have_content("This field is required")
     page.fill_in("conference[summary]", with: @conference.summary)
+    sleep 2
     page.click_link ("Next")
-    expect(page).to have_content("info")
+    expect(page).to have_content("Speech Types")
   end
 
   # We assume every field that has 'required' class is required and they are being validated by jquery.validator in previous spec
@@ -52,11 +57,10 @@ describe "Conference creation wizard", :type => :feature do
     expect(page.find("#to")[:class]).to include("required")
   end
 
+  context "with valid data", js: true do
+    it "can complete the wizard" do
 
-  #== Step 1
-  context "with valid data in step 1", js: true do
-    #Fill fields in step 1
-    before do
+      # Step 1
       visit(new_conference_path)
       page.execute_script("$('#from').datepicker('setDate', '#{@conference.from_date}')")
       page.execute_script("$('#to').datepicker('setDate', '#{@conference.to_date}')")
@@ -64,66 +68,43 @@ describe "Conference creation wizard", :type => :feature do
       page.fill_in("conference[name]", with: @conference.name)
       page.fill_in("conference[summary]", with: @conference.summary)
       page.fill_in("conference[description]", with: @conference.description)
+      page.fill_in("conference[email]", with: @conference.email)
       page.click_link ("Next")
-    end
+      sleep 2
 
-    #== Step 2
-    context "it should pass to next step" do
-      #Make sure it passes to step 2
-      it do
-        expect(page).to have_content("info")
-      end
+      #Step 2
+      expect(page).to have_content("Speech")
+      @speech_type = Fabricate(:speech_type)
+      page.first(".add_fields")
+      page.find(".speech-types").find("input[type=text]").set(@speech_type.type_name)
+      #page.fill_in("conference[sponsors_attributes][0][name]", with: "MuhabbetKuşuSevenlerDernegi")
+      #page.fill_in("conference[sponsors_attributes][0][website]", with: "http://muhabbet.com")
+      page.click_link ("Next")
+      sleep 2
 
-      context "with valid data in step 2" do
-        #Fill fields in step 2
-        before do
-          page.fill_in("conference[address_attributes][info]", with: @conference.address.info)
-          page.fill_in("conference[address_attributes][city]", with: @conference.address.city)
-          page.click_link ("Next")
-          sleep 1
-        end
+      #Step 3
+      expect(page).to have_content("City")
+      page.fill_in("conference[address_attributes][info]", with: @conference.address.info)
+      page.fill_in("conference[address_attributes][city]", with: @conference.address.city)
+      page.click_link("Next")
+      sleep 2
 
+      #Step 4
+      expect(page).to have_content("Speaker Notification Email")
+      page.click_link("Next")
+      sleep 2
 
-        #== Step 3
-        context "it should pass to next step" do
-          #Make sure it passes to step 3
-          it do
-            #expect(page).to have_content("Speech")
-          end
+      #Step 4
+      expect(page).to have_content("Website")
+      page.fill_in("conference[phone]", with: @conference.phone)
+      page.click_link ("Finish")
+      sleep 2
 
-          context "with valid data in step 3" do
-            #Fill fields
-            before do
-              @speech_type = Fabricate(:speech_type)
-              page.find(".speech-types").find("input[type=text]").set(@speech_type.type_name)
-              page.click_link ("Next")
-            end
-
-            context "it should pass to next step" do
-              #Make sure it passes to step 4
-              it do
-                #expect(page).to have_content("Website")
-              end
-
-              it "with valid data in step 4" do
-
-                page.fill_in("conference[email]", with: @conference.email)
-                page.fill_in("conference[phone]", with: @conference.phone)
-                page.click_link ("Finish")
-                sleep 2
-
-                last_conf = Conference.last
-                expect(@conference.name).to eq(last_conf.name)
-                expect(@conference.email).to eq(last_conf.email)
-
-              end
-            end
-
-          end
-
-        end
-      end
+      last_conf = Conference.last
+      expect(@conference.name).to eq(last_conf.name)
+      expect(@conference.email).to eq(last_conf.email)
     end
   end
+
 
 end
