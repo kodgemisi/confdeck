@@ -12,10 +12,11 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class SpeechesController < ApplicationController
+  include Activitable
   before_filter :authenticate_user!
   before_filter :set_conference
   before_filter :set_speech, only: [:show, :edit, :update, :destroy, :comment, :upvote, :downvote, :accept, :reject, :send_accept_mail, :send_reject_mail]
-  after_filter :create_action_activity, only: [:create, :comment, :upvote, :downvote, :accept, :reject]
+  #after_filter :create_action_activity, only: [:create, :comment, :upvote, :downvote, :accept, :reject]
 
   # GET /speeches
   # GET /speeches.json
@@ -56,12 +57,17 @@ class SpeechesController < ApplicationController
   def edit
   end
 
+  #TODO service implementation
   # POST /speeches
   # POST /speeches.json
   def create
-    @speech = Speech.new(speech_params)
-    @speech.conference = @conference
-    @speech.state = "accepted"
+    authorize @conference, :manage?
+    Speech.transaction do
+      @speech = Speech.new(speech_params)
+      @speech.conference = @conference
+      @speech.state = "accepted"
+      create_activity!(current_user, @conference, @speech, "speech_new")
+    end
     respond_to do |format|
       if @speech.save
         if params[:add_another]
@@ -100,10 +106,14 @@ class SpeechesController < ApplicationController
     end
   end
 
+  #TODO service implementation
   def comment
     authorize @conference, :user?
-    @comment = @speech.comments.build(comment_params)
-    @comment.user = current_user
+    Speech.transaction do
+      @comment = @speech.comments.build(comment_params)
+      @comment.user = current_user
+      create_activity!(current_user, @conference, @speech, "speech_comment")
+    end
 
     respond_to do |format|
       if @comment.save
@@ -118,7 +128,11 @@ class SpeechesController < ApplicationController
 
   def upvote
     authorize @conference, :user?
-    @speech.upvote_from current_user
+    Speech.transaction do
+      @speech.upvote_from current_user
+      create_activity!(current_user, @conference, @speech, "speech_upvote")
+    end
+
     respond_to do |format|
       format.js
       format.html { redirect_to conference_speeches_path(@conference), notice: "This speech is upvoted" }
@@ -126,7 +140,11 @@ class SpeechesController < ApplicationController
   end
 
   def downvote
-    @speech.downvote_from current_user
+    authorize @conference, :user?
+    Speech.transaction do
+      @speech.downvote_from current_user
+      create_activity!(current_user, @conference, @speech, "speech_downvote")
+    end
     respond_to do |format|
       format.js
       format.html { redirect_to conference_speeches_path(@conference), notice: "This speech is downvoted" }
@@ -135,7 +153,10 @@ class SpeechesController < ApplicationController
 
   def accept
     authorize @conference, :manage?
-    @speech.accept
+    Speech.transaction do
+      @speech.accept!
+      create_activity!(current_user, @conference, @speech, "speech_accept")
+    end
     respond_to do |format|
       format.html { redirect_to conference_speech_path(@conference, @speech), notice: t("speeches.is_accepted") }
     end
@@ -143,7 +164,10 @@ class SpeechesController < ApplicationController
 
   def reject
     authorize @conference, :manage?
-    @speech.reject
+    Speech.transaction do
+      @speech.reject!
+      create_activity!(current_user, @conference, @speech, "speech_reject")
+    end
     respond_to do |format|
       format.html { redirect_to conference_speech_path(@conference, @speech), notice: t("speeches.is_rejected") }
     end
@@ -166,20 +190,6 @@ class SpeechesController < ApplicationController
   end
 
   private
-
-  def create_action_activity
-    action = "speech_" + self.action_name
-    activity = @speech.conference.activities.new
-    activity.action = action
-    activity.user = current_user
-
-    if action == "speech_comment"
-      activity.subject = @comment
-    else
-      activity.subject = @speech
-    end
-    activity.save
-  end
 
   def set_conference
     @conference = Conference.friendly.find(params[:conference_id])
