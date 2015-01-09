@@ -1,0 +1,14 @@
+<!-- Wizard Container 1 -->
+<div class="wizard-title"><%= t("conferences.more_information") %></div>
+<div class="wizard-container">
+  <div class="form-group">
+    <div class="col-md-12">
+      <h5 class="semibold text-primary nm"><%= t("conferences.wizard.step1b.desc.title") %></h5>
+      <p class="text-muted nm"><%= t("conferences.wizard.step1b.desc.text") %></p>
+    </div>
+  </div>
+  <%= render "conferences/form/step_3/speech_types", f: f %>
+  <%= render "conferences/form/step_3/sponsors_panel", f: f %>
+
+</div>
+<!--/ Wizard Container 1 -->
