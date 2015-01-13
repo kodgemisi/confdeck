@@ -10,6 +10,7 @@ Fabricator(:conference) do
   organizations { [Fabricate(:organization)] }
   address { Fabricate(:address) }
   conference_admins { [Fabricate(:user)]}
+  speech_types rand: 5, fabricator: :speech_type
 end
 
 
@@ -24,5 +25,4 @@ Fabricator(:one_day_conference, from: :conference) do
   end_time { "15:00"}
   organizations { [Fabricate(:organization)] }
   speech_types rand: 5, fabricator: :speech_type
-
 end
