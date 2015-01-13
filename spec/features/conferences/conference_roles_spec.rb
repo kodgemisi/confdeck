@@ -26,15 +26,15 @@ describe "Conference roles ", :type => :feature do
       end
 
       it "can accept one" do
-        visit(conference_speech_path(@conference, @speech3))
+        visit(admin_speech_url(@speech3, subdomain: @conference.slug))
         click_link(I18n.t("speeches.accept"))
-        expect(page).to have_content("accepted")
+        expect(page).to have_content("Accepted")
       end
 
       it "can reject one" do
-        visit(conference_speech_path(@conference, @speech3))
+        visit(admin_speech_url(@speech3, subdomain: @conference.slug))
         click_link(I18n.t("speeches.accept"))
-        expect(page).to have_content("accepted")
+        expect(page).to have_content("Accepted")
       end
     end
   end
@@ -59,17 +59,17 @@ describe "Conference roles ", :type => :feature do
 
 
       it "can see list" do
-        visit(conference_speeches_path(conference_id: @conference.slug))
+        visit(admin_speeches_url(subdomain: @conference.slug))
         expect(page).to have_content(@speech1.topic.subject)
       end
 
       it "can see details of one" do
-        visit(conference_speech_path(@conference, @speech1))
+        visit(admin_speech_url(@speech1, subdomain: @conference.slug))
         expect(page).to have_content(@speech1.topic.subject)
       end
 
       it "can comment about one", js: true do
-        visit(conference_speech_path(@conference, @speech1))
+        visit(admin_speech_url(@speech1, subdomain: @conference.slug))
         comment = "zeki müren de bizi görecek mi?"
         fill_in 'comment_comment', :with => comment
         click_button "Create Comment"
@@ -80,7 +80,7 @@ describe "Conference roles ", :type => :feature do
 
       it "can upvote to one on speech page", js: true do
         expect(@user.voted_up_on?(@speech1)).to be false
-        visit(conference_speech_path(@conference, @speech1))
+        visit(admin_speech_url(@speech1, subdomain: @conference.slug))
         find("#speech_#{@speech1.id}").find(".action-upvote").click
         sleep(3)
         expect(@user.voted_up_on?(@speech1)).to be true
@@ -88,7 +88,7 @@ describe "Conference roles ", :type => :feature do
 
       it "can upvote to one on speech list page", js: true do
         expect(@user.voted_up_on?(@speech1)).to be false
-        visit(conference_speeches_path(@conference))
+        visit(admin_speech_url(@speech1, subdomain: @conference.slug))
         find("#speech_#{@speech1.id}").find(".action-upvote").click
         sleep(3)
         expect(@user.voted_up_on?(@speech1)).to be true
@@ -96,7 +96,7 @@ describe "Conference roles ", :type => :feature do
 
       it "can downvote to one on speech page", js: true do
         expect(@user.voted_down_on?(@speech1)).to be false
-        visit(conference_speech_path(@conference, @speech1))
+        visit(admin_speech_url(@speech1, subdomain: @conference.slug))
         find("#speech_#{@speech1.id}").find(".action-downvote").click
         sleep(3)
         expect(@user.voted_down_on?(@speech1)).to be true
@@ -104,25 +104,21 @@ describe "Conference roles ", :type => :feature do
 
       it "can downvote to one on speech list page", js: true do
         expect(@user.voted_down_on?(@speech1)).to be false
-        visit(conference_speeches_path(@conference))
+        visit(admin_speeches_url(subdomain: @conference.slug))
         find("#speech_#{@speech1.id}").find(".action-downvote").click
         sleep(3)
         expect(@user.voted_down_on?(@speech1)).to be true
       end
 
       it "can't accept one" do
-        visit(accept_conference_speech_path(@conference, @speech1))
+        visit(accept_admin_speech_url(@speech1, subdomain: @conference.slug))
         expect(page).to have_content(I18n.t("general.not_authorized"))
       end
 
       it "can't reject one" do
-        visit(accept_conference_speech_path(@conference, @speech1))
+        visit(reject_admin_speech_url(@speech1, subdomain: @conference.slug))
         expect(page).to have_content(I18n.t("general.not_authorized"))
       end
-
-
     end
-
   end
-
 end

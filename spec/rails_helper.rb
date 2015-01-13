@@ -9,10 +9,14 @@ require 'capybara/rails'
 require 'selenium-webdriver'
 
 driver = :webkit
-#driver = :selenium
+driver = :selenium
 Capybara.current_driver = driver
 Capybara.javascript_driver = driver
 
+Capybara.configure do |config|
+  config.always_include_port = true
+  config.app_host = 'http://lvh.me'
+end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are

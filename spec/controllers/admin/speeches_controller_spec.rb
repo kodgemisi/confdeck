@@ -2,7 +2,7 @@ require 'rails_helper'
 
 #TODO authorization tests for conf admins and conf users
 
-RSpec.describe SpeechesController do
+RSpec.describe Admin::SpeechesController do
   # Create valid attributes for post
   def valid_attributes
     @speaker = Fabricate(:speaker)
@@ -22,6 +22,10 @@ RSpec.describe SpeechesController do
     @user = Fabricate(:user)
     @conference = Fabricate(:conference)
     @conference.conference_admins << @user
+  end
+
+  before(:each) do
+    @request.host = "#{@conference.slug}.example.com"
   end
 
   before :each do

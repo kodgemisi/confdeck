@@ -25,20 +25,6 @@ RSpec.describe ConferencesController do
     sign_in @user
   end
 
-  describe "GET index" do
-    it "assigns current_user's conferences to @conferences" do
-      conference = Fabricate(:conference, conference_admins: [@user])
-      get :index
-      expect(assigns(:conferences)).to eq([conference])
-    end
-
-    it "doesnt assign other user's conferences to @conferences" do
-      conference = Fabricate(:conference, conference_admins: [Fabricate(:user)])
-      get :index
-      expect(assigns(:conferences)).not_to eq([conference])
-    end
-  end
-
   describe "POST create" do
     describe "with valid params" do
       it "creates a new conference" do
@@ -73,7 +59,7 @@ RSpec.describe ConferencesController do
 
       it "redirects to deck of new conference" do
         post :create, { conference: valid_attributes }
-        expect(response).to redirect_to manage_conference_path(Conference.last)
+        expect(response).to redirect_to admin_conference_url(subdomain: Conference.last.slug)
       end
 
       it "deletes saved wizard" do
