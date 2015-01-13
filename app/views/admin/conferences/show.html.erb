@@ -1,0 +1,17 @@
+<%
+   meta title: t("titles.conferences.manage", conference: @conference.name)
+%>
+<% content_for :header_actions do %>
+    <a href="<%= conference_path(@conference) %>" target="_blank" class="btn btn-primary"><i class="ico-eye-open"></i>&nbsp; <%= t("conferences.show_landing") %></a>
+<% end %>
+
+<div class="row">
+  <div class="col-lg-9">
+    <%= render "admin/conferences/dashboard/heading" %>
+    <%= render "admin/conferences/dashboard/activities", activities: @activities %>
+
+  </div>
+  <div class="col-lg-3">
+    <%= render "admin/conferences/dashboard/sidebar" %>
+  </div>
+</div>

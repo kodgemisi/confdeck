@@ -1,0 +1,30 @@
+<%= f.fields_for :address do |address_form| %>
+    <div class="form-group">
+      <%= address_form.label t("address.info"), :class => "col-lg-3 control-label"%>
+
+      <div class="col-lg-9">
+        <%= address_form.text_area :info, :class => "form-control address-field" %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= address_form.label  t("address.city"), :class => "col-lg-3 control-label" %>
+
+      <div class="col-lg-9">
+        <%= address_form.text_field :city, :class => "form-control " %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group">
+        <%= address_form.label t("address.location"), :class => "col-lg-3 control-label" %>
+        <div class="col-lg-9 address-map">
+          <div id="map-search-area">
+            <input id="target" class="form-control" type="text" placeholder="<%= t("conference.wizard.map_search_box") %>" class="disable-enter">
+          </div>
+          <div id="map-canvas"></div>
+        </div>
+
+        <%= address_form.hidden_field :lat, :value => "41.005811774870615", :id => "map_lat"  %>
+        <%= address_form.hidden_field :lon, :value => "28.96820068359375", :id => "map_lon" %>
+      </div>
+    </div>
+<% end %>

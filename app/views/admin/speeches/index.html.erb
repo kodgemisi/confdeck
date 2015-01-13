@@ -1,0 +1,15 @@
+<%
+   meta title: t("titles.speeches.index", conference: @conference.name)
+%>
+
+<% content_for :header_actions do %>
+    <%= bs_button_to t("speeches.new"), new_admin_speech_path, icon: "pencil", style: "primary"%>
+<% end %>
+
+<div class="speeches-list">
+  <% @speech_types.each do |speech_type| %>
+      <%= render "admin/speeches/index/speech_table", speech_type: speech_type %>
+  <% end %>
+</div>
+
+<%= link_to 'New Speech', new_admin_speech_path %>

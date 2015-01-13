@@ -1,0 +1,94 @@
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-sm-6">
+    <div class="form-group nb">
+      <label for="from_date" class="col-lg-3 control-label"><%= t("conferences.start_date") %></label>
+
+      <div class="col-lg-9">
+        <%= f.text_field :from_date, :id => "from", :class => "form-control required", :placeholder => I18n.t("date.formats.placeholder"), data: {format: I18n.t("date.formats.jsformat")} %>
+        <span class="checkbox custom-checkbox">
+                <input type="checkbox" name="conference[one_day]" id="conference_one_day" <%= "checked" if @one_day %>/>
+                <label for="conference_one_day">&nbsp;&nbsp;<%= t("conferences.one_day") %></label>
+            </span>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-6 col-sm-6">
+    <div class="form-group nb time-interval" <%= "style=display:none" if !@one_day %>>
+      <label class="col-lg-3 control-label"><%= t("conferences.start_time") %></label>
+      <div class="col-sm-2">
+        <%= f.input :start_time, label: false, input_html: {class: "form-control", id: "conference-start-time"} %>
+        <span class="add-on"><i class="icon-time"></i></span>
+      </div>
+      <label class="col-lg-3 control-label"><%= t("conferences.end_time") %></label>
+
+      <div class="col-sm-2">
+        <%= f.input :end_time, label: false, input_html: {class: "form-control", id: "conference-end-time"} %>
+        <span class="add-on"><i class="icon-time"></i></span>
+      </div>
+    </div>
+    <div class="form-group nb to-date-div" <%= "style=display:none" if @one_day %>>
+      <label for="to_date" class="col-lg-3 control-label"><%= t("conferences.end_date") %></label>
+      <div class="col-lg-9">
+        <%= f.text_field :to_date, :id => "to", :class => "form-control required", :placeholder => I18n.t("date.formats.placeholder"), data: {format: I18n.t("date.formats.jsformat")} %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6 col-md-6 col-sm-6">
+    <div class="form-group nb">
+      <%= f.label :name, :class => "col-lg-3 control-label" %>
+
+      <div class="col-lg-9">
+        <%= f.text_field :name, :class => "form-control required" %>
+      </div>
+    </div>
+    <div class="form-group nb">
+      <%= f.label :slug, :class => "col-lg-3 control-label" %>
+
+      <div class="col-lg-9">
+        <%= f.text_field :slug, :class => "form-control", data: { validate: check_slug_conferences_path, currentValue: @conference.slug } %>
+      </div>
+    </div>
+    <div class="form-group nb">
+      <%= f.label :summary, :class => "col-lg-3 control-label" %>
+
+      <div class="col-lg-9">
+        <%= f.text_field :summary, :class => "form-control required" %>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-6 col-sm-6">
+    <div class="form-group">
+      <%= f.label :organization, :class => "col-lg-3 control-label" %>
+
+      <div class="col-lg-9">
+        <%= f.collection_select :organization_ids, current_user.organizations, :id, :name, {}, {:multiple => true, :class => "form-control required", :style => "float:left; width:88%", :required => "required"}%>
+        <a data-toggle="modal" href="#newOrg" class="btn btn-primary btn-small tt" style="float:left; margin-left: 7px" title="Add New Organization"><i class="ico-plus-sign"></i></a>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="form-group">
+      <%= f.label :email, :class => "col-sm-1 control-label" %>
+
+      <div class="col-lg-10">
+        <%= f.text_field :email, :class => "form-control required email" %>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12">
+    <div class="form-group">
+      <%= f.label :description, :class => "col-sm-1 control-label" %>
+
+      <div class="col-lg-10">
+        <%= f.text_area :description, :class => "form-control" %>
+      </div>
+    </div>
+  </div>
+</div>
+

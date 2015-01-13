@@ -1,0 +1,31 @@
+<%
+   meta title: t("titles.conferences.address", conference: @conference.name)
+%>
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="panel">
+      <%= simple_form_for(@conference, :html => {:class => 'form-horizontal form-bordered validate-me'}) do |f| %>
+          <% if @conference.errors.any? %>
+              <div class="alert alert-danger">
+                <strong><%= t "error" %></strong>
+                <ul>
+                  <% @conference.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+          <% end %>
+          <%= render "admin/conferences/form/step_2_fields", f: f %>
+
+          <div class="panel-footer">
+            <div class="form-group no-border">
+              <div class="col-sm-3">
+                <%= f.submit :class => "btn btn-primary" %>
+              </div>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

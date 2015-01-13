@@ -1,0 +1,74 @@
+<!-- START row -->
+<div class="row">
+    <div class="col-md-12">
+      <% if @wizard.present? && !@wizard.new_record? %>
+          <div class="alert alert-info fade in">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4 class="semibold"><%= t("conferences.reset_title") %></h4>
+            <p class="mb10"><%= t("conferences.reset_info") %></p>
+            <%= link_to t("conference.reset_wizard"), reset_wizard_conferences_path, class: "btn btn-info" %>
+          </div>
+      <% end %>
+        <!-- START Panel -->
+        <div class="panel panel-default">
+            <!-- panel heading/header -->
+            <div class="panel-heading">
+              <h3 class="panel-title"><i class="ico-tshirt mr5"></i> <%= t "conferences.wizard.title" %></h3>
+            </div>
+            <!--/ panel heading/header -->
+                <!-- START Form Wizard -->
+                <%= simple_form_for(@conference, :html => {:class => 'form-horizontal form-bordered conference-wizard validate-me', :id => "wizard"}) do |f| %>
+                      <% if @conference.errors.any? %>
+                          <div class="alert alert-danger">
+                            <strong><%= t "error" %></strong>
+                            <ul>
+                              <% @conference.errors.full_messages.each do |msg| %>
+                                  <li><%= msg %></li>
+                              <% end %>
+                            </ul>
+                          </div>
+                      <% end %>
+                      <%= render "admin/conferences/form/step_1", f: f %>
+                      <%= render "admin/conferences/form/step_1b", f: f %>
+                      <%= render "admin/conferences/form/step_2", f: f %>
+                      <%= render "admin/conferences/form/step_3", f: f %>
+                      <%= render "admin/conferences/form/step_4", f: f %>
+                <% end %>
+                <!--/ END Form Wizard -->
+            </div>
+        <!--/ END Panel -->
+    </div>
+</div>
+<!--/ END row -->
+<% if @wizard.present? %>
+    <%= form_for(@wizard, url: sync_wizard_conferences_path, method: :put, html: {id: "conference_wizard_sync", class:"hide"}, remote: true) do |f| %>
+        <%= f.text_field :data %>
+    <% end %>
+<% end %>
+
+
+<div class="modal fade" id="newOrg">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><%= t("organizations.create") %></h4>
+      </div>
+      <%= form_for(Organization.new, remote: true, :html => {:class => 'form-horizontal'}) do |of| %>
+          <div class="modal-body">
+            <div class="form-group row">
+                <%= of.label :organization_name, :class => "col-lg-4 col-md-3 control-label" %>
+                <div class="col-lg-8 col-md-7 col-sm-5">
+                    <%= of.text_field :name, :class => "form-control" %>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal"><%= t(:close) %></button>
+              <%= of.submit class: "btn btn-primary" %>
+          </div>
+      <% end %>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

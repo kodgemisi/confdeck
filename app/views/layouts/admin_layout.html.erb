@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= metamagic site: t("titles.default_short"), title: [:title, :site], separator: " - "%>
+
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places' %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag controller_name if !["sessions", "registrations"].include? controller_name %>
+  <%= stylesheet_link_tag controller_name if !["sessions", "registrations"].include? controller_name %>
+  <%= csrf_meta_tags %>
+  <%= javascript_tag do %>
+    current_locale = "<%= I18n.locale %>";
+    current_controller = "<%= controller_name %>";
+    current_action = "<%= action_name %>";
+  <% end %>
+</head>
+<body>
+    <%= render "admin/layouts/header" %>
+    <%= render "admin/layouts/sidebar" %>
+
+    <section id="main" role="main">
+      <!-- START Template Container -->
+      <div class="container-fluid">
+            <div class="page-header page-header-block">
+              <div class="page-header-section">
+                <h4 class="title semibold"><%= get_title %></h4>
+              </div>
+              <div class="page-header-section text-right">
+                <%= yield :header_actions %>
+              </div>
+            </div>
+
+            <%= render "admin/layouts/messages" %>
+            <%= yield %>
+      </div>
+    </section>
+</body>
+</html>

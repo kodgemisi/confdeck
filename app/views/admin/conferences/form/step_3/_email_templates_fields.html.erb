@@ -1,0 +1,40 @@
+<% i = 0 %>
+<div class="form-group">
+</div>
+<!-- tab -->
+<ul class="nav nav-tabs nav-justified ">
+    <% @template_types.each do |tt| %>
+        <li class="<%= "active" if i==0 %>"><a href="#tt_<%= i %>" data-toggle="tab"><%= tt.title %></a></li>
+      <% i = i + 1 %>
+    <% end %>
+</ul>
+<!--/ tab -->
+<!-- tab content -->
+<% i = 0 %>
+
+<div class="tab-content panel">
+  <% @template_types.each do |tt| %>
+      <div class="tab-pane <%= "active" if i==0 %>" id="tt_<%= i %>">
+        <div class="form-group">
+          <%= f.label :subject, t(:subject), :class => "col-lg-2 control-label" %>
+          <div class="col-lg-10">
+            <%= text_field_tag "conference[email_templates_attributes][" + i.to_s + "][subject]", (template_saved?(@template_hash, tt)) ? @template_hash[tt.type_name].subject : tt.default_subject, {:class => "form-control"} %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :body, t(:body), :class => "col-lg-2 control-label" %>
+          <div class="col-lg-10">
+            <div class="summernote-editor">
+              <%= (template_saved?(@template_hash, tt)) ? @template_hash[tt.type_name].body.html_safe : tt.default_body.html_safe %>
+            </div>
+            <%= hidden_field_tag "conference[email_templates_attributes][" + i.to_s + "][body]" %>
+            <span class="help-block"><%= tt.description %></span>
+          </div>
+        </div>
+        <%= hidden_field_tag "conference[email_templates_attributes][" + i.to_s + "][id]", @template_hash[tt.type_name].id if template_saved? @template_hash, tt %>
+
+        <%= hidden_field_tag "conference[email_templates_attributes][" + i.to_s + "][email_template_type_id]", tt.id %>
+      </div>
+      <% i = i + 1 %>
+  <% end %>
+</div>

@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h5 class="semibold mt0 text-primary"><i class="ico-cabinet pr5"></i><%= t("general.management") %></h5>
+    <div class="list-group">
+      <a href="<%= admin_speeches_path %>" class="list-group-item">
+        <i class="ico-angle-right mr5"></i> <%= t("conferences.speeches") %>
+      </a>
+      <% if current_user.is_admin_of?(@conference) %>
+        <a href="<%= admin_schedule_path %>" class="list-group-item">
+            <i class="ico-angle-right mr5"></i> <%= t("conferences.schedule") %>
+        </a>
+          <a href="<%= admin_roles_path %>" class="list-group-item">
+            <i class="ico-angle-right mr5"></i> <%= t("conferences.roles") %>
+        </a>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% if current_user.is_admin_of?(@conference) %>
+    <div class="row">
+      <div class="col-xs-12">
+        <h5 class="semibold mt0 text-primary"><i class="ico-equalizer pr5"></i><%= t("general.settings") %></h5>
+        <div class="list-group">
+          <a href="<%= admin_email_templates_path %>" class="list-group-item">
+            <i class="ico-angle-right mr5"></i> <%= t("conferences.email_templates") %>
+          </a>
+          <a href="<%= admin_sponsors_path %>" class="list-group-item">
+            <i class="ico-angle-right mr5"></i> <%= t("conferences.sponsors") %>
+          </a>
+          <a href="<%= speech_types_admin_conference_path(@conference) %>" class="list-group-item">
+            <i class="ico-angle-right mr5"></i> <%= t("conferences.speech_types") %>
+          </a>
+          <a href="<%= basic_information_admin_conference_path(@conference) %>" class="list-group-item">
+            <i class="ico-angle-right mr5"></i> <%= t("conferences.basic_information") %>
+          </a>
+          <a href="<%= address_admin_conference_path(@conference) %>" class="list-group-item">
+            <i class="ico-angle-right mr5"></i> <%= t("conferences.address") %>
+          </a>
+          <a href="<%= contact_information_admin_conference_path(@conference) %>" class="list-group-item">
+            <i class="ico-angle-right mr5"></i> <%= t("conferences.contact_information") %>
+          </a>
+        </div>
+      </div>
+    </div>
+<% end %>

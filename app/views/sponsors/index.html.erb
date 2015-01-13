@@ -3,7 +3,7 @@
 %>
 
 <% content_for :header_actions do %>
-    <%= bs_button_to t("sponsors.new"), new_conference_sponsor_path(@conference), icon: "plus-circle2", style: "primary"%>
+    <%= bs_button_to t("sponsors.new"), new_admin_sponsor_path, icon: "plus-circle2", style: "primary"%>
 <% end %>
 
 <div class="row">
@@ -29,9 +29,9 @@
                     <td><%= link_to sponsor.website, sponsor.website if sponsor.website %></td>
                     <td width="10%" class="text-center">
                       <%= button_group class: "btn-group-sm text-center" do %>
-                          <%= bs_button_to "", [@conference, sponsor], tooltip: t("general.details"), icon: "eye-open", style: "primary", size: "mini" %>
-                          <%= bs_button_to "", edit_conference_sponsor_path(@conference, sponsor), tooltip: t("general.edit"), icon: "pencil", style: "primary", size: "mini" %>
-                          <%= bs_button_to "", [@conference, sponsor], method: :delete, data: {:confirm => t("general.are_you_sure")}, tooltip: t("general.delete"), icon: "remove", style: "primary", size: "mini" %>
+                          <%= bs_button_to "", ["admin", sponsor], tooltip: t("general.details"), icon: "eye-open", style: "primary", size: "mini" %>
+                          <%= bs_button_to "", edit_admin_sponsor_path(sponsor), tooltip: t("general.edit"), icon: "pencil", style: "primary", size: "mini" %>
+                          <%= bs_button_to "", ["admin", sponsor], method: :delete, data: {:confirm => t("general.are_you_sure")}, tooltip: t("general.delete"), icon: "remove", style: "primary", size: "mini" %>
                       <% end %>
                     </td>
                   </tr>

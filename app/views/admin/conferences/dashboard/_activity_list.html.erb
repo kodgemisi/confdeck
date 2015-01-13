@@ -1,0 +1,9 @@
+<% activities.each do |activity| %>
+    <%= render "admin/conferences/dashboard/activity_item", activity: activity %>
+<% end %>
+
+<% if activities.empty? %>
+    <div class="alert alert-info">
+      <%= t("conferences.no_activity") %>
+    </div>
+<% end %>

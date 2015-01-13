@@ -42,5 +42,5 @@ Confman::Application.configure do
   #     :enable_starttls_auto => true
   # }
   config.action_mailer.smtp_settings = {:address => "localhost", :port => 2500}
-
+  Rails.application.routes.default_url_options[:host] = 'lvh.me:3000'
 end
