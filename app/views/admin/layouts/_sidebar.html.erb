@@ -1,3 +1,4 @@
+
 <!-- START Template Sidebar (Left) -->
 <aside class="sidebar sidebar-left sidebar-menu">
     <!-- START Sidebar Content -->
@@ -5,59 +6,98 @@
         <!-- START Template Navigation/Menu -->
         <ul class="topmenu" data-toggle="menu">
             <li class="active open">
-              <a href="<%= root_path %>" data-parent=".topmenu">
+              <a href="<%= admin_conference_path(subdomain: @conference.slug) %>" data-parent=".topmenu">
                 <span class="figure"><i class="ico-home2"></i></span>
-                <span class="text"><%= t("general.homepage") %></span>
+                <span class="text"><%= t("conferences.deck") %></span>
               </a>
             </li>
-          <li class=" open">
-              <a href="<%= user_path(current_user.id) %>" data-parent=".topmenu">
-                <span class="figure"><i class="ico-megaphone"></i></span>
-                <span class="text"><%= t("conferences.speeches") %></span>
-              </a>
-            </li>
-            <li >
-                <a href="javascript:void(0);" data-toggle="submenu" data-target="#sidebar-conferences-menu" data-parent=".topmenu">
-                  <span class="figure"><i class="ico-flag5"></i></span>
-                  <span class="text"><%= t "conferences.conferences" %></span>
+            <li class="open">
+                <a href="javascript:void(0);" data-toggle="submenu" data-target="#sidebar-management-menu" data-parent=".topmenu">
+                  <span class="figure"><i class="ico-cabinet"></i></span>
+                  <span class="text"><%= t("general.management") %></span>
                   <span class="arrow"></span>
                 </a>
                 <!-- START 2nd Level Menu -->
-                <ul id="sidebar-conferences-menu" class="submenu ">
-                  <li class="submenu-header ellipsis"><%= t("conferences.conferences") %></li>
-                  <% @user_conferences.each do |conference| %>
-                      <li >
-                        <a href="<%= admin_conference_url(subdomain: conference.slug) %>">
-                          <span class="text"><%= conference.name %></span>
+                <ul id="sidebar-management-menu" class="submenu in">
+                  <li class="submenu-header ellipsis"><%= t("general.management") %></li>
+                  <li>
+                    <a href="<%= admin_speeches_path %>">
+                      <span class="text"><%= t("conferences.speeches") %></span>
+                    </a>
+                  </li>
 
-                          <span class="number <%= "hidden" if conference.waiting_speeches.count == 0 %>"> <!-- hide if no waiting speech -->
-                            <span class="label label-danger"><%= conference.waiting_speeches.count %></span>
-                          </span>
+                  <% if current_user.is_admin_of?(@conference) %>
+                      <li>
+                        <a href="<%= admin_schedule_path %>">
+                            <span class="text"><%= t("conferences.schedule") %></span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="<%= admin_roles_path %>">
+                            <span class="text"><%= t("conferences.roles") %></span>
                         </a>
                       </li>
                   <% end %>
                 </ul>
                 <!--/ END 2nd Level Menu -->
             </li>
-            <li >
-                <a href="javascript:void(0);" data-toggle="submenu" data-target="#sidebar-organizations-menu" data-parent=".topmenu">
-                  <span class="figure"><i class="ico-users4"></i></span>
-                  <span class="text"><%= t("organizations.organizations") %></span>
+
+
+            <% if current_user.is_admin_of?(@conference) %>
+              <li class="open" >
+                <a href="javascript:void(0);" data-toggle="submenu" data-target="#sidebar-settings-menu" data-parent=".topmenu">
+                  <span class="figure"><i class="ico-equalizer"></i></span>
+                  <span class="text"><%= t("general.settings") %></span>
                   <span class="arrow"></span>
                 </a>
                 <!-- START 2nd Level Menu -->
-                <ul id="sidebar-organizations-menu" class="submenu collapse ">
-                  <li class="submenu-header ellipsis"><%= t("organizations.organizations") %></li>
-                  <% @user_organizations.each do |organization| %>
-                      <li >
-                        <a href="<%= organization_path(organization) %>">
-                          <span class="text"><%= organization.name %></span>
-                        </a>
-                      </li>
-                  <% end %>
+                <ul id="sidebar-settings-menu" class="submenu in">
+                  <li class="submenu-header ellipsis"><%= t("general.settings") %></li>
+                  <li>
+                    <a href="<%= admin_speeches_path %>">
+                      <span class="text"><%= t("conferences.speeches") %></span>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="<%= admin_email_templates_path %>" >
+                      <span class="text"> <%= t("conferences.email_templates") %></span>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="<%= admin_sponsors_path %>" >
+                      <span class="text"> <%= t("conferences.sponsors") %></span>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="<%= speech_types_admin_conference_path %>" >
+                      <span class="text"> <%= t("conferences.speech_types") %></span>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="<%= basic_information_admin_conference_path %>" >
+                      <span class="text"> <%= t("conferences.basic_information") %></span>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="<%= address_admin_conference_path %>" >
+                      <span class="text"> <%= t("conferences.address") %></span>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="<%= contact_information_admin_conference_path %>" >
+                      <span class="text"> <%= t("conferences.contact_information") %></span>
+                    </a>
+                  </li>
                 </ul>
                 <!--/ END 2nd Level Menu -->
-            </li>
+              </li>
+            <% end %>
         </ul>
         <!--/ END Template Navigation/Menu -->
 

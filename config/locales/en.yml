@@ -126,6 +126,7 @@ en:
     basic_information: Basic Information
     conferences: Conferences
     contact_info: Contact Info
+    deck: Deck
     delete: Delete
     description: Description
     details: Details
@@ -147,6 +148,7 @@ en:
     reset_info: You have an unsaved conference draft. You can clear it and start over by clicking the button below.
     reset_title: 
     reset_wizard: Clear Wizard
+    roles: Roles
     schedule: Schedule
     show: Conference Page
     show_landing: Open Conference Page

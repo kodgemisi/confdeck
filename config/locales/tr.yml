@@ -107,7 +107,7 @@ tr:
       speech_accept: "%{user}, %{speech} kabul etti"
       speech_comment: "%{user}, %{speech} hakkında yorum yaptı."
       speech_downvote: 
-      speech_reject: "%{user}, %{speech} reddetti."
+      speech_reject: "%{user}, %{appeal} reddetti."
       speech_upvote: 
   additional_info: Ek Bilgi
   address:
@@ -126,6 +126,7 @@ tr:
     basic_information: Temel Bilgiler
     conferences: Konferanslar
     contact_info: "İletişim Bilgileri"
+    deck: Güverte
     delete: Sil
     description: Açıklama
     details: Detaylar
@@ -146,6 +147,7 @@ tr:
     reset_info: 'Bir adet yayınlanmamış konferans taslağınız var. Aşağıdaki butona tıklayarak silip baştan başlayabilirsiniz.  '
     reset_title: 
     reset_wizard: Sihirbazı Temizl
+    roles: Yetkiler
     schedule: Program
     show: Konferans Sayfası
     show_landing: "Konferans Sayfasını Aç\n "
