@@ -14,7 +14,7 @@
 class HomeController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :guest_session]
 
-  layout "home_layout", :only => [:index]
+  layout "landing_layout", :only => [:index]
 
   def index
     
