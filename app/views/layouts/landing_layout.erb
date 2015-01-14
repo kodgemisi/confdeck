@@ -36,6 +36,17 @@
 
     <h3><em>Creating conferences made easy</em></h3>
     <a href="#intro" class="btn btn-default btn-lg">Find Out More</a>
+
+    <div class="row signup-box">
+      <div class="col-lg-8 col-lg-offset-2">
+        <%= simple_form_for @signup_form, url: quick_signup_path do |f| %>
+            <%= f.input :email %>
+            <%= f.input :password %>
+            <%= f.input :name %>
+            <%= f.submit %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 <!-- /Full Page Image Header Area -->

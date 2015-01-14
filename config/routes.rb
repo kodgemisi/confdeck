@@ -107,7 +107,9 @@ Confman::Application.routes.draw do
   authenticated :user do
     root :to => "home#dashboard", as: :authenticated_root
   end
+
   root :to => 'home#index'
+  post "/quick_signup" => 'home#quick_signup'
 
   get "settings", to: "settings#index"
   post "settings", to: "settings#update", :as => "update_settings"

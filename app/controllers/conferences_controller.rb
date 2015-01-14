@@ -26,7 +26,7 @@ class ConferencesController < ApplicationController
       conf_params = Rack::Utils.parse_nested_query @wizard.data
       @conference = Conference.new(conf_params["conference"])
       @conference.build_address if @conference.address.nil?
-      @conference.speech_types.build if @conference.speech_types.nil?
+      @conference.speech_types.build if @conference.speech_types.empty?
       #@conference.sponsors.build if @conference.sponsors.nil?
     else
       @conference = Conference.new

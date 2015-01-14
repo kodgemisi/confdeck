@@ -1,6 +1,6 @@
 class BaseForm
   include ActiveModel::Model
-  include Virtus
+  include Virtus.model
 
   # Forms are never themselves persisted
   def persisted?

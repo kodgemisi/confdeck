@@ -12,12 +12,12 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class HomeController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :guest_session]
+  before_filter :authenticate_user!, except: [:index, :quick_signup]
 
   layout "landing_layout", :only => [:index]
 
   def index
-    
+    @signup_form = QuickSignupForm.new(user: User.new, conference: Conference.new)
   end
 
   def dashboard
@@ -27,4 +27,21 @@ class HomeController < ApplicationController
     @activities = Activity.where(conference_id: [ current_user.conferences.pluck(:id)]).order("created_at DESC").limit(15)
   end
 
+  def quick_signup
+    signup = QuickSignupForm.new(quick_signup_params)
+    respond_to do |format|
+      if signup.save
+        sign_in(signup.user)
+        format.html { redirect_to new_conferences_path }
+      else
+        format.html { render text: signup.errors.full_messages.to_s }
+      end
+    end
+  end
+
+  private
+
+  def quick_signup_params
+    params.require(:quick_signup_form).permit(:email, :password, :name)
+  end
 end
