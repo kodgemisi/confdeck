@@ -28,29 +28,7 @@ Confman::Application.routes.draw do
 
   get "invitations/accept"
   get '/dashboard', to: 'home#dashboard'
-  # constraints Subdomain.new do
-  #   scope path: "/" do
-  #     resources :conferences, path: "/" do
-  #       collection do
-  #         get 'check_slug'
-  #         get 'reset_wizard'
-  #         put 'sync_wizard'
-  #       end
-  #       member do
-  #         get 'speech_types'
-  #         get 'manage'
-  #         get 'basic_information'
-  #         get 'address'
-  #         get 'contact_information'
-  #         get 'landing_settings'
-  #         get 'search_users'
-  #         get 'apply'
-  #         post 'apply' => "conferences#save_apply"
-  #       end
-  #
-  #     end
-  #   end
-  # end
+
   constraints Subdomain.new do
     #scope path: "/" do
       resource :conference, path: "/" do
