@@ -73,7 +73,7 @@ class Admin::SpeechesController < Admin::AdminController
         if params[:add_another]
           format.html { redirect_to new_admin_speech_path, notice: 'Speech was successfully created.' }
         else
-          format.html
+          format.html { redirect_to admin_speech_path(@speech), notice: 'Speech was successfully created.' }
         end
       else
         format.html { render action: "new" }
