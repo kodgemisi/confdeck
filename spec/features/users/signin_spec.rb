@@ -3,10 +3,10 @@ require 'rails_helper'
 describe "the signin process", :type => :feature do
   before :each do
     User.create(:email => 'user@example.com', :password => 'password')
+    I18n.locale = :en
   end
 
   it "signs me in" do
-    pending "Redirections will be updated"
     visit '/users/sign_in'
     within("#new_user") do
       fill_in 'user_email', :with => 'user@example.com'
