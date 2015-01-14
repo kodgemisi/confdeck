@@ -3,62 +3,8 @@
 %>
 
 <div class="row">
-  <div class="col-lg-9">
-    <div class="row">
-      <div class="col-sm-4">
-        <!-- START Statistic Widget -->
-        <div class="table-layout animation delay animating fadeInDown">
-          <div class="col-xs-4 panel bgcolor-info">
-            <div class="ico-checkmark3 fsize24 text-center"></div>
-          </div>
-          <div class="col-xs-8 panel">
-            <div class="panel-body text-center">
-              <h4 class="semibold nm"><%= @total_speeches.count %></h4>
-
-              <p class="semibold text-muted mb0 mt5"><%= t "total.speeches" %></p>
-            </div>
-          </div>
-        </div>
-        <!--/ END Statistic Widget -->
-      </div>
-      <div class="col-sm-4">
-        <!-- START Statistic Widget -->
-        <div class="table-layout animation delay animating fadeInUp">
-          <div class="col-xs-4 panel bgcolor-teal">
-            <div class="ico-hammer2 fsize24 text-center"></div>
-          </div>
-          <div class="col-xs-8 panel">
-            <div class="panel-body text-center">
-              <h4 class="semibold nm"><%= link_to @waiting_speeches.count, conferences_path %></h4>
-
-              <p class="semibold text-muted mb0 mt5"><%= t "waiting_speeches" %></p>
-            </div>
-          </div>
-        </div>
-        <!--/ END Statistic Widget -->
-      </div>
-      <div class="col-sm-4">
-        <!-- START Statistic Widget -->
-        <div class="table-layout animation delay animating fadeInDown">
-          <div class="col-xs-4 panel bgcolor-primary">
-            <div class="ico-flag6 fsize24 text-center"></div>
-          </div>
-          <div class="col-xs-8 panel">
-            <div class="panel-body text-center">
-              <h4 class="semibold nm">0<!-- #TODO Active Conferences count --></h4>
-
-              <p class="semibold text-muted mb0 mt5"><%= t("home.active_conferences") %></p>
-            </div>
-            <!--/ END Statistic Widget -->
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <%= render "conferences/dashboard/activities", activities: @activities %>
-
+  <div class="col-lg-12">
+    <!--TODO will be discussed-->
   </div>
-
-  <%= render "sidebar" %>
 </div>
 
