@@ -1,0 +1,49 @@
+<% speeches.each do |speech| %>
+    <%= div_for(speech, class: "panel panel-default") do %>
+        <div class="panel-heading">
+          <h3 class="panel-title pull-left">
+            <%= link_to speech.topic.subject, ["admin", speech] %>
+          </h3>
+
+          <div class="speakers pull-right">
+            <% speech.topic.speakers.each do |speaker| %>
+                <div class="speaker">
+                  <%= link_to image_tag(speaker.avatar_url(20), class: "img-circle"), speaker_path(speaker), title: speaker.name, class: "tt" %>
+                </div>
+            <% end %>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="panel-body">
+          <div class="updown">
+            <% unless current_user.voted_up_on? speech %>
+                <%= link_to upvote_admin_speech_path do %>
+                    <i class="icon-thumbs-up" style="font-size: 24px;color: gray;"> <%= speech.upvotes.count %></i>
+                <% end %>
+            <% else %>
+                <i class="icon-thumbs-up" style="font-size: 24px;"> <%= speech.upvotes.count %></i>
+            <% end %>
+            <% unless current_user.voted_down_on? speech %>
+                <%= link_to downvote_admin_speech_path do %>
+                    <i class="icon-thumbs-down" style="font-size: 24px;color: gray;"> <%= speech.downvotes.count %></i>
+                <% end %>
+            <% else %>
+                <i class="icon-thumbs-down" style="font-size: 24px;"> <%= speech.downvotes.count %></i>
+            <% end %>
+          </div>
+          <div class="abstract pull-left">
+            <%= speech.topic.abstract %>
+          </div>
+          <div class="additional_info pull-left">
+            <% unless speech.topic.additional_info.empty? %>
+                <i class="icon-info-sign" data-toggle="popover" data-placement="bottom" title="Additional Info" data-content="<%= speech.topic.additional_info %>"></i>
+            <% end %>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <%= link_to "#{speech.comments.count} comments", ["admin", speech] %>
+          <%= link_to 'Edit', edit_admin_speech_path %>
+          <% link_to 'Destroy', ["admin", speech], method: :delete, data: {confirm: 'Are you sure?'} %>
+        </div>
+    <% end %>
+<% end %>

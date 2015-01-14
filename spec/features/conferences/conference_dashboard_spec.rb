@@ -10,13 +10,13 @@ describe "Conference Dashboard", :type => :feature do
     login_as(@user, :scope => :user)
     @conference = Fabricate(:conference)
     @organization = @conference.organizations.first
-    @user.organizations << @organization
+    @conference.conference_admins << @user
     I18n.locale = :en
   end
 
   context "activity feed" do
     it "displays no activity text when empty" do
-      visit(manage_conference_path(@conference))
+      visit(admin_conference_url(subdomain: @conference.slug))
       expect(page).to have_content(I18n.t("conferences.no_activity"))
     end
   end

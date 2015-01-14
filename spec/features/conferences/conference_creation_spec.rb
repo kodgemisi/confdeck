@@ -15,7 +15,7 @@ describe "Conference creation wizard", :type => :feature do
   end
 
   it "should validate required fields are working properly", js: true do
-    visit(new_conference_path)
+    visit(new_conferences_path)
     page.execute_script("$('#from').datepicker('setDate', '#{@conference.from_date}')")
     page.execute_script("$('#to').datepicker('setDate', '#{@conference.to_date}')")
     page.select(@organization.name, from: 'conference[organization_ids][]')
@@ -38,22 +38,22 @@ describe "Conference creation wizard", :type => :feature do
 
   # We assume every field that has 'required' class is required and they are being validated by jquery.validator in previous spec
   it "should validate presence of name" do
-    visit(new_conference_path)
+    visit(new_conferences_path)
     expect(page.find("input[name='conference[name]']")[:class]).to include("required")
   end
 
   it "should validate presence of summary" do
-    visit(new_conference_path)
+    visit(new_conferences_path)
     expect(page.find("input[name='conference[summary]']")[:class]).to include("required")
   end
 
   it "should validate presence of from date" do
-    visit(new_conference_path)
+    visit(new_conferences_path)
     expect(page.find("#from")[:class]).to include("required")
   end
 
   it "should validate presence of to date" do
-    visit(new_conference_path)
+    visit(new_conferences_path)
     expect(page.find("#to")[:class]).to include("required")
   end
 
@@ -61,7 +61,7 @@ describe "Conference creation wizard", :type => :feature do
     it "can complete the wizard" do
 
       # Step 1
-      visit(new_conference_path)
+      visit(new_conferences_path)
       page.execute_script("$('#from').datepicker('setDate', '#{@conference.from_date}')")
       page.execute_script("$('#to').datepicker('setDate', '#{@conference.to_date}')")
       page.select(@organization.name, from: 'conference[organization_ids][]')

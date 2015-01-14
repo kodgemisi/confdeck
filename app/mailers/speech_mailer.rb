@@ -43,7 +43,7 @@ class SpeechMailer < ActionMailer::Base
     speech.reject_mail_sent!
     liquid_template = prepare(speech.conference, __method__, {"speech" => speech, "topic" => speech.topic, "conference" => speech.conference})
     speech.topic.speakers.each do |speaker|
-      mail(reply_to: speech.conference.email, to: speaker.user.email, subject: liquid_template.subject, body: liquid_template.body) if speaker.user..email?
+      mail(reply_to: speech.conference.email, to: speaker.user.email, subject: liquid_template.subject, body: liquid_template.body) if speaker.user.email?
     end
   end
 end

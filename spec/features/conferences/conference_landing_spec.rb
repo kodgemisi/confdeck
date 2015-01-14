@@ -4,7 +4,7 @@ describe "Conference landing page", :type => :feature do
   let(:conference) { Fabricate(:conference) }
 
   it "should display conference details" do
-    visit(conference_path(id: conference.slug))
+    visit(conference_url(subdomain: conference.slug))
     expect(page).to have_content conference.name
     expect(page).to have_content conference.summary
     expect(page).to have_content conference.description
@@ -14,7 +14,7 @@ describe "Conference landing page", :type => :feature do
 
 
   it "should display conference email mailto link" do
-    visit(conference_path(id: conference.slug))
+    visit(conference_url(subdomain: conference.slug))
     expect(page).to have_link("",href:"mailto:#{conference.email}")
   end
 
@@ -26,19 +26,19 @@ describe "Conference landing page", :type => :feature do
       let(:conference) { Fabricate(:conference, organizations: [organization]) }
 
       it "should display organizations if module is active" do
-        visit(conference_path(id: conference.slug))
+        visit(conference_url(subdomain: conference.slug))
         expect(page).to have_content organization.name
       end
 
       it "should not display organizations if module is not active" do
         conference.set!("organizators_module", "false")
         conference.save
-        visit(conference_path(id: conference.slug))
+        visit(conference_url(subdomain: conference.slug))
         expect(page).not_to have_content organization.name
       end
 
       it "should display organizations link if module is active" do
-        visit(conference_path(id: conference.slug))
+        visit(conference_url(subdomain: conference.slug))
         expect(page).to have_link('Organizations', :href => '#organizations')
 
       end
@@ -46,7 +46,7 @@ describe "Conference landing page", :type => :feature do
       it "should not display organizations link if module is not active" do
         conference.set!("organizators_module", "false")
         conference.save
-        visit(conference_path(id: conference.slug))
+        visit(conference_url(subdomain: conference.slug))
         expect(page).not_to have_link('Organizations', :href => '#organizations')
       end
     end
@@ -55,14 +55,14 @@ describe "Conference landing page", :type => :feature do
       let(:conference) { Fabricate(:conference) }
 
       it "should display application button if module is active" do
-        visit(conference_path(id: conference.slug))
+        visit(conference_url(subdomain: conference.slug))
         expect(page).to have_content I18n.t("conferences.landing.speaker_application")
       end
 
       it "should not display application button if module is not active" do
         conference.set!("application_module", "false")
         conference.save
-        visit(conference_path(id: conference.slug))
+        visit(conference_url(subdomain: conference.slug))
         expect(page).not_to have_content I18n.t("conferences.landing.speaker_application")
       end
     end
@@ -78,7 +78,7 @@ describe "Conference landing page", :type => :feature do
       end
 
       it "should display list of speakers if module is active" do
-        visit(conference_path(id: conference.slug))
+        visit(conference_url(subdomain: conference.slug))
         @speech1.topic.speakers.each do |speaker|
           expect(page).to have_content speaker.name
         end
@@ -91,14 +91,14 @@ describe "Conference landing page", :type => :feature do
       it "should not display list of speakers if module is not active" do
         conference.set!("speakers_module", "false")
         conference.save
-        visit(conference_path(id: conference.slug))
+        visit(conference_url(subdomain: conference.slug))
         @speech1.topic.speakers.each do |speaker|
           expect(page).not_to have_content speaker.name
         end
       end
 
       it "should display list of speakers of only accepted topic" do
-        visit(conference_path(id: conference.slug))
+        visit(conference_url(subdomain: conference.slug))
 
         @speech1.topic.speakers.each do |speaker|
           expect(page).to have_content speaker.name
@@ -121,14 +121,14 @@ describe "Conference landing page", :type => :feature do
 
     context "map" do
       it "should display address if module is active" do
-        visit(conference_path(id: conference.slug))
+        visit(conference_url(subdomain: conference.slug))
         expect(page).to have_content conference.address.info
       end
 
       it "should not display address if module is not active" do
         conference.set!("map_module", "false")
         conference.save
-        visit(conference_path(id: conference.slug))
+        visit(conference_url(subdomain: conference.slug))
         expect(page).not_to have_content conference.address.info
       end
     end

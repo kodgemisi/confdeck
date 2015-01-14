@@ -1,0 +1,33 @@
+<h1>Listing slots</h1>
+
+<table>
+  <tr>
+    <th>Start hour</th>
+    <th>Duration</th>
+    <th>Conference</th>
+    <th>Day</th>
+    <th>Room</th>
+    <th>Topic</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @slots.each do |slot| %>
+  <tr>
+    <td><%= slot.start_hour %></td>
+    <td><%= slot.duration %></td>
+    <td><%= slot.conference_id %></td>
+    <td><%= slot.day_id %></td>
+    <td><%= slot.room_id %></td>
+    <td><%= slot.topic_id %></td>
+    <td><%= link_to 'Show', ["admin", slot] %></td>
+    <td><%= link_to 'Edit', edit_admin_slot_path %></td>
+    <td><%= link_to 'Destroy', ["admin", slot], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Slot', new_admin_slot_path %>

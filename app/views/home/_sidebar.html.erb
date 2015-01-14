@@ -19,7 +19,7 @@
                 <td width="15%" class="pl0 pr5">
                   <%= button_group class: "btn-group-sm pull-right" do %>
                       <%= bs_button_to "", conference, tooltip: "Details", icon: "eye-open", style: "primary", size: "mini" %>
-                      <%= bs_button_to "", conference_schedule_path(conference), tooltip: "Schedule", icon: "calendar", style: "primary", size: "mini" %>
+                      <%= bs_button_to "", admin_schedule_path, tooltip: "Schedule", icon: "calendar", style: "primary", size: "mini" %>
                       <%= bs_button_to "", edit_conference_path(conference), tooltip: "Edit", icon: "pencil", style: "primary", size: "mini" %>
                   <% end %>
                 </td>

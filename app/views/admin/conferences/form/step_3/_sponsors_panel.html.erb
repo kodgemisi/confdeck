@@ -1,0 +1,18 @@
+<div class="form-group nb">
+    <label for="from" class="col-lg-3 control-label"><%= t("conferences.sponsors") %></label>
+
+    <div class="col-lg-4 sponsors">
+      <%= f.simple_fields_for :sponsors do |at| %>
+          <%= render 'conferences/sponsor_fields', :f => at %>
+      <% end %>
+    </div>
+    <div class="col-lg-1">
+      <%= link_to_add_association t("conferences.wizard.sponsors.new"), f, :sponsors,
+                                  class: "btn btn-primary",
+                                  data: {
+                                          "association-insertion-method" => "append",
+                                          #"association-insertion-traversal" => "closest",
+                                          "association-insertion-node" => ".sponsors"
+                                  } %>
+    </div>
+</div>

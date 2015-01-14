@@ -13,43 +13,10 @@
 
 class ConferencesController < ApplicationController
   include Activitable
-  before_filter :authenticate_user!, except: [:show, :apply, :save_apply]
-  before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule, :basic_information, :address, :contact_information, :speech_types, :landing_settings, :search_users, :roles, :apply, :save_apply]
+  before_action :set_conference, only: [:show, :apply, :save_apply]
   before_action :load_data, only: [:new, :edit, :update]
-  before_action :parse_dates, only: [:edit, :basic_information]
-  layout 'conference_landing', :only => [:show, :apply, :save_apply]
-  # GET /conferences
-  # GET /conferences.json
-  def index
-    @conferences = current_user.conferences.paginate(:page => params[:page])
+  layout 'conference_landing', only: [:show]
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @conferences }
-    end
-  end
-
-  # GET /conferences/1
-  # GET /conferences/1.json
-  def show
-    @one_day = (@conference.days.first == @conference.days.last)
-    @days = @conference.days
-    @slots = @conference.slots.group_by(&:day)
-
-    @data = {}
-
-    @days.each do |day|
-      @data[day.date] = day.slots.group_by(&:room)
-    end
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @conference }
-    end
-  end
-
-  # GET /conferences/new
-  # GET /conferences/new.json
   def new
     authorize Conference
 
@@ -75,13 +42,6 @@ class ConferencesController < ApplicationController
     end
   end
 
-  # GET /conferences/1/edit
-  def edit
-    authorize @conference, :manage?
-
-    @conference.email_templates.build
-  end
-
   # POST /conferences
   # POST /conferences.json
   def create
@@ -90,64 +50,48 @@ class ConferencesController < ApplicationController
     @conference = Conferences::CreateConferenceService.instance.call(conference_params, current_user)
 
     if @conference.persisted? && @conference.errors.empty?
-      redirect_to manage_conference_path(@conference), notice: 'Conference was successfully created.'
+      redirect_to admin_conference_url(subdomain: @conference.slug) , notice: 'Conference was successfully created.'
     else
       load_data
       render action: "new"
     end
   end
 
-  # PUT /conferences/1
-  # PUT /conferences/1.json
-  def update
-    authorize @conference, :manage?
+  # GET /conferences/1
+  # GET /conferences/1.json
+  def show
+    @one_day = (@conference.days.first == @conference.days.last)
+    @days = @conference.days
+    @slots = @conference.slots.group_by(&:day)
+
+    @data = {}
+
+    @days.each do |day|
+      @data[day.date] = day.slots.group_by(&:room)
+    end
 
     respond_to do |format|
-      if @conference.update_attributes(conference_params)
-        format.html { redirect_to manage_conference_path(@conference), notice: 'Conference was successfully updated.' }
-        format.json { head :no_content }
+      format.html # show.html.erb
+      format.json { render json: @conference }
+    end
+  end
+
+  def apply
+    @speech = @conference.speeches.new
+    @speech.build_topic
+  end
+
+  #TODO must be reviewed
+  def save_apply
+    @speech = Speech.new(speech_params)
+    @speech.conference = @conference
+    respond_to do |format|
+      if @speech.save
+        format.html { redirect_to apply_conference_path(@conference), notice: t("application_received") }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @conference.errors, status: :unprocessable_entity }
+        format.html { render action: "apply" }
       end
     end
-  end
-
-  # DELETE /conferences/1
-  # DELETE /conferences/1.json
-  def destroy
-    authorize @conference, :manage?
-
-    @conference.destroy
-
-    respond_to do |format|
-      format.html { redirect_to conferences_url }
-      format.json { head :no_content }
-    end
-  end
-
-  def schedule
-    authorize @conference, :manage?
-    @room = Room.new
-    @slot = Slot.new
-  end
-
-  def speech_types
-    authorize @conference, :manage?
-    @speech_types = @conference.speech_types
-    respond_to do |format|
-      format.json { render json: @speech_types }
-      format.html { render template: "conferences/edit/speech_types"}
-    end
-  end
-
-  #admin side #show equivalent
-  def manage
-    authorize @conference, :user?
-    @latest_speeches = @conference.speeches.order("created_at DESC").limit(15).includes(topic: [:speakers]).includes(:comments)
-    @total_speeches = @conference.speeches
-    @waiting_speeches = @conference.speeches.where(:state => "waiting_review")
-    @activities = @conference.activities.order("created_at DESC").limit(15)
   end
 
   def check_slug
@@ -174,58 +118,18 @@ class ConferencesController < ApplicationController
   def reset_wizard
     current_user.conference_wizard.destroy if current_user.conference_wizard
 
-    redirect_to new_conference_path
-  end
-
-  def basic_information
-    render template: "conferences/edit/basic_information"
-  end
-
-  def address
-    render template: "conferences/edit/address"
-  end
-
-  def contact_information
-    render template: "conferences/edit/contact_information"
-  end
-
-  def landing_settings
-    @modules = Conference::MODULES
-  end
-
-  def search_users
-    query = params[:query]
-    @users = User.joins(:organizations)
-                .where("organizations.id" => @conference.organizations.ids)
-                .where("email LIKE ?", "%#{query}%")
-    respond_to do |format|
-      format.json
-    end
-  end
-
-  def apply
-    @speech = @conference.speeches.new
-    @speech.build_topic
-  end
-
-  #TODO must be reviewed
-  def save_apply
-    Speech.transaction do
-      @speech = Speech.new(speech_params)
-      @speech.conference = @conference
-      create_activity!(current_user, @conference, @speech, "speech_apply")
-    end
-
-    respond_to do |format|
-      if @speech.save
-        format.html { redirect_to apply_conference_path(@conference), notice: t("application_received") }
-      else
-        format.html { render action: "apply" }
-      end
-    end
+    redirect_to new_conferences_path
   end
 
   private
+
+    def check_slug_params
+      params.permit(:slug)
+    end
+
+    def sync_wizard_params
+      params.require(:conference_wizard).permit(:id, :data)
+    end
 
     def speech_params
       params.require(:speech).permit(:speech_type_id, topic_attributes: [:subject, :abstract, :detail, :additional_info, speaker_ids: []])
@@ -244,21 +148,13 @@ class ConferencesController < ApplicationController
       @email_templates.each { |et| @template_hash[et.email_template_type.type_name] ||= et }
     end
 
-    def check_slug_params
-      params.permit(:slug)
-    end
-
     def set_conference
-      @conference = Conference.friendly.find(params[:id])
+      @conference = Conference.friendly.find(request.subdomain)
 
       if @conference.days.first == @conference.days.last
         @conference.start_time = @conference.slots.first.start_time.strftime("%H:%M")
         @conference.end_time = @conference.slots.first.end_time.strftime("%H:%M")
       end
-    end
-
-    def sync_wizard_params
-      params.require(:conference_wizard).permit(:id, :data)
     end
 
     def conference_params

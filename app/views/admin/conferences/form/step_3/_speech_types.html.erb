@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="form-group nb">
+      <label for="from" class="col-lg-3 control-label"><%= t("conferences.speech_types") %></label>
+
+      <div class="col-lg-4 speech-types">
+        <%= f.simple_fields_for :speech_types do |at| %>
+            <%= render 'admin/conferences/form/step_3/speech_types', :f => at %>
+        <% end %>
+      </div>
+      <div class="col-lg-1">
+        <%= link_to_add_association t("conferences.wizard.speech_type.new"), f, :speech_types,
+                                    class: "btn btn-primary",
+                                    data: {
+                                            "association-insertion-method" => "append",
+                                            #"association-insertion-traversal" => "closest",
+                                            "association-insertion-node" => ".speech-types"
+                                    } %>
+      </div>
+    </div>
+  </div>
+</div>

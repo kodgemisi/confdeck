@@ -1,7 +1,0 @@
-$("#comment_comment").val("");
-$("#notice").show();
-$("#notice").html("your comment successfully created");
-$("#notice").fadeOut(3000);
-$("#<%= dom_id(@comment.commentable) %>").find(".comments").slideDown();
-$("#<%= dom_id(@comment.commentable) %>").find(".comments .media-list").prepend("<%=escape_javascript(render("conferences/dashboard/comment", :comment => @comment))%>");
-$("#<%= dom_id(@comment) %>").effect('highlight', 500)
