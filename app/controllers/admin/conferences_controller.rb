@@ -12,7 +12,6 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class Admin::ConferencesController < Admin::AdminController
-  before_filter :authenticate_user!, except: [:show, :apply, :save_apply]
   before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule, :basic_information, :address, :contact_information, :speech_types, :landing_settings, :search_users, :roles, :apply, :save_apply]
   before_action :load_data, only: [:new, :edit, :update]
   before_action :parse_dates, only: [:edit, :basic_information]
