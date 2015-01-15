@@ -19,6 +19,18 @@ class ApplicationController < ActionController::Base
   layout :layout_for_devise
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  def after_sign_in_path_for(resource)
+    if session[:conference_name]
+      wizard = ConferenceWizard.new_with_name(session[:conference_name])
+      wizard.user = resource
+      wizard.save
+      session.delete(:conference_name)
+      new_conferences_path
+    else
+      super
+    end
+  end
+
   private
 
   def user_not_authorized

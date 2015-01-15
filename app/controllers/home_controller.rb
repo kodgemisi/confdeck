@@ -12,7 +12,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class HomeController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :quick_signup]
+  before_filter :authenticate_user!, except: [:index, :quick_signup, :quick_social_signup]
 
   layout "landing_layout", :only => [:index]
 
@@ -37,6 +37,11 @@ class HomeController < ApplicationController
         format.html { render text: signup.errors.full_messages.to_s }
       end
     end
+  end
+
+  def quick_social_signup
+    session[:conference_name] = params[:name]
+    redirect_to omniauth_authorize_path("user", params[:provider])
   end
 
   private

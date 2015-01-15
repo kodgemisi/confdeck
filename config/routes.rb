@@ -110,6 +110,7 @@ Confman::Application.routes.draw do
 
   root :to => 'home#index'
   post "/quick_signup" => 'home#quick_signup'
+  get "/quick_social_signup" => 'home#quick_social_signup'
 
   get "settings", to: "settings#index"
   post "settings", to: "settings#update", :as => "update_settings"

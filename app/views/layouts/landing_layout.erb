@@ -45,6 +45,20 @@
             <%= f.input :name %>
             <%= f.submit %>
         <% end %>
+        <ul class="list-table social-logins">
+          <li><%= link_to quick_social_signup_path(provider: "facebook") do %>
+                <button type="button" class="btn btn-block btn-facebook">Login with <i class="ico-facebook2 ml5"></i></button>
+            <% end %>
+          </li>
+          <li><%= link_to quick_social_signup_path(provider:  "google_oauth2") do %>
+                <button type="button" class="btn btn-block btn-google">Login with <i class="ico-google-plus2 ml5"></i></button>
+            <% end %>
+          </li>
+          <li><%= link_to quick_social_signup_path(provider:  "github") do %>
+                <button type="button" class="btn btn-block btn-github">Login with <i class="ico-github2 ml5"></i></button>
+            <% end %>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
