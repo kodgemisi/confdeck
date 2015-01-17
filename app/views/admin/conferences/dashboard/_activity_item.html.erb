@@ -13,7 +13,7 @@
                 <p class="nm">
                   <%= t("activities.actions.#{activity.action}",
                         user: "<span class=semibold>#{activity.user.display_name}</span>",
-                        speech: link_to(activity.subject.topic.subject, ["admin", activity.subject.commentable])
+                        speech: link_to(activity.subject.topic.subject, [:admin, activity.subject.commentable])
                       ).html_safe
                   %>
                 </p>
@@ -42,7 +42,7 @@
                 <p class="nm">
                   <%= t("activities.actions.#{activity.action}",
                         user: "<span class=semibold>#{activity.user.display_name}</span>",
-                        speech: link_to(activity.subject.topic.subject, ["admin", activity.subject])
+                        speech: link_to(activity.subject.topic.subject, [:admin, activity.subject])
                       ).html_safe
                   %>
                 </p>

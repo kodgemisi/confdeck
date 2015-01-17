@@ -78,7 +78,7 @@ class Admin::RoomsController < Admin::AdminController
 
     respond_to do |format|
       if @room.update_attributes(room_params)
-        format.html { redirect_to ["admin", @room], notice: 'Room was successfully updated.' }
+        format.html { redirect_to [:admin, @room], notice: 'Room was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
