@@ -67,6 +67,11 @@ $(document).ready(function(){
                 $(".speech-types ").append(item)
             }
         });
+        $("#wizard .speech-types").on('cocoon:before-insert', function(e, insertedItem) {
+            if($(".speech-types .nested-fields").find("input[type=text]").last().val() == ""){
+                insertedItem[0].innerHTML = "";
+            }
+        });
 
 
         $("#wizard input").on("focusout", function(){
