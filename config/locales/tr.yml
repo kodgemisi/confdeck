@@ -415,6 +415,8 @@ tr:
         update: Update Email template
   home:
     active_conferences: 
+  js:
+    in_use: "%{name} başkası tarafından kullanılıyor"
   mailers:
     speaker_mailer:
       new_speaker_subject: Confdeck'e Hoşgeldiniz

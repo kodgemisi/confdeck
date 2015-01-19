@@ -119,7 +119,7 @@ $(document).ready(function(){
         },
         messages: {
             "conference[slug]": {
-                remote: $.validator.format("{0} is already in use")
+                remote: $.validator.format(I18n.t("js.in_use", {name: "{0}"}))
             }
         }
     });
