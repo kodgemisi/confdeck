@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   layout "application_no_header"
 
   def show
-    @speeches = @user.speeches if @user.speaker
+    @speeches = @user.speeches 
   end
 
   private
