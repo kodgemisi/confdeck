@@ -22,6 +22,11 @@ class Admin::AdminController < ApplicationController
 
     def user_not_authorized
       flash[:error] = t("general.not_authorized")
-      redirect_to admin_conference_path
+
+      if current_user.is_user_of?(current_conference)
+        redirect_to admin_conference_path
+      else
+        redirect_to conference_url(subdomain: current_conference.slug)
+      end
     end
 end
