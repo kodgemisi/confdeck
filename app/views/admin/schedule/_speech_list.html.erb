@@ -18,7 +18,7 @@
                     data-speech_id="<%= speech.id %>" <%= "style=display:none" if speech.slot.present? %>
                 >
                   <td><%= speech.topic.subject %></td>
-                  <td><%= speech.topic.subject %></td>
+                  <td><%= speech.topic.speakers.first.name %></td>
                 </tr>
 
             <% end %>

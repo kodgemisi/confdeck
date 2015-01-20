@@ -54,7 +54,6 @@ class User < ActiveRecord::Base
         language: "en"
     } if self.settings.nil?
 
-    self.role = :user if self.role.nil?
   end
 
   def set!(key, val)
