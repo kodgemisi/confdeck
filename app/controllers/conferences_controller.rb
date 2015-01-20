@@ -87,7 +87,7 @@ class ConferencesController < ApplicationController
     @speech.conference = @conference
     respond_to do |format|
       if @speech.save
-        format.html { redirect_to apply_conference_path(@conference), notice: t("application_received") }
+        format.html { redirect_to apply_conference_path(@conference), notice: t("application_received", topic: @speech.topic.subject) }
       else
         format.html { render action: "apply" }
       end

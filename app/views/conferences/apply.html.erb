@@ -14,8 +14,10 @@
 
 <div class="section">
   <div class="container">
+    <%= render 'layouts/messages' %>
+
     <div class="row">
-      <%= form_for([@conference, @speech], url: apply_conference_path(@conference), html: {class: 'panel'}) do |f| %>
+      <%= form_for([@conference, @speech], url: apply_conference_path, html: {class: 'panel'}) do |f| %>
 
           <div class="panel-heading text-center">
             <div class="ico-bubbles mb15 mt15" style="font-size:36px;"></div>
