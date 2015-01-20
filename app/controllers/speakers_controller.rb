@@ -99,6 +99,6 @@ class SpeakersController < Admin::AdminController
     end
 
     def speaker_params
-      params.require(:speaker).permit(:name, :email, :phone, :twitter, :facebook)
+      params.require(:speaker).permit(:name, :phone, :twitter, :facebook, user: [:email])
     end
 end

@@ -16,13 +16,15 @@
                 <%= sf.text_field :name, :class => "form-control" %>
               </div>
             </div>
-            <div class="form-group">
-              <%= sf.label t('speaker.email'), :class => "col-lg-3 control-label" %>
+            <%= sf.fields_for :user do |u| %>
+                <div class="form-group">
+                  <%= u.label t('speaker.email'), :class => "col-lg-3 control-label" %>
 
-              <div class="col-lg-9">
-                <%= sf.email_field :email, :class => "form-control" %>
-              </div>
-            </div>
+                  <div class="col-lg-9">
+                    <%= u.email_field :email, :class => "form-control" %>
+                  </div>
+                </div>
+            <% end %>
             <div class="form-group">
               <%= sf.label t('speaker.phone'), :class => "col-lg-3 control-label" %>
 
