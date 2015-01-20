@@ -6,7 +6,7 @@ class Admin::RolesController < Admin::AdminController
   end
 
   def create
-    Conferences::UpdateConferenceRolesService.new
+    Conferences::UpdateConferenceRolesService.instance
       .call(@conference, roles_params[:conference_admins], roles_params[:conference_users])
 
     respond_to do |format|
