@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-lg-12">
-    <%= form_for(["admin", @speech], :html => {:class => 'panel panel-default form-horizontal form-bordered validate-me'}) do |f| %>
+    <%= form_for([:admin, @speech], :html => {:class => 'panel panel-default form-horizontal form-bordered validate-me'}) do |f| %>
         <div class="panel-body pt0">
           <% if @speech.errors.any? %>
               <div class="form-group message-container">
@@ -47,7 +47,7 @@
                 <%= topic_form.label t('speeches.abstract'), :class => "col-lg-3 control-label" %>
 
                 <div class="col-lg-9">
-                  <%= topic_form.text_field :abstract, :class => "form-control" %>
+                  <%= topic_form.text_area :abstract, :class => "form-control" %>
                 </div>
               </div>
               <div class="form-group">

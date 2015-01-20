@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-lg-12">
-    <%= form_for(["admin", @sponsor], :html => {:class => 'panel panel-default form-horizontal form-bordered validate-me'}) do |f| %>
+    <%= form_for([:admin, @sponsor], :html => {:class => 'panel panel-default form-horizontal form-bordered validate-me'}) do |f| %>
         <div class="panel-body pt0">
           <% if @sponsor.errors.any? %>
               <div class="form-group message-container">

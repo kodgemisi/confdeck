@@ -4,7 +4,7 @@
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
       <h4 class="modal-title">Edit Slot</h4>
     </div>
-    <%= form_for(["admin", @slot]) do |f| %>
+    <%= form_for([:admin, @slot]) do |f| %>
       <div class="modal-body">
         <% if @slot.errors.any? %>
           <div id="error_explanation">
@@ -53,7 +53,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal"><%= t("Close") %></button>
-        <%= link_to 'Destroy', ["admin", @slot], method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" %>
+        <%= link_to 'Destroy', [:admin, @slot], method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger" %>
         <%= f.submit :Save, :class=>"btn btn-primary" %>
       </div>
     <% end %>

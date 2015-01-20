@@ -11,9 +11,8 @@ body {
 }
 
 .vert-text {
-    display: table-cell;
-    vertical-align: middle;
     text-align: center;
+    margin-top: 100px;
 }
 
 .vert-text h1 {
@@ -209,4 +208,9 @@ footer {
     background: #6DBCDB;
     padding: 50px 0;
     color: #ffffff;
+}
+
+.signup-box{
+    margin-top: 25px;
+    border: 1px solid red;
 }

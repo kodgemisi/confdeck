@@ -21,9 +21,9 @@
     <td><%= slot.day_id %></td>
     <td><%= slot.room_id %></td>
     <td><%= slot.topic_id %></td>
-    <td><%= link_to 'Show', ["admin", slot] %></td>
+    <td><%= link_to 'Show', [:admin, slot] %></td>
     <td><%= link_to 'Edit', edit_admin_slot_path %></td>
-    <td><%= link_to 'Destroy', ["admin", slot], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', [:admin, slot], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

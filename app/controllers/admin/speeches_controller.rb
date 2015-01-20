@@ -86,7 +86,7 @@ class Admin::SpeechesController < Admin::AdminController
   def update
     respond_to do |format|
       if @speech.update_attributes(speech_params)
-        format.html { redirect_to ["admin", @speech], notice: 'Speech was successfully updated.' }
+        format.html { redirect_to [:admin, @speech], notice: 'Speech was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -117,7 +117,7 @@ class Admin::SpeechesController < Admin::AdminController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to ["admin", @speech], notice: "Your comment is successfully created"}
+        format.html { redirect_to [:admin, @speech], notice: "Your comment is successfully created"}
       else
         format.html { render :action => 'show' }
       end

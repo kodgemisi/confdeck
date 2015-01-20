@@ -22,7 +22,7 @@
 </div>
 
 <div class="create-room-window">
-  <%= form_for(["admin", @room], remote: true, html: {class: "form-horizontal"}) do |f| %>
+  <%= form_for([:admin, @room], remote: true, html: {class: "form-horizontal"}) do |f| %>
     <%= f.hidden_field :conference_id, value: @conference.id %>
     <div class="form-group nm">
         <%= f.label :name, t("rooms.name"), class: "col-lg-2 control-label" %>

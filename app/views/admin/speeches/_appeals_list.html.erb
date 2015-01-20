@@ -2,7 +2,7 @@
     <%= div_for(speech, class: "panel panel-default") do %>
         <div class="panel-heading">
           <h3 class="panel-title pull-left">
-            <%= link_to speech.topic.subject, ["admin", speech] %>
+            <%= link_to speech.topic.subject, [:admin, speech] %>
           </h3>
 
           <div class="speakers pull-right">
@@ -41,9 +41,9 @@
           </div>
         </div>
         <div class="panel-footer">
-          <%= link_to "#{speech.comments.count} comments", ["admin", speech] %>
+          <%= link_to "#{speech.comments.count} comments", [:admin, speech] %>
           <%= link_to 'Edit', edit_admin_speech_path %>
-          <% link_to 'Destroy', ["admin", speech], method: :delete, data: {confirm: 'Are you sure?'} %>
+          <% link_to 'Destroy', [:admin, speech], method: :delete, data: {confirm: 'Are you sure?'} %>
         </div>
     <% end %>
 <% end %>

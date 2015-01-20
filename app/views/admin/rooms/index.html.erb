@@ -11,9 +11,9 @@
 <% @rooms.each do |room| %>
   <tr>
     <td><%= room.name %></td>
-    <td><%= link_to 'Show', ["admin", room] %></td>
+    <td><%= link_to 'Show', [:admin, room] %></td>
     <td><%= link_to 'Edit', editadmin_room_path(room) %></td>
-    <td><%= link_to 'Destroy', ["admin", room], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', [:admin, room], method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

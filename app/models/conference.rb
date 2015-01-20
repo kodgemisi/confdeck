@@ -94,6 +94,10 @@ class Conference < ActiveRecord::Base
     name_changed?
   end
 
+  def generate_slug_preview
+    set_slug
+  end
+
   def create_days_and_slot
     #FIXME should be refactored
     if (self.from_date && self.to_date)

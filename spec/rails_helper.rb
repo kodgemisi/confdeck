@@ -9,7 +9,7 @@ require 'capybara/rails'
 require 'selenium-webdriver'
 
 driver = :webkit
-driver = :selenium
+#driver = :selenium
 Capybara.current_driver = driver
 Capybara.javascript_driver = driver
 

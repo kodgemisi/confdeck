@@ -24,7 +24,7 @@
           <i class="ico-arrow-down mr5 action-downvote <%= 'text-primary' if current_user.voted_down_on? speech %>"></i><span class="downvote-count"><%= speech.downvotes.count %></span>
       <% end %>
     </div>
-    <%= link_to "#{speech.comments.count} comments", ["admin", speech], class: "btn btn-default" %>
+    <%= link_to "#{speech.comments.count} comments", [:admin, speech], class: "btn btn-default" %>
     <%= link_to t("speeches.show_details"), admin_speech_path(speech), class: "btn btn-primary button" %>
   </td>
 </tr>
