@@ -353,6 +353,8 @@ en:
         update: 
   home:
     active_conferences: Active Conferences
+  js:
+    in_use: "%{name} is already in use"
   mailers:
     speaker_mailer:
       new_speaker_subject: Welcome to Confdeck
