@@ -59,6 +59,12 @@ describe "Conference landing page", :type => :feature do
         expect(page).to have_content I18n.t("conferences.landing.speaker_application")
       end
 
+      it "should redirects to /apply when clicked apply button" do
+        visit(conference_url(subdomain: conference.slug))
+        click_link(I18n.t("conferences.landing.speaker_application"))
+        expect(page).to have_content(I18n.t("conferences.landing.new_application"))
+      end
+
       it "should not display application button if module is not active" do
         conference.set!("application_module", "false")
         conference.save
