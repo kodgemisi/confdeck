@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150105151003) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "activities", force: true do |t|
     t.integer  "subject_id"
     t.string   "subject_type"
@@ -23,8 +26,8 @@ ActiveRecord::Schema.define(version: 20150105151003) do
     t.datetime "updated_at"
   end
 
-  add_index "activities", ["conference_id"], name: "index_activities_on_conference_id"
-  add_index "activities", ["user_id"], name: "index_activities_on_user_id"
+  add_index "activities", ["conference_id"], name: "index_activities_on_conference_id", using: :btree
+  add_index "activities", ["user_id"], name: "index_activities_on_user_id", using: :btree
 
   create_table "addresses", force: true do |t|
     t.text     "info"
@@ -46,9 +49,9 @@ ActiveRecord::Schema.define(version: 20150105151003) do
     t.datetime "updated_at",                               null: false
   end
 
-  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
-  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id", using: :btree
+  add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "conference_roles", force: true do |t|
     t.integer  "user_id"
@@ -58,8 +61,8 @@ ActiveRecord::Schema.define(version: 20150105151003) do
     t.datetime "updated_at"
   end
 
-  add_index "conference_roles", ["conference_id"], name: "index_conference_roles_on_conference_id"
-  add_index "conference_roles", ["user_id"], name: "index_conference_roles_on_user_id"
+  add_index "conference_roles", ["conference_id"], name: "index_conference_roles_on_conference_id", using: :btree
+  add_index "conference_roles", ["user_id"], name: "index_conference_roles_on_user_id", using: :btree
 
   create_table "conference_wizards", force: true do |t|
     t.text     "data"
@@ -68,7 +71,7 @@ ActiveRecord::Schema.define(version: 20150105151003) do
     t.datetime "updated_at"
   end
 
-  add_index "conference_wizards", ["user_id"], name: "index_conference_wizards_on_user_id"
+  add_index "conference_wizards", ["user_id"], name: "index_conference_wizards_on_user_id", using: :btree
 
   create_table "conferences", force: true do |t|
     t.string   "name"
@@ -94,7 +97,7 @@ ActiveRecord::Schema.define(version: 20150105151003) do
     t.string   "settings"
   end
 
-  add_index "conferences", ["slug"], name: "index_conferences_on_slug", unique: true
+  add_index "conferences", ["slug"], name: "index_conferences_on_slug", unique: true, using: :btree
 
   create_table "conferences_days", id: false, force: true do |t|
     t.integer "conference_id"
@@ -141,7 +144,7 @@ ActiveRecord::Schema.define(version: 20150105151003) do
     t.datetime "updated_at"
   end
 
-  add_index "identities", ["user_id"], name: "index_identities_on_user_id"
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
   create_table "invitations", force: true do |t|
     t.string   "email"
@@ -198,7 +201,7 @@ ActiveRecord::Schema.define(version: 20150105151003) do
     t.integer  "user_id"
   end
 
-  add_index "speakers", ["user_id"], name: "index_speakers_on_user_id"
+  add_index "speakers", ["user_id"], name: "index_speakers_on_user_id", using: :btree
 
   create_table "speakers_topics", id: false, force: true do |t|
     t.integer "speaker_id"
@@ -236,11 +239,11 @@ ActiveRecord::Schema.define(version: 20150105151003) do
 
   create_table "topics", force: true do |t|
     t.string   "subject"
-    t.text     "abstract",        limit: 255
+    t.text     "abstract"
     t.text     "detail"
     t.text     "additional_info"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "users", force: true do |t|
@@ -264,13 +267,13 @@ ActiveRecord::Schema.define(version: 20150105151003) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.string   "settings"
-    t.integer  "role"
+    t.integer  "role",                   default: 0
     t.string   "username"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "votes", force: true do |t|
     t.integer  "votable_id"
@@ -283,9 +286,9 @@ ActiveRecord::Schema.define(version: 20150105151003) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
-  add_index "votes", ["votable_id", "votable_type"], name: "index_votes_on_votable_id_and_votable_type"
-  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
-  add_index "votes", ["voter_id", "voter_type"], name: "index_votes_on_voter_id_and_voter_type"
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
+  add_index "votes", ["votable_id", "votable_type"], name: "index_votes_on_votable_id_and_votable_type", using: :btree
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
+  add_index "votes", ["voter_id", "voter_type"], name: "index_votes_on_voter_id_and_voter_type", using: :btree
 
 end

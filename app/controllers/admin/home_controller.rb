@@ -11,14 +11,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-class HomeController < ApplicationController
-  before_filter :authenticate_user!, except: [:index, :guest_session]
-
-  layout "home_layout", :only => [:index]
-
-  def index
-    
-  end
+class Admin::HomeController < Admin::AdminController
+  before_filter :authenticate_user!
 
   def dashboard
     @conferences = current_user.conferences.includes(:days).order('days.date ').where('days.date > ?', Date.today).limit(5).distinct

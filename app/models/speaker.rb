@@ -17,7 +17,7 @@ class Speaker < ActiveRecord::Base
   belongs_to :user
   validates_presence_of :name, :phone
   #TODO refactor
-  attr_accessor :email
+  #attr_accessor :email
 
   def avatar_url(size=150)
     gravatar_id = Digest::MD5::hexdigest(self.user.email).downcase

@@ -5,7 +5,7 @@
 <%= javascript_tag do %>
     window.schedule_url = '<%= j admin_schedule_url%>';
     window.rooms_url = '<%= j admin_rooms_url%>';
-    window.speech_types_url = '<%= j speech_types_conference_url(@conference)%>';
+    window.speech_types_url = '<%= j speech_types_admin_conference_path %>';
     window.conference = <%= raw @conference.to_json(methods: [:start_date, :end_date]) %>
 <% end %>
 
