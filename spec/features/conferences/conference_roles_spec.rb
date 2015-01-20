@@ -7,6 +7,11 @@ describe "Conference roles ", :type => :feature do
     I18n.locale = :en
   end
 
+  before :each do
+    Conference.destroy_all
+    sleep 2
+  end
+
   context "conference admin" do
     before :each do
       @user = Fabricate(:user)
