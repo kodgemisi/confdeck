@@ -1,7 +1,7 @@
 include ConferencesHelper
 
 Fabricator(:conference) do
-  name { Faker::Name.name }
+  name { "Best Conference" }
   summary { Faker::Lorem.sentence }
   description { Faker::Lorem.paragraph }
   email { Faker::Internet.email }
@@ -15,7 +15,7 @@ end
 
 
 Fabricator(:one_day_conference, from: :conference) do
-  name { Faker::Name.name }
+  name { "Best Conference" }
   summary { Faker::Lorem.sentence }
   description { Faker::Lorem.paragraph }
   email { Faker::Internet.email }

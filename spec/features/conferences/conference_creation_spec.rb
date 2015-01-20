@@ -4,14 +4,19 @@ Warden.test_mode!
 
 describe "Conference creation wizard", :type => :feature do
 
-  before :each do
+  before :all do
     @user = Fabricate(:user)
     @user.set!("language", "en")
-    login_as(@user, :scope => :user)
     @conference = Fabricate.build(:conference)
     @organization = @conference.organizations.first
     @user.organizations << @organization
     @user.conference_wizard.destroy! if @user.conference_wizard
+  end
+
+  before :each do
+    Conference.destroy_all
+    sleep 3
+    login_as(@user, :scope => :user)
   end
 
   it "should validate required fields are working properly", js: true do
