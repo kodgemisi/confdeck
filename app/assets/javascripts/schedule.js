@@ -16,6 +16,7 @@ $(function(){
             dataSource.remove(dataSource.get(0)) //Remove unsaved entries
             showError(e.xhr.responseText);
         }
+        console.log(e)
     }
 
     window.dataSource = new kendo.data.SchedulerDataSource({
@@ -78,13 +79,16 @@ $(function(){
         },
         requestEnd: function (e) {
             if(e.type == "destroy"){
-                $(".speech-list").load("http://localhost:3000/conferences/dedecon/schedule/speech_list", function(){
+                $(".speech-list").load(window.speech_list_url, function(){
                     $(".draggable").kendoDraggable(draggableConfig);
 
                 });
 
             }
-        }
+        },
+        sync: function(e) {
+            scheduler.dataSource.read();
+        },
     });
     dataSource.bind("error", dataSource_error);
 
@@ -247,7 +251,6 @@ $(function(){
 
                     scheduler.dataSource.add(newEvent);
                     scheduler.dataSource.sync();
-                    scheduler.dataSource.read();
 
                 }
 
