@@ -2,10 +2,13 @@ class Admin::RolesController < Admin::AdminController
   before_filter :set_conference
 
   def index
+    authorize @conference, :manage?
 
   end
 
   def create
+    authorize @conference, :manage?
+
     Conferences::UpdateConferenceRolesService.instance
       .call(@conference, roles_params[:conference_admins], roles_params[:conference_users])
 
