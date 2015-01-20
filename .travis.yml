@@ -20,4 +20,5 @@ addons:
       secure: "K7CVtOYFUK6M6t0Nxlbpeq5YqNCYjW3sXyE80t9g1KNqs8s3Ce+/kQk7bmAP3j5YwNQjnulpYsX0arrKmSRH6Gkdfwf0P3uyVcu72Thlw9hBx4gKydUe7utTiWq8e5zqx/yG1ND8OZEl3zCvRtMOzKoFoaiu0u2/3gJuvyDBzjw="
   hosts:
    - best-conference.example.com
+   - www.example.com
 script: xvfb-run bundle exec rspec

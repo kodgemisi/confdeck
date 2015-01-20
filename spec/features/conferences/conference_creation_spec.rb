@@ -20,7 +20,7 @@ describe "Conference creation wizard", :type => :feature do
   end
 
   it "should validate required fields are working properly", js: true do
-    visit(new_conferences_path)
+    visit(new_conferences_url)
     page.execute_script("$('#from').datepicker('setDate', '#{@conference.from_date}')")
     page.execute_script("$('#to').datepicker('setDate', '#{@conference.to_date}')")
     page.select(@organization.name, from: 'conference[organization_ids][]')
@@ -66,7 +66,7 @@ describe "Conference creation wizard", :type => :feature do
     it "can complete the wizard" do
 
       # Step 1
-      visit(new_conferences_path)
+      visit(new_conferences_url)
       page.execute_script("$('#from').datepicker('setDate', '#{@conference.from_date}')")
       page.execute_script("$('#to').datepicker('setDate', '#{@conference.to_date}')")
       page.select(@organization.name, from: 'conference[organization_ids][]')
