@@ -41,6 +41,9 @@
       <%= form_for @signup_form, url: quick_signup_path do |f| %>
           <div class="row">
             <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 name-col">
+              <% unless @signup_form.errors.empty? %>
+                  <%= errors! @signup_form %>
+              <% end %>
               <%= f.text_field :name, class: "form-control", placeholder: t("landing.signup.name") %>
             </div>
           </div>
