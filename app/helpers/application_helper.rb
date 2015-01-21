@@ -32,6 +32,21 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def errors!(model)
+    messages = model.errors.full_messages.map { |msg| content_tag(:span, msg)  }.join("<br />")
+
+
+    html = <<-HTML
+    <div class="alert alert-danger">
+        <button class="close" data-dismiss="alert"></button>
+      <ul>#{messages}</ul>
+    </div>
+    HTML
+
+
+    html.html_safe
+  end
+
   def get_title
     @metamagic_renderer.tags.sort.first.value
   end
