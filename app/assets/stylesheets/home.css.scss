@@ -1,5 +1,7 @@
 /*
   *= require font-awe
+  *= require adminre_layout
+  *= require adminre_ui
 */
 
 /* Global Styles */
@@ -211,6 +213,133 @@ footer {
 }
 
 .signup-box{
-    margin-top: 25px;
-    border: 1px solid red;
+  margin-top: 25px;
+  padding: 15px;
+}
+
+.signup-box .create-row{
+  position: relative;
+}
+
+.signup-box .or{
+  position: absolute;
+}
+
+
+.social-logins{
+  list-style: none;
+  padding-left:0px !important;
+}
+
+.social-logins li{
+  margin-bottom: 10px;
+  height: 34px;
+}
+
+.signup-box .signup-fields input{
+  margin-bottom: 10px;
+}
+
+.signup-box .name-col{
+  margin-bottom: 20px;
+}
+
+
+
+/* btn google - color reset */
+.btn-google {
+  color: #ffffff;
+  background-color: #DF4A32;
+  border-color: #b73420;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+.btn-google.disabled,
+.btn-google[disabled],
+fieldset[disabled] .btn-google,
+.btn-google.disabled:hover,
+.btn-google[disabled]:hover,
+fieldset[disabled] .btn-google:hover,
+.btn-google.disabled:focus,
+.btn-google[disabled]:focus,
+fieldset[disabled] .btn-google:focus,
+.btn-google.disabled:active,
+.btn-google[disabled]:active,
+fieldset[disabled] .btn-google:active,
+.btn-google.disabled.active,
+.btn-google[disabled].active,
+fieldset[disabled] .btn-google.active,
+.btn-google:hover,
+.btn-google:focus,
+.btn-google:active,
+.btn-google.active,
+.open .dropdown-toggle.btn-teal {
+  color: #ffffff;
+  background-color: #da4f2e;
+  border-color: #b73420;
+}
+
+
+
+/* btn github - color reset */
+.btn-github {
+  color: #ffffff;
+  background-color: #3c3c3c;
+  border-color: #000;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+.btn-github.disabled,
+.btn-github[disabled],
+fieldset[disabled] .btn-github,
+.btn-github.disabled:hover,
+.btn-github[disabled]:hover,
+fieldset[disabled] .btn-github:hover,
+.btn-github.disabled:focus,
+.btn-github[disabled]:focus,
+fieldset[disabled] .btn-github:focus,
+.btn-github.disabled:active,
+.btn-github[disabled]:active,
+fieldset[disabled] .btn-github:active,
+.btn-github.disabled.active,
+.btn-github[disabled].active,
+fieldset[disabled] .btn-github.active,
+.btn-github:hover,
+.btn-github:focus,
+.btn-github:active,
+.btn-github.active,
+.open .dropdown-toggle.btn-teal {
+  color: #ffffff;
+  background-color: #454545;
+}
+
+
+/* btn facebook - color reset */
+.btn-facebook {
+  color: #ffffff;
+  background-color: #3b5998;
+  border-color: #37538d;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+.btn-facebook.disabled,
+.btn-facebook[disabled],
+fieldset[disabled] .btn-facebook,
+.btn-facebook.disabled:hover,
+.btn-facebook[disabled]:hover,
+fieldset[disabled] .btn-facebook:hover,
+.btn-facebook.disabled:focus,
+.btn-facebook[disabled]:focus,
+fieldset[disabled] .btn-facebook:focus,
+.btn-facebook.disabled:active,
+.btn-facebook[disabled]:active,
+fieldset[disabled] .btn-facebook:active,
+.btn-facebook.disabled.active,
+.btn-facebook[disabled].active,
+fieldset[disabled] .btn-facebook.active,
+.btn-facebook:hover,
+.btn-facebook:focus,
+.btn-facebook:active,
+.btn-facebook.active,
+.open .dropdown-toggle.btn-teal {
+  color: #ffffff;
+  background-color: #37538d;
+  border-color: #324c82;
 }

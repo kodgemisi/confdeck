@@ -415,6 +415,15 @@ tr:
         update: Update Email template
   home:
     active_conferences: 
+  js:
+    in_use: "%{name} başkası tarafından kullanılıyor"
+  landing:
+    signup:
+      create: Oluştur
+      email: E-Posta
+      name: Konferans Başlığı
+      or: ya da
+      password: "Şifre"
   mailers:
     speaker_mailer:
       new_speaker_subject: Confdeck'e Hoşgeldiniz

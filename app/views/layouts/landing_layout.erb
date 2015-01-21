@@ -37,29 +37,41 @@
     <h3><em>Creating conferences made easy</em></h3>
     <a href="#intro" class="btn btn-default btn-lg">Find Out More</a>
 
-    <div class="row signup-box">
-      <div class="col-lg-8 col-lg-offset-2">
-        <%= simple_form_for @signup_form, url: quick_signup_path do |f| %>
-            <%= f.input :email %>
-            <%= f.input :password %>
-            <%= f.input :name %>
-            <%= f.submit %>
-        <% end %>
-        <ul class="list-table social-logins">
-          <li><%= link_to quick_social_signup_path(provider: "facebook") do %>
-                <button type="button" class="btn btn-block btn-facebook">Create with Facebook</button>
-            <% end %>
-          </li>
-          <li><%= link_to quick_social_signup_path(provider:  "google_oauth2") do %>
-                <button type="button" class="btn btn-block btn-google">Create with Google</button>
-            <% end %>
-          </li>
-          <li><%= link_to quick_social_signup_path(provider:  "github") do %>
-                <button type="button" class="btn btn-block btn-github">Create with Github</button>
-            <% end %>
-          </li>
-        </ul>
-      </div>
+    <div class="signup-box">
+      <%= form_for @signup_form, url: quick_signup_path do |f| %>
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 name-col">
+              <%= f.text_field :name, class: "form-control", placeholder: t("landing.signup.name") %>
+            </div>
+          </div>
+          <div class="row create-row">
+            <div class="col-md-4 col-md-offset-2 col-lg-3 col-lg-offset-3 signup-fields">
+              <%= f.text_field :email, class: "form-control", placeholder: t("landing.signup.email") %>
+              <%= f.text_field :password, class: "form-control", placeholder: t("landing.signup.password") %>
+              <%= f.submit class: "btn btn-block btn-primary", value: t("landing.signup.create") %>
+            </div>
+            <div class="col-md-4 col-lg-3">
+              <ul class="social-logins">
+                <li><%= link_to quick_social_signup_path(provider: "facebook") do %>
+                      <button type="button" class="btn btn-block btn-facebook">Create with Facebook</button>
+                  <% end %>
+                </li>
+                <li><%= link_to quick_social_signup_path(provider:  "google_oauth2") do %>
+                      <button type="button" class="btn btn-block btn-google">Create with Google</button>
+                  <% end %>
+                </li>
+                <li><%= link_to quick_social_signup_path(provider:  "github") do %>
+                      <button type="button" class="btn btn-block btn-github">Create with Github</button>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+            <div class="or">
+              or
+            </div>
+          </div>
+
+      <% end %>
     </div>
   </div>
 </div>
