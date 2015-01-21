@@ -15,7 +15,8 @@ Capybara.javascript_driver = driver
 
 Capybara.configure do |config|
   config.always_include_port = true
-  config.app_host = 'http://lvh.me'
+  # config.app_host = 'http://lvh.me'
+  # config.default_host = 'http://lvh.me'
 end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in

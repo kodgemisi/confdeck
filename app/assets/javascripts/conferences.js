@@ -67,6 +67,11 @@ $(document).ready(function(){
                 $(".speech-types ").append(item)
             }
         });
+        $("#wizard .speech-types").on('cocoon:before-insert', function(e, insertedItem) {
+            if($(".speech-types .nested-fields").find("input[type=text]").last().val() == ""){
+                insertedItem[0].innerHTML = "";
+            }
+        });
 
 
         $("#wizard input").on("focusout", function(){
@@ -119,7 +124,7 @@ $(document).ready(function(){
         },
         messages: {
             "conference[slug]": {
-                remote: $.validator.format("{0} is already in use")
+                remote: $.validator.format(I18n.t("js.in_use", {name: "{0}"}))
             }
         }
     });

@@ -4,18 +4,18 @@
 
 <div class="row">
   <div class="col-lg-12">
-    <%= form_tag({path: admin_roles_path}, {method: :post, class: "panel form-horizontal form-bordered"}) do %>
+    <%= form_tag(admin_roles_url, {method: :post, class: "panel form-horizontal form-bordered"}) do %>
         <div class="panel-body">
             <div class="form-group">
               <label class="col-sm-3 control-label"><%= t("roles.confadmins") %></label>
               <div class="col-sm-9">
-                <select id="confadmins" name="conference_admins[]" class="form-control" placeholder="<%= t("roles.type_to_search") %>" data-ajax-path="<%= search_users_conference_url(@conference) %>" data-values='<%= raw @conference.conference_admins.to_json(only: [:id, :email]) %>'></select>
+                <select id="confadmins" name="conference_admins[]" class="form-control" placeholder="<%= t("roles.type_to_search") %>" data-ajax-path="<%= search_users_admin_conference_url %>" data-values='<%= raw @conference.conference_admins.to_json(only: [:id, :email]) %>'></select>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-3 control-label"><%= t("roles.confusers") %></label>
               <div class="col-sm-9">
-                <select id="confusers" name="conference_users[]" class="form-control" placeholder="<%= t("roles.type_to_search") %>" data-ajax-path="<%=  search_users_conference_url(@conference) %>" data-values='<%= raw @conference.conference_users.to_json(only: [:id, :email]) %>'></select>
+                <select id="confusers" name="conference_users[]" class="form-control" placeholder="<%= t("roles.type_to_search") %>" data-ajax-path="<%=  search_users_admin_conference_url %>" data-values='<%= raw @conference.conference_users.to_json(only: [:id, :email]) %>'></select>
               </div>
             </div>
         </div>

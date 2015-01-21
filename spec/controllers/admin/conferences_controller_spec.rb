@@ -6,7 +6,7 @@ RSpec.describe Admin::ConferencesController do
     {
         from_date: "07/01/2015",
         to_date: "10/02/2015",
-        name: "Dedecon",
+        name: "Best Conference",
         summary: "Facere voluptatem et ut voluptas",
         description: "Sapiente et modi molestias. Nemo dolore possimus doloribus. Sint quas delectus nihil debitis blanditiis dolor reprehenderit.",
         email: "selam@dedeler.com",

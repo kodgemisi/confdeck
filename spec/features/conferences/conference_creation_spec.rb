@@ -4,18 +4,23 @@ Warden.test_mode!
 
 describe "Conference creation wizard", :type => :feature do
 
-  before :each do
+  before :all do
     @user = Fabricate(:user)
     @user.set!("language", "en")
-    login_as(@user, :scope => :user)
     @conference = Fabricate.build(:conference)
     @organization = @conference.organizations.first
     @user.organizations << @organization
     @user.conference_wizard.destroy! if @user.conference_wizard
   end
 
+  before :each do
+    Conference.destroy_all
+    sleep 3
+    login_as(@user, :scope => :user)
+  end
+
   it "should validate required fields are working properly", js: true do
-    visit(new_conferences_path)
+    visit(new_conferences_url)
     page.execute_script("$('#from').datepicker('setDate', '#{@conference.from_date}')")
     page.execute_script("$('#to').datepicker('setDate', '#{@conference.to_date}')")
     page.select(@organization.name, from: 'conference[organization_ids][]')
@@ -61,7 +66,7 @@ describe "Conference creation wizard", :type => :feature do
     it "can complete the wizard" do
 
       # Step 1
-      visit(new_conferences_path)
+      visit(new_conferences_url)
       page.execute_script("$('#from').datepicker('setDate', '#{@conference.from_date}')")
       page.execute_script("$('#to').datepicker('setDate', '#{@conference.to_date}')")
       page.select(@organization.name, from: 'conference[organization_ids][]')

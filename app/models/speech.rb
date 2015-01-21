@@ -45,14 +45,6 @@ class Speech < ActiveRecord::Base
     #after_transition :waiting_review => :rejected, :do => :send_reject_notification
   end
 
-  def send_accept_notification
-    SpeechMailer.accept_notification_email(self).deliver
-  end
-
-  def send_reject_notification
-    SpeechMailer.reject_notification_email(self).deliver
-  end
-
   def send_notifications
     SpeechMailer.speaker_notification_email(self).deliver
     SpeechMailer.committee_notification_email(self).deliver

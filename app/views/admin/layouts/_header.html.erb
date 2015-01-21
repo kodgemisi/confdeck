@@ -3,7 +3,7 @@
     <!-- START navbar header -->
     <div class="navbar-header">
       <!-- Brand -->
-      <a class="navbar-brand" href="<%= root_url %>">
+      <a class="navbar-brand" href="<%= admin_conference_url %>">
         <span class="logo-text">ConfDeck</span>
       </a>
       <!--/ Brand -->
@@ -45,48 +45,9 @@
             <!--/ Offcanvas left -->
 
             <!-- Notification dropdown -->
-            <li class="dropdown custom" id="header-dd-notification">
-              <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                <span class="meta">
-                    <span class="icon"><i class="ico-bell"></i></span>
-                    <span class="hasnotification hasnotification-danger"></span>
-                </span>
-              </a>
 
-
-              <!-- Dropdown menu -->
-              <div class="dropdown-menu" role="menu">
-                <div class="dropdown-header">
-                  <span class="title">Notification <span class="count"></span></span>
-                  <span class="option text-right"><a href="javascript:void(0);">Clear all</a></span>
-                </div>
-                <div class="dropdown-body slimscroll">
-                  <!-- indicator -->
-                  <div class="indicator inline"><span class="spinner"></span></div>
-                  <!--/ indicator -->
-
-                  <!-- Message list -->
-                  <div class="media-list">
-                    <a href="javascript:void(0);" class="media read border-dotted">
-                        <span class="media-object pull-left">
-                            <i class="ico-basket2 bgcolor-info"></i>
-                        </span>
-                        <span class="media-body">
-                            <span class="media-text">Duis aute irure dolor in <span class="text-primary semibold">reprehenderit</span> in voluptate.</span>
-                            <!-- meta icon -->
-                            <span class="media-meta pull-right">2d</span>
-                            <!--/ meta icon -->
-                        </span>
-                    </a>
-                  </div>
-                  <!--/ Message list -->
-                </div>
-              </div>
-              <!--/ Dropdown menu -->
-            </li>
-            <!--/ Notification dropdown -->
             <li>
-              <%= link_to new_conference_path do %>
+              <%= link_to new_conferences_path do %>
                   <button type="button" class="btn btn-primary mb5"><i class="ico-magic"></i> &nbsp; <%= t("conferences.new") %></button>
               <% end %>
             </li>

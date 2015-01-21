@@ -117,7 +117,7 @@
                             <%= button_group class: "btn-group-sm pull-right" do %>
                                 <%= bs_button_to "", conference, tooltip: t("conferences.show"), icon: "eye-open", style: "primary", size: "mini" %>
                                 <%= bs_button_to "", conference, tooltip: t("conferences.manage"), icon: "screwdriver", style: "primary", size: "mini" %>
-                                <%= bs_button_to "",_admin_schedule_path(tooltip: t("conferences.schedule"), icon: "calendar", style: "primary", size: "mini" %>
+                                <%= bs_button_to "", admin_schedule_path, tooltip: t("conferences.schedule"), icon: "calendar", style: "primary", size: "mini" %>
                                 <%= bs_button_to "", edit_conference_path(conference), tooltip: t("conferences.schedule"), icon: "pencil", style: "primary", size: "mini" %>
                                 <%= bs_button_to "", conference, method: :delete, data: { :confirm => t("general.are_you_sure")}, tooltip: t("conferences.delete"), icon: "remove", style: "primary", size: "mini" %>
                             <% end %>

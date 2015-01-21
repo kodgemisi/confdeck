@@ -28,6 +28,8 @@
 //= require summernote
 //= require rails-timeago-all
 //= require lib/summernote.plugins
+//= require i18n
+//= require i18n/translations
 
 $(document).ready(function(){
     $.datepicker.setDefaults( $.datepicker.regional[ current_locale ] );
