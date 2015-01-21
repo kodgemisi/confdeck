@@ -107,7 +107,7 @@ tr:
       speech_accept: "%{user}, %{speech} kabul etti"
       speech_comment: "%{user}, %{speech} hakkında yorum yaptı."
       speech_downvote: 
-      speech_reject: "%{user}, %{appeal} reddetti."
+      speech_reject: "%{user}, %{speech} reddetti."
       speech_upvote: 
   additional_info: Ek Bilgi
   address:
