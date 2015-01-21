@@ -28,13 +28,13 @@ class HomeController < ApplicationController
   end
 
   def quick_signup
-    signup = QuickSignupForm.new(quick_signup_params)
+    @signup_form = QuickSignupForm.new(quick_signup_params)
     respond_to do |format|
-      if signup.save
-        sign_in(signup.user)
+      if @signup_form.save
+        sign_in(@signup_form.user)
         format.html { redirect_to new_conferences_path }
       else
-        format.html { render text: signup.errors.full_messages.to_s }
+        format.html { render action: "index", layout: "landing_layout" }
       end
     end
   end
