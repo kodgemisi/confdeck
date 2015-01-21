@@ -8,7 +8,7 @@
   <td width="10%" class="text-center" data-search="<%= speech.topic.speakers.collect(&:name).join(", ")  %>">
     <% speech.topic.speakers.each do |speaker| %>
         <div class="speaker">
-          <%= link_to image_tag(speaker.avatar_url(20), class: "img-circle"), speaker_path(speaker), title: speaker.info, class: "tt" %>
+          <%= link_to image_tag(speaker.avatar_url(20), class: "img-circle"), user_path(speaker.user), title: speaker.info, class: "tt" %>
         </div>
     <% end %>
   </td>

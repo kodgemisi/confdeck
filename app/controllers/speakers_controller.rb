@@ -11,7 +11,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-class SpeakersController < Admin::AdminController
+class SpeakersController < ApplicationController
   before_filter :authenticate_user!, except: [:new, :create]
   before_action :set_speaker, only: [:show, :edit, :update, :destroy]
   # GET /speakers

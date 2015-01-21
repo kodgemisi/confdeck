@@ -39,7 +39,7 @@
         <td class="span2" style="font-weight: bold">Speakers</td>
         <td>
           <% @speech.topic.speakers.each do |speaker| %>
-              <%= link_to speaker.name, speaker_path(speaker) %>
+              <%= link_to speaker.name, user_path(speaker.user)  %>
           <% end %>
         </td>
       </tr>

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_user, only: [:show]
   layout "application_no_header"
 

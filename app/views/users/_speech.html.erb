@@ -12,7 +12,7 @@
       <!--/ User info -->
       <hr class="nm"><!-- horizontal line -->
       <div class="panel-body">
-        <%= render "conferences/dashboard/speech/speech_body", speech: speech %>
+        <%= render "admin/conferences/dashboard/speech/speech_body", speech: speech %>
       </div>
       <!-- panel footer -->
       <div class="panel-footer">
@@ -21,7 +21,7 @@
             <div class="img-group img-group-stack">
               <% speech.topic.speakers.each do |speaker| %>
                   <div class="speaker">
-                    <%= link_to image_tag(speaker.avatar_url(35), class: "img-circle"), speaker_path(speaker), title: speaker.name, class: "tt" %>
+                    <%= link_to image_tag(speaker.avatar_url(35), class: "img-circle"), user_path(speaker.user) , title: speaker.name, class: "tt" %>
                   </div>
               <% end %>
             </div>
@@ -31,9 +31,6 @@
       <!--/ panel footer -->
       <hr class="nm"><!-- horizontal line -->
       <!-- Toolbar -->
-
-      <%= render "conferences/dashboard/speech/speech_toolbar", speech: speech %>
-      <%= render "conferences/dashboard/speech/speech_comments", comments: speech.comments, speech: speech, open: false %>
     </div>
   </div>
 
