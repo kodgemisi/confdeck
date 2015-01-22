@@ -21,43 +21,42 @@
         <!-- Login form -->
 
         <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "panel"}) do |f| %>
+              <div class="panel-body">
+                <!-- Alert message -->
+                <%= render "layouts/messages" %>
+                <!--/ Alert message -->
+                <div class="form-group">
+                  <div class="form-stack has-icon pull-left">
+                    <%= f.text_field :email, :autofocus => true, :class => "form-control input-lg", :placeholder => t("user.email") %>
+                    <i class="ico-user2 form-control-icon"></i>
+                  </div>
+                  <div class="form-stack has-icon pull-left">
+                    <%= f.password_field :password,:class => "form-control input-lg",  :placeholder => t("user.password") %>
+                    <i class="ico-lock2 form-control-icon"></i>
+                  </div>
+                </div>
 
-          <div class="panel-body">
-            <!-- Alert message -->
-            <%= render "layouts/messages" %>
-            <!--/ Alert message -->
-            <div class="form-group">
-              <div class="form-stack has-icon pull-left">
-                <%= f.text_field :email, :autofocus => true, :class => "form-control input-lg", :placeholder => t("user.email") %>
-                <i class="ico-user2 form-control-icon"></i>
-              </div>
-              <div class="form-stack has-icon pull-left">
-                <%= f.password_field :password,:class => "form-control input-lg",  :placeholder => t("user.password") %>
-                <i class="ico-lock2 form-control-icon"></i>
-              </div>
-            </div>
 
+                <div class="form-group">
+                  <div class="row">
+                    <% if devise_mapping.rememberable? -%>
+                        <div class="col-xs-6">
+                          <div class="checkbox custom-checkbox">
+                            <%= f.check_box :remember_me %>
+                            <label for="remember">&nbsp;&nbsp;<%= f.label :remember_me, t("user.remember_me") %></label>
+                          </div>
+                        </div>
+                    <% end -%>
 
-            <div class="form-group">
-              <div class="row">
-                <% if devise_mapping.rememberable? -%>
-                    <div class="col-xs-6">
-                      <div class="checkbox custom-checkbox">
-                        <%= f.check_box :remember_me %>
-                        <label for="remember">&nbsp;&nbsp;<%= f.label :remember_me, t("user.remember_me") %></label>
-                      </div>
+                    <div class="col-xs-6 text-right">
+                      <a href="javascript:void(0);"><%= t("user.lost_password") %></a>
                     </div>
-                <% end -%>
-
-                <div class="col-xs-6 text-right">
-                  <a href="javascript:void(0);"><%= t("user.lost_password") %></a>
+                  </div>
+                </div>
+                <div class="form-group nm">
+                  <%= f.submit t("user.login"), :class => "btn btn-block btn-success" %>
                 </div>
               </div>
-            </div>
-            <div class="form-group nm">
-              <%= f.submit t("user.login"), :class => "btn btn-block btn-success" %>
-            </div>
-          </div>
         <% end %>
         <!-- Login form -->
 
