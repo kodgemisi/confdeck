@@ -132,6 +132,7 @@ tr:
     details: Detaylar
     end_date: Bitiş Tarihi
     landing:
+      admin: Yönetim Paneli
       new_application: Yeni Başvuru
       send_application: Başvuruyu Gönder
       speaker_application: Konuşmacı Başvurusu

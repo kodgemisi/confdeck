@@ -132,6 +132,7 @@ en:
     details: Details
     end_date: End Date
     landing:
+      admin: Admin Panel
       new_application: New Application
       send_application: Send Application
       speaker_application: Speaker Application
