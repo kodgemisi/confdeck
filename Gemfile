@@ -46,6 +46,8 @@ gem "i18n-js", ">= 3.0.0.rc8"
 group :production do
   gem 'pg'
   gem 'therubyracer'
+  gem 'rails_12factor'
+  gem 'newrelic_rpm'
 end
 
 
@@ -68,4 +70,4 @@ group :test do
   gem 'database_cleaner'
 end
 
-#gem 'rails_12factor'
+
