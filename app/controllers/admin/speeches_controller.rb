@@ -112,7 +112,7 @@ class Admin::SpeechesController < Admin::AdminController
     Speech.transaction do
       @comment = @speech.comments.build(comment_params)
       @comment.user = current_user
-      create_activity!(current_user, @conference, @speech, "speech_comment")
+      create_activity!(current_user, @conference, @comment, "speech_comment")
     end
 
     respond_to do |format|

@@ -159,7 +159,7 @@ RSpec.describe Admin::SpeechesController do
       it "creates activity item for comment" do
         post :comment, { id: @speech.id, conference_id: @conference.id, comment: { comment: "selam" } }
         activity = Activity.last
-        expect(activity.subject).to eq(@speech)
+        expect(activity.subject).to be_a(Comment)
         expect(activity.action).to eq("speech_comment")
         expect(activity.user).to eq(@user)
         expect(activity.conference).to eq(@conference)
