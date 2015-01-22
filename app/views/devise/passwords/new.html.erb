@@ -1,12 +1,53 @@
-<h2>Forgot your password?</h2>
+<section id="main" role="main">
+  <!-- START Template Container -->
+  <section class="container">
+    <!-- START row -->
+    <div class="row">
+      <div class="col-lg-4 col-lg-offset-4">
+        <!-- Brand -->
+        <div class="text-center" style="margin-bottom:40px;">
+          <span class="logo-figure inverse"></span>
+          <span class="logo-text inverse"></span>
+          <h5 class="semibold text-muted mt-5"><%= t("user.lost_password") %></h5>
+        </div>
+        <!--/ Brand -->
+        <%= render "devise/shared/social" %>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+        <hr><!-- horizontal line -->
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+        <!-- Login form -->
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
-<% end %>
+        <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :class => "panel", :method => :post }) do |f| %>
+            <div class="panel-body">
+              <!-- Alert message -->
+              <%= render "layouts/messages" %>
+              <!--/ Alert message -->
+              <div class="form-group">
+                <div class="form-stack has-icon pull-left">
+                  <%= f.text_field :email, :autofocus => true, :class => "form-control input-lg", :placeholder => t("user.email") %>
+                  <i class="ico-user2 form-control-icon"></i>
+                </div>
+              </div>
+              <div class="form-group ">
+                <%= f.submit t("general.send"), :class => "btn btn-block btn-success" %>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <%= link_to t("user.login"), new_session_path(resource_name) %> |
+                    <%= link_to t("user.sign_up_to_get_started"), new_registration_path(resource_name) %>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <% end %>
+        <!-- Login form -->
 
-<%= render "devise/shared/links" %>
+
+      </div>
+    </div>
+    <!--/ END row -->
+  </section>
+  <!--/ END Template Container -->
+</section>
+

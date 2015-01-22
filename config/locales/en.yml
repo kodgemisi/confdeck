@@ -298,6 +298,7 @@ en:
     homepage: 
     inactive: Inactive
     save: Save
+    send: Send
     settings: Settings
     update: Update
   helpers:
