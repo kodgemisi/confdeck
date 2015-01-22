@@ -68,4 +68,4 @@ group :test do
   gem 'database_cleaner'
 end
 
-gem 'rails_12factor'
+#gem 'rails_12factor'
