@@ -424,7 +424,7 @@ $(function () {
                                 .on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function () {
                                     $(this).removeClass("animating").addClass("animated").removeClass(wayShowAnimation);;
                                 });
-                        } 
+                        }
                         if( (direction === "up") && (wayHideAnimation !== false)) {
                             $(target)
                                 .removeClass(wayShowAnimation + " animated")
@@ -501,7 +501,7 @@ $(function () {
                         checked();
                     }
                 });
-                
+
                 // clicker
                 $(document).on("change", toggler, function () {
                     var target      = $(this).data("target");
@@ -526,13 +526,13 @@ $(function () {
                                     .prop("checked", true)
                                     .trigger("change");
                             }
-                        }  
+                        }
                     });
 
                     // publish event
                     $(element).trigger(settings.eventPrefix+".checkall.checked", { "element": $(target) });
                 }
-                
+
                 function unchecked (target) {
                     // find checkbox
                     $(target).find("input[type=checkbox]").each(function () {
@@ -597,7 +597,7 @@ $(function () {
                 // Event console
                 MAIN.prototype.HELPER.Console(settings.eventPrefix+".panelrefresh.refresh");
             })();
-            
+
             // @PLUGIN: Panel Collapse
             // Self invoking
             // ================================
@@ -654,7 +654,7 @@ $(function () {
                 MAIN.prototype.HELPER.Console(settings.eventPrefix+".panelcollapse.open");
                 MAIN.prototype.HELPER.Console(settings.eventPrefix+".panelcollapse.close");
             })();
-            
+
             // @PLUGIN: Panel Remove
             // Self invoking
             // ================================
@@ -843,7 +843,7 @@ $(function () {
                 var direction,
                     sidebar,
                     toggler      = "[data-toggle~=offcanvas]",
-                    openClass    = "sidebar-open";  
+                    openClass    = "sidebar-open";
 
                 // sidebar toggler
                 function toggle () {
@@ -959,8 +959,8 @@ $(function () {
                         });
                     }
                 }
-                
-                // 
+
+                //
                 $(document)
                     .on("submit", handler, function (e) { e.preventDefault() })
                     .on("click", handler+" button[type=submit]", ajaxForm);
@@ -969,7 +969,7 @@ $(function () {
                 MAIN.prototype.HELPER.Console(settings.eventPrefix+".formajax.always");
                 MAIN.prototype.HELPER.Console(settings.eventPrefix+".formajax.done");
                 MAIN.prototype.HELPER.Console(settings.eventPrefix+".formajax.fail");
-            })();   
+            })();
         }
     };
 
