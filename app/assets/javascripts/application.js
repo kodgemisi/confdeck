@@ -32,6 +32,8 @@
 //= require i18n/translations
 
 $(document).ready(function(){
+    $('time[data-time-ago]').timeago();
+
     $.datepicker.setDefaults( $.datepicker.regional[ current_locale ] );
 
     $('.disable-enter').keypress(function (event) {
