@@ -68,7 +68,7 @@ class ApplicationController < ActionController::Base
   # to make accessible across all controllers to use on sidebar
   def set_user_data
     if current_user
-      @user_conferences = current_user.conferences.includes(:waiting_speeches) #waiting speeches for display count on sidebar
+      @user_conferences = current_user.conferences
       @user_organizations = current_user.organizations
     end
   end

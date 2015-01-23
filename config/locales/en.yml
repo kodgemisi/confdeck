@@ -302,6 +302,7 @@ en:
     save: Save
     send: Send
     settings: Settings
+    switch_conference: Switch to %{conference}
     update: Update
   helpers:
     label:

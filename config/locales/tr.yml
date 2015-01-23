@@ -364,6 +364,7 @@ tr:
     save: Kaydet
     send: Gönder
     settings: Ayarlar
+    switch_conference: "%{conference} "
     update: Güncelle
   helpers:
     label:
