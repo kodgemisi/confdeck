@@ -9,11 +9,11 @@ class Admin::ScheduleController < Admin::AdminController
   end
 
   def speech_list
-    @conference = Conference.find(params[:conference_id])
+    @conference = @current_conference
     @speech_types = @conference.speech_types.includes(:speeches).where("speeches.state" => "accepted")
 
     respond_to do |format|
-      format.html { render partial:"schedule/speech_list", locals: {speech_types: @speech_types} }
+      format.html { render partial:"admin/schedule/speech_list", locals: {speech_types: @speech_types} }
     end
   end
 
