@@ -360,6 +360,7 @@ tr:
     error_count: "%{count} Hata"
     homepage: Anasayfa
     inactive: Aktif Değil
+    logout: "Çıkış Yap"
     my_profile: Profilim
     save: Kaydet
     send: Gönder

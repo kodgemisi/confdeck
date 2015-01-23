@@ -46,11 +46,19 @@
 
             <!-- Notification dropdown -->
 
-            <li>
-              <%= link_to new_conferences_path do %>
-                  <button type="button" class="btn btn-primary mb5"><i class="ico-magic"></i> &nbsp; <%= t("conferences.new") %></button>
-              <% end %>
-            </li>
+          <% if defined? admin %>
+              <li>
+                <a href="#">
+                  <strong><%= @conference.name %></strong>
+                </a>
+              </li>
+          <% else %>
+              <li>
+                <%= link_to new_conferences_path do %>
+                    <button type="button" class="btn btn-primary mb5"><i class="ico-magic"></i> &nbsp; <%= t("conferences.new") %></button>
+                <% end %>
+              </li>
+          <% end %>
         </ul>
         <!--/ END Left nav -->
 
@@ -68,7 +76,6 @@
         </a>
         <ul class="dropdown-menu" role="menu">
           <li><a href="<%= settings_path %>"><span class="icon"><i class="ico-cog4"></i></span><%= t("general.settings") %></a></li>
-          <li><a href="javascript:void(0);"><span class="icon"><i class="ico-question"></i></span> Help</a></li>
           <li class="divider"></li>
           <% @user_conferences.each do |conference| %>
               <li><a href="<%= admin_conference_url(subdomain: conference.slug) %>">
@@ -76,6 +83,14 @@
                 <%= t("general.switch_conference", conference: conference.name) %></a>
               </li>
           <% end %>
+
+          <li class="divider"></li>
+
+          <li>
+            <%= link_to new_conferences_path do %>
+                <span class="icon"><i class="ico-magic"></i></span><%= t("conferences.new") %>
+            <% end %>
+          </li>
           <li class="divider"></li>
           <li>
             <%= link_to destroy_user_session_path, :method => :delete do %>
