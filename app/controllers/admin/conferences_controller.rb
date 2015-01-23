@@ -178,9 +178,7 @@ class Admin::ConferencesController < Admin::AdminController
 
   def search_users
     query = params[:query]
-    @users = User.joins(:organizations)
-                .where("organizations.id" => @conference.organizations.ids)
-                .where("email LIKE ?", "%#{query}%")
+    @users = User.where("email LIKE ?", "%#{query}%")
     respond_to do |format|
       format.json
     end
