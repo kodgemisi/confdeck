@@ -92,6 +92,12 @@
             <% end %>
           </li>
           <li class="divider"></li>
+          <% if defined? admin %>
+              <li><a href="http://www.confdeck.com">
+                <span class="icon"><i class="ico-home"></i></span>
+                ConfDeck</a>
+              </li>
+          <% end %>
           <li>
             <%= link_to destroy_user_session_path, :method => :delete do %>
                 <span class="icon"><i class="ico-exit"></i></span><%= t("general.logout") %></a>
