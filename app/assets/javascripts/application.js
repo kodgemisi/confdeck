@@ -19,9 +19,17 @@
 //= require jquery-ui/effect-highlight
 //= require jquery.validator
 //= require bootstrap
-//= require bootstrap.timepicker
 //= require best_in_place
-
+//= require core
+//= require adminre
+//= require adminre/jquery.steps
+//= require cocoon
+//= require bootstrap.timepicker
+//= require summernote
+//= require rails-timeago-all
+//= require lib/summernote.plugins
+//= require i18n
+//= require i18n/translations
 
 $(document).ready(function(){
     $.datepicker.setDefaults( $.datepicker.regional[ current_locale ] );
