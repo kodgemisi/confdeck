@@ -106,9 +106,9 @@ tr:
     actions:
       speech_accept: "%{user}, %{speech} kabul etti"
       speech_comment: "%{user}, %{speech} hakkında yorum yaptı."
-      speech_downvote: 
-      speech_reject: "%{user}, %{appeal} reddetti."
-      speech_upvote: 
+      speech_downvote: "%{user}, %{speech} beğenmedi."
+      speech_reject: "%{user}, %{speech} reddetti."
+      speech_upvote: "%{user}, %{speech} beğenmedi."
   additional_info: Ek Bilgi
   address:
     city: "Şehir"
