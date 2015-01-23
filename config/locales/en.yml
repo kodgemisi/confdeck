@@ -355,7 +355,7 @@ en:
       user_horizontal:
         update: 
   home:
-    active_conferences: Active Conferences
+    active_conferences: Your Active Conferences
   js:
     in_use: "%{name} is already in use"
   landing:

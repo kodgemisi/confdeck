@@ -417,7 +417,7 @@ tr:
       user_horizontal:
         update: Update Email template
   home:
-    active_conferences: 
+    active_conferences: Gelecek Konferanslarınız
   js:
     in_use: "%{name} başkası tarafından kullanılıyor"
   landing:

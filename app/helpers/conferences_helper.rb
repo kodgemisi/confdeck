@@ -78,9 +78,9 @@ module ConferencesHelper
 
   def conference_dates(conference)
     if conference.days.first.date == conference.days.last.date
-      "#{conference.days.first.date.strftime(t('date.formats.short'))}".html_safe
+      "#{conference.days.first.date.strftime(t('date.formats.long'))}".html_safe
     else
-      "#{conference.days.first.date.strftime(t('date.formats.short'))} #{conference.days.last.date.strftime(t('date.formats.short'))}".html_safe
+      "#{conference.days.first.date.strftime(t('date.formats.long'))} #{conference.days.last.date.strftime(t('date.formats.long'))}".html_safe
     end
   end
 
