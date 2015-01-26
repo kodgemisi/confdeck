@@ -33,6 +33,7 @@
 
 $(document).ready(function(){
     $('time[data-time-ago]').timeago();
+    $('time[date]').timeago();
 
     $.datepicker.setDefaults( $.datepicker.regional[ current_locale ] );
 
