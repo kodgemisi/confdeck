@@ -28,7 +28,7 @@ $(document).ready(function(){
                 this.submit();
             },
             onStepChanged: function (event, currentIndex, priorIndex) {
-                if (currentIndex == 1) {
+                if (currentIndex == 2) {
                     var currCenter = window.map.getCenter();
                     google.maps.event.trigger(map, 'resize'); //Refresh map on address step
                     window.map.setCenter(currCenter);
