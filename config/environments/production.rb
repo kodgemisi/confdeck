@@ -69,8 +69,8 @@ Confman::Application.configure do
       :address              => "smtp.yandex.com",
       :port                 => 587,
       :domain               => 'confdeck.com',
-      :user_name            =>  ENV["mail_user"],
-      :password             =>  ENV["mail_password"],
+      :user_name            => ENV["mail_user"],
+      :password             => ENV["mail_password"],
       :authentication       => :login,
       :enable_starttls_auto => true
   }

@@ -189,6 +189,17 @@ class Admin::SpeechesController < Admin::AdminController
     end
   end
 
+  def bulk_mail
+    authorize @conference, :manage?
+    @speeches = @conference.speeches
+  end
+
+  def send_bulk_mail
+    authorize @conference, :manage?
+    SendBulkMailService.instance.call(params['speeches'])
+    redirect_to admin_speeches_path, notice: t("speeches.bulk_mail_sent")
+  end
+
   private
 
   def set_conference
