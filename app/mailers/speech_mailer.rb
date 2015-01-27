@@ -26,24 +26,27 @@ class SpeechMailer < ActionMailer::Base
 
   def speaker_notification_email(speech)
     liquid_template = prepare(speech.conference, __method__, {"speech" => speech, "topic" => speech.topic, "conference" => speech.conference})
+    emails = speech.topic.speakers.collect(&:user).collect(&:email).join(",")
     speech.topic.speakers.each do |speaker|
-      mail(reply_to: speech.conference.email, to: speaker.user.email, subject: liquid_template.subject, body: liquid_template.body) if speaker.user.email?
+      mail(reply_to: speech.conference.email, to: emails, subject: liquid_template.subject, body: liquid_template.body) if speaker.user.email?
     end
   end
 
   def accept_notification_email(speech)
     speech.accept_mail_sent!
     liquid_template = prepare(speech.conference, __method__, {"speech" => speech, "topic" => speech.topic, "conference" => speech.conference})
+    emails = speech.topic.speakers.collect(&:user).collect(&:email).join(",")
     speech.topic.speakers.each do |speaker|
-      mail(reply_to: speech.conference.email, to: speaker.user.email, subject: liquid_template.subject, body: liquid_template.body) if speaker.user.email?
+      mail(reply_to: speech.conference.email, to: emails, subject: liquid_template.subject, body: liquid_template.body) if speaker.user.email?
     end
   end
 
   def reject_notification_email(speech)
     speech.reject_mail_sent!
     liquid_template = prepare(speech.conference, __method__, {"speech" => speech, "topic" => speech.topic, "conference" => speech.conference})
+    emails = speech.topic.speakers.collect(&:user).collect(&:email).join(",")
     speech.topic.speakers.each do |speaker|
-      mail(reply_to: speech.conference.email, to: speaker.user.email, subject: liquid_template.subject, body: liquid_template.body) if speaker.user.email?
+      mail(reply_to: speech.conference.email, to: emails, subject: liquid_template.subject, body: liquid_template.body) if speaker.user.email?
     end
   end
 end
