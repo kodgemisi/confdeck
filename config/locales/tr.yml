@@ -133,7 +133,7 @@ tr:
     end_date: Bitiş Tarihi
     landing:
       admin: Yönetim Paneli
-      new_application: Yeni Başvuru
+      new_application: Konuşmacı Başvuru Formu
       send_application: Başvuruyu Gönder
       speaker_application: Konuşmacı Başvurusu
     logo: Logo

@@ -133,7 +133,7 @@ en:
     end_date: End Date
     landing:
       admin: Admin Panel
-      new_application: New Application
+      new_application: Speaker Application Form
       send_application: Send Application
       speaker_application: Speaker Application
     logo: Logo
