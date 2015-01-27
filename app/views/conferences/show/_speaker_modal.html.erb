@@ -8,7 +8,7 @@
         <h4 class="modal-title"></h4>
       </div>
       <div class="modal-body">
-        <%= form_for(Speaker.new, url: speakers_url, remote: true, :html => {:class => 'form-horizontal speaker-form'}) do |sf| %>
+        <%= form_for(SpeakerForm.new, url: speakers_url, remote: true, :html => {:class => 'form-horizontal speaker-form'}) do |sf| %>
             <div class="form-group">
               <%= sf.label t('speaker.name'), :class => "col-lg-3 control-label" %>
 
@@ -16,15 +16,13 @@
                 <%= sf.text_field :name, :class => "form-control" %>
               </div>
             </div>
-            <%= sf.fields_for :user do |u| %>
-                <div class="form-group">
-                  <%= u.label t('speaker.email'), :class => "col-lg-3 control-label" %>
+            <div class="form-group">
+              <%= sf.label t('speaker.email'), :class => "col-lg-3 control-label" %>
 
-                  <div class="col-lg-9">
-                    <%= u.email_field :email, :class => "form-control" %>
-                  </div>
-                </div>
-            <% end %>
+              <div class="col-lg-9">
+                <%= sf.email_field :email, :class => "form-control" %>
+              </div>
+            </div>
             <div class="form-group">
               <%= sf.label t('speaker.phone'), :class => "col-lg-3 control-label" %>
 
