@@ -113,7 +113,7 @@ en:
   address:
     city: City
     info: Info
-    location: Locaiton
+    location: Location
   application_received: 
   are_you_sure: 
   body: 
@@ -138,6 +138,7 @@ en:
       speaker_application: Speaker Application
     logo: Logo
     manage: Manage
+    more_information: More Information
     name: Nam
     new: |
       New Conference
@@ -163,22 +164,26 @@ en:
     wizard:
       step1:
         desc:
-          text: 
-          title: 
+          text: " "
+          title: Basic information about the conference
+      step1b:
+        desc:
+          text: You have to add at least one speech type. Sponsor field is optional.
+          title: 'Speech types and sponsors '
       step2:
         desc:
           text: You can use search form on the map
           title: Information about conference location
       step3:
         desc:
-          text: 
-          title: 
+          text: You can customize emails that will send to speakers, conference organisers.
+          title: Customize email templates.
         email_templates: Email Templates
         reset_email: Reset to original
       step4:
         desc:
-          text: 
-          title: 
+          text: " "
+          title: " "
       title: Conference Wizard
   create: 
   create_appeal: 
