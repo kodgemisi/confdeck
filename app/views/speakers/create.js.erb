@@ -7,5 +7,6 @@ $('div.errors').remove();
     $("#organization_notice").fadeOut(3000);
     $("#speaker_email").val("")
 <% else %>
-    $('.speaker-form').prepend('<div id="error_explanation" class="errors"><%= @speaker.errors.full_messages.to_sentence.capitalize %></p>');
+    //$('.speaker-form').prepend('<div id="error_explanation" class="errors"><%= @speaker.errors.full_messages.to_sentence.capitalize %></p>');
+    $('.speaker-form').prepend('<%= escape_javascript errors!(@speaker) %>');
 <% end %>
