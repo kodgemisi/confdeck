@@ -1,10 +1,12 @@
 $('div.errors').remove();
 <% if @speaker.persisted? %>
-  $("#newSpeaker").modal("hide");
-  $("#speech_topic_attributes_speaker_ids").append("<option value='<%= @speaker.id %>' selected><%= @speaker.name %></option>");
-  $("#new_speaker").find("input[type=text], textarea").val("");
-  $("<p id='speaker_notice' class='alert alert-success'>Speaker created successfully</p>").insertAfter("#speech_topic_attributes_speaker_ids");
-  $("#organization_notice").fadeOut(3000);
+    $("#newSpeaker").modal("hide");
+    $("#speech_topic_attributes_speaker_ids").append("<option value='<%= @speaker.id %>' selected><%= @speaker.name %></option>");
+    $("#new_speaker").find("input[type=text], textarea").val("");
+    $("<p id='speaker_notice' class='alert alert-success'>Speaker created successfully</p>").insertAfter("#speech_topic_attributes_speaker_ids");
+    $("#organization_notice").fadeOut(3000);
+    $("#speaker_email").val("")
 <% else %>
-  $('.speaker-form').prepend('<div id="error_explanation" class="errors"><%= @speaker.errors.full_messages.to_sentence.capitalize %></p>');
+    //$('.speaker-form').prepend('<div id="error_explanation" class="errors"><%= @speaker.errors.full_messages.to_sentence.capitalize %></p>');
+    $('.speaker-form').prepend('<%= escape_javascript errors!(@speaker) %>');
 <% end %>

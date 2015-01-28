@@ -53,17 +53,12 @@ class SpeakersController < ApplicationController
   # POST /speakers.json
   def create
     #check if speaker exists in db
-    @speaker = Speakers::CreateSpeakerService.call(speaker_params)
+    #@speaker = Speakers::CreateSpeakerService.call(speaker_params)
+    @speaker = SpeakerForm.new(speaker_params)
 
+    @speaker = @speaker.speaker if @speaker.save
 
     respond_to do |format|
-      if @speaker.save
-        format.html { redirect_to @speaker, notice: 'Speaker was successfully created.' }
-        format.json { render json: @speaker, status: :created, location: @speaker }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @speaker.errors, status: :unprocessable_entity }
-      end
       format.js
     end
   end
@@ -99,6 +94,6 @@ class SpeakersController < ApplicationController
     end
 
     def speaker_params
-      params.require(:speaker).permit(:name, :phone, :twitter, :facebook, user: [:email])
+      params.require(:speaker).permit(:name, :phone, :twitter, :facebook, :email)
     end
 end

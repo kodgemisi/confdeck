@@ -1,56 +1,56 @@
-
-
 <div class="modal fade" id="newSpeaker">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title"></h4>
-      </div>
-      <div class="modal-body">
-        <%= form_for(Speaker.new, url: speakers_url, remote: true, :html => {:class => 'form-horizontal speaker-form'}) do |sf| %>
-            <div class="form-group">
-              <%= sf.label t('speaker.name'), :class => "col-lg-3 control-label" %>
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <button type="button" class="close" data-dismiss="modal">×</button>
+            <h3 class="semibold modal-title"><%= t("conferences.new_speaker") %></h3>
+          </div>
+          <%= form_for(SpeakerForm.new, url: speakers_url, remote: true, :html => {:class => 'form-horizontal speaker-form'}) do |sf| %>
 
-              <div class="col-lg-9">
-                <%= sf.text_field :name, :class => "form-control" %>
-              </div>
-            </div>
-            <%= sf.fields_for :user do |u| %>
+            <div class="modal-body">
                 <div class="form-group">
-                  <%= u.label t('speaker.email'), :class => "col-lg-3 control-label" %>
+                  <%= sf.label t('speaker.name'), :class => "col-lg-3 control-label" %>
 
                   <div class="col-lg-9">
-                    <%= u.email_field :email, :class => "form-control" %>
+                    <%= sf.text_field :name, :class => "form-control" %>
                   </div>
                 </div>
-            <% end %>
-            <div class="form-group">
-              <%= sf.label t('speaker.phone'), :class => "col-lg-3 control-label" %>
+                <div class="form-group">
+                  <%= sf.label t('speaker.email'), :class => "col-lg-3 control-label" %>
 
-              <div class="col-lg-9">
-                <%= sf.text_field :phone, :class => "form-control" %>
-              </div>
-            </div>
-            <div class="form-group">
-              <%= sf.label t('speaker.twitter'), :class => "col-lg-3 control-label" %>
+                  <div class="col-lg-9">
+                    <%= sf.email_field :email, :class => "form-control" %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= sf.label t('speaker.phone'), :class => "col-lg-3 control-label" %>
 
-              <div class="col-lg-9">
-                <%= sf.text_field :twitter, :class => "form-control" %>
-              </div>
-            </div>
-            <div class="form-group">
-              <%= sf.label t('speaker.facebook'), :class => "col-lg-3 control-label" %>
+                  <div class="col-lg-9">
+                    <%= sf.text_field :phone, :class => "form-control" %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= sf.label t('speaker.twitter'), :class => "col-lg-3 control-label" %>
 
-              <div class="col-lg-9">
-                <%= sf.text_field :facebook, :class => "form-control" %>
-              </div>
-            </div>
-            </div>
-            <div class="modal-footer">
-              <%= sf.submit class: "btn btn-primary" %>
-        <% end %>
-        </div>
+                  <div class="col-lg-9">
+                    <%= sf.text_field :twitter, :class => "form-control" %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= sf.label t('speaker.facebook'), :class => "col-lg-3 control-label" %>
+
+                  <div class="col-lg-9">
+                    <%= sf.text_field :facebook, :class => "form-control" %>
+                  </div>
+                </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                  <%= sf.submit class: "btn btn-primary" %>
+                </div>
+          <% end %>
+
         </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
+    </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->

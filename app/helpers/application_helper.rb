@@ -38,7 +38,7 @@ module ApplicationHelper
 
 
       html = <<-HTML
-      <div class="alert alert-danger">
+      <div class="alert alert-danger errors">
           <button class="close" data-dismiss="alert"></button>
         <ul>#{messages}</ul>
       </div>

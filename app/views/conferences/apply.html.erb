@@ -5,7 +5,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="<%= conference_path(@conference) %>"><%= @conference.name %></a>
+      <a class="navbar-brand" href="#"><%= @conference.name %></a>
     </div>
 
   </div>
@@ -17,7 +17,7 @@
     <%= render 'layouts/messages' %>
 
     <div class="row">
-      <%= form_for([@conference, @speech], url: apply_conference_path, html: {class: 'panel'}) do |f| %>
+      <%= form_for(@speech, url: apply_conference_path, html: {class: 'panel'}) do |f| %>
 
           <div class="panel-heading text-center">
             <div class="ico-bubbles mb15 mt15" style="font-size:36px;"></div>
@@ -38,7 +38,7 @@
             </div>
             <%= render "conferences/show/speech_form_fields", f: f %>
           </div>
-          <div class="panel-footer">
+          <div class="panel-footer text-right">
             <button type="button" class="btn btn-default" data-dismiss="modal"><%= t("general.cancel") %></button>
             <%= f.submit :class => "btn btn-success", :value => t("conferences.landing.send_application") %>
           </div>
