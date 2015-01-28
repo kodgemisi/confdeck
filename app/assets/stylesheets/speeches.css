@@ -35,10 +35,10 @@
     cursor: pointer;
 }
 
-.speeches-list .panel-heading div {
-    margin-top: -18px;
-    font-size: 15px;
-}
+/*.speeches-list .panel-heading div {*/
+    /*margin-top: -18px;*/
+    /*font-size: 15px;*/
+/*}*/
 
 .speeches-list .panel-heading div span {
     margin-left: 5px;

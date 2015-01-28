@@ -1,6 +1,14 @@
 <tr class="<%= speech.state %>" id="<%= dom_id(speech) %>"
 >
 
+  <% if defined?(checkbox) && checkbox%>
+      <td width="2%">
+        <div class="checkbox custom-checkbox nm ">
+          <input id="speech_cb_<%= speech.id %>" type="checkbox" name="speeches[]" value="<%= speech.id %>" data-toggle="selectrow" data-target="tr" data-contextual="warning" data-sid="<%= speech.id %>">
+          <label for="speech_cb_<%= speech.id %>"></label>
+        </div>
+      </td>
+  <% end %>
   <td width="5%"><%= speech.id %></td>
   <td width="15%"><%= speech.topic.subject %></td>
   <td width="35%"><%= truncate(speech.topic.abstract, length:60, seperator: ' ') %></td>
@@ -15,7 +23,7 @@
   <td width="5%" class="text-center" >
     <%= state_label(speech.state).html_safe %>
   </td>
-  <td width="15%" class="actions">
+  <td width="20%" class="actions">
     <div class="updown">
       <%= link_to upvote_admin_speech_path(speech), remote: true, class: "semibold text-default" do %>
           <i class="ico-arrow-up mr5 action-upvote <%= 'text-primary' if current_user.voted_up_on? speech %>"></i><span class="upvote-count"><%= speech.upvotes.count %></span>

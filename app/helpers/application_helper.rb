@@ -33,18 +33,20 @@ module ApplicationHelper
   end
 
   def errors!(model)
-    messages = model.errors.full_messages.map { |msg| content_tag(:span, msg)  }.join("<br />")
+    if model.errors.any?
+      messages = model.errors.full_messages.map { |msg| content_tag(:span, msg)  }.join("<br />")
 
 
-    html = <<-HTML
-    <div class="alert alert-danger">
-        <button class="close" data-dismiss="alert"></button>
-      <ul>#{messages}</ul>
-    </div>
-    HTML
+      html = <<-HTML
+      <div class="alert alert-danger">
+          <button class="close" data-dismiss="alert"></button>
+        <ul>#{messages}</ul>
+      </div>
+      HTML
 
 
-    html.html_safe
+      html.html_safe
+    end
   end
 
   def get_title

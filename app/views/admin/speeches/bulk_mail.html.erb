@@ -1,0 +1,49 @@
+<%
+   meta title: t("titles.speeches.bulk_mail")
+%>
+
+<%= form_tag send_bulk_mail_admin_speeches_path do %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title"></h3>
+            <div class="panel-toolbar text-right">
+              <!-- option -->
+              <div class="option">
+                <button class="btn up" data-toggle="panelcollapse"><i class="arrow"></i></button>
+              </div>
+              <!--/ option -->
+            </div>
+          </div>
+          <table class="table table-bordered table-hover bulk-mail-table panel-collapse pull out" id="speech_table">
+            <thead>
+            <tr>
+              <th>
+                <div class="checkbox custom-checkbox pull-left" data-toggle="tooltip" title="" data-original-title="Check all">
+                  <input type="checkbox" id="checkall" value="1" data-toggle="checkall" data-target="#speech_table">
+                  <label for="checkall"></label>
+                </div>
+              </th>
+              <th>#</th>
+              <th><%= t "topics.subject" %></th>
+              <th><%= t "topics.absract" %></th>
+              <th><%= t "topics.speakers" %></th>
+              <th><%= t "speeches.state" %></th>
+              <th><%= t "speeches.actions" %></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @speeches.each do |speech| %>
+                <%= render "admin/speeches/index/table_row", speech: speech, checkbox: true %>
+            <% end %>
+            </tbody>
+          </table>
+          <div class="panel-footer">
+            <%= submit_tag  t("speeches.send_bulk_mail"), class: "btn btn-primary pull-right" %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

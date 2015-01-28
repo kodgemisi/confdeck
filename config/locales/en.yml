@@ -469,6 +469,8 @@ en:
     accept_mail_sent: Speech was accepted email was sent .
     actions: Actions
     additional_info: Additional Info
+    bulk_mail: Bulk Mai
+    bulk_mail_sent: Bulk mails were sent.
     comments: Comments
     detail: Details
     is_accepted: Speech is accepted.
@@ -478,6 +480,7 @@ en:
     reject: Reject
     reject_mail_sent: Speech was rejected email was sent .
     send_accept_mail: Send speech was accepted mail
+    send_bulk_mail: Send Bulk Mail
     send_reject_mail: Send speech was rejected mail
     show_details: Details
     speakers: Speakers
@@ -527,6 +530,7 @@ en:
     settings:
       index: Settings
     speeches:
+      bulk_mail: Send Bulk Mail
       edit: Edit %{subject}
       index: Speeches of %{conference}
       new: New Speech

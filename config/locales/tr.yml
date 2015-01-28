@@ -531,6 +531,8 @@ tr:
     accept_mail_sent: Konuşma kabul edildi epostası gönderildi.
     actions: "İşlem"
     additional_info: Ek Bilgiler
+    bulk_mail: Toplu Eposta
+    bulk_mail_sent: Toplu epostalar gönderildi.
     comments: Yorumlar
     detail: Konuşmanın Ana Hatları
     is_accepted: Konuşma Kabul Edildi.
@@ -540,6 +542,7 @@ tr:
     reject: Reddet
     reject_mail_sent: Konuşma reddedildi epostası gönderildi.
     send_accept_mail: Konuşma kabul edildi epostası gönder
+    send_bulk_mail: Toplu Eposta Gönder
     send_reject_mail: Konuşma rededildi epostası gönder
     show_details: Detaylar
     speakers: Konuşmacıları
@@ -589,6 +592,7 @@ tr:
     settings:
       index: Ayarlar
     speeches:
+      bulk_mail: Toplu Eposta Gönder
       edit: "%{subject} Düzenle"
       index: "%{conference} Konuşmaları"
       new: Yeni Konuşma
