@@ -59,5 +59,18 @@ module Confman
 
     Rails::Timeago.default_options :limit => proc { 100.days.ago }, :nojs => true, :date_only => false
 
+
+    config.paperclip_defaults = {
+        :storage => :s3,
+        :s3_credentials => {
+            :bucket => 'confdeck.com'
+        },
+        :s3_host_name => "s3-eu-central-1.amazonaws.com"
+    }
+
+    AWS.config(logger: Rails.logger)
+    AWS.config(log_level: :debug)
+    AWS.config(access_key_id: Rails.application.secrets.s3["access_id"], secret_access_key: Rails.application.secrets.s3["secret_key"], region: 'eu-central-1')
+
   end
 end
