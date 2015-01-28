@@ -19,11 +19,11 @@
         <hr><!-- horizontal line -->
 
         <!-- Login form -->
+        <%= render "layouts/messages" %>
 
         <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "panel"}) do |f| %>
               <div class="panel-body">
                 <!-- Alert message -->
-                <%= render "layouts/messages" %>
                 <!--/ Alert message -->
                 <div class="form-group">
                   <div class="form-stack has-icon pull-left">
@@ -31,7 +31,7 @@
                     <i class="ico-user2 form-control-icon"></i>
                   </div>
                   <div class="form-stack has-icon pull-left">
-                    <%= f.password_field :password,:class => "form-control input-lg",  :placeholder => t("user.password") %>
+                    <%= f.password_field :password, :class => "form-control input-lg",  :placeholder => t("user.password") %>
                     <i class="ico-lock2 form-control-icon"></i>
                   </div>
                 </div>
