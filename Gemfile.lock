@@ -30,6 +30,9 @@ GEM
     acts_as_commentable (3.0.1)
     acts_as_votable (0.7.1)
     arel (5.0.1.20140414130214)
+    aws-sdk-v1 (1.61.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -322,6 +325,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_commentable (= 3.0.1)
   acts_as_votable (~> 0.7.1)
+  aws-sdk-v1
   best_in_place
   better_errors
   bootstrap-sass (~> 3.1.0)
