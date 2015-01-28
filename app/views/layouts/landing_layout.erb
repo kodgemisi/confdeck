@@ -51,7 +51,7 @@
           <div class="row create-row">
             <div class="col-md-4 col-md-offset-2 col-lg-3 col-lg-offset-3 signup-fields">
               <%= f.text_field :email, class: "form-control", placeholder: t("landing.signup.email") %>
-              <%= f.text_field :password, class: "form-control", placeholder: t("landing.signup.password") %>
+              <%= f.password_field :password, class: "form-control", placeholder: t("landing.signup.password") %>
               <%= f.submit class: "btn btn-block btn-primary", value: t("landing.signup.create") %>
             </div>
             <div class="col-md-4 col-lg-3">
@@ -173,6 +173,10 @@
   </div>
 </footer>
 <!-- /Footer -->
+
+<div style="display: none">
+  <%= render "layouts/messages" %>
+</div>
 
 <script>
     $(function () {

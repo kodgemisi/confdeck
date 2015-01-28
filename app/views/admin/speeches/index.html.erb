@@ -4,6 +4,7 @@
 
 <% content_for :header_actions do %>
     <%= bs_button_to t("speeches.new"), new_admin_speech_path, icon: "pencil", style: "primary"%>
+    <%= bs_button_to t("speeches.bulk_mail"), bulk_mail_admin_speeches_path, icon: "mail", style: "primary"%>
 <% end %>
 
 <div class="speeches-list">

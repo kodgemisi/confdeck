@@ -6,39 +6,45 @@
             <% if @conference.speech_types.size > 0 %>
                 <div class="form-group">
                   <%= f.label t('speeches.speech_types'), :class => "col-lg-3 control-label" %>
-
-                    <%= f.collection_select :speech_type_id, @conference.speech_types, :id, :type_name, {}, {:class => "form-control"} %>
+                    <div class="col-lg-9">
+                      <%= f.collection_select :speech_type_id, @conference.speech_types, :id, :type_name, {}, {:class => "form-control"} %>
+                    </div>
                 </div>
             <% end %>
             <%= f.fields_for :topic do |topic_form| %>
                 <div class="form-group">
                   <%= topic_form.label t('topics.speakers'), :class => "col-lg-3 control-label" %>
-                  <%= topic_form.collection_select :speaker_ids, @speech.topic.speakers, :id, :name, {}, {:multiple => true, :class => "form-control"} %>
+                    <div class="col-lg-9">
+                        <%= topic_form.collection_select :speaker_ids, @speech.topic.speakers, :id, :name, {}, {:multiple => true, :class => "form-control"} %>
+                    </div>
                 </div>
-                <div class="form-group">
-                  <div class="col-lg-3 col-lg-offset-8">
-                    <a data-toggle="modal" href="#" data-target="#newSpeaker" class="btn btn-primary"><%= t("conferences.new_speaker") %></a>
-                  </div>
+                <div class="form-group pull-right">
+                    <a data-toggle="modal" href="#" data-target="#newSpeaker" class="btn btn-primary open-new-speaker"><%= t("conferences.new_speaker") %></a>
                 </div>
+                <div class="clearfix"></div>
                 <div class="form-group">
                   <%= topic_form.label t('topics.subject'), :class => "col-lg-3 control-label" %>
-
-                    <%= topic_form.text_field :subject, :class => "form-control" %>
+                    <div class="col-lg-9">
+                        <%= topic_form.text_field :subject, :class => "form-control" %>
+                    </div>
                 </div>
                 <div class="form-group">
                   <%= topic_form.label t('topics.abstract'), :class => "col-lg-3 control-label" %>
-
-                    <%= topic_form.text_area :abstract, :class => "form-control" %>
+                  <div class="col-lg-9">
+                    <%= topic_form.text_area :abstract, :class => "form-control col-lg-9" %>
+                  </div>
                 </div>
                 <div class="form-group">
                   <%= topic_form.label t('topics.detail'), :class => "col-lg-3 control-label" %>
-
-                    <%= topic_form.text_area :detail, :class => "form-control", :style => "height: 200px" %>
+                  <div class="col-lg-9">
+                    <%= topic_form.text_area :detail, :class => "form-control col-lg-9", :style => "height: 200px" %>
+                  </div>
                 </div>
                 <div class="form-group">
                   <%= topic_form.label t('topics.additional_info'), :class => "col-lg-3 control-label" %>
-
-                    <%= topic_form.text_area :additional_info, :class => "form-control" , :style => "height: 200px" %>
+                  <div class="col-lg-9">
+                    <%= topic_form.text_area :additional_info, :class => "form-control col-lg-9" , :style => "height: 200px" %>
+                  </div>
                 </div>
             <% end %>
           </div>

@@ -65,16 +65,28 @@ Confman::Application.configure do
   config.action_mailer.default_url_options = { :host => 'www.confdeck.com' }
 
   config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   :address              => "smtp.gmail.com",
-  #   :port                 => 587,
-  #   :domain               => 'gmail.com',
-  #   :user_name            => 'confmanrumble',
-  #   :password             => 'd3d3l3r3131',
-  #   :authentication       => 'plain',
-  #   :enable_starttls_auto => true
-  # }
-  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  config.action_mailer.smtp_settings = {
+      :address              => "smtp.yandex.ru",
+      :port                 => 587,
+      :domain               => 'confdeck.com',
+      :user_name            => Rails.application.secrets.smtp["user"],
+      :password             => Rails.application.secrets.smtp["password"],
+      :authentication       => "plain",
+      :enable_starttls_auto => true
+  }
+  #config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
   Rails.application.routes.default_url_options[:host] = 'www.confdeck.com'
+
+  config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_credentials => {
+          :bucket => 'confdeck.com'
+      },
+      :s3_host_name => "s3-eu-central-1.amazonaws.com"
+  }
+
+  AWS.config(logger: Rails.logger)
+  AWS.config(log_level: :debug)
+  AWS.config(access_key_id: Rails.application.secrets.s3["access_id"], secret_access_key: Rails.application.secrets.s3["secret_key"], region: 'eu-central-1')
 
 end

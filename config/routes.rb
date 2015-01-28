@@ -62,6 +62,10 @@ Confman::Application.routes.draw do
       resources :slots
       resources :email_templates
       resources :speeches do
+        collection do
+          get "bulk_mail"
+          post "send_bulk_mail"
+        end
         member do
           post 'comment'
           get 'upvote'

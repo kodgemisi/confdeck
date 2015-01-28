@@ -133,11 +133,12 @@ tr:
     end_date: Bitiş Tarihi
     landing:
       admin: Yönetim Paneli
-      new_application: Yeni Başvuru
+      new_application: Konuşmacı Başvuru Formu
       send_application: Başvuruyu Gönder
       speaker_application: Konuşmacı Başvurusu
     logo: Logo
     manage: Yönetim/Düzenleme
+    more_information: Diğer Bilgiler
     name: Başlık
     new: Yeni Konferans
     new_speaker: Yeni Konuşmacı Ekle
@@ -161,22 +162,26 @@ tr:
     wizard:
       step1:
         desc:
-          text: 
+          text: " "
           title: Konferans ile ilgili temel bilgiler
+      step1b:
+        desc:
+          text: 'En az bir tane konuşma tipi eklemelisiniz. Sponsor alanı opsiyoneldir. '
+          title: Konuşma tipleri ve sponsorlar
       step2:
         desc:
           text: Harita üzerindeki arama formunu kullanarak adres araması yapabilirsiniz
           title: Konferansın yapılacağı yer ile ilgili bilgiler
       step3:
         desc:
-          text: 
-          title: 
+          text: Konuşmacılara ve organizatörlere gönderilecek epostaları özelleştirebilirsiniz.
+          title: Eposta şablonlarını özelleştir.
         email_templates: Email Şablonları
         reset_email: Orijinal Haline Döndür
       step4:
         desc:
-          text: 
-          title: 
+          text: " "
+          title: " "
       title: Konferans Oluşturma Sihirbazı
   create: Oluştur
   create_appeal: Başvuruyu Oluştur
@@ -531,6 +536,8 @@ tr:
     accept_mail_sent: Konuşma kabul edildi epostası gönderildi.
     actions: "İşlem"
     additional_info: Ek Bilgiler
+    bulk_mail: Toplu Eposta
+    bulk_mail_sent: Toplu epostalar gönderildi.
     comments: Yorumlar
     detail: Konuşmanın Ana Hatları
     is_accepted: Konuşma Kabul Edildi.
@@ -540,6 +547,7 @@ tr:
     reject: Reddet
     reject_mail_sent: Konuşma reddedildi epostası gönderildi.
     send_accept_mail: Konuşma kabul edildi epostası gönder
+    send_bulk_mail: Toplu Eposta Gönder
     send_reject_mail: Konuşma rededildi epostası gönder
     show_details: Detaylar
     speakers: Konuşmacıları
@@ -589,6 +597,7 @@ tr:
     settings:
       index: Ayarlar
     speeches:
+      bulk_mail: Toplu Eposta Gönder
       edit: "%{subject} Düzenle"
       index: "%{conference} Konuşmaları"
       new: Yeni Konuşma

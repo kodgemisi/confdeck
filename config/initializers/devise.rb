@@ -10,7 +10,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'app@confdeck.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -231,7 +231,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :facebook, Rails.application.secrets.facebook["app_id"]  , Rails.application.secrets.facebook["app_secret"]
+  config.omniauth :facebook, Rails.application.secrets.facebook["app_id"]  , Rails.application.secrets.facebook["app_secret"], scope: "email"
   config.omniauth :google_oauth2, Rails.application.secrets.google["client_id"], Rails.application.secrets.google["client_secret"]
   config.omniauth :github, Rails.application.secrets.github["client_id"], Rails.application.secrets.github["client_secret"], scope: "user:email"
 
