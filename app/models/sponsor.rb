@@ -18,7 +18,6 @@ class Sponsor < ActiveRecord::Base
 
   has_attached_file :logo,
                     :styles => { :default => "360x230>", :thumb => "200x200", :small => "50x50"},
-                    :storage => :s3,
                     :s3_headers => { 'Cache-Control' => 'max-age=315576000', 'Expires' => 1.month.from_now.httpdate }
 
 

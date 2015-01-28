@@ -77,4 +77,16 @@ Confman::Application.configure do
   #config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
   Rails.application.routes.default_url_options[:host] = 'www.confdeck.com'
 
+  config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_credentials => {
+          :bucket => 'confdeck.com'
+      },
+      :s3_host_name => "s3-eu-central-1.amazonaws.com"
+  }
+
+  AWS.config(logger: Rails.logger)
+  AWS.config(log_level: :debug)
+  AWS.config(access_key_id: Rails.application.secrets.s3["access_id"], secret_access_key: Rails.application.secrets.s3["secret_key"], region: 'eu-central-1')
+
 end
