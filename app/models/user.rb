@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-  enum role: [ :admin, :user]
+  enum role: [:user,  :admin]
   before_create :set_default_settings
 
   has_and_belongs_to_many :organizations
