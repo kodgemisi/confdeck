@@ -161,15 +161,15 @@ class Admin::ConferencesController < Admin::AdminController
   end
 
   def basic_information
-    render template: "conferences/edit/basic_information"
+    render template: "admin/conferences/edit/basic_information"
   end
 
   def address
-    render template: "conferences/edit/address"
+    render template: "admin/conferences/edit/address"
   end
 
   def contact_information
-    render template: "conferences/edit/contact_information"
+    render template: "admin/conferences/edit/contact_information"
   end
 
   def landing_settings
