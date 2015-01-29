@@ -27,7 +27,12 @@ class ApplicationController < ActionController::Base
       session.delete(:conference_name)
       new_conferences_path
     else
-      super
+      if is_conference?
+        admin_conference_url
+      else
+        root_url
+      end
+
     end
   end
 
@@ -71,5 +76,9 @@ class ApplicationController < ActionController::Base
       @user_conferences = current_user.conferences
       @user_organizations = current_user.organizations
     end
+  end
+
+  def is_conference?
+    Subdomain.new.matches? request
   end
 end
