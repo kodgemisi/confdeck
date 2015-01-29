@@ -1055,7 +1055,7 @@
         if (options.enablePagination)
         {
             var pagination = "<{0} class=\"actions {1}\"><ul role=\"menu\" aria-label=\"{2}\">{3}</ul></{0}>",
-                buttonTemplate = "<li><a href=\"#{0}\" role=\"menuitem\">{1}</a></li>",
+                buttonTemplate = "<li><a href=\"#{0}\" role=\"menuitem\" class=\"btn btn-primary\">{1}</a></li>",
                 buttons = "";
 
             if (!options.forceMoveForward)

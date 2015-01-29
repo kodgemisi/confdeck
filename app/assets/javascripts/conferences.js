@@ -58,7 +58,7 @@ $(document).ready(function(){
                 }
                 return $(this).valid();
             },
-            showFinishButtonAlways: true,
+            //showFinishButtonAlways: true,
             enableAllSteps: true
         });
 
