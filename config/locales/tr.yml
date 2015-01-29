@@ -616,6 +616,7 @@ tr:
   update: Güncelle
   updated: 
   user:
+    change_your_password: Parolanızı Değiştirin
     dont_have_account: Hesabınız yok mu?
     email: E-Posta
     login: Giriş
@@ -626,4 +627,5 @@ tr:
     remember_me: Beni Hatırla
     sign_up_to_get_started: Hemen yeni bir hesap açın
     signup: Kayıt Ol
+    update_password: Parolayı Değiştir
   waiting_review: Beklemede

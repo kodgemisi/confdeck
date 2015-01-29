@@ -1,16 +1,60 @@
-<h2>Change your password</h2>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
 
-  <div><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password, :autofocus => true %></div>
 
-  <div><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.submit "Change my password" %></div>
-<% end %>
+<section id="main" role="main">
+  <!-- START Template Container -->
+  <section class="container">
+    <!-- START row -->
+    <div class="row">
+      <div class="col-lg-4 col-lg-offset-4">
+        <!-- Brand -->
+        <div class="text-center" style="margin-bottom:40px;">
+          <span class="logo-figure inverse"></span>
+          <span class="logo-text inverse"></span>
+          <h5 class="semibold text-muted mt-5"><%= t("user.change_your_password") %></h5>
+        </div>
+        <!--/ Brand -->
 
-<%= render "devise/shared/links" %>
+        <%= render "devise/shared/social" %>
+
+        <hr><!-- horizontal line -->
+
+        <!-- Login form -->
+        <%= render "layouts/messages" %>
+
+        <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :class => "panel", :method => :put }) do |f| %>
+            <div class="panel-body">
+              <!-- Alert message -->
+              <!--/ Alert message -->
+              <div class="form-group">
+                <div class="form-stack has-icon pull-left">
+                  <%= f.password_field :password, :autofocus => true, :class => "form-control input-lg", :placeholder => t("user.password") %>
+                  <i class="ico-user2 form-control-icon"></i>
+                </div>
+                <div class="form-stack has-icon pull-left">
+                  <%= f.password_field :password_confirmation, :class => "form-control input-lg",  :placeholder => t("user.password_confirmation") %>
+                  <i class="ico-lock2 form-control-icon"></i>
+                </div>
+              </div>
+
+              <div class="form-group nm">
+                <%= f.submit t("user.update_password"), :class => "btn btn-block btn-success" %>
+              </div>
+            </div>
+            <%= f.hidden_field :reset_password_token %>
+
+      <% end %>
+        <!-- Login form -->
+
+        <hr><!-- horizontal line -->
+
+        <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+            <p class="text-muted text-center"> <%= t("user.dont_have_account") %> <%= link_to t("user.sign_up_to_get_started"), new_registration_path(resource_name) %></p>
+        <% end -%>
+      </div>
+    </div>
+    <!--/ END row -->
+  </section>
+  <!--/ END Template Container -->
+</section>

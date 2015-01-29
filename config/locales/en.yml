@@ -554,6 +554,7 @@ en:
   update: 
   updated: 
   user:
+    change_your_password: Change Your Password
     dont_have_account: Don't have an account?
     email: E-Mail
     login: Login
@@ -564,4 +565,5 @@ en:
     remember_me: Remember me
     sign_up_to_get_started: Sign up to get started
     signup: Signup
+    update_password: Change Password
   waiting_review: 
