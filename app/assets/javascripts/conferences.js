@@ -59,6 +59,7 @@ $(document).ready(function(){
                 return $(this).valid();
             },
             //showFinishButtonAlways: true,
+            enableKeyNavigation: false,
             enableAllSteps: true
         });
 
