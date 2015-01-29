@@ -3,7 +3,11 @@
     <!-- START navbar header -->
     <div class="navbar-header">
       <!-- Brand -->
-      <a class="navbar-brand" href="<%= admin_conference_url %>">
+        <% if defined? admin %>
+            <a class="navbar-brand" href="<%= admin_conference_url %>">
+        <% else %>
+            <a class="navbar-brand" href="<%= root_url %>">
+        <% end %>
         <span class="logo-text">ConfDeck</span>
       </a>
       <!--/ Brand -->
