@@ -15,12 +15,13 @@
 
         <hr><!-- horizontal line -->
 
+        <%= render "layouts/messages" %>
+
         <!-- Login form -->
 
         <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :class => "panel", :method => :post }) do |f| %>
             <div class="panel-body">
               <!-- Alert message -->
-              <%= render "layouts/messages" %>
               <!--/ Alert message -->
               <div class="form-group">
                 <div class="form-stack has-icon pull-left">
