@@ -155,7 +155,7 @@ en:
     show: Conference Page
     show_landing: Open Conference Page
     slug: Slug
-    start_date: Start Dat
+    start_date: Start Date
     summary: Summary
     too_long: Date range for conference must be less than 60 days.
     total_speeches: Total Applications
