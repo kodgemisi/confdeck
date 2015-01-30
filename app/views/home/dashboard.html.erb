@@ -18,7 +18,7 @@
                   <td width="5%">
                     <%= link_to image_tag(conference.logo.url(:thumb), height: "50", width: "50"), conference %>
                   </td>
-                  <td width="5%"><%= link_to conference.name, conference %></td>
+                  <td width="5%"><%= link_to conference.name, admin_conference_url(subdomain: conference.slug) %></td>
                   <td width="10%"><%= conference_dates conference %></td>
                   <td width="15%" class="pl0 pr5">
                     <%= button_group class: "btn-group-sm pull-right" do %>
