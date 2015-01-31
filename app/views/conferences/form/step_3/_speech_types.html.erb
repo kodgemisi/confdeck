@@ -11,6 +11,7 @@
       <div class="col-lg-1">
         <%= link_to_add_association t("conferences.wizard.speech_type.new"), f, :speech_types,
                                     class: "btn btn-primary",
+                                    partial: "conferences/speech_type_fields",
                                     data: {
                                             "association-insertion-method" => "append",
                                             #"association-insertion-traversal" => "closest",
