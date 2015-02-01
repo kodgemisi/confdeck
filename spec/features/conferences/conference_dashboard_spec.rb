@@ -9,16 +9,39 @@ describe "Conference Dashboard", :type => :feature do
     @user.set!("language", "en")
     login_as(@user, :scope => :user)
     @conference = Fabricate(:conference)
-    @organization = @conference.organizations.first
-    @conference.conference_admins << @user
     I18n.locale = :en
   end
 
-  context "activity feed" do
-    it "displays no activity text when empty" do
-      visit(admin_conference_url(subdomain: @conference.slug))
-      expect(page).to have_content(I18n.t("conferences.no_activity"))
+  before :each do
+    sleep 3
+    login_as(@user, :scope => :user)
+  end
+
+
+  context "admin" do
+    before :all do
+      @conference.conference_admins << @user
     end
+
+    it "can click and go to speech list" do
+      visit(admin_conference_url(subdomain: @conference.slug))
+      click_link "Speeches"
+      expect(page).to have_content(I18n.t("titles.speeches.index", conference: @conference.name))
+    end
+
+    it "can click and go to schedule" do
+      visit(admin_conference_url(subdomain: @conference.slug))
+      click_link "Schedule"
+      expect(page).to have_content(I18n.t("titles.conferences.schedule", conference: @conference.name))
+    end
+
+    it "can click and go to roles" do
+      visit(admin_conference_url(subdomain: @conference.slug))
+      click_link "Roles"
+      expect(page).to have_content(I18n.t("titles.roles.index", conference: @conference.name))
+    end
+
+
   end
 
 end
