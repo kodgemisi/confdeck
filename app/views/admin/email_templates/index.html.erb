@@ -1,3 +1,7 @@
+<%
+   meta title: t("titles.conferences.email_templates")
+%>
+
 <%= form_for(@conference, :html => {:class => 'form-horizontal email-templates'}) do |f| %>
     <%= render "conferences/form/step_3/email_templates_fields", f: f %>
 
