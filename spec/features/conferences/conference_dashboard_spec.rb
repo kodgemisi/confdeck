@@ -79,4 +79,27 @@ describe "Conference Dashboard", :type => :feature do
 
   end
 
+  context "user" do
+    before :all do
+      @conference.conference_users << @user
+    end
+
+    it "can click and go to Speeches" do
+      visit(admin_conference_url(subdomain: @conference.slug))
+      click_link "Speeches"
+      expect(page).to have_content(I18n.t("titles.speeches.index", conference: @conference.name))
+    end
+
+    it "cant see admin only link" do
+      expect(page).not_to have_link("Basic Information")
+      expect(page).not_to have_link("Contact Information")
+      expect(page).not_to have_link("Address")
+      expect(page).not_to have_link("Speech Types")
+      expect(page).not_to have_link("Sponsors")
+      expect(page).not_to have_link("Email Templates")
+      expect(page).not_to have_link("Schedule")
+    end
+
+  end
+
 end
