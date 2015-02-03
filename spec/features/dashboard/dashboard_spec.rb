@@ -2,7 +2,7 @@ require 'rails_helper'
 include Warden::Test::Helpers
 Warden.test_mode!
 
-describe "Conference Dashboard", :type => :feature do
+describe "Confdeck Dashboard", :type => :feature do
 
   before :all do
     @user = Fabricate(:user)
@@ -25,6 +25,11 @@ describe "Conference Dashboard", :type => :feature do
     it "displays upcoming conferences" do
       visit(root_url)
       expect(page).to have_content(@conference.name)
+      end
+
+    it "can switch to conferences from navbar" do
+      visit(root_url)
+      expect(page).to have_link(I18n.t("general.switch_conference", conference: @conference.name), href: admin_conference_url(subdomain: @conference.slug))
     end
   end
 
