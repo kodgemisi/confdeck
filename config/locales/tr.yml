@@ -587,6 +587,7 @@ tr:
       basic_information: "%{conference} Temel Bilgiler"
       contact_information: "%{conference} İletişim Bilgileri"
       edit: "%{conference} Düzenle"
+      email_templates: Eposta Şablonları
       manage: "%{conference} Güvertesi"
       schedule: "%{conference} Programı"
       speech_types: Konuşma Türleri

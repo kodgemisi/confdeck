@@ -120,7 +120,7 @@ class Admin::ConferencesController < Admin::AdminController
     @speech_types = @conference.speech_types
     respond_to do |format|
       format.json { render json: @speech_types }
-      format.html { render template: "conferences/edit/speech_types"}
+      format.html { render template: "admin/conferences/edit/speech_types"}
     end
   end
 
