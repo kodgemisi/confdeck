@@ -2,12 +2,21 @@
    meta title: t("titles.conferences.email_templates")
 %>
 
+<%= javascript_tag do %>
+    //Set WYSIWYG editor contents to hidden fields before submit
+    var editors = $(".summernote-editor");
+    for (var i = 0; i < editors.size(); i++) {
+    var editor = editors[i];
+    var hidden_field = $(editor).next().next();
+    $(hidden_field).val($(editor).code());
+    }
+<%end %>
 <%= form_for(@conference, url: admin_conference_url(subdomain: @conference.slug), :html => {:class => 'form-horizontal email-templates'}) do |f| %>
     <%= render "conferences/form/step_3/email_templates_fields", f: f %>
 
     <div class="form-group">
       <div class="col-lg-offset-2 col-lg-10">
-        <%= f.submit :class => "btn btn-primary pull-right" %>
+        <%= f.submit :class => "btn btn-primary pull-right", id: "update-templates" %>
       </div>
     </div>
 <% end %>
