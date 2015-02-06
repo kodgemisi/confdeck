@@ -5,7 +5,7 @@
           <div class="panel-body">
             <% if @conference.speech_types.size > 0 %>
                 <div class="form-group">
-                  <%= f.label t('speeches.speech_types'), :class => "col-lg-3 control-label" %>
+                  <%= f.label t('speeches.speech_type'), :class => "col-lg-3 control-label" %>
                     <div class="col-lg-9">
                       <%= f.collection_select :speech_type_id, @conference.speech_types.order("id"), :id, :type_name, {}, {:class => "form-control"} %>
                     </div>

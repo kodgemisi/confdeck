@@ -553,8 +553,8 @@ tr:
     show_details: Detaylar
     speakers: Konuşmacıları
     speech_title: "%{subject}"
-    speech_type: Konuşma Türü
-    speech_types: Konuşma Türleri
+    speech_type: Başvuru Tipi
+    speech_types: Başvuru Tipleri
     state: Durum
     states:
       accepted: Kabul Edildi
