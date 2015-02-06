@@ -21,6 +21,7 @@ class Admin::SpeechesController < Admin::AdminController
   # GET /speeches
   # GET /speeches.json
   def index
+    authorize @conference, :user?
     @speech_types = @conference.speech_types.includes(:speeches)
 
     respond_to do |format|
@@ -43,6 +44,7 @@ class Admin::SpeechesController < Admin::AdminController
   # GET /speeches/new
   # GET /speeches/new.json
   def new
+    authorize @conference, :manage?
     @speech = Speech.new
     @speech.build_topic
 
@@ -55,6 +57,7 @@ class Admin::SpeechesController < Admin::AdminController
 
   # GET /speeches/1/edit
   def edit
+    authorize @conference, :manage?
   end
 
   #TODO service implementation
@@ -84,6 +87,7 @@ class Admin::SpeechesController < Admin::AdminController
   # PUT /speeches/1
   # PUT /speeches/1.json
   def update
+    authorize @conference, :manage?
     respond_to do |format|
       if @speech.update_attributes(speech_params)
         format.html { redirect_to [:admin, @speech], notice: 'Speech was successfully updated.' }
@@ -98,6 +102,7 @@ class Admin::SpeechesController < Admin::AdminController
   # DELETE /speeches/1
   # DELETE /speeches/1.json
   def destroy
+    authorize @conference, :manage?
     @speech.destroy
 
     respond_to do |format|
