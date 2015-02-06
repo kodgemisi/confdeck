@@ -57,7 +57,7 @@ class Speech < ActiveRecord::Base
         'speech_type' => speech_type.type_name,
         'state' => state,
         'speakers' => topic.speakers,
-        'details_url' => Rails.application.routes.url_helpers.admin_speech_url(self.id)
+        'details_url' => Rails.application.routes.url_helpers.admin_speech_url(self.id, subdomain: self.conference.slug)
     }
   end
 end

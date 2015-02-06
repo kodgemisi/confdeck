@@ -88,6 +88,11 @@
                         value: " <ul>\n                 {% for speaker in speech.speakers %}\n\n                      <li> {{ speaker.name }}</li>\n                 {% endfor %}\n                </ul>\n",
                         html: true
                     },
+                    {
+                        title: "Speech Link",
+                        value: "<a href='{{speech.details_url}}'>Değerlendirmek için tıklayın</a>",
+                        html: true
+                    },
                 ]
                 var list = "";
                 for(i = 0; i < templates.length; i++){
