@@ -87,7 +87,7 @@ class Admin::ConferencesController < Admin::AdminController
 
     respond_to do |format|
       if @conference.update_attributes(conference_params)
-        format.html { redirect_to manage_conference_path(@conference), notice: 'Conference was successfully updated.' }
+        format.html { redirect_to admin_conference_url(subdomain: @conference.slug), notice: 'Conference was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

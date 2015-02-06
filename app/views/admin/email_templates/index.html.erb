@@ -2,7 +2,7 @@
    meta title: t("titles.conferences.email_templates")
 %>
 
-<%= form_for(@conference, :html => {:class => 'form-horizontal email-templates'}) do |f| %>
+<%= form_for(@conference, url: admin_conference_url(subdomain: @conference.slug), :html => {:class => 'form-horizontal email-templates'}) do |f| %>
     <%= render "conferences/form/step_3/email_templates_fields", f: f %>
 
     <div class="form-group">
