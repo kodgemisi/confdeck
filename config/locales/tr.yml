@@ -107,6 +107,7 @@ tr:
       speech_accept: "%{user}, %{speech} kabul etti"
       speech_comment: "%{user}, %{speech} hakkında yorum yaptı."
       speech_downvote: "%{user}, %{speech} beğenmedi."
+      speech_new: "%{speech_type} tipinde, %{speech} başlığıyla yeni bir başvuru alındı."
       speech_reject: "%{user}, %{speech} reddetti."
       speech_upvote: "%{user}, %{speech} beğenmedi."
   additional_info: Ek Bilgi

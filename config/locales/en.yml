@@ -107,6 +107,7 @@ en:
       speech_accept: "%{user} accepted %{speech}"
       speech_comment: "%{user} commented on %{speech}"
       speech_downvote: "%{user} downvoted %{speech}"
+      speech_new: New speech application received with %{speech} with %{speech_type} type
       speech_reject: "%{user} rejected %{speech}."
       speech_upvote: "%{user} upvoted %{speech}"
   additional_info: 

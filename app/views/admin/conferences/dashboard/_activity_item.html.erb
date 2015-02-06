@@ -1,5 +1,28 @@
 <% if activity.action == "speech_new" %>
-    <%= render "admin/conferences/dashboard/speech/speech", speech: activity.subject %>
+    <% if activity.user.present? %>
+        <%= render "admin/conferences/dashboard/speech/speech", speech: activity.subject %>
+    <% else %>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="panel">
+              <div class="panel-body">
+                <ul class="list-table">
+                  <li class="text-left">
+                    <p class="nm">
+                      <%= t("activities.actions.#{activity.action}",
+                            speech: link_to(activity.subject.topic.subject, [:admin, activity.subject]),
+                            speech_type: activity.subject.speech_type.type_name
+                          ).html_safe
+                      %>
+                    </p>
+                    <h5 class="semibold text-muted nm"><%= timeago_tag activity.created_at.to_time, :lang => I18n.locale %></h5>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
 <% elsif activity.action == "speech_comment" %>
     <div class="row">
       <div class="col-lg-12">
