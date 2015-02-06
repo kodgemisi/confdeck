@@ -144,6 +144,7 @@ en:
     new: |
       New Conference
     new_speaker: Add New Speaker
+    new_speech: New speech application received %{subject}
     no_activity: No Activity Yet
     num_of_speeches: Applications
     num_of_sponsors: Sponsors
