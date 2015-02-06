@@ -54,7 +54,7 @@ class Speech < ActiveRecord::Base
     {
         'conference' => conference,
         'topic' => topic,
-        'speech_type' => speech_type,
+        'speech_type' => speech_type.type_name,
         'state' => state,
         'speakers' => topic.speakers
     }

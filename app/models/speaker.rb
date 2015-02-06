@@ -39,7 +39,7 @@ class Speaker < ActiveRecord::Base
         'github' => github,
         'twitter' => twitter,
         'facebook' => facebook,
-        'email' => email,
+        'email' => user.email,
         'phone' => phone,
     }
   end
