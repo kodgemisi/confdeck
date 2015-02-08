@@ -71,6 +71,17 @@ describe "Conference Dashboard", :type => :feature do
       expect(page).to have_content(I18n.t("titles.conferences.address", conference: @conference.name))
     end
 
+    it "can update Address information" do
+      pending
+      visit(address_admin_conference_url(subdomain: @conference.slug))
+      fill_in "conference_address_attributes_info", with: "Izmir"
+      sleep 3
+
+      click_button "Update Conference"
+      expect(page).to have_content("Conference was successfully updated.")
+      expect(@conference.address.info).to eq("Izmir")
+    end
+
     it "can click and go to Contact Information" do
       visit(admin_conference_url(subdomain: @conference.slug))
       click_link "Contact Information"
