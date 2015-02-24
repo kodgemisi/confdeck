@@ -87,6 +87,7 @@ class ConferencesController < ApplicationController
     @speech.conference = @conference
     respond_to do |format|
       if @speech.save
+        @conference.touch #cache invalidation
         create_activity!(nil, @conference, @speech, "speech_new")
         format.html { redirect_to apply_conference_path, notice: t("application_received", topic: @speech.topic.subject) }
       else

@@ -43,54 +43,56 @@
 
 
             <% if current_user.is_admin_of?(@conference) %>
-              <li class="open" >
-                <a href="javascript:void(0);" data-toggle="submenu" data-target="#sidebar-settings-menu" data-parent=".topmenu">
-                  <span class="figure"><i class="ico-equalizer"></i></span>
-                  <span class="text"><%= t("general.settings") %></span>
-                  <span class="arrow"></span>
-                </a>
-                <!-- START 2nd Level Menu -->
-                <ul id="sidebar-settings-menu" class="submenu in">
-                  <li class="submenu-header ellipsis"><%= t("general.settings") %></li>
-
-                  <li>
-                    <a href="<%= admin_email_templates_path %>" >
-                      <span class="text"> <%= t("conferences.email_templates") %></span>
+                <% cache "admin_sidebar" do %>
+                  <li class="open" >
+                    <a href="javascript:void(0);" data-toggle="submenu" data-target="#sidebar-settings-menu" data-parent=".topmenu">
+                      <span class="figure"><i class="ico-equalizer"></i></span>
+                      <span class="text"><%= t("general.settings") %></span>
+                      <span class="arrow"></span>
                     </a>
-                  </li>
+                    <!-- START 2nd Level Menu -->
+                    <ul id="sidebar-settings-menu" class="submenu in">
+                      <li class="submenu-header ellipsis"><%= t("general.settings") %></li>
 
-                  <li>
-                    <a href="<%= admin_sponsors_path %>" >
-                      <span class="text"> <%= t("conferences.sponsors") %></span>
-                    </a>
-                  </li>
+                      <li>
+                        <a href="<%= admin_email_templates_path %>" >
+                          <span class="text"> <%= t("conferences.email_templates") %></span>
+                        </a>
+                      </li>
 
-                  <li>
-                    <a href="<%= speech_types_admin_conference_path %>" >
-                      <span class="text"> <%= t("conferences.speech_types") %></span>
-                    </a>
-                  </li>
+                      <li>
+                        <a href="<%= admin_sponsors_path %>" >
+                          <span class="text"> <%= t("conferences.sponsors") %></span>
+                        </a>
+                      </li>
 
-                  <li>
-                    <a href="<%= basic_information_admin_conference_path %>" >
-                      <span class="text"> <%= t("conferences.basic_information") %></span>
-                    </a>
-                  </li>
+                      <li>
+                        <a href="<%= speech_types_admin_conference_path %>" >
+                          <span class="text"> <%= t("conferences.speech_types") %></span>
+                        </a>
+                      </li>
 
-                  <li>
-                    <a href="<%= address_admin_conference_path %>" >
-                      <span class="text"> <%= t("conferences.address") %></span>
-                    </a>
-                  </li>
+                      <li>
+                        <a href="<%= basic_information_admin_conference_path %>" >
+                          <span class="text"> <%= t("conferences.basic_information") %></span>
+                        </a>
+                      </li>
 
-                  <li>
-                    <a href="<%= contact_information_admin_conference_path %>" >
-                      <span class="text"> <%= t("conferences.contact_information") %></span>
-                    </a>
+                      <li>
+                        <a href="<%= address_admin_conference_path %>" >
+                          <span class="text"> <%= t("conferences.address") %></span>
+                        </a>
+                      </li>
+
+                      <li>
+                        <a href="<%= contact_information_admin_conference_path %>" >
+                          <span class="text"> <%= t("conferences.contact_information") %></span>
+                        </a>
+                      </li>
+                    </ul>
+                    <!--/ END 2nd Level Menu -->
                   </li>
-                </ul>
-                <!--/ END 2nd Level Menu -->
-              </li>
+                <% end %>
             <% end %>
         </ul>
         <!--/ END Template Navigation/Menu -->

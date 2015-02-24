@@ -1,5 +1,8 @@
-<div class="section-header">
-  <h5 class="semibold title mb15"><i class="ico-health mr5"></i><%= t("conferences.activity") %></h5>
-</div>
+<% cache [@conference, "activities", I18n.locale] do %>
 
-<%= render "admin/conferences/dashboard/activity_list", activities: @activities  %>
+    <div class="section-header">
+      <h5 class="semibold title mb15"><i class="ico-health mr5"></i><%= t("conferences.activity") %></h5>
+    </div>
+
+    <%= render "admin/conferences/dashboard/activity_list", activities: @activities  %>
+<% end %>
