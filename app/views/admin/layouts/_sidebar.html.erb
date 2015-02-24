@@ -1,103 +1,102 @@
-
-<!-- START Template Sidebar (Left) -->
-<aside class="sidebar sidebar-left sidebar-menu">
-    <!-- START Sidebar Content -->
-    <section class="content slimscroll">
-        <!-- START Template Navigation/Menu -->
-        <ul class="topmenu" data-toggle="menu">
-            <li class="active open">
-              <a href="<%= admin_conference_path(subdomain: @conference.slug) %>" data-parent=".topmenu">
-                <span class="figure"><i class="ico-home2"></i></span>
-                <span class="text"><%= t("conferences.deck") %></span>
-              </a>
-            </li>
-            <li class="open">
-                <a href="javascript:void(0);" data-toggle="submenu" data-target="#sidebar-management-menu" data-parent=".topmenu">
-                  <span class="figure"><i class="ico-cabinet"></i></span>
-                  <span class="text"><%= t("general.management") %></span>
-                  <span class="arrow"></span>
-                </a>
-                <!-- START 2nd Level Menu -->
-                <ul id="sidebar-management-menu" class="submenu in">
-                  <li class="submenu-header ellipsis"><%= t("general.management") %></li>
-                  <li>
-                    <a href="<%= admin_speeches_path %>">
-                      <span class="text"><%= t("conferences.speeches") %></span>
-                    </a>
-                  </li>
-                  <% if current_user.is_admin_of?(@conference) %>
-                      <li>
-                        <a href="<%= admin_schedule_path %>">
-                            <span class="text"><%= t("conferences.schedule") %></span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="<%= admin_roles_path %>">
-                            <span class="text"><%= t("conferences.roles") %></span>
-                        </a>
-                      </li>
-                  <% end %>
-                </ul>
-                <!--/ END 2nd Level Menu -->
-            </li>
-
-
-            <% if current_user.is_admin_of?(@conference) %>
-                <% cache "admin_sidebar" do %>
-                  <li class="open" >
-                    <a href="javascript:void(0);" data-toggle="submenu" data-target="#sidebar-settings-menu" data-parent=".topmenu">
-                      <span class="figure"><i class="ico-equalizer"></i></span>
-                      <span class="text"><%= t("general.settings") %></span>
+<% cache [@conference, current_user.is_admin_of?(@conference), "admin_sidebar", "settings", I18n.locale] do %>
+    <!-- START Template Sidebar (Left) -->
+    <aside class="sidebar sidebar-left sidebar-menu">
+        <!-- START Sidebar Content -->
+        <section class="content slimscroll">
+            <!-- START Template Navigation/Menu -->
+            <ul class="topmenu" data-toggle="menu">
+                <li class="active open">
+                  <a href="<%= admin_conference_path(subdomain: @conference.slug) %>" data-parent=".topmenu">
+                    <span class="figure"><i class="ico-home2"></i></span>
+                    <span class="text"><%= t("conferences.deck") %></span>
+                  </a>
+                </li>
+                <li class="open">
+                    <a href="javascript:void(0);" data-toggle="submenu" data-target="#sidebar-management-menu" data-parent=".topmenu">
+                      <span class="figure"><i class="ico-cabinet"></i></span>
+                      <span class="text"><%= t("general.management") %></span>
                       <span class="arrow"></span>
                     </a>
                     <!-- START 2nd Level Menu -->
-                    <ul id="sidebar-settings-menu" class="submenu in">
-                      <li class="submenu-header ellipsis"><%= t("general.settings") %></li>
-
+                    <ul id="sidebar-management-menu" class="submenu in">
+                      <li class="submenu-header ellipsis"><%= t("general.management") %></li>
                       <li>
-                        <a href="<%= admin_email_templates_path %>" >
-                          <span class="text"> <%= t("conferences.email_templates") %></span>
+                        <a href="<%= admin_speeches_path %>">
+                          <span class="text"><%= t("conferences.speeches") %></span>
                         </a>
                       </li>
-
-                      <li>
-                        <a href="<%= admin_sponsors_path %>" >
-                          <span class="text"> <%= t("conferences.sponsors") %></span>
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="<%= speech_types_admin_conference_path %>" >
-                          <span class="text"> <%= t("conferences.speech_types") %></span>
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="<%= basic_information_admin_conference_path %>" >
-                          <span class="text"> <%= t("conferences.basic_information") %></span>
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="<%= address_admin_conference_path %>" >
-                          <span class="text"> <%= t("conferences.address") %></span>
-                        </a>
-                      </li>
-
-                      <li>
-                        <a href="<%= contact_information_admin_conference_path %>" >
-                          <span class="text"> <%= t("conferences.contact_information") %></span>
-                        </a>
-                      </li>
+                      <% if current_user.is_admin_of?(@conference) %>
+                          <li>
+                            <a href="<%= admin_schedule_path %>">
+                                <span class="text"><%= t("conferences.schedule") %></span>
+                            </a>
+                          </li>
+                          <li>
+                            <a href="<%= admin_roles_path %>">
+                                <span class="text"><%= t("conferences.roles") %></span>
+                            </a>
+                          </li>
+                      <% end %>
                     </ul>
                     <!--/ END 2nd Level Menu -->
-                  </li>
-                <% end %>
-            <% end %>
-        </ul>
-        <!--/ END Template Navigation/Menu -->
+                </li>
 
-    </section>
-    <!--/ END Sidebar Container -->
-</aside>
-<!--/ END Template Sidebar (Left) -->
+
+                <% if current_user.is_admin_of?(@conference) %>
+                      <li class="open" >
+                        <a href="javascript:void(0);" data-toggle="submenu" data-target="#sidebar-settings-menu" data-parent=".topmenu">
+                          <span class="figure"><i class="ico-equalizer"></i></span>
+                          <span class="text"><%= t("general.settings") %></span>
+                          <span class="arrow"></span>
+                        </a>
+                        <!-- START 2nd Level Menu -->
+                        <ul id="sidebar-settings-menu" class="submenu in">
+                          <li class="submenu-header ellipsis"><%= t("general.settings") %></li>
+
+                          <li>
+                            <a href="<%= admin_email_templates_path %>" >
+                              <span class="text"> <%= t("conferences.email_templates") %></span>
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="<%= admin_sponsors_path %>" >
+                              <span class="text"> <%= t("conferences.sponsors") %></span>
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="<%= speech_types_admin_conference_path %>" >
+                              <span class="text"> <%= t("conferences.speech_types") %></span>
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="<%= basic_information_admin_conference_path %>" >
+                              <span class="text"> <%= t("conferences.basic_information") %></span>
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="<%= address_admin_conference_path %>" >
+                              <span class="text"> <%= t("conferences.address") %></span>
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="<%= contact_information_admin_conference_path %>" >
+                              <span class="text"> <%= t("conferences.contact_information") %></span>
+                            </a>
+                          </li>
+                        </ul>
+                        <!--/ END 2nd Level Menu -->
+                      </li>
+                <% end %>
+            </ul>
+            <!--/ END Template Navigation/Menu -->
+
+        </section>
+        <!--/ END Sidebar Container -->
+    </aside>
+    <!--/ END Template Sidebar (Left) -->
+<% end %>
