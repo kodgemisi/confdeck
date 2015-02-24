@@ -9,6 +9,7 @@ module Activitable
     activity.action = action
     activity.user = user
     activity.conference = conference
+    conference.touch #cache invalidation
     activity.save
   end
 
