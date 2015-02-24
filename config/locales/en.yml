@@ -131,6 +131,7 @@ en:
     delete: Delete
     description: Description
     details: Details
+    email_templates: Email Templates
     end_date: End Date
     landing:
       admin: Admin Panel
@@ -157,6 +158,9 @@ en:
     show: Conference Page
     show_landing: Open Conference Page
     slug: Slug
+    speech_types: Speech Types
+    speeches: Speeches
+    sponsors: Sponsors
     start_date: Start Date
     summary: Summary
     too_long: Date range for conference must be less than 60 days.
@@ -306,6 +310,7 @@ en:
     homepage: 
     inactive: Inactive
     logout: Logout
+    management: Management
     my_profile: My Profile
     remove: Remove
     save: Save
