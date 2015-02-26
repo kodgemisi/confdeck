@@ -66,8 +66,11 @@ class ConferencesController < ApplicationController
 
     @data = {}
 
-    @days.each do |day|
-      @data[day.date] = day.slots.group_by(&:room)
+    # To fix error on the slot for one day conferences
+    unless @conference.rooms.empty?
+      @days.each do |day|
+        @data[day.date] = day.slots.group_by(&:room)
+      end
     end
 
     respond_to do |format|
