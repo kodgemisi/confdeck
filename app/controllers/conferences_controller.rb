@@ -85,9 +85,9 @@ class ConferencesController < ApplicationController
   def save_apply
     @speech = Speech.new(speech_params)
     @speech.conference = @conference
-    create_activity!(nil, @conference, @speech, "speech_new")
     respond_to do |format|
       if @speech.save
+        create_activity!(nil, @conference, @speech, "speech_new")
         format.html { redirect_to apply_conference_path, notice: t("application_received", topic: @speech.topic.subject) }
       else
         format.html { render action: "apply" }
