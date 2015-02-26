@@ -57,7 +57,11 @@ group :test, :development do
   gem "sqlite3"
   gem "better_errors"
   gem 'simplecov', :require => false
+end
 
+group :development do
+  gem 'quiet_assets'
+  gem 'bullet'
 end
 
 group :test do
