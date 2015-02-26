@@ -1,36 +1,38 @@
-<div class="row">
-  <div class="col-md-12">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= speech_type.type_name %> (<%= speech_type.speeches.count %> Başvuru)</h3>
-        <div class="panel-toolbar text-right">
-          <!-- option -->
-          <div class="option">
-            <button class="btn up" data-toggle="panelcollapse"><i class="arrow"></i></button>
+<% cache [speech_type, "table", I18n.locale] do %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= speech_type.type_name %> (<%= speech_type.speeches.count %> Başvuru)</h3>
+            <div class="panel-toolbar text-right">
+              <!-- option -->
+              <div class="option">
+                <button class="btn up" data-toggle="panelcollapse"><i class="arrow"></i></button>
+              </div>
+              <!--/ option -->
+            </div>
           </div>
-          <!--/ option -->
+          <div class="panel-body">
+            <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#table<%= speech_type.id %>" placeholder="Filter Developers" />
+          </div>
+          <table class="table table-bordered table-hover speech-table  panel-collapse pull out" id="table<%= speech_type.id %>">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th><%= t "topics.subject" %></th>
+              <th><%= t "topics.absract" %></th>
+              <th><%= t "topics.speakers" %></th>
+              <th><%= t "speeches.state" %></th>
+              <th><%= t "speeches.actions" %></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% speech_type.speeches.each do |speech| %>
+                <%= render "admin/speeches/index/table_row", speech: speech %>
+            <% end %>
+            </tbody>
+          </table>
         </div>
       </div>
-      <div class="panel-body">
-        <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#table<%= speech_type.id %>" placeholder="Filter Developers" />
-      </div>
-      <table class="table table-bordered table-hover speech-table  panel-collapse pull out" id="table<%= speech_type.id %>">
-        <thead>
-        <tr>
-          <th>#</th>
-          <th><%= t "topics.subject" %></th>
-          <th><%= t "topics.absract" %></th>
-          <th><%= t "topics.speakers" %></th>
-          <th><%= t "speeches.state" %></th>
-          <th><%= t "speeches.actions" %></th>
-        </tr>
-        </thead>
-        <tbody>
-        <% speech_type.speeches.each do |speech| %>
-            <%= render "admin/speeches/index/table_row", speech: speech %>
-        <% end %>
-        </tbody>
-      </table>
     </div>
-  </div>
-</div>
+<% end %>

@@ -129,7 +129,7 @@ class Admin::ConferencesController < Admin::AdminController
     @latest_speeches = @conference.speeches.order("created_at DESC").limit(15).includes(topic: [:speakers]).includes(:comments)
     @total_speeches = @conference.speeches
     @waiting_speeches = @conference.speeches.where(:state => "waiting_review")
-    @activities = @conference.activities.order("created_at DESC").limit(15)
+    @activities = @conference.activities.order("created_at DESC").limit(30)
   end
 
 
