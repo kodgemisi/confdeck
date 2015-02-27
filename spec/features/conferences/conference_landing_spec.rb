@@ -131,6 +131,17 @@ describe "Conference landing page", :type => :feature do
         expect(page).to have_content conference.address.info
       end
 
+      #TODO Fix this test
+      it "sanitize html content to protect from xss" do
+        skip
+        address = conference.address
+        address.info = "<b>dsahda</b> dsads <script> alert('hi!') </script>"
+        address.save
+        visit(conference_url(subdomain: conference.slug))
+        wait 10
+        expect(page).not_to have_content("<script> alert('hi!') </script>")
+      end
+
       it "should not display address if module is not active" do
         conference.set!("map_module", "false")
         conference.save
