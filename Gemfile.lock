@@ -47,6 +47,8 @@ GEM
       rack (>= 0.9.0)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
+    bugsnag (2.8.1)
+      multi_json (~> 1.0)
     builder (3.2.2)
     bullet (4.14.4)
       activesupport (>= 3.0.0)
@@ -335,6 +337,7 @@ DEPENDENCIES
   best_in_place
   better_errors
   bootstrap-sass (~> 3.1.0)
+  bugsnag
   bullet
   capybara
   capybara-webkit

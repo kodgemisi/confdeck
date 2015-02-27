@@ -40,7 +40,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-github'
 gem 'virtus'
 gem "i18n-js", ">= 3.0.0.rc8"
-
+gem 'bugsnag'
 # gem 'i18n-tasks', '~> 0.7.7'
 
 group :production do
