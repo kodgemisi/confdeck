@@ -16,6 +16,7 @@
 
     <!-- START Toolbar -->
     <div class="navbar-toolbar clearfix">
+      <% cache ["admin_header", "leftbar", defined? admin, I18n.locale] do %>
         <!-- START Left nav -->
         <ul class="nav navbar-nav navbar-left">
             <!-- Sidebar shrink -->
@@ -65,56 +66,56 @@
           <% end %>
         </ul>
         <!--/ END Left nav -->
+      <% end %>
 
+        <!-- START Right nav -->
+        <ul class="nav navbar-nav navbar-right">
+          <!-- Profile dropdown -->
+          <li class="dropdown profile">
+            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                <span class="meta">
+                    <span class="avatar"><img src="<%= current_user.avatar_url %>" class="img-circle" alt=""/></span>
+                    <span class="text hidden-xs hidden-sm pl5"><%= current_user.display_name %></span>
+                    <span class="caret"></span>
+                </span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="<%= settings_path %>"><span class="icon"><i class="ico-cog4"></i></span><%= t("general.settings") %></a></li>
+              <li class="divider"></li>
+              <% @user_conferences.each do |conference| %>
+                  <li><a href="<%= admin_conference_url(subdomain: conference.slug) %>">
+                    <span class="icon"><i class="ico-flag"></i></span>
+                    <%= t("general.switch_conference", conference: conference.name) %></a>
+                  </li>
+              <% end %>
 
-    <!-- START Right nav -->
-    <ul class="nav navbar-nav navbar-right">
-      <!-- Profile dropdown -->
-      <li class="dropdown profile">
-        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="meta">
-                <span class="avatar"><img src="<%= current_user.avatar_url %>" class="img-circle" alt=""/></span>
-                <span class="text hidden-xs hidden-sm pl5"><%= current_user.display_name %></span>
-                <span class="caret"></span>
-            </span>
-        </a>
-        <ul class="dropdown-menu" role="menu">
-          <li><a href="<%= settings_path %>"><span class="icon"><i class="ico-cog4"></i></span><%= t("general.settings") %></a></li>
-          <li class="divider"></li>
-          <% @user_conferences.each do |conference| %>
-              <li><a href="<%= admin_conference_url(subdomain: conference.slug) %>">
-                <span class="icon"><i class="ico-flag"></i></span>
-                <%= t("general.switch_conference", conference: conference.name) %></a>
+              <li class="divider"></li>
+
+              <li>
+                <%= link_to new_conferences_path do %>
+                    <span class="icon"><i class="ico-magic"></i></span><%= t("conferences.new") %>
+                <% end %>
               </li>
-          <% end %>
-
-          <li class="divider"></li>
-
-          <li>
-            <%= link_to new_conferences_path do %>
-                <span class="icon"><i class="ico-magic"></i></span><%= t("conferences.new") %>
-            <% end %>
-          </li>
-          <li class="divider"></li>
-          <% if defined? admin %>
-              <li><a href="http://www.confdeck.com">
-                <span class="icon"><i class="ico-home"></i></span>
-                ConfDeck</a>
+              <li class="divider"></li>
+              <% if defined? admin %>
+                  <li><a href="http://www.confdeck.com">
+                    <span class="icon"><i class="ico-home"></i></span>
+                    ConfDeck</a>
+                  </li>
+              <% end %>
+              <li>
+                <%= link_to destroy_user_session_path, :method => :delete do %>
+                    <span class="icon"><i class="ico-exit"></i></span><%= t("general.logout") %></a>
+                <% end %>
               </li>
-          <% end %>
-          <li>
-            <%= link_to destroy_user_session_path, :method => :delete do %>
-                <span class="icon"><i class="ico-exit"></i></span><%= t("general.logout") %></a>
-            <% end %>
+            </ul>
           </li>
+          <!--/ Profile dropdown -->
+
         </ul>
-      </li>
-      <!--/ Profile dropdown -->
-
-    </ul>
-    <!--/ END Right nav -->
+        <!--/ END Right nav -->
 
     </div>
-<!--/ END Toolbar -->
+    <!--/ END Toolbar -->
 </header>
 <!--/ END Template Header -->

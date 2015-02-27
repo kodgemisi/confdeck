@@ -131,6 +131,7 @@ tr:
     delete: Sil
     description: Açıklama
     details: Detaylar
+    email_templates: Eposta Şablonları
     end_date: Bitiş Tarihi
     landing:
       admin: Yönetim Paneli
@@ -156,6 +157,9 @@ tr:
     show: Konferans Sayfası
     show_landing: "Konferans Sayfasını Aç\n "
     slug: Kısa İsim
+    speech_types: Konuşma Türleri
+    speeches: Konuşmalar
+    sponsors: Sponsorlar
     start_date: Başlangıç Tarihi
     summary: "Özet"
     too_long: Konferansın tarih aralığı en fazla 60 gün olmalıdır.
@@ -368,6 +372,7 @@ tr:
     homepage: Anasayfa
     inactive: Aktif Değil
     logout: "Çıkış Yap"
+    management: Yönetim
     my_profile: Profilim
     remove: Kaldır
     save: Kaydet

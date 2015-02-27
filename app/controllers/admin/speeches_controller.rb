@@ -16,14 +16,14 @@ class Admin::SpeechesController < Admin::AdminController
   before_filter :authenticate_user!
   before_filter :set_conference
   before_filter :set_speech, only: [:show, :edit, :update, :destroy, :comment, :upvote, :downvote, :accept, :reject, :send_accept_mail, :send_reject_mail]
+  before_filter :preload_cache_data, only: [:index, :bulk_mail]
   #after_filter :create_action_activity, only: [:create, :comment, :upvote, :downvote, :accept, :reject]
 
   # GET /speeches
   # GET /speeches.json
   def index
     authorize @conference, :user?
-    @speech_types = @conference.speech_types.includes(:speeches)
-
+    @speech_types = @conference.speech_types.includes(speeches: [:comments, :votes, topic: :speakers ]).order("created_at ASC")
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @speech_types }
@@ -117,6 +117,7 @@ class Admin::SpeechesController < Admin::AdminController
     Speech.transaction do
       @comment = @speech.comments.build(comment_params)
       @comment.user = current_user
+      @speech.speech_type.touch #cache invalidation
       create_activity!(current_user, @conference, @comment, "speech_comment")
     end
 
@@ -135,6 +136,7 @@ class Admin::SpeechesController < Admin::AdminController
     authorize @conference, :user?
     Speech.transaction do
       @speech.upvote_from current_user
+      @speech.speech_type.touch #cache invalidation
       create_activity!(current_user, @conference, @speech, "speech_upvote")
     end
 
@@ -148,6 +150,7 @@ class Admin::SpeechesController < Admin::AdminController
     authorize @conference, :user?
     Speech.transaction do
       @speech.downvote_from current_user
+      @speech.speech_type.touch #cache invalidation
       create_activity!(current_user, @conference, @speech, "speech_downvote")
     end
     respond_to do |format|
@@ -160,6 +163,7 @@ class Admin::SpeechesController < Admin::AdminController
     authorize @conference, :manage?
     Speech.transaction do
       @speech.accept!
+      @speech.speech_type.touch #cache invalidation
       create_activity!(current_user, @conference, @speech, "speech_accept")
     end
     respond_to do |format|
@@ -171,6 +175,7 @@ class Admin::SpeechesController < Admin::AdminController
     authorize @conference, :manage?
     Speech.transaction do
       @speech.reject!
+      @speech.speech_type.touch #cache invalidation
       create_activity!(current_user, @conference, @speech, "speech_reject")
     end
     respond_to do |format|
@@ -206,6 +211,14 @@ class Admin::SpeechesController < Admin::AdminController
   end
 
   private
+
+  def preload_cache_data
+    speech_ids = @conference.speeches.pluck("speeches.id")
+    vote_up_ids = current_user.votes.up.pluck(:votable_id)
+    vote_down_ids = current_user.votes.down.pluck(:votable_id)
+    @voted_ups = speech_ids && vote_up_ids
+    @voted_downs = speech_ids && vote_down_ids
+  end
 
   def set_conference
     @conference = @current_conference
