@@ -1,38 +1,38 @@
-<tr class="<%= speech.state %>" id="<%= dom_id(speech) %>"
->
-
-  <% if defined?(checkbox) && checkbox%>
-      <td width="2%">
-        <div class="checkbox custom-checkbox nm ">
-          <input id="speech_cb_<%= speech.id %>" type="checkbox" name="speeches[]" value="<%= speech.id %>" data-toggle="selectrow" data-target="tr" data-contextual="warning" data-sid="<%= speech.id %>">
-          <label for="speech_cb_<%= speech.id %>"></label>
-        </div>
+<% cache [speech, "speech_row", @voted_ups.include?(speech.id), @voted_downs.include?(speech.id), defined?(checkbox), I18n.locale] do %>
+    <tr class="<%= speech.state %>" id="<%= dom_id(speech) %>">
+      <% if defined?(checkbox) && checkbox%>
+          <td width="2%">
+            <div class="checkbox custom-checkbox nm ">
+              <input id="speech_cb_<%= speech.id %>" type="checkbox" name="speeches[]" value="<%= speech.id %>" data-toggle="selectrow" data-target="tr" data-contextual="warning" data-sid="<%= speech.id %>">
+              <label for="speech_cb_<%= speech.id %>"></label>
+            </div>
+          </td>
+      <% end %>
+      <td width="5%"><%= speech.id %></td>
+      <td width="15%"><%= speech.topic.subject %></td>
+      <td width="35%"><%= truncate(speech.topic.abstract, length:60, seperator: ' ') %></td>
+      <!--make them searcable-->
+      <td width="10%" class="text-center" data-search="<%= speech.topic.speakers.collect(&:name).join(", ")  %>">
+        <% speech.topic.speakers.each do |speaker| %>
+            <div class="speaker">
+              <%= link_to image_tag(speaker.avatar_url(20), class: "img-circle"), user_path(speaker.user), title: speaker.info, class: "tt" %>
+            </div>
+        <% end %>
       </td>
-  <% end %>
-  <td width="5%"><%= speech.id %></td>
-  <td width="15%"><%= speech.topic.subject %></td>
-  <td width="35%"><%= truncate(speech.topic.abstract, length:60, seperator: ' ') %></td>
-  <!--make them searcable-->
-  <td width="10%" class="text-center" data-search="<%= speech.topic.speakers.collect(&:name).join(", ")  %>">
-    <% speech.topic.speakers.each do |speaker| %>
-        <div class="speaker">
-          <%= link_to image_tag(speaker.avatar_url(20), class: "img-circle"), user_path(speaker.user), title: speaker.info, class: "tt" %>
+      <td width="5%" class="text-center" >
+        <%= state_label(speech.state).html_safe %>
+      </td>
+      <td width="20%" class="actions">
+        <div class="updown">
+          <%= link_to upvote_admin_speech_path(speech), remote: true, class: "semibold text-default" do %>
+              <i class="ico-arrow-up mr5 action-upvote <%= 'text-primary' if current_user.voted_up_on? speech %>"></i><span class="upvote-count"><%= speech.cached_votes_up %></span>
+          <% end %>
+          <%= link_to downvote_admin_speech_path(speech), remote: true, class: "semibold text-default" do %>
+              <i class="ico-arrow-down mr5 action-downvote <%= 'text-primary' if current_user.voted_down_on? speech %>"></i><span class="downvote-count"><%= speech.cached_votes_down %></span>
+          <% end %>
         </div>
-    <% end %>
-  </td>
-  <td width="5%" class="text-center" >
-    <%= state_label(speech.state).html_safe %>
-  </td>
-  <td width="20%" class="actions">
-    <div class="updown">
-      <%= link_to upvote_admin_speech_path(speech), remote: true, class: "semibold text-default" do %>
-          <i class="ico-arrow-up mr5 action-upvote <%= 'text-primary' if current_user.voted_up_on? speech %>"></i><span class="upvote-count"><%= speech.upvotes.count %></span>
-      <% end %>
-      <%= link_to downvote_admin_speech_path(speech), remote: true, class: "semibold text-default" do %>
-          <i class="ico-arrow-down mr5 action-downvote <%= 'text-primary' if current_user.voted_down_on? speech %>"></i><span class="downvote-count"><%= speech.downvotes.count %></span>
-      <% end %>
-    </div>
-    <%= link_to "#{speech.comments.count} comments", [:admin, speech], class: "btn btn-default" %>
-    <%= link_to t("speeches.show_details"), admin_speech_path(speech), class: "btn btn-primary button" %>
-  </td>
-</tr>
+        <%= link_to "#{speech.comments.count} comments", [:admin, speech], class: "btn btn-default" %>
+        <%= link_to t("speeches.show_details"), admin_speech_path(speech), class: "btn btn-primary button" %>
+      </td>
+    </tr>
+<% end %>
