@@ -1,5 +1,5 @@
 class SettingsController < ApplicationController
-  #authorize_resource class: false
+  before_filter :authenticate_user!
   before_action :populate_options
   before_action :set_defaults
   before_action :load_user, only: [:index, :update]
