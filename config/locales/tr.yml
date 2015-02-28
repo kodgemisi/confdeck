@@ -360,6 +360,7 @@ tr:
   general:
     active: Aktif
     add_another: Kaydet ve Yeni Ekle
+    application_received: "%{topic} başlıklı başvurunuz alınmıştır."
     are_you_sure: Emin Misiniz?
     cancel: "İptal"
     close: Kapat
