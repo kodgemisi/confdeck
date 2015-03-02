@@ -127,6 +127,7 @@ tr:
     basic_information: Temel Bilgiler
     conferences: Konferanslar
     contact_info: "İletişim Bilgileri"
+    created: Konferans başarıyla oluşturuldu.
     deck: Güverte
     delete: Sil
     description: Açıklama

@@ -50,7 +50,7 @@ class ConferencesController < ApplicationController
     @conference = Conferences::CreateConferenceService.instance.call(conference_params, current_user)
 
     if @conference.persisted? && @conference.errors.empty?
-      redirect_to admin_conference_url(subdomain: @conference.slug) , notice: 'Conference was successfully created.'
+      redirect_to admin_conference_url(subdomain: @conference.slug) , notice: I18n.t("conferences.created")
     else
       load_data
       render action: "new"

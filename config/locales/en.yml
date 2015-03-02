@@ -127,6 +127,7 @@ en:
     basic_information: Basic Information
     conferences: Conferences
     contact_info: Contact Information
+    created: Conference was successfully created.
     deck: Deck
     delete: Delete
     description: Description
