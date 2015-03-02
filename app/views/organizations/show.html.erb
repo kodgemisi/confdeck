@@ -1,9 +1,11 @@
-<% content_for :page_title  do %>
-    <%= t("organizations.page_title", organization: @organization.name) %>
-<% end %>
+<%
+   meta title: t("titles.organizations.show", organization: @organization.name)
+%>
 
 <div class="panel panel-default">
-  <div class="panel-heading">Details of <%= @organization.name %></div>
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= t("titles.organizations.show", organization: @organization.name) %></h3>
+  </div>
   <div class="panel-body">
     <table class="table table-bordered">
       <tr>

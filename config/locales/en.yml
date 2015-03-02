@@ -541,6 +541,8 @@ en:
     default_short: ConfDeck
     home:
       dashboard: Dashboard
+    organizations:
+      show: Details of %{organization}
     roles:
       index: User Role Management for %{conference}
     settings:

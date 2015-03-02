@@ -603,6 +603,8 @@ tr:
     default_short: ConfDeck
     home:
       dashboard: Anasayfa
+    organizations:
+      show: "%{organization} Detayları"
     roles:
       index: "%{conference} İçin Kullanıcı Görev Yönetimi"
     settings:
