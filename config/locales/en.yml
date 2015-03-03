@@ -314,6 +314,7 @@ en:
     logout: Logout
     management: Management
     my_profile: My Profile
+    not_authorized: You are not authorized to do this action.
     remove: Remove
     save: Save
     send: Send
@@ -488,6 +489,7 @@ en:
     bulk_mail_sent: Bulk mails were sent.
     comments: Comments
     detail: Details
+    downvote: Downvote
     is_accepted: Speech is accepted.
     is_rejected: Speech is rejected.
     my_speeches: My Speeches
@@ -510,6 +512,7 @@ en:
       waiting_review: Waiting Review
     subject: Subject
     success: Application Sent Successfully!
+    upvote: Upvote
     write_comment: Write a comment
   sponsors:
     actions: Actions
