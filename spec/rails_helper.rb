@@ -7,12 +7,13 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/rails'
 require 'selenium-webdriver'
+I18n.locale = :en
 
 driver = :webkit
 #driver = :selenium
 Capybara.current_driver = driver
 Capybara.javascript_driver = driver
-
+#Selenium::WebDriver::Firefox::Binary.path = "/home/mehmet/Desktop/firefox/firefox" #To fix bug of Firefox 35 with selenium
 Capybara.configure do |config|
   config.always_include_port = true
   # config.app_host = 'http://lvh.me'

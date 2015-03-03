@@ -127,6 +127,7 @@ tr:
     basic_information: Temel Bilgiler
     conferences: Konferanslar
     contact_info: "İletişim Bilgileri"
+    created: Konferans başarıyla oluşturuldu.
     deck: Güverte
     delete: Sil
     description: Açıklama
@@ -360,6 +361,7 @@ tr:
   general:
     active: Aktif
     add_another: Kaydet ve Yeni Ekle
+    application_received: "%{topic} başlıklı başvurunuz alınmıştır."
     are_you_sure: Emin Misiniz?
     cancel: "İptal"
     close: Kapat
@@ -601,6 +603,8 @@ tr:
     default_short: ConfDeck
     home:
       dashboard: Anasayfa
+    organizations:
+      show: "%{organization} Detayları"
     roles:
       index: "%{conference} İçin Kullanıcı Görev Yönetimi"
     settings:
@@ -618,7 +622,7 @@ tr:
   topics:
     abstract: Konu Özeti
     additional_info: Ek Bilgi
-    detail: Detay
+    detail: Konuşmanın Ana Hatları
     speakers: Konuşmacılar
     subject: Konu Başlığı
   update: Güncelle

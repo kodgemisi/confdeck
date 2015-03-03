@@ -50,7 +50,7 @@ class ConferencesController < ApplicationController
     @conference = Conferences::CreateConferenceService.instance.call(conference_params, current_user)
 
     if @conference.persisted? && @conference.errors.empty?
-      redirect_to admin_conference_url(subdomain: @conference.slug) , notice: 'Conference was successfully created.'
+      redirect_to admin_conference_url(subdomain: @conference.slug) , notice: I18n.t("conferences.created")
     else
       load_data
       render action: "new"
@@ -82,6 +82,7 @@ class ConferencesController < ApplicationController
   def apply
     @speech = @conference.speeches.new
     @speech.build_topic
+    I18n.locale = @conference.settings[:locale] || :tr
   end
 
   #TODO must be reviewed
@@ -92,7 +93,7 @@ class ConferencesController < ApplicationController
       if @speech.save
         @conference.touch #cache invalidation
         create_activity!(nil, @conference, @speech, "speech_new")
-        format.html { redirect_to apply_conference_path, notice: t("application_received", topic: @speech.topic.subject) }
+        format.html { redirect_to apply_conference_path, notice: t("general.application_received", topic: @speech.topic.subject) }
       else
         format.html { render action: "apply" }
       end

@@ -127,6 +127,7 @@ en:
     basic_information: Basic Information
     conferences: Conferences
     contact_info: Contact Information
+    created: Conference was successfully created.
     deck: Deck
     delete: Delete
     description: Description
@@ -295,6 +296,7 @@ en:
   general:
     active: Active
     add_another: Save and Add Another
+    application_received: 'Your application with %{topic} title was received. '
     are_you_sure: Are You Sure?
     cancel: Cancel
     close: Close
@@ -539,6 +541,8 @@ en:
     default_short: ConfDeck
     home:
       dashboard: Dashboard
+    organizations:
+      show: Details of %{organization}
     roles:
       index: User Role Management for %{conference}
     settings:
@@ -556,7 +560,7 @@ en:
   topics:
     abstract: Abstract
     additional_info: Additional Info
-    detail: Detail
+    detail: Outline
     speakers: Speakers
     subject: Subject
   update: 
