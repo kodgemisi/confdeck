@@ -14,7 +14,7 @@
 class ConferencesController < ApplicationController
   include Activitable
   before_action :set_conference, only: [:show, :apply, :save_apply]
-  before_action :load_data, only: [:new, :edit, :update]
+  before_action :load_data, only: [:new]
   layout 'conference_landing', only: [:show, :apply, :save_apply]
 
   def new
