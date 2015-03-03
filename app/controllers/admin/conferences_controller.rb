@@ -12,9 +12,10 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class Admin::ConferencesController < Admin::AdminController
+  include ConferenceConcern
   before_action :set_conference
   before_action :load_data, only: [:new, :edit, :update]
-  before_action :parse_dates, only: [:edit, :basic_information]
+  #before_action :parse_dates, only: [:edit, :basic_information]
   # GET /conferences
   # GET /conferences.json
   def index
@@ -115,6 +116,7 @@ class Admin::ConferencesController < Admin::AdminController
   end
 
   def basic_information
+
     render template: "admin/conferences/edit/basic_information"
   end
 
@@ -140,11 +142,6 @@ class Admin::ConferencesController < Admin::AdminController
 
   private
 
-    def parse_dates
-      @conference.to_date = @conference.days.last.date.strftime(I18n.t("date.formats.default"))
-      @conference.from_date = @conference.days.first.date.strftime(I18n.t("date.formats.default"))
-      @one_day = (@conference.days.first == @conference.days.last)
-    end
 
     def load_data
       @template_types = EmailTemplateType.all
