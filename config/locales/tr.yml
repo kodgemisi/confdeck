@@ -622,7 +622,7 @@ tr:
   topics:
     abstract: Konu Özeti
     additional_info: Ek Bilgi
-    detail: Detay
+    detail: Konuşmanın Ana Hatları
     speakers: Konuşmacılar
     subject: Konu Başlığı
   update: Güncelle

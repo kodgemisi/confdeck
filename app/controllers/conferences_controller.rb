@@ -82,6 +82,7 @@ class ConferencesController < ApplicationController
   def apply
     @speech = @conference.speeches.new
     @speech.build_topic
+    I18n.locale = @conference.settings[:locale] || :tr
   end
 
   #TODO must be reviewed
