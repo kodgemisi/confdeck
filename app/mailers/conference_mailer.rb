@@ -19,7 +19,13 @@ class ConferenceMailer < ActionMailer::Base
 
   def digest_speeches(conference)
     @conference = conference
-    @speech_types = @conference.speech_types.includes(speeches: [:comments, :votes, topic: :speakers ]).order("created_at ASC")
+    @speech_types = @conference.speech_types.order("created_at ASC")
+    @types = {}
+
+    @speech_types.each do |speech_type|
+      @types[speech_type.type_name] = speech_type.speeches.where("state = ?", "waiting_review")
+    end
+
     mail(to: @conference.email, subject: I18n.t("conferences.speeches_digest", conference: @conference.name))
   end
 end

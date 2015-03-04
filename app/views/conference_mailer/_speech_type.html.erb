@@ -9,7 +9,7 @@
   </thead>
 
   <tbody>
-    <% speech_type.speeches.each do |speech| %>
+    <% speeches.each do |speech| %>
         <%= render "speech", speech: speech, topic: speech.topic %>
     <% end %>
   </tbody>

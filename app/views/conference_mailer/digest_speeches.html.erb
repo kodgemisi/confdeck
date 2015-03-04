@@ -1,7 +1,6 @@
-<% @speech_types.each do |speech_type|%>
-    <h3><%= speech_type.type_name %></h3>
-    <%= render "speech_type", speech_type: speech_type %>
-    <hr>
+<% @types.each do |speech_type, speeches|%>
+    <h3><%= speech_type %></h3>
+    <%= render "speech_type", speeches: speeches %>
 <% end %>
 
 <style>
