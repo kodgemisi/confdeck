@@ -75,6 +75,7 @@ var initializeEditors = function(){
             ["para", ["ul", "ol", "paragraph"]],
             ["height", ["height"]],
             ["table", ["table"]],
+            ["insert", ["link", "picture"]],
             ["insert2", ["conferenceDropdown"]],
             ["insert3", ["topicDropdown"]]
         ]
