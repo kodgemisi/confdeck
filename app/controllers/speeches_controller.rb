@@ -66,7 +66,7 @@ class SpeechesController < ApplicationController
   end
 
   def speech_params
-    params.require(:speech).permit(:speech_type_id, topic_attributes: [:subject, :abstract, :detail, :additional_info, speaker_ids: []])
+    params.require(:speech).permit(:speech_type_id, topic_attributes: [:id, :subject, :abstract, :detail, :additional_info, speaker_ids: []])
   end
 
 end
