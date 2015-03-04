@@ -368,7 +368,7 @@ tr:
     create: Oluştur
     delete: Sil
     details: Detaylar
-    edit: Düzenl
+    edit: Düzenle
     error: Hata oluştu!
     error_count: "%{count} Hata"
     homepage: Anasayfa
