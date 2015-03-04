@@ -550,6 +550,7 @@ tr:
     bulk_mail_sent: Toplu epostalar gönderildi.
     comments: Yorumlar
     detail: Konuşmanın Ana Hatları
+    downvote: Downvote
     is_accepted: Konuşma Kabul Edildi.
     is_rejected: Konuşma Reddedildi.
     my_speeches: Konuşmalarım
@@ -572,6 +573,7 @@ tr:
       waiting_review: "İnceleniyor"
     subject: Konu Başlığı
     success: Başvuru Başarıyla Gönderildi!
+    upvote: Upvote
     write_comment: Yorum Yaz
   sponsors:
     actions: "İşlemler"
