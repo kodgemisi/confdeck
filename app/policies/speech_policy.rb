@@ -8,6 +8,6 @@ class SpeechPolicy < ApplicationPolicy
   end
 
   def edit?
-    @record.topic.speakers.include? @user.speaker && @record.state == "waiting_review"
+    @record.topic.speakers.include?(@user.speaker) && @record.state == "waiting_review"
   end
 end
