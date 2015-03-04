@@ -490,6 +490,7 @@ en:
     detail: Details
     is_accepted: Speech is accepted.
     is_rejected: Speech is rejected.
+    my_speeches: My Speeches
     new: New Speech
     not_sent: No emails sent yet.
     reject: Reject
@@ -551,6 +552,7 @@ en:
       bulk_mail: Send Bulk Mail
       edit: Edit %{subject}
       index: Speeches of %{conference}
+      my_speeches: My Speeches
       new: New Speech
       show: "%{subject}"
     sponsors:
@@ -560,7 +562,7 @@ en:
   topics:
     abstract: Abstract
     additional_info: Additional Info
-    detail: Detail
+    detail: Outline
     speakers: Speakers
     subject: Subject
   update: 

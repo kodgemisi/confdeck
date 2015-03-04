@@ -76,6 +76,7 @@ class ApplicationController < ActionController::Base
       @user_conferences = current_user.conferences
       @user_organizations = current_user.organizations
     end
+    @admin = false
   end
 
   def is_conference?

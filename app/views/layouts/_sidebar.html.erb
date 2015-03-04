@@ -12,8 +12,14 @@
       </li>
       <li class="open">
         <a href="<%= user_path(current_user.id) %>" data-parent=".topmenu">
-          <span class="figure"><i class="ico-megaphone"></i></span>
+          <span class="figure"><i class="ico-user"></i></span>
           <span class="text"><%= t("general.my_profile") %></span>
+        </a>
+      </li>
+      <li class="open">
+        <a href="<%= speeches_path %>" data-parent=".topmenu">
+          <span class="figure"><i class="ico-megaphone"></i></span>
+          <span class="text"><%= t("titles.speeches.my_speeches") %></span>
         </a>
       </li>
       <li >

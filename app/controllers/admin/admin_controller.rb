@@ -4,8 +4,13 @@ class Admin::AdminController < ApplicationController
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   before_filter :set_current_conference
+  before_filter :set_admin
 
   attr_accessor :current_conference
+
+  def set_admin
+    @admin = true
+  end
 
   def set_current_conference
     subdomain = request.subdomain
