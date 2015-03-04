@@ -12,9 +12,10 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class ConferencesController < ApplicationController
+  include ConferenceConcern
   include Activitable
   before_action :set_conference, only: [:show, :apply, :save_apply]
-  before_action :load_data, only: [:new, :edit, :update]
+  before_action :load_data, only: [:new]
   layout 'conference_landing', only: [:show, :apply, :save_apply]
 
   def new
@@ -139,12 +140,6 @@ class ConferencesController < ApplicationController
 
     def speech_params
       params.require(:speech).permit(:speech_type_id, topic_attributes: [:subject, :abstract, :detail, :additional_info, speaker_ids: []])
-    end
-
-    def parse_dates
-      @conference.to_date = @conference.days.last.date.strftime(I18n.t("date.formats.default"))
-      @conference.from_date = @conference.days.first.date.strftime(I18n.t("date.formats.default"))
-      @one_day = (@conference.days.first == @conference.days.last)
     end
 
     def load_data
