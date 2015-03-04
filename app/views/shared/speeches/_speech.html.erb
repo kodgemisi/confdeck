@@ -6,7 +6,12 @@
       <ul class="list-table pa15">
         <li class="text-left pl5">
           <p class="ellipsis nm"><span class="semibold"><%= t("speeches.speech_title", subject: speech.topic.subject) %></span></p>
+          <p class="nm"><%= speech.conference.name %></p>
           <p class="text-muted nm"><%= timeago_tag speech.created_at.to_time, :lang => I18n.locale %></p>
+
+        </li>
+        <li class="text-right">
+          <%= bs_button_to t("general.edit"), edit_speech_path(speech), style: "primary", icon: "pencil" if speech.state == "waiting_review" %>
         </li>
       </ul>
       <!--/ User info -->
@@ -16,7 +21,7 @@
       </div>
       <!-- panel footer -->
       <div class="panel-footer">
-        <ul class="list-table">
+        <ul class="pull-left list-table" style="width: 90%">
           <li>
             <div class="img-group img-group-stack">
               <% speech.topic.speakers.each do |speaker| %>
@@ -27,11 +32,14 @@
             </div>
           </li>
         </ul>
+        <div class="pull-right mt10">
+          <%= state_label(speech.state).html_safe %>
+        </div>
+        <div class="clearfix"></div>
       </div>
       <!--/ panel footer -->
       <hr class="nm"><!-- horizontal line -->
       <!-- Toolbar -->
     </div>
   </div>
-
 </div>

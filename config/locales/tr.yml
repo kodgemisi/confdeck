@@ -368,7 +368,7 @@ tr:
     create: Oluştur
     delete: Sil
     details: Detaylar
-    edit: Düzenl
+    edit: Düzenle
     error: Hata oluştu!
     error_count: "%{count} Hata"
     homepage: Anasayfa
@@ -552,6 +552,7 @@ tr:
     detail: Konuşmanın Ana Hatları
     is_accepted: Konuşma Kabul Edildi.
     is_rejected: Konuşma Reddedildi.
+    my_speeches: Konuşmalarım
     new: Yeni Konuşma
     not_sent: Eposta gönderilmedi.
     reject: Reddet
@@ -613,6 +614,7 @@ tr:
       bulk_mail: Toplu Eposta Gönder
       edit: "%{subject} Düzenle"
       index: "%{conference} Konuşmaları"
+      my_speeches: Konuşmalarım
       new: Yeni Konuşma
       show: "%{subject}"
     sponsors:
@@ -622,7 +624,7 @@ tr:
   topics:
     abstract: Konu Özeti
     additional_info: Ek Bilgi
-    detail: Detay
+    detail: Konuşmanın Ana Hatları
     speakers: Konuşmacılar
     subject: Konu Başlığı
   update: Güncelle
