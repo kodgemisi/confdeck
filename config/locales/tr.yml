@@ -552,6 +552,7 @@ tr:
     detail: Konuşmanın Ana Hatları
     is_accepted: Konuşma Kabul Edildi.
     is_rejected: Konuşma Reddedildi.
+    my_speeches: Konuşmalarım
     new: Yeni Konuşma
     not_sent: Eposta gönderilmedi.
     reject: Reddet
@@ -613,6 +614,7 @@ tr:
       bulk_mail: Toplu Eposta Gönder
       edit: "%{subject} Düzenle"
       index: "%{conference} Konuşmaları"
+      my_speeches: Konuşmalarım
       new: Yeni Konuşma
       show: "%{subject}"
     sponsors:

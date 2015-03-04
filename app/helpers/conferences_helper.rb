@@ -72,7 +72,7 @@ module ConferencesHelper
     elsif speech.state == "accepted"
       '<a href="javascript:void(0);" class="panel-ribbon panel-ribbon-success pull-left"><i class="ico-ok"></i></a>'
     else
-      '<a href="javascript:void(0);" class="panel-ribbon panel-ribbon-danger pull-left"><i class="ico-ok"></i></a>'
+      '<a href="javascript:void(0);" class="panel-ribbon panel-ribbon-danger pull-left"><i class="ico-close"></i></a>'
     end
   end
 

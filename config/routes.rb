@@ -14,46 +14,38 @@ end
 
 Confman::Application.routes.draw do
   mount RailsAdmin::Engine => '/deck', as: 'rails_admin'
-  get "schedule/show"
 
-  get "schedule/update"
-
-  get "schedule/destroy"
-
-  get "schedule/create"
-
-  resources :topics, only: [:index]
   resources :topics
   resources :speakers
+  resources :speeches
 
   get "invitations/accept"
   get '/dashboard', to: 'home#dashboard'
 
   constraints Subdomain.new do
     #scope path: "/" do
-      resource :conference, path: "/" do
-        member do
-          get 'apply'
-          post 'apply' => "conferences#save_apply"
-        end
+    resource :conference, path: "/" do
+      member do
+        get 'apply'
+        post 'apply' => "conferences#save_apply"
       end
+    end
     #end
 
 
     namespace :admin do
       scope path: "/" do
-      resource :conference, path: "/" do
-        member do
-          get 'speech_types'
-          get 'manage'
-          get 'basic_information'
-          get 'address'
-          get 'contact_information'
-          get 'landing_settings'
-          get 'search_users'
+        resource :conference, path: "/" do
+          member do
+            get 'speech_types'
+            get 'manage'
+            get 'basic_information'
+            get 'address'
+            get 'contact_information'
+            get 'landing_settings'
+            get 'search_users'
+          end
         end
-
-      end
       end
       resources :roles
       resources :addresses
