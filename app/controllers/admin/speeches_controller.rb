@@ -58,6 +58,10 @@ class Admin::SpeechesController < Admin::AdminController
   # GET /speeches/1/edit
   def edit
     authorize @conference, :manage?
+
+    respond_to do |format|
+      format.html {render template: "shared/speeches/edit"}
+    end
   end
 
   #TODO service implementation

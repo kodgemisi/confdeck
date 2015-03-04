@@ -1,0 +1,7 @@
+<%
+   meta title: t("titles.speeches.my_speeches")
+%>
+
+<% @speeches.each do |speech| %>
+    <%= render "shared/speeches/speech", speech: speech %>
+<% end %>
