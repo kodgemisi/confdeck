@@ -42,7 +42,7 @@ Confman::Application.routes.draw do
             get 'basic_information'
             get 'address'
             get 'contact_information'
-            get 'landing_settings'
+            get 'site_settings'
             get 'search_users'
           end
         end

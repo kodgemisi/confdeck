@@ -157,6 +157,8 @@ tr:
     schedule: Program
     show: Konferans Sayfası
     show_landing: "Konferans Sayfasını Aç\n "
+    site_settings:
+      info: Konferans sitesini deaktif edersiniz konferans websitesine yönlendirilecektir.
     slug: Kısa İsim
     speech_types: Konuşma Türleri
     speeches: Konuşmalar
@@ -603,6 +605,7 @@ tr:
       email_templates: Eposta Şablonları
       manage: "%{conference} Güvertesi"
       schedule: "%{conference} Programı"
+      site_settings: Site Ayarları
       speech_types: Konuşma Türleri
     default_short: ConfDeck
     home:

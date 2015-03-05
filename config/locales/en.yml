@@ -158,6 +158,8 @@ en:
     schedule: Schedule
     show: Conference Page
     show_landing: Open Conference Page
+    site_settings:
+      info: If you disable conference site it will be redirected to conference website.
     slug: Slug
     speech_types: Speech Types
     speeches: Speeches
@@ -541,6 +543,7 @@ en:
       email_templates: Email Templates
       manage: 'Deck of %{conference} '
       schedule: Schedule of %{conference}
+      site_settings: Site Settings
       speech_types: Speech Types
     default_short: ConfDeck
     home:

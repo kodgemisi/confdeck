@@ -141,3 +141,8 @@ fieldset[disabled] .btn-github.active,
   width: 45px;
   float: left;
 }
+
+
+#conference_modules .form-group:first-child{
+  border-top-width: 1px !important;
+}

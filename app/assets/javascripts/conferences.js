@@ -79,6 +79,18 @@ $(document).ready(function(){
             syncWizardData();
         });
 
+
+        $("#conference_slug").rules("add", {
+            remote: {
+                url: $("#conference_slug").data("validate"),
+                data: {
+                    slug: function () {
+                        return $("#conference_slug").val();
+                    }
+                }
+            }
+        })
+
     }
 
     $("#from").datepicker({
@@ -131,16 +143,6 @@ $(document).ready(function(){
     });
 
 
-    $("#conference_slug").rules("add", {
-        remote: {
-            url: $("#conference_slug").data("validate"),
-            data: {
-                slug: function () {
-                    return $("#conference_slug").val();
-                }
-            }
-        }
-    })
 
 
     $('#conference_one_day').change(function () {
@@ -158,5 +160,14 @@ $(document).ready(function(){
     $(".reset-template").on("click", function(){
         content = $(this).closest(".email-template").find(".original-template").html()
         $(this).closest(".email-template").find(".summernote-editor").code(content)
+    })
+
+
+    $("label[for='conference_settings_conference_site_true']").click(function(){
+        $("#conference_modules").show()
+    })
+
+    $("label[for='conference_settings_conference_site_false']").click(function(){
+        $("#conference_modules").hide()
     })
 });
