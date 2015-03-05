@@ -7,6 +7,7 @@
 //= require selectize
 
 $(document).ready(function(){
+    initValidators()
 
     var syncWizardData = function(){
         $("#conference_wizard_data").val($("#wizard").serialize());
@@ -93,6 +94,7 @@ $(document).ready(function(){
 
     }
 
+
     $("#from").datepicker({
         defaultDate: "+1w",
         changeMonth: true,
@@ -119,28 +121,6 @@ $(document).ready(function(){
 
     $('#conference-start-time').timepicker({showMeridian: false});
     $('#conference-end-time').timepicker({showMeridian: false});
-
-
-    $(".validate-me").validate({
-        validClass: 'has-success',
-        errorElement: 'span',
-        errorClass: 'help-block mt10',
-        errorPlacement: function errorPlacement(error, element) {
-            element.after(error);
-        },
-        highlight: function (element, errorClass, validClass) {
-            $(element).closest("div.form-group").addClass("has-error").removeClass("has-success");
-
-        },
-        unhighlight: function (element, errorClass, validClass) {
-            $(element).closest("div.form-group").removeClass("has-error").addClass("has-success");
-        },
-        messages: {
-            "conference[slug]": {
-                remote: $.validator.format(I18n.t("js.in_use", {name: "{0}"}))
-            }
-        }
-    });
 
 
 
@@ -170,4 +150,29 @@ $(document).ready(function(){
     $("label[for='conference_settings_conference_site_false']").click(function(){
         $("#conference_modules").hide()
     })
+
+
+    function initValidators(){
+
+        $(".validate-me").validate({
+            validClass: 'has-success',
+            errorElement: 'span',
+            errorClass: 'help-block mt10',
+            errorPlacement: function errorPlacement(error, element) {
+                element.after(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).closest("div.form-group").addClass("has-error").removeClass("has-success");
+
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).closest("div.form-group").removeClass("has-error").addClass("has-success");
+            },
+            messages: {
+                "conference[slug]": {
+                    remote: $.validator.format(I18n.t("js.in_use", {name: "{0}"}))
+                }
+            }
+        });
+    }
 });
