@@ -314,6 +314,7 @@ en:
     logout: Logout
     management: Management
     my_profile: My Profile
+    not_authorized: You are not authorized to do this action.
     remove: Remove
     save: Save
     send: Send

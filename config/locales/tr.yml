@@ -376,6 +376,7 @@ tr:
     logout: "Çıkış Yap"
     management: Yönetim
     my_profile: Profilim
+    not_authorized: Bu işlemi yapmak için yetkiniz yok.
     remove: Kaldır
     save: Kaydet
     send: Gönder
