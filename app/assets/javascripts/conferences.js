@@ -7,6 +7,7 @@
 //= require selectize
 
 $(document).ready(function(){
+    initValidators()
 
     var syncWizardData = function(){
         $("#conference_wizard_data").val($("#wizard").serialize());
@@ -79,7 +80,20 @@ $(document).ready(function(){
             syncWizardData();
         });
 
+
+        $("#conference_slug").rules("add", {
+            remote: {
+                url: $("#conference_slug").data("validate"),
+                data: {
+                    slug: function () {
+                        return $("#conference_slug").val();
+                    }
+                }
+            }
+        })
+
     }
+
 
     $("#from").datepicker({
         defaultDate: "+1w",
@@ -109,38 +123,6 @@ $(document).ready(function(){
     $('#conference-end-time').timepicker({showMeridian: false});
 
 
-    $(".validate-me").validate({
-        validClass: 'has-success',
-        errorElement: 'span',
-        errorClass: 'help-block mt10',
-        errorPlacement: function errorPlacement(error, element) {
-            element.after(error);
-        },
-        highlight: function (element, errorClass, validClass) {
-            $(element).closest("div.form-group").addClass("has-error").removeClass("has-success");
-
-        },
-        unhighlight: function (element, errorClass, validClass) {
-            $(element).closest("div.form-group").removeClass("has-error").addClass("has-success");
-        },
-        messages: {
-            "conference[slug]": {
-                remote: $.validator.format(I18n.t("js.in_use", {name: "{0}"}))
-            }
-        }
-    });
-
-
-    $("#conference_slug").rules("add", {
-        remote: {
-            url: $("#conference_slug").data("validate"),
-            data: {
-                slug: function () {
-                    return $("#conference_slug").val();
-                }
-            }
-        }
-    })
 
 
     $('#conference_one_day').change(function () {
@@ -159,4 +141,38 @@ $(document).ready(function(){
         content = $(this).closest(".email-template").find(".original-template").html()
         $(this).closest(".email-template").find(".summernote-editor").code(content)
     })
+
+
+    $("label[for='conference_settings_conference_site_true']").click(function(){
+        $("#conference_modules").show()
+    })
+
+    $("label[for='conference_settings_conference_site_false']").click(function(){
+        $("#conference_modules").hide()
+    })
+
+
+    function initValidators(){
+
+        $(".validate-me").validate({
+            validClass: 'has-success',
+            errorElement: 'span',
+            errorClass: 'help-block mt10',
+            errorPlacement: function errorPlacement(error, element) {
+                element.after(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).closest("div.form-group").addClass("has-error").removeClass("has-success");
+
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).closest("div.form-group").removeClass("has-error").addClass("has-success");
+            },
+            messages: {
+                "conference[slug]": {
+                    remote: $.validator.format(I18n.t("js.in_use", {name: "{0}"}))
+                }
+            }
+        });
+    }
 });

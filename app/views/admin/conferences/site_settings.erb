@@ -1,0 +1,52 @@
+<%
+   meta title: t("titles.conferences.site_settings", conference: @conference.name)
+%>
+
+<div class="row">
+  <div class="col-lg-12">
+    <%= simple_form_for(@conference, url: admin_conference_url(subdomain: @conference.slug), html: {class: "panel form-horizontal form-bordered"}) do |f| %>
+        <%= f.simple_fields_for :settings, OpenStruct.new(f.object.settings || {}) do |ff| %>
+              <!-- panel body -->
+              <div class="panel-body">
+                <div class="form-group">
+                  <%= ff.label :conference_site, :class => "col-lg-3 control-label" %>
+                  <div class="col-md-9">
+                    <%= ff.collection_radio_buttons("conference_site".to_sym,
+                                                    [[true, t("general.active")] ,[false, t("general.inactive")]],
+                                                    :first,
+                                                    :last,
+                                                    item_wrapper_tag: "span",
+                                                    item_wrapper_class: "radio custom-radio pb10",
+                                                    boolean_style: false
+                        )%>
+                    <span class="help-block"><%= t("conferences.site_settings.info") %></span>
+                  </div>
+                </div>
+
+                <div id="conference_modules" <%= "style=display:none" if @conference.get("conference_site") != "true" %>>
+                    <% @modules.each do |modul| %>
+                        <div class="form-group">
+                          <%= ff.label "#{modul}_module".to_sym, :class => "col-lg-3 control-label" %>
+                          <div class="col-md-9">
+                            <%= ff.collection_radio_buttons("#{modul}_module".to_sym,
+                                                            [[true, t("general.active")] ,[false, t("general.inactive")]],
+                                                            :first,
+                                                            :last,
+                                                            item_wrapper_tag: "span",
+                                                            item_wrapper_class: "radio custom-radio pb10",
+                                                            boolean_style: false
+                                )%>
+                          </div>
+                        </div>
+                    <% end %>
+                </div>
+
+              </div>
+        <% end %>
+
+        <div class="panel-footer">
+          <%= f.submit :class => "btn btn-primary pull-right" %>
+        </div>
+    <% end %>
+  </div>
+</div>

@@ -60,6 +60,11 @@ class ConferencesController < ApplicationController
   # GET /conferences/1
   # GET /conferences/1.json
   def show
+    if @conference.get("conference_site") != "true" && (@conference.website != nil && @conference.website != "")
+      redirect_to @conference.website
+      return
+    end
+
     @one_day = (@conference.days.first == @conference.days.last)
     @days = @conference.days
     @slots = @conference.slots.group_by(&:day)
