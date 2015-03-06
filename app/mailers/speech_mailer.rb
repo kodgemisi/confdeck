@@ -43,4 +43,5 @@ class SpeechMailer < ActionMailer::Base
     emails = speech.topic.speakers.collect(&:user).collect(&:email).join(",")
     mail(reply_to: speech.conference.email, to: emails, subject: liquid_template.subject, body: liquid_template.body)
   end
+
 end
