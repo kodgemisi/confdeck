@@ -3,6 +3,11 @@
   <td><%= topic.subject %></td>
   <td><%= truncate(topic.abstract, length:350, seperator: ' ') %></td>
   <td>
+    <% topic.speakers.each do |speaker| %>
+        <%= speaker.name %><br />
+    <% end %>
+  </td>
+  <td>
     <%= link_to t("speeches.upvote"), upvote_admin_speech_url(speech, subdomain: @conference.slug) %>
     <%= link_to t("speeches.downvote"), downvote_admin_speech_url(speech, subdomain: @conference.slug) %>
     <%= link_to t("speeches.detail"), admin_speech_url(speech, subdomain: @conference.slug) %>
