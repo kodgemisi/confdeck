@@ -272,3 +272,8 @@ footer {
 .open-new-speaker{
     margin-right: 15px;
 }
+
+.language a{
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+}

@@ -7,7 +7,10 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#"><%= @conference.name %></a>
     </div>
-
+    <ul class="nav navbar-nav navbar-right">
+      <li class="language"><%= link_to image_tag("en.png"), "?locale=en" %></li>
+      <li  class="language"><%= link_to image_tag("tr.png"), "?locale=tr" %></li>
+    </ul>
   </div>
   <!-- /.container -->
 </nav>
