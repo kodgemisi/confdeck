@@ -448,6 +448,9 @@ tr:
       or: ya da
       password: "Şifre"
   mailers:
+    conference_mailer:
+      digest_speeches_subject: "[%{conference}] Başvuru Listesi"
+      speeches_link_text: 'Tüm başvurulara şu bağlantıdan ulaşabilirsiniz:'
     speaker_mailer:
       new_speaker_subject: Confdeck'e Hoşgeldiniz
   minutes: 
