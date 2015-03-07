@@ -4,7 +4,7 @@
 <% end %>
 
 <%= t("mailers.conference_mailer.speeches_link_text") %><br>
-<%= link_to admin_speeches_url(subdomain: @conference.slug) %>
+<%= link_to admin_speeches_url(subdomain: @conference.slug), admin_speeches_url(subdomain: @conference.slug) %>
 
 <style>
     table {
