@@ -46,10 +46,11 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal"><%= t("general.cancel") %></button>
                 <%= f.submit :class => "btn btn-success", :value => t("conferences.landing.send_application") %>
               </div>
-              <%= render "conferences/show/speaker_modal" %>
 
         <% end %>
-      <% else %>
+          <%= render "conferences/show/speaker_modal" %>
+
+    <% else %>
           <div class="panel">
           <div class="panel-body">
             <%= t("conferences.applications_closed") %>
