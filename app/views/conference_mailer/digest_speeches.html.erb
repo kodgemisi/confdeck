@@ -1,13 +1,12 @@
+<%= t("mailers.conference_mailer.speeches_link_text") %><br>
+<%= link_to admin_speeches_url(subdomain: @conference.slug), admin_speeches_url(subdomain: @conference.slug) %>
+<br>
+<br>
+<hr>
 <% @types.each do |speech_type, speeches|%>
     <h3><%= speech_type %></h3>
     <%= render "speech_type", speeches: speeches %>
 <% end %>
-
-<br>
-<br>
-<hr>
-<%= t("mailers.conference_mailer.speeches_link_text") %><br>
-<%= link_to admin_speeches_url(subdomain: @conference.slug), admin_speeches_url(subdomain: @conference.slug) %>
 
 <style>
     table {
@@ -15,6 +14,7 @@
     }
     table td, table th {
         border: 1px solid black;
+        padding: 5px;
     }
     table tr:first-child th {
         border-top: 0;
