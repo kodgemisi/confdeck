@@ -109,7 +109,7 @@ tr:
       speech_downvote: "%{user}, %{speech} beğenmedi."
       speech_new: "%{speech_type} tipinde, %{speech} başlığıyla yeni bir başvuru alındı."
       speech_reject: "%{user}, %{speech} reddetti."
-      speech_upvote: "%{user}, %{speech} beğenmedi."
+      speech_upvote: "%{user}, %{speech} beğendi."
   additional_info: Ek Bilgi
   address:
     city: "Şehir"
@@ -639,6 +639,7 @@ tr:
     abstract: Konu Özeti
     additional_info: Ek Bilgi
     detail: Konuşmanın Ana Hatları
+    outline: Konuşmanın Ana Hatları
     speakers: Konuşmacılar
     subject: Konu Başlığı
   update: Güncelle

@@ -10,7 +10,7 @@
       <% end %>
       <td width="5%"><%= speech.id %></td>
       <td width="15%"><%= speech.topic.subject %></td>
-      <td width="35%"><%= truncate(speech.topic.abstract, length:60, seperator: ' ') %></td>
+      <td width="35%"><%= truncate(speech.topic.abstract, length:600, seperator: ' ') %></td>
       <!--make them searcable-->
       <td width="10%" class="text-center" data-search="<%= speech.topic.speakers.collect(&:name).join(", ")  %>">
         <% speech.topic.speakers.each do |speaker| %>
