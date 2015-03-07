@@ -3,6 +3,9 @@
     <%= render "speech_type", speeches: speeches %>
 <% end %>
 
+<br>
+<br>
+<hr>
 <%= t("mailers.conference_mailer.speeches_link_text") %><br>
 <%= link_to admin_speeches_url(subdomain: @conference.slug), admin_speeches_url(subdomain: @conference.slug) %>
 
