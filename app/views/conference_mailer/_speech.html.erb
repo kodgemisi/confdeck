@@ -1,13 +1,13 @@
 <tr>
-  <td><%= speech.id %></td>
-  <td><%= topic.subject %></td>
-  <td><%= truncate(topic.abstract, length:350, seperator: ' ') %></td>
-  <td>
+  <td style="padding: 5px;"><%= speech.id %></td>
+  <td style="padding: 5px;"><%= topic.subject %></td>
+  <td style="padding: 5px;"><%= truncate(topic.abstract, length:350, seperator: ' ') %></td>
+  <td style="padding: 5px;">
     <% topic.speakers.each do |speaker| %>
         <%= speaker.name %><br />
     <% end %>
   </td>
-  <td>
+  <td style="padding: 5px;">
     <%= link_to "+1", upvote_admin_speech_url(speech, subdomain: @conference.slug) %>
     <%= link_to "-1", downvote_admin_speech_url(speech, subdomain: @conference.slug) %>
     <%= link_to t("general.details"), admin_speech_url(speech, subdomain: @conference.slug) %>
