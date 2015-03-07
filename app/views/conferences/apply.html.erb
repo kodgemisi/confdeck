@@ -17,33 +17,43 @@
     <%= render 'layouts/messages' %>
 
     <div class="row">
-      <%= form_for(@speech, url: apply_conference_path, html: {class: 'panel form-horizontal'}) do |f| %>
+      <% if @conference.accept_application? %>
+        <%= form_for(@speech, url: apply_conference_path, html: {class: 'panel form-horizontal'}) do |f| %>
 
-          <div class="panel-heading text-center">
-            <div class="ico-bubbles mb15 mt15" style="font-size:36px;"></div>
-            <h4 class="semibold modal-title text-primary"><%= t("conferences.landing.new_application") %></h4>
-          </div>
+              <div class="panel-heading text-center">
+                <div class="ico-bubbles mb15 mt15" style="font-size:36px;"></div>
+                <h4 class="semibold modal-title text-primary"><%= t("conferences.landing.new_application") %></h4>
+              </div>
+              <div class="panel-body">
+                <div class="form-group message-container">
+                  <% if @speech.errors.any? %>
+                      <div class="alert alert-danger">
+                        <strong><%= t "error" %></strong>
+                        <ul>
+                          <% @speech.errors.full_messages.each do |msg| %>
+                              <li><%= msg %></li>
+                          <% end %>
+                        </ul>
+                      </div>
+                  <% end %>
+                </div>
+                <%= render "conferences/show/speech_form_fields", f: f %>
+              </div>
+              <div class="panel-footer text-right">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><%= t("general.cancel") %></button>
+                <%= f.submit :class => "btn btn-success", :value => t("conferences.landing.send_application") %>
+              </div>
+              <%= render "conferences/show/speaker_modal" %>
+
+        <% end %>
+      <% else %>
+          <div class="panel">
           <div class="panel-body">
-            <div class="form-group message-container">
-              <% if @speech.errors.any? %>
-                  <div class="alert alert-danger">
-                    <strong><%= t "error" %></strong>
-                    <ul>
-                      <% @speech.errors.full_messages.each do |msg| %>
-                          <li><%= msg %></li>
-                      <% end %>
-                    </ul>
-                  </div>
-              <% end %>
-            </div>
-            <%= render "conferences/show/speech_form_fields", f: f %>
+            <%= t("conferences.applications_closed") %>
+
           </div>
-          <div class="panel-footer text-right">
-            <button type="button" class="btn btn-default" data-dismiss="modal"><%= t("general.cancel") %></button>
-            <%= f.submit :class => "btn btn-success", :value => t("conferences.landing.send_application") %>
           </div>
       <% end %>
-      <%= render "conferences/show/speaker_modal" %>
     </div>
     <!-- /.row -->
   </div>
