@@ -124,6 +124,9 @@ tr:
       map_search_box: Arama
   conferences:
     address: Adres
+    application_end: Başvuru Bitiş Tarihi
+    application_start: Başvuru Başlama Tarihi
+    applications_closed: Etkinlik için oturum başvuruları sona ermiştir. Program kurulu değerlendirmesini sırasında ya da tamamladıktan sonra, başvuru sahipleri ile iletişime geçecektir. İlginiz için teşekkür ederiz.
     basic_information: Temel Bilgiler
     conferences: Konferanslar
     contact_info: "İletişim Bilgileri"
@@ -160,6 +163,7 @@ tr:
     site_settings:
       info: Konferans sitesini deaktif edersiniz konferans websitesine yönlendirilecektir.
     slug: Kısa İsim
+    speech_settings: Başvuru Ayarları
     speech_types: Konuşma Türleri
     speeches: Konuşmalar
     sponsors: Sponsorlar
@@ -609,6 +613,7 @@ tr:
       manage: "%{conference} Güvertesi"
       schedule: "%{conference} Programı"
       site_settings: Site Ayarları
+      speech_settings: Başvuru Ayarları
       speech_types: Konuşma Türleri
     default_short: ConfDeck
     home:
