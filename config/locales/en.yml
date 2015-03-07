@@ -391,7 +391,8 @@ en:
       password: Password
   mailers:
     conference_mailer:
-      speeches_link_text: 
+      digest_speeches_subject: "[%{conference}] List of Speech Proposals"
+      speeches_link_text: 'You can see all speech proposals from the link:'
     speaker_mailer:
       new_speaker_subject: Welcome to Confdeck
   minutes: 
