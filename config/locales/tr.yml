@@ -157,6 +157,8 @@ tr:
     schedule: Program
     show: Konferans Sayfası
     show_landing: "Konferans Sayfasını Aç\n "
+    site_settings:
+      info: Konferans sitesini deaktif edersiniz konferans websitesine yönlendirilecektir.
     slug: Kısa İsim
     speech_types: Konuşma Türleri
     speeches: Konuşmalar
@@ -376,6 +378,7 @@ tr:
     logout: "Çıkış Yap"
     management: Yönetim
     my_profile: Profilim
+    not_authorized: Bu işlemi yapmak için yetkiniz yok.
     remove: Kaldır
     save: Kaydet
     send: Gönder
@@ -550,6 +553,7 @@ tr:
     bulk_mail_sent: Toplu epostalar gönderildi.
     comments: Yorumlar
     detail: Konuşmanın Ana Hatları
+    downvote: Downvote
     is_accepted: Konuşma Kabul Edildi.
     is_rejected: Konuşma Reddedildi.
     my_speeches: Konuşmalarım
@@ -572,6 +576,7 @@ tr:
       waiting_review: "İnceleniyor"
     subject: Konu Başlığı
     success: Başvuru Başarıyla Gönderildi!
+    upvote: Upvote
     write_comment: Yorum Yaz
   sponsors:
     actions: "İşlemler"
@@ -600,6 +605,7 @@ tr:
       email_templates: Eposta Şablonları
       manage: "%{conference} Güvertesi"
       schedule: "%{conference} Programı"
+      site_settings: Site Ayarları
       speech_types: Konuşma Türleri
     default_short: ConfDeck
     home:

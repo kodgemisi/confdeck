@@ -13,6 +13,7 @@
 
 class ConferencesController < ApplicationController
   include Activitable
+  before_action :set_locale
   before_action :set_conference, only: [:show, :apply, :save_apply]
   before_action :load_data, only: [:new, :edit, :update]
   layout 'conference_landing', only: [:show, :apply, :save_apply]
@@ -60,6 +61,11 @@ class ConferencesController < ApplicationController
   # GET /conferences/1
   # GET /conferences/1.json
   def show
+    if @conference.get("conference_site") != "true" && (@conference.website != nil && @conference.website != "")
+      redirect_to @conference.website
+      return
+    end
+
     @one_day = (@conference.days.first == @conference.days.last)
     @days = @conference.days
     @slots = @conference.slots.group_by(&:day)
@@ -82,7 +88,6 @@ class ConferencesController < ApplicationController
   def apply
     @speech = @conference.speeches.new
     @speech.build_topic
-    I18n.locale = @conference.settings[:locale] || :tr
   end
 
   #TODO must be reviewed
@@ -128,6 +133,16 @@ class ConferencesController < ApplicationController
   end
 
   private
+
+    def set_locale
+      if params[:locale].present? && I18n.locale_available?(params[:locale])
+        I18n.locale = params[:locale].to_sym
+      elsif I18n.locale_available? extract_locale.to_sym
+        I18n.locale = extract_locale
+      else
+        I18n.locale = I18n.default_locale
+      end
+    end
 
     def check_slug_params
       params.permit(:slug)

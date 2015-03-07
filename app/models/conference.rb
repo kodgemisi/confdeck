@@ -153,6 +153,10 @@ class Conference < ActiveRecord::Base
     self.settings[key] = val
   end
 
+  def get(key)
+    self.settings[key]
+  end
+
   def to_liquid
     liquid_vars = {
         'name' => name,
@@ -225,6 +229,7 @@ class Conference < ActiveRecord::Base
       Conference::MODULES.each do |m|
         _settings["#{m}_module"] = "true".to_s
       end
+      _settings["conference_site"] = "true"
       self.settings = _settings
     end
   end

@@ -1,0 +1,43 @@
+<% @types.each do |speech_type, speeches|%>
+    <h3><%= speech_type %></h3>
+    <%= render "speech_type", speeches: speeches %>
+<% end %>
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+    table td, table th {
+        border: 1px solid black;
+    }
+    table tr:first-child th {
+        border-top: 0;
+    }
+    table tr:last-child td {
+        border-bottom: 0;
+    }
+    table tr td:first-child,
+    table tr th:first-child {
+        border-left: 0;
+    }
+    table tr td:last-child,
+    table tr th:last-child {
+        border-right: 0;
+    }
+
+    .speech-type, .speech-type td{
+        border: 1px solid #d2d2d2;
+    }
+
+    .speech-type thead{
+        font-weight: bold;
+    }
+
+    .speech-type thead td{
+        padding: 10px 5px;
+    }
+
+    .speech-type tbody td{
+        padding: 5px 5px;
+    }
+</style>

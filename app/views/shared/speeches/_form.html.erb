@@ -64,6 +64,7 @@
                   <%= topic_form.text_area :additional_info, :class => "form-control" , :style => "height: 200px" %>
                 </div>
               </div>
+              <%= topic_form.hidden_field :id %>
           <% end %>
           <div class="panel-footer">
             <%= f.submit :class => "btn btn-primary pull-right" %>

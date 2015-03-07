@@ -12,7 +12,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class Admin::ConferencesController < Admin::AdminController
-  before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule, :basic_information, :address, :contact_information, :speech_types, :landing_settings, :search_users, :roles, :apply, :save_apply]
+  before_action :set_conference, only: [:show, :edit, :update, :destroy, :manage, :schedule, :basic_information, :address, :contact_information, :speech_types, :site_settings, :search_users]
   before_action :load_data, only: [:new, :edit, :update]
   before_action :parse_dates, only: [:edit, :basic_information]
   # GET /conferences
@@ -172,7 +172,7 @@ class Admin::ConferencesController < Admin::AdminController
     render template: "admin/conferences/edit/contact_information"
   end
 
-  def landing_settings
+  def site_settings
     @modules = Conference::MODULES
   end
 
@@ -229,6 +229,7 @@ class Admin::ConferencesController < Admin::AdminController
                                              :map_module,
                                              :organizators_module,
                                              :schedule_module,
+                                             :conference_site,
                                          ],
                                          address_attributes: [:info, :city, :lat, :lon],
                                          speech_types_attributes: [:id, :type_name, :_destroy],

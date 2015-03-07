@@ -1,0 +1,17 @@
+<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" class="speech-type">
+  <thead>
+    <tr>
+      <td width="3%">REF</td>
+      <td width="15%"><%= I18n.t("speeches.subject") %></td>
+      <td><%= I18n.t("speeches.abstract") %></td>
+      <td><%= I18n.t("speeches.speakers") %></td>
+      <td style="min-width: 190px">&nbsp;</td>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% speeches.each do |speech| %>
+        <%= render "speech", speech: speech, topic: speech.topic %>
+    <% end %>
+  </tbody>
+</table>

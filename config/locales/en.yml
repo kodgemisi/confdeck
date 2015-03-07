@@ -158,6 +158,8 @@ en:
     schedule: Schedule
     show: Conference Page
     show_landing: Open Conference Page
+    site_settings:
+      info: If you disable conference site it will be redirected to conference website.
     slug: Slug
     speech_types: Speech Types
     speeches: Speeches
@@ -314,6 +316,7 @@ en:
     logout: Logout
     management: Management
     my_profile: My Profile
+    not_authorized: You are not authorized to do this action.
     remove: Remove
     save: Save
     send: Send
@@ -488,6 +491,7 @@ en:
     bulk_mail_sent: Bulk mails were sent.
     comments: Comments
     detail: Details
+    downvote: Downvote
     is_accepted: Speech is accepted.
     is_rejected: Speech is rejected.
     my_speeches: My Speeches
@@ -510,6 +514,7 @@ en:
       waiting_review: Waiting Review
     subject: Subject
     success: Application Sent Successfully!
+    upvote: Upvote
     write_comment: Write a comment
   sponsors:
     actions: Actions
@@ -538,6 +543,7 @@ en:
       email_templates: Email Templates
       manage: 'Deck of %{conference} '
       schedule: Schedule of %{conference}
+      site_settings: Site Settings
       speech_types: Speech Types
     default_short: ConfDeck
     home:
