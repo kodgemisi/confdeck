@@ -8,8 +8,8 @@
     <% end %>
   </td>
   <td>
-    <%= link_to t("speeches.upvote"), upvote_admin_speech_url(speech, subdomain: @conference.slug) %>
-    <%= link_to t("speeches.downvote"), downvote_admin_speech_url(speech, subdomain: @conference.slug) %>
-    <%= link_to t("speeches.detail"), admin_speech_url(speech, subdomain: @conference.slug) %>
+    <%= link_to "+1", upvote_admin_speech_url(speech, subdomain: @conference.slug) %>
+    <%= link_to "-1", downvote_admin_speech_url(speech, subdomain: @conference.slug) %>
+    <%= link_to t("general.details"), admin_speech_url(speech, subdomain: @conference.slug) %>
   </td>
 </tr>

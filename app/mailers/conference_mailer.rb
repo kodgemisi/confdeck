@@ -26,6 +26,6 @@ class ConferenceMailer < ActionMailer::Base
       @types[speech_type.type_name] = speech_type.speeches.where("state = ?", "waiting_review")
     end
 
-    mail(to: @conference.email, subject: I18n.t("conferences.speeches_digest", conference: @conference.name))
+    mail(to: @conference.email, subject: I18n.t("mailers.conference_mailer.digest_speeches_subject", conference: @conference.name))
   end
 end

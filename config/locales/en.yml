@@ -124,6 +124,9 @@ en:
       map_search_box: Search
   conferences:
     address: Address
+    application_end: Application End Date
+    application_start: Application Start Date
+    applications_closed: Speech proposal is closed. Program committee will contact with the speakers after the judgement. Thanks you for your interest.
     basic_information: Basic Information
     conferences: Conferences
     contact_info: Contact Information
@@ -161,6 +164,7 @@ en:
     site_settings:
       info: If you disable conference site it will be redirected to conference website.
     slug: Slug
+    speech_settings: Speech Settings
     speech_types: Speech Types
     speeches: Speeches
     sponsors: Sponsors
@@ -386,6 +390,9 @@ en:
       or: or
       password: Password
   mailers:
+    conference_mailer:
+      digest_speeches_subject: "[%{conference}] List of Speech Proposals"
+      speeches_link_text: 'You can see all speech proposals from the link:'
     speaker_mailer:
       new_speaker_subject: Welcome to Confdeck
   minutes: 
@@ -544,6 +551,7 @@ en:
       manage: 'Deck of %{conference} '
       schedule: Schedule of %{conference}
       site_settings: Site Settings
+      speech_settings: Speech Settings
       speech_types: Speech Types
     default_short: ConfDeck
     home:

@@ -183,6 +183,10 @@ class Conference < ActiveRecord::Base
     self.days.last.date
   end
 
+  def accept_application?
+    self.application_end == nil || DateTime.now < self.application_end
+  end
+
   private
 
   def set_dates
@@ -233,5 +237,6 @@ class Conference < ActiveRecord::Base
       self.settings = _settings
     end
   end
+
 
 end
