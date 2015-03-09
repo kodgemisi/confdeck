@@ -1,6 +1,11 @@
 <div class="nested-fields">
   <div class="input-group">
-    <%= f.input :type_name, label: false, input_html: {class: "form-control required"} %>
+  </div>
+
+  <div class="input-group">
+    <%= f.input :type_name_en, label: false, input_html: {class: "form-control required"}, wrapper: false,  placeholder: t('speech_types.english') %>
+    <%= f.input :type_name_tr, label: false, input_html: {class: "form-control required"}, wrapper: false, placeholder: t('speech_types.turkish') %>
+
     <span class="input-group-btn">
        <%= link_to_remove_association t("general.remove"), f, class: "btn btn-danger" %>
     </span>
