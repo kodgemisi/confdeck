@@ -569,6 +569,7 @@ tr:
     my_speeches: Konuşmalarım
     new: Yeni Konuşma
     not_sent: Eposta gönderilmedi.
+    points: Puan
     reject: Reddet
     reject_mail_sent: Konuşma reddedildi epostası gönderildi.
     send_accept_mail: Konuşma kabul edildi epostası gönder

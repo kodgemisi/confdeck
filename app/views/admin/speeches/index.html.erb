@@ -7,6 +7,14 @@
     <%= bs_button_to t("speeches.bulk_mail"), bulk_mail_admin_speeches_path, icon: "mail", style: "primary"%>
 <% end %>
 
+<div class="row">
+  <div class="col-md-3 speech-filters pull-right">
+    <button type="button" class="btn btn-danger mb5 mr5 filter pull-right"><%= t("speeches.states.rejected") %></button>
+    <button type="button" class="btn btn-success mb5 mr5 filter pull-right"><%= t("speeches.states.accepted") %></button>
+    <button type="button" class="btn btn-warning mb5 mr5 filter pull-right"><%= t("speeches.states.waiting_review") %></button>
+  </div>
+</div>
+
 <div class="speeches-list">
   <% @speech_types.each do |speech_type| %>
       <%= render "admin/speeches/index/speech_table", speech_type: speech_type %>

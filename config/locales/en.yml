@@ -507,6 +507,7 @@ en:
     my_speeches: My Speeches
     new: New Speech
     not_sent: No emails sent yet.
+    points: Point
     reject: Reject
     reject_mail_sent: Speech was rejected email was sent .
     send_accept_mail: Send speech was accepted mail
