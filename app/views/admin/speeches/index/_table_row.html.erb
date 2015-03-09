@@ -22,6 +22,9 @@
       <td width="5%" class="text-center" >
         <%= state_label(speech.state).html_safe %>
       </td>
+      <td width="2%" class="text-center" >
+        <%= speech.cached_votes_score %>
+      </td>
       <td width="20%" class="actions">
         <div class="updown">
           <%= link_to upvote_admin_speech_path(speech), remote: true, class: "semibold text-default" do %>

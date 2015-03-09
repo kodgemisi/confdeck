@@ -12,19 +12,30 @@ $(document).ready(function(){
     });
 
     $(".speech-table").dataTable({
-        "columns": [
+        "aoColumns": [
             null,
-            { "sortable": false },
-            { "sortable": false },
-            { "sortable": false },
+            { "bSortable": false },
+            { "bSortable": false },
+            { "bSortable": false },
             null,
-            { "sortable": false }
+            null,
+            { "bSortable": false }
         ],
         "lengthMenu": [ [ 100, 250, -1], [100, 250, "All"] ],
         "initComplete": function(){
             $('.tt').tooltip();
         }
     });
+
+    $('.speech-filters .filter').click(function(){
+        var _this = this
+        $.each($('.speech-table'), function( index, value ) {
+            $(value).dataTable().fnSort( [ [5,'desc']] )
+            $(value).dataTable().fnFilter(_this.innerHTML)
+        });
+
+
+    })
 
     $('.bulk-mail-table').dataTable( {
         "pageLength": 200,
