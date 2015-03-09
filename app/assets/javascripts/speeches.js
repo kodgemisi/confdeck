@@ -27,9 +27,14 @@ $(document).ready(function(){
         }
     });
 
-    $('.speech-filters button').click(function(){
-        $('.speech-table').dataTable().fnSort( [ [5,'desc']] )
-        $('.speech-table').dataTable().fnFilter(this.innerHTML)
+    $('.speech-filters .filter').click(function(){
+        var _this = this
+        $.each($('.speech-table'), function( index, value ) {
+            $(value).dataTable().fnSort( [ [5,'desc']] )
+            $(value).dataTable().fnFilter(_this.innerHTML)
+        });
+
+
     })
 
     $('.bulk-mail-table').dataTable( {
