@@ -35,7 +35,7 @@ Confman::Application.routes.draw do
 
     namespace :admin do
       scope path: "/" do
-        resource :conference, path: "/" do
+        resource :conference, path: "/", except: [:new, :create] do
           member do
             get 'speech_types'
             get 'manage'
