@@ -550,6 +550,9 @@ tr:
     twitter: Twitter
   speaker_application_header: "%{conference_name} Konuşmacı Başvurusu"
   speakers: Konuşmacılar
+  speech_types:
+    english: "İngilizce Çevirisi"
+    turkish: Türkçe Çevirisi
   speeches:
     abstract: Konu Özeti
     accept: Kabul Et
@@ -566,6 +569,8 @@ tr:
     my_speeches: Konuşmalarım
     new: Yeni Konuşma
     not_sent: Eposta gönderilmedi.
+    points: Puan
+    quick_filters: 'Hızlı Filtre:'
     reject: Reddet
     reject_mail_sent: Konuşma reddedildi epostası gönderildi.
     send_accept_mail: Konuşma kabul edildi epostası gönder

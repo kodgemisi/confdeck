@@ -26,52 +26,6 @@ class Admin::ConferencesController < Admin::AdminController
     end
   end
 
-  # GET /conferences/1
-  # GET /conferences/1.json
-  # def show
-  #   @one_day = (@conference.days.first == @conference.days.last)
-  #   @days = @conference.days
-  #   @slots = @conference.slots.group_by(&:day)
-  #
-  #   @data = {}
-  #
-  #   @days.each do |day|
-  #     @data[day.date] = day.slots.group_by(&:room)
-  #   end
-  #
-  #   respond_to do |format|
-  #     format.html # show.html.erb
-  #     format.json { render json: @conference }
-  #   end
-  # end
-
-  # GET /conferences/new
-  # GET /conferences/new.json
-  def new
-    authorize Conference
-
-    @wizard = current_user.conference_wizard
-
-    if @wizard.present?
-      conf_params = Rack::Utils.parse_nested_query @wizard.data
-      @conference = Conference.new(conf_params["conference"])
-      @conference.build_address if @conference.address.nil?
-      @conference.speech_types.build if @conference.speech_types.nil?
-      #@conference.sponsors.build if @conference.sponsors.nil?
-    else
-      @conference = Conference.new
-      @conference.build_address
-      @conference.speech_types.build
-      #@conference.sponsors.build
-      @wizard = current_user.build_conference_wizard
-    end
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @conference }
-    end
-  end
-
   # GET /conferences/1/edit
   def edit
     authorize @conference, :manage?
@@ -232,7 +186,7 @@ class Admin::ConferencesController < Admin::AdminController
                                              :conference_site,
                                          ],
                                          address_attributes: [:info, :city, :lat, :lon],
-                                         speech_types_attributes: [:id, :type_name, :_destroy],
+                                         speech_types_attributes: [:id, :type_name_tr, :type_name_en, :_destroy],
                                          sponsors_attributes: [:id, :name, :website, :logo, :_destroy],
                                          email_templates_attributes: [:id, :subject, :body, :email_template_type_id]
 

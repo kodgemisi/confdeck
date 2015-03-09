@@ -488,6 +488,9 @@ en:
     twitter: Twitter
   speaker_application_header: Speaker Application To %{conference_name}
   speakers: 
+  speech_types:
+    english: English Translation
+    turkish: Turkish Translation
   speeches:
     abstract: Abstract
     accept: Accept
@@ -504,6 +507,8 @@ en:
     my_speeches: My Speeches
     new: New Speech
     not_sent: No emails sent yet.
+    points: Point
+    quick_filters: 'Quick Filter:'
     reject: Reject
     reject_mail_sent: Speech was rejected email was sent .
     send_accept_mail: Send speech was accepted mail
