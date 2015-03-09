@@ -550,6 +550,9 @@ tr:
     twitter: Twitter
   speaker_application_header: "%{conference_name} Konuşmacı Başvurusu"
   speakers: Konuşmacılar
+  speech_types:
+    english: "İngilizce Çevirisi"
+    turkish: Türkçe Çevirisi
   speeches:
     abstract: Konu Özeti
     accept: Kabul Et

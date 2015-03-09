@@ -12,7 +12,7 @@ RSpec.describe ConferencesController do
         email: "selam@dedeler.com",
         organization_ids: [Fabricate(:organization).id],
         speech_types_attributes: {
-            '0' => {type_name: "Workshop"}
+            '0' => {type_name_en: "Workshop", type_name_tr: "Atolye" }
         }
     }
   end
