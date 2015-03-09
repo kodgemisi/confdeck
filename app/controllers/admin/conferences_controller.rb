@@ -186,7 +186,7 @@ class Admin::ConferencesController < Admin::AdminController
                                              :conference_site,
                                          ],
                                          address_attributes: [:info, :city, :lat, :lon],
-                                         speech_types_attributes: [:id, :type_name, :_destroy],
+                                         speech_types_attributes: [:id, :type_name_tr, :type_name_en, :_destroy],
                                          sponsors_attributes: [:id, :name, :website, :logo, :_destroy],
                                          email_templates_attributes: [:id, :subject, :body, :email_template_type_id]
 
