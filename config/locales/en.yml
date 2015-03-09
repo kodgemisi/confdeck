@@ -488,6 +488,9 @@ en:
     twitter: Twitter
   speaker_application_header: Speaker Application To %{conference_name}
   speakers: 
+  speech_types:
+    english: English Translation
+    turkish: Turkish Translation
   speeches:
     abstract: Abstract
     accept: Accept
@@ -577,6 +580,7 @@ en:
     abstract: Abstract
     additional_info: Additional Info
     detail: Outline
+    outline: Outline
     speakers: Speakers
     subject: Subject
   update: 

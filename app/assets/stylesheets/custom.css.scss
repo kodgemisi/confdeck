@@ -146,3 +146,14 @@ fieldset[disabled] .btn-github.active,
 #conference_modules .form-group:first-child{
   border-top-width: 1px !important;
 }
+
+.speech-types{
+
+  .input-group .form-control {
+    width:50%;
+  }
+  .input-group .form-control:first-child {
+    border-right-width: 0;
+  }
+
+}

@@ -20,9 +20,9 @@ $(document).ready(function(){
             null,
             { "sortable": false }
         ],
+        "lengthMenu": [ [ 100, 250, -1], [100, 250, "All"] ],
         "initComplete": function(){
             $('.tt').tooltip();
-
         }
     });
 

@@ -75,5 +75,6 @@ group :test do
 end
 
 gem 'aws-sdk-v1'
+gem 'traco'
 
 
