@@ -76,5 +76,6 @@ end
 
 gem 'aws-sdk-v1'
 gem 'traco'
-
-
+gem 'griddler'
+gem 'griddler-sendgrid'
+gem 'email_reply_parser'
