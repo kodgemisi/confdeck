@@ -26,6 +26,7 @@ class Admin::SpeechesController < Admin::AdminController
     @speech_types = @conference.speech_types.includes(speeches: [:comments, :votes, topic: :speakers ]).order("created_at ASC")
     respond_to do |format|
       format.html # index.html.erb
+      format.csv # index.html.erb
       format.json { render json: @speech_types }
     end
   end

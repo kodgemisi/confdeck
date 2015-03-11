@@ -1,0 +1,8 @@
+<%- headers = ['ID', 'Subject','Speakers','Points','Upvotes','Downvotes'] -%>
+<%= CSV.generate_line headers %>
+<%- @speech_types.each do |speech_type| -%>
+<% speech_type.speeches.each do |s| %>
+<%= CSV.generate_line([s.id, s.topic.subject, s.topic.speakers.collect(&:name).join('-'), s.cached_votes_total, s.cached_votes_up, s.cached_votes_down]) %>
+<% end %>
+<%- end -%>
+
