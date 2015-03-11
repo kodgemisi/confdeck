@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+<Worksheet ss:Name="Sheet1">
+<Table>
+<Row>
+<Cell><Data ss:Type="String">ID</Data></Cell>
+<Cell><Data ss:Type="String">Speech Type</Data></Cell>
+<Cell><Data ss:Type="String">Subject</Data></Cell>
+<Cell><Data ss:Type="String">State</Data></Cell>
+<Cell><Data ss:Type="String">Speakers</Data></Cell>
+<Cell><Data ss:Type="String">Point</Data></Cell>
+<Cell><Data ss:Type="String">Upvote</Data></Cell>
+<Cell><Data ss:Type="String">Downvote</Data></Cell>
+</Row>
+<% @speeches.each do |speech| %>
+  <Row>
+  <Cell><Data ss:Type="Number"><%= speech.id %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= speech.speech_type.type_name %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= speech.topic.subject %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= speech.state %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= speech.topic.speakers.collect(&:name).join(" - ") %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= speech.cached_votes_total %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= speech.cached_votes_up %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= speech.cached_votes_down %></Data></Cell>
+  </Row>
+<% end %>
+</Table>
+</Worksheet>
+</Workbook>

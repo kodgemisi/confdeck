@@ -214,6 +214,13 @@ class Admin::SpeechesController < Admin::AdminController
     redirect_to admin_speeches_path, notice: t("speeches.bulk_mail_sent")
   end
 
+  def export
+    @speeches = @conference.speeches.order("speech_type_id, state, id asc")
+    respond_to do |format|
+      format.xls#{ send_data(@speeches.to_xls) }
+    end
+  end
+
   private
 
   def preload_cache_data

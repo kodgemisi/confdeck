@@ -57,6 +57,7 @@ Confman::Application.routes.draw do
         collection do
           get "bulk_mail"
           post "send_bulk_mail"
+          get "export"
         end
         member do
           post 'comment'
