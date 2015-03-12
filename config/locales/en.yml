@@ -488,6 +488,9 @@ en:
     twitter: Twitter
   speaker_application_header: Speaker Application To %{conference_name}
   speakers: 
+  speech_mailer:
+    new_comment_email:
+      subject: "[%{conference}] New comment on a speech '%{speech}'"
   speech_types:
     english: English Translation
     turkish: Turkish Translation
