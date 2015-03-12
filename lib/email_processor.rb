@@ -19,13 +19,13 @@ class EmailProcessor
               sent_by_email: true
           )
         else
-          #@user = User.last
+          @user = User.anonym
+          @body = "#{@body} <br /><br /> #{@email.from[:email]}"
           comment = @speech.comments.create(
               comment: @body,
               user: @user,
               sent_by_email: true
           )
-          #TODO if user not found. add email to comment content
         end
       end
     end
