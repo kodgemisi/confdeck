@@ -90,6 +90,6 @@ Confman::Application.configure do
   AWS.config(access_key_id: Rails.application.secrets.s3["access_id"], secret_access_key: Rails.application.secrets.s3["secret_key"], region: 'eu-central-1')
 
 
-  config.reply_emailer_host = 'reply.confdeck.com'
-  config.reply_emailer_from = 'app@confdeck.com'
+  config.reply_emailer_host = ENV["reply_host"]
+  config.reply_emailer_from = ENV["reply_from"]
 end
