@@ -37,4 +37,8 @@ Confman::Application.configure do
 
   Rails.application.routes.default_url_options[:host] = 'example.com'
 
+
+  config.reply_emailer_host = 'reply.example.com'
+  config.reply_emailer_from = 'app@example.com'
+
 end
