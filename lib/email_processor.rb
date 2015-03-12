@@ -20,7 +20,6 @@ class EmailProcessor
           )
         else
           @user = User.anonym
-          @body = "#{@body} <br /><br /> #{@email.from[:email]}"
           comment = @speech.comments.create(
               comment: @body,
               user: @user,

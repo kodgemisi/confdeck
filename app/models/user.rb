@@ -133,4 +133,8 @@ class User < ActiveRecord::Base
       )
     end
   end
+
+  def anonym?
+    email == 'anonym@confdeck.com'
+  end
 end

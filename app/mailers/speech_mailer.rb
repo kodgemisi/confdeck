@@ -50,6 +50,7 @@ class SpeechMailer < ActionMailer::Base
     @from = Rails.configuration.reply_emailer_from
     @conference = speech.conference
     @comment = comment
+    @user = comment.user
     headers 'Reply-To' => "reply+speech-#{speech.id}@#{@server}"
     mail(from: @from, to: @conference.email, subject: speech_subject(speech), conference: @conference.name, speech: speech.topic.subject)
   end
