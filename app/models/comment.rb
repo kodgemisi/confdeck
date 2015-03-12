@@ -25,4 +25,8 @@ class Comment < ActiveRecord::Base
 
   # NOTE: Comments belong to a user
   belongs_to :user
+
+  def email?
+    sent_by_email
+  end
 end

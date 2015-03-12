@@ -499,6 +499,7 @@ en:
     additional_info: Additional Info
     bulk_mail: Bulk Mail
     bulk_mail_sent: Bulk mails were sent.
+    comment_by_email: Comment send via email.
     comments: Comments
     detail: Details
     downvote: Downvote

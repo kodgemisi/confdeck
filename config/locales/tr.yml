@@ -561,6 +561,7 @@ tr:
     additional_info: Ek Bilgiler
     bulk_mail: Toplu Eposta
     bulk_mail_sent: Toplu epostalar gönderildi.
+    comment_by_email: Yorum email ile gönderildi.
     comments: Yorumlar
     detail: Konuşmanın Ana Hatları
     downvote: Downvote
