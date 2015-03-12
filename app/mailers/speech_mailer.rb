@@ -14,7 +14,7 @@
 class SpeechMailer < ActionMailer::Base
   include TemplateMailer
 
-  default from: "app@confdeck.com", content_type: "text/html"
+  default from: Rails.configuration.reply_emailer_from, content_type: "text/html"
 
   layout "email_layout"
 
@@ -50,9 +50,7 @@ class SpeechMailer < ActionMailer::Base
     @from = Rails.configuration.reply_emailer_from
     @conference = speech.conference
     @comment = comment
-    headers 'In-Reply-To' => "<55018b3080246_3d1d3ca1dc470146@asus.mail>"
     headers 'Reply-To' => "reply+speech-#{speech.id}@#{@server}"
-    headers 'References' => "<55018b3080246_3d1d3ca1dc470146@asus.mail>"
     mail(from: @from, to: @conference.email, subject: speech_subject(speech), conference: @conference.name, speech: speech.topic.subject)
   end
 
