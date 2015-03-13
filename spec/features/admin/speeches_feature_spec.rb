@@ -3,12 +3,11 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 describe "Admin Speeches", :type => :feature do
-  before :all do
+  before :each do
     @user = Fabricate(:user)
     @user.set!("language", "en")
     login_as(@user, :scope => :user)
-    @conference = Fabricate(:conference)
-    @conference.conference_admins << @user
+    @conference = Fabricate(:conference, conference_admins: [@user])
   end
   let(:speech) { Fabricate.build(:speech) }
   let(:speaker) { Fabricate.build(:speaker) }
@@ -16,14 +15,25 @@ describe "Admin Speeches", :type => :feature do
 
   context "conference admin can" do
     it 'go to new speech page' do
+    end
+
+    it 'go to new speech page' do
       visit(admin_conference_url(subdomain: @conference.slug))
       find('.sidebar').click_link("Speeches")
       click_link('New Speech')
       expect(page).to have_content('New Speech')
     end
 
+    it 'go to new speech page' do
+      visit(admin_conference_url(subdomain: @conference.slug))
 
-    it 'create a new speech' do
+      find('.sidebar').click_link("Speeches")
+      click_link('New Speech')
+      expect(page).to have_content('New Speech')
+    end
+
+
+    it 'create a new speech', js: true do
       visit(new_admin_speech_url(subdomain: @conference.slug))
 
       page.click_link I18n.t("conferences.new_speaker")

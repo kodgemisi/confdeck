@@ -3,13 +3,11 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 describe "Conference roles ", :type => :feature do
-  before :all do
-    I18n.locale = :en
-  end
-
   before :each do
-    Conference.destroy_all
-    sleep 2
+    Fabricate.create(:email_template_type, type_name: 'accept_notification_email')
+    Fabricate.create(:email_template_type, type_name: 'reject_notification_email')
+    Fabricate.create(:email_template_type, type_name: 'speaker_notification_email')
+    Fabricate.create(:email_template_type, type_name: 'committee_notification_email')
   end
 
   context "conference admin" do
@@ -17,7 +15,7 @@ describe "Conference roles ", :type => :feature do
       @user = Fabricate(:user)
       @user.set!("language", "en")
       login_as(@user, :scope => :user)
-      @conference = Fabricate.build(:conference)
+      @conference = Fabricate.create(:conference)
       @conference.conference_admins << @user
     end
 
@@ -38,8 +36,8 @@ describe "Conference roles ", :type => :feature do
 
       it "can reject one" do
         visit(admin_speech_url(@speech3, subdomain: @conference.slug))
-        click_link(I18n.t("speeches.accept"))
-        expect(page).to have_content("Accepted")
+        click_link(I18n.t("speeches.reject"))
+        expect(page).to have_content("Rejected")
       end
     end
   end
