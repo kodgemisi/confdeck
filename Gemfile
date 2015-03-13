@@ -72,6 +72,7 @@ group :test do
   gem "capybara-webkit"
   gem 'selenium-webdriver'
   gem 'database_cleaner'
+  gem 'launchy'
 end
 
 gem 'aws-sdk-v1'
