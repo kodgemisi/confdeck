@@ -4,18 +4,18 @@ Warden.test_mode!
 
 describe "Conference creation wizard", :type => :feature do
 
-  before :all do
+  before :each do
+    Fabricate.create(:email_template_type, type_name: 'accept_notification_email')
+    Fabricate.create(:email_template_type, type_name: 'reject_notification_email')
+    Fabricate.create(:email_template_type, type_name: 'speaker_notification_email')
+    Fabricate.create(:email_template_type, type_name: 'committee_notification_email')
+
     @user = Fabricate(:user)
     @user.set!("language", "en")
     @conference = Fabricate.build(:conference)
     @organization = @conference.organizations.first
     @user.organizations << @organization
     @user.conference_wizard.destroy! if @user.conference_wizard
-  end
-
-  before :each do
-    Conference.destroy_all
-    sleep 3
     login_as(@user, :scope => :user)
   end
 
@@ -96,7 +96,7 @@ describe "Conference creation wizard", :type => :feature do
       sleep 2
 
       #Step 4
-      expect(page).to have_content("Speaker Notification Email")
+      expect(page).to have_content(EmailTemplateType.find_by(type_name: 'speaker_notification_email').title)
       page.click_link("Next")
       sleep 2
 
@@ -116,7 +116,7 @@ describe "Conference creation wizard", :type => :feature do
   end
 
   context "with valid data for one day conference", js: true do
-    before :all do
+    before :each do
       @conference = Fabricate.build(:one_day_conference)
       @organization = @conference.organizations.first
       @user.organizations << @organization
@@ -156,7 +156,7 @@ describe "Conference creation wizard", :type => :feature do
       sleep 1
 
       #Step 4
-      expect(page).to have_content("Speaker Notification Email")
+      expect(page).to have_content(EmailTemplateType.find_by(type_name: 'speaker_notification_email').title)
       page.click_link("Next")
       sleep 1
 

@@ -31,7 +31,30 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
 
   config.include Devise::TestHelpers, :type => :controller
+  config.include Warden::Test::Helpers, :type => :feature
 
   config.infer_spec_type_from_file_location!
+
+  config.before(:each, :type => :feature) do
+    if Capybara.current_driver == :webkit
+      page.driver.allow_url("csi.gstatic.com")
+      page.driver.allow_url("mt0.googleapis.com")
+      page.driver.allow_url("maps.googleapis.com")
+      page.driver.allow_url("maps.gstatic.com")
+      page.driver.allow_url("www.example.com")
+      page.driver.allow_url("confdeck.atlassian.net")
+      page.driver.allow_url("fonts.googleapis.com")
+      page.driver.allow_url("mt1.googleapis.com")
+      page.driver.allow_url("gravatar.com")
+      page.driver.allow_url '*.example.com'
+      page.driver.allow_url 'example.com/*.js'
+
+    end
+  end
+
+  config.after(:each, :type => :feature) do
+    Warden.test_reset!
+  end
 end
+
 

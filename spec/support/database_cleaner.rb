@@ -1,7 +1,6 @@
 RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.clean_with(:deletion)
-    Rails.application.load_seed # loading seeds
   end
 
   config.before(:each) do
@@ -15,8 +14,14 @@ RSpec.configure do |config|
   config.before(:each) do
     DatabaseCleaner.start
   end
+  config.after(:each, type: :js) do
+
+    puts "   ######## END FEATURE ############# #{Conference.count}"
+
+  end
 
   config.after(:each) do
+    puts 'DELETED'
     DatabaseCleaner.clean
   end
 end

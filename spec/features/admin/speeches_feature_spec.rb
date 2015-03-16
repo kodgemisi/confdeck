@@ -4,6 +4,13 @@ Warden.test_mode!
 
 describe "Admin Speeches", :type => :feature do
   before :each do
+    Fabricate.create(:email_template_type, type_name: 'accept_notification_email')
+    Fabricate.create(:email_template_type, type_name: 'reject_notification_email')
+    Fabricate.create(:email_template_type, type_name: 'speaker_notification_email')
+    Fabricate.create(:email_template_type, type_name: 'committee_notification_email')
+  end
+
+  before :each do
     @user = Fabricate(:user)
     @user.set!("language", "en")
     login_as(@user, :scope => :user)
@@ -14,7 +21,9 @@ describe "Admin Speeches", :type => :feature do
 
 
   context "conference admin can" do
+    #TODO fix first failing test
     it 'go to new speech page' do
+
     end
 
     it 'go to new speech page' do
@@ -26,7 +35,6 @@ describe "Admin Speeches", :type => :feature do
 
     it 'go to new speech page' do
       visit(admin_conference_url(subdomain: @conference.slug))
-
       find('.sidebar').click_link("Speeches")
       click_link('New Speech')
       expect(page).to have_content('New Speech')

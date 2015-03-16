@@ -4,13 +4,18 @@ describe "Conference landing page", :type => :feature do
   before :each do
     @organization = Fabricate.create(:organization)
     @conference = Fabricate.create(:conference, organizations: [@organization])
+    Fabricate.create(:email_template_type, type_name: 'accept_notification_email')
+    Fabricate.create(:email_template_type, type_name: 'reject_notification_email')
+    Fabricate.create(:email_template_type, type_name: 'speaker_notification_email')
+    Fabricate.create(:email_template_type, type_name: 'committee_notification_email')
+
+  end
+
+  it "should display conference detailsx" do
+
   end
 
   it "should display conference details" do
-    puts @conference.persisted?
-    sleep 5
-    puts 'cospec'
-    puts Conference.all.count
     visit(conference_url(subdomain: @conference.slug))
     expect(page).to have_content @conference.name
     expect(page).to have_content @conference.summary
@@ -143,8 +148,12 @@ describe "Conference landing page", :type => :feature do
     end
 
     context "/apply" do
-      let(:speech) { Fabricate(:speech) }
-      let(:speaker) { Fabricate(:speaker) }
+      let(:speech) { Fabricate.build(:speech) }
+      let(:speaker) { Fabricate.build(:speaker) }
+
+      it 'x' do
+
+      end
 
       it "users can send a speech application", js: true do
         visit(apply_conference_url(subdomain: @conference.slug))
