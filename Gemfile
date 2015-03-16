@@ -74,6 +74,7 @@ group :test do
   gem 'database_cleaner'
   gem 'launchy'
   gem 'connection_pool'
+  gem 'fuubar'
 end
 
 gem 'aws-sdk-v1'

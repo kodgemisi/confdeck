@@ -111,6 +111,9 @@ GEM
       railties (>= 3.2, < 5.0)
     friendly_id (5.0.5)
       activerecord (>= 4.0.0)
+    fuubar (2.0.0)
+      rspec (~> 3.0)
+      ruby-progressbar (~> 1.4)
     gli (2.13.0)
     haml (4.0.6)
       tilt
@@ -252,6 +255,10 @@ GEM
     rest-client (1.7.3)
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
+    rspec (3.2.0)
+      rspec-core (~> 3.2.0)
+      rspec-expectations (~> 3.2.0)
+      rspec-mocks (~> 3.2.0)
     rspec-core (3.2.2)
       rspec-support (~> 3.2.0)
     rspec-expectations (3.2.0)
@@ -269,6 +276,7 @@ GEM
       rspec-mocks (~> 3.2.0)
       rspec-support (~> 3.2.0)
     rspec-support (3.2.2)
+    ruby-progressbar (1.7.1)
     rubyzip (1.1.7)
     safe_yaml (1.0.4)
     sass (3.4.13)
@@ -356,6 +364,7 @@ DEPENDENCIES
   fabrication (= 2.12.2)
   faker
   friendly_id (~> 5.0.0)
+  fuubar
   i18n-js (>= 3.0.0.rc8)
   jbuilder
   jquery-rails
