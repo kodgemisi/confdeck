@@ -12,10 +12,8 @@
               <!--/ option -->
             </div>
           </div>
-          <div class="panel-body">
-            <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#table<%= speech_type.id %>" placeholder="Filter Developers" />
-          </div>
-          <table class="table table-bordered table-hover speech-table  panel-collapse pull out" id="table<%= speech_type.id %>">
+          <div class="panel-body  panel-collapse pull out">
+            <table class="table table-bordered table-hover speech-table" id="table<%= speech_type.id %>">
             <thead>
             <tr>
               <th>#</th>
@@ -33,6 +31,8 @@
             <% end %>
             </tbody>
           </table>
+          </div>
+
         </div>
       </div>
     </div>
