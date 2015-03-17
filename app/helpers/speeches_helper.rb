@@ -22,4 +22,8 @@ module SpeechesHelper
       "<span class=\"label label-warning\">#{t("speeches.states.waiting_review")}</span>"
     end
   end
+
+  def email_comment(comment)
+    "<i class='ico ico-envelope ml5 tt' title='#{t('speeches.comment_by_email')}'></i>".html_safe if comment.email?
+  end
 end

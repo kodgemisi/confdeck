@@ -60,4 +60,9 @@ class Speech < ActiveRecord::Base
         'details_url' => Rails.application.routes.url_helpers.admin_speech_url(self.id, subdomain: self.conference.slug)
     }
   end
+
+  #For uniqueness in emails threads
+  def thread_title
+    "REF: #{id}"
+  end
 end

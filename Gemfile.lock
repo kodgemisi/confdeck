@@ -98,6 +98,7 @@ GEM
       devise (>= 3.2.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    email_reply_parser (0.5.8)
     equalizer (0.0.9)
     erubis (2.7.0)
     execjs (2.2.2)
@@ -112,10 +113,16 @@ GEM
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
     gli (2.12.2)
+    griddler (1.1.0)
+      htmlentities
+      rails (>= 3.2.0)
+    griddler-sendgrid (0.0.1)
+      griddler
     haml (4.0.6)
       tilt
     hashie (3.3.2)
     hike (1.2.3)
+    htmlentities (4.3.3)
     i18n (0.6.11)
     i18n-js (3.0.0.rc8)
       i18n (~> 0.6)
@@ -349,9 +356,12 @@ DEPENDENCIES
   date_validator
   devise
   devise_invitable
+  email_reply_parser
   fabrication
   faker
   friendly_id (~> 5.0.0)
+  griddler
+  griddler-sendgrid
   i18n-js (>= 3.0.0.rc8)
   jbuilder
   jquery-rails

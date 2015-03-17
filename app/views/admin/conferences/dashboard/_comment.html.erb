@@ -3,8 +3,8 @@
     <img src="<%= comment.user.avatar_url(50) %>" class="media-object img-circle" alt="">
   </a>
   <div class="media-body">
-    <p class="media-heading"><%= comment.user.display_name %></p>
-    <p class="media-text"><%= comment.comment %></p>
+    <p class="media-heading"><%= comment.user.display_name %> <%= email_comment(comment) %></p>
+    <p class="media-text"><%= simple_format comment.comment %></p>
     <!-- meta icon -->
     <p class="media-meta pull-right"><%= timeago_tag comment.created_at.to_time, :lang => I18n.locale %></p>
     <!--/ meta icon -->

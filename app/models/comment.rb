@@ -12,6 +12,7 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 class Comment < ActiveRecord::Base
+  after_create :send_email
 
   include ActsAsCommentable::Comment
 
@@ -25,4 +26,13 @@ class Comment < ActiveRecord::Base
 
   # NOTE: Comments belong to a user
   belongs_to :user
+
+  def email?
+    sent_by_email
+  end
+
+
+  def send_email
+    SpeechMailer.new_comment_email(self.commentable, self).deliver!
+  end
 end

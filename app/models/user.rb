@@ -121,4 +121,20 @@ class User < ActiveRecord::Base
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
   end
+
+  def self.anonym
+    user = self.find_by(email: 'anonym@confdeck.com')
+    if user
+      user
+    else
+      self.create(
+          email: 'anonym@confdeck.com',
+          password: Devise.friendly_token.first(8)
+      )
+    end
+  end
+
+  def anonym?
+    email == 'anonym@confdeck.com'
+  end
 end

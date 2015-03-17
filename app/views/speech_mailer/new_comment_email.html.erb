@@ -1,0 +1,8 @@
+<% unless @user.anonym? %>
+<strong><%= @user.display_name  %>:</strong><br /><br />
+<% end %>
+
+
+<%= @comment.comment %><br /><br />
+
+<%= @user.email if @user.anonym? %>
