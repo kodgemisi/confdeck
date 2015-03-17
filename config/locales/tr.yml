@@ -127,6 +127,12 @@ tr:
     application_end: Başvuru Bitiş Tarihi
     application_start: Başvuru Başlama Tarihi
     applications_closed: Etkinlik için oturum başvuruları sona ermiştir. Program kurulu değerlendirmesini sırasında ya da tamamladıktan sonra, başvuru sahipleri ile iletişime geçecektir. İlginiz için teşekkür ederiz.
+    apply:
+      help:
+        abstract: " "
+        additional_info: " "
+        outline: " "
+        subject: " "
     basic_information: Temel Bilgiler
     conferences: Konferanslar
     contact_info: "İletişim Bilgileri"
@@ -550,6 +556,9 @@ tr:
     twitter: Twitter
   speaker_application_header: "%{conference_name} Konuşmacı Başvurusu"
   speakers: Konuşmacılar
+  speech_mailer:
+    new_comment_email:
+      subject: "[%{conference}] '%{speech}' başvurusuna yeni yorum yapıldı"
   speech_types:
     english: "İngilizce Çevirisi"
     turkish: Türkçe Çevirisi
@@ -561,6 +570,7 @@ tr:
     additional_info: Ek Bilgiler
     bulk_mail: Toplu Eposta
     bulk_mail_sent: Toplu epostalar gönderildi.
+    comment_by_email: Yorum email ile gönderildi.
     comments: Yorumlar
     detail: Konuşmanın Ana Hatları
     downvote: Downvote

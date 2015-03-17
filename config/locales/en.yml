@@ -127,6 +127,12 @@ en:
     application_end: Application End Date
     application_start: Application Start Date
     applications_closed: Speech proposal is closed. Program committee will contact with the speakers after the judgement. Thanks you for your interest.
+    apply:
+      help:
+        abstract: " "
+        additional_info: " "
+        outline: " "
+        subject: " "
     basic_information: Basic Information
     conferences: Conferences
     contact_info: Contact Information
@@ -488,6 +494,9 @@ en:
     twitter: Twitter
   speaker_application_header: Speaker Application To %{conference_name}
   speakers: 
+  speech_mailer:
+    new_comment_email:
+      subject: "[%{conference}] New comment on a speech '%{speech}'"
   speech_types:
     english: English Translation
     turkish: Turkish Translation
@@ -499,6 +508,7 @@ en:
     additional_info: Additional Info
     bulk_mail: Bulk Mail
     bulk_mail_sent: Bulk mails were sent.
+    comment_by_email: Comment send via email.
     comments: Comments
     detail: Details
     downvote: Downvote
