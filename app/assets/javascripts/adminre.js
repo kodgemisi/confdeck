@@ -95,18 +95,4 @@ $(function () {
     // Init template core
     APP.init();
 
-    // Init template sidebar summary
-    //APP.sidebarSparklines.init();
-
-    // Init template message dropdown
-    APP.headerDropdown.init({
-        "dropdown": "#header-dd-message",
-        "url": "server/message.php"
-    });
-
-    // Init template notification dropdown
-    APP.headerDropdown.init({
-        "dropdown": "#header-dd-notification",
-        "url": "server/notification.php"
-    });
 });
