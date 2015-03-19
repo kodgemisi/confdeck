@@ -19,7 +19,11 @@ Confman::Application.routes.draw do
   resources :topics
   resources :speakers
   resources :speeches
-  resources :notifications, only: [:index]
+  resources :notifications, only: [:index] do
+    collection do
+      get :read_all
+    end
+  end
 
   get "invitations/accept"
   get '/dashboard', to: 'home#dashboard'

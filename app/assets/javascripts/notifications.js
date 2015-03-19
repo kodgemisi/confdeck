@@ -7,21 +7,27 @@ ConfDeck.Notifications = {
     container: '#header-dd-notification',
     indicator: '.indicator',
     app: ConfDeck,
-    route: null,
+    routes: null,
 
     init: function(){
         this.app.log('Notifications Initializated')
-        this.route = this.app.routes.notifications;
+        this.routes = this.app.routes.notifications;
         _this = this;
         $(this.container).click(function(){
             _this.loadNotifications();
+        })
+
+        $('#readNotifications').click(function(e){
+            e.stopPropagation();
+
+            _this.readAllNotifications();
         })
     },
 
     loadNotifications: function(){
         _this = this;
         $.ajax({
-            url: _this.route,
+            url: _this.routes.index,
             cache: false,
             type: "GET",
             beforeSend: function(){
@@ -30,7 +36,22 @@ ConfDeck.Notifications = {
         }).done(function (data) {
             $(_this.container).find('.notifications-content').html(data);
             _this.hideIndicator();
-            _this.UpdateTimeago()
+            _this.updateTimeago()
+        })
+    },
+
+    readAllNotifications: function(){
+        _this = this;
+        $.ajax({
+            url: _this.routes.read_all,
+            cache: false,
+            type: "GET",
+            beforeSend: function(){
+                _this.showIndicator();
+            }
+        }).done(function (data) {
+            _this.hideIndicator();
+            _this.markAsRead()
         })
     },
 
@@ -42,8 +63,13 @@ ConfDeck.Notifications = {
         $(this.indicator).show();
     },
 
-    UpdateTimeago: function(){
+    updateTimeago: function(){
         $('time[datetime]').timeago();
+    },
+
+    markAsRead: function(){
+        $(this.container).find('.notifications-content .media').removeClass('unread')
+        $(this.container).find('.notifications-content .media').addClass('read')
     }
 }
 
