@@ -29,41 +29,42 @@
             </li>
             <!--/ Sidebar shrink -->
 
+
             <!-- Navbar collapse -->
             <li class="navbar-toggle">
-              <a href="javascript:void(0);" data-toggle="collapse" data-target="#navbar-collapse">
-                    <span class="meta">
-                        <span class="icon"><i class="ico-sort-by-attributes-alt"></i></span>
-                    </span>
-              </a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#navbar-collapse">
+                        <span class="meta">
+                            <span class="icon"><i class="ico-sort-by-attributes-alt"></i></span>
+                        </span>
+                </a>
             </li>
             <!--/ Navbar collapse -->
 
             <!-- Offcanvas left: This menu will take position at the top of template header (mobile only). Make sure that only #header have the `position: relative`, or it may cause unwanted behavior -->
             <li class="navbar-main hidden-lg hidden-md hidden-sm">
-              <a href="javascript:void(0);" data-toggle="offcanvas" data-direction="ltr" rel="tooltip" title="Menu sidebar">
-                    <span class="meta">
-                        <span class="icon"><i class="ico-paragraph-left3"></i></span>
-                    </span>
-              </a>
+                <a href="javascript:void(0);" data-toggle="offcanvas" data-direction="ltr" rel="tooltip" title="Menu sidebar">
+                        <span class="meta">
+                            <span class="icon"><i class="ico-paragraph-left3"></i></span>
+                        </span>
+                </a>
             </li>
             <!--/ Offcanvas left -->
 
-            <!-- Notification dropdown -->
+            <%= render 'layouts/notifications' %>
 
-          <% if defined? admin %>
+            <% if defined? admin %>
               <li>
                 <a href="#">
                   <strong><%= @conference.name %></strong>
                 </a>
               </li>
-          <% else %>
+            <% else %>
               <li>
                 <%= link_to new_conferences_path do %>
                     <button type="button" class="btn btn-primary mb5"><i class="ico-magic"></i> &nbsp; <%= t("conferences.new") %></button>
                 <% end %>
               </li>
-          <% end %>
+            <% end %>
         </ul>
         <!--/ END Left nav -->
       <% end %>
