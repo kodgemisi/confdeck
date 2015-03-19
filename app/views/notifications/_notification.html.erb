@@ -5,7 +5,7 @@
         </span>
         <span class="media-body">
             <span class="media-text">
-                <%= notification.subject.subject.comment %>
+                <%= notification_text(notification) %>
                 <!-- meta icon -->
                 <span class="media-meta pull-right"><%= timeago_tag notification.created_at.to_time, :lang => I18n.locale %></span>
                 <!--/ meta icon -->

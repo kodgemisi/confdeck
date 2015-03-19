@@ -403,6 +403,8 @@ en:
       new_speaker_subject: Welcome to Confdeck
   minutes: 
   new_speaker: Add new speaker
+  notifications:
+    comment: '<span class="text-primary semibold">%{user}</span> commented on %{speech}: %{comment}'
   organizations:
     conferences: 
     create: 

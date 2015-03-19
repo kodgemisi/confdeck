@@ -465,6 +465,8 @@ tr:
       new_speaker_subject: Confdeck'e Hoşgeldiniz
   minutes: 
   new_speaker: Yeni Konuşmacı Ekle
+  notifications:
+    comment: '<span class="text-primary semibold">%{user}</span>, %{speech} hakkında yorum yaptı: %{comment}'
   organizations:
     conferences: Konferanslar
     create: Yeni Organizasyon Oluştur
