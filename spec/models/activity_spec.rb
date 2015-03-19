@@ -16,7 +16,7 @@ RSpec.describe Activity, :type => :model do
         subject: Comment.create
     )
 
-    expect(Notification.count).to eq(@conference.users.count)
+    expect(Notification.count).to eq(@conference.users.count - 1)
     expect(@admins[1].notifications.count).to eq(1)
     expect(@users[1].notifications.count).to eq(1)
   end

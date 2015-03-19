@@ -9,11 +9,11 @@ class Activity < ActiveRecord::Base
 
   # TODO background job
   def create_notification
-    conference.users.each do |user|
+    conference.users.each do |conf_user|
       Notification.create(
           subject: self,
-          user: user
-      )
+          user: conf_user
+      ) if conf_user != user
     end
   end
 
