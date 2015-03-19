@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   has_one :conference_wizard #, -> { order("created_at DESC") }
   has_one :speaker
   has_many :speeches, through: :speaker
+  has_many :notifications
   acts_as_voter
 
   serialize :settings
