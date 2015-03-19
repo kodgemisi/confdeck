@@ -10,4 +10,8 @@ class Notification < ActiveRecord::Base
   def comment?
     self.activity? && subject.subject_type == 'Comment'
   end
+
+  def apply?
+    self.activity? && subject.subject_type == 'Speech' && subject.action == 'speech_new'
+  end
 end
