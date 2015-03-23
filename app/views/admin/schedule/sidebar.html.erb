@@ -1,6 +1,30 @@
 <div class="fixed">
-<button type="button" class="btn btn-primary btn-block create-room-button" ><%= t("rooms.create") %></button>
-<div class="speech-list">
-  <%= render "admin/schedule/speech_list", speech_types: @speech_types %>
-</div>
+    <button type="button" class="btn btn-primary btn-block create-room-button mb15" ><%= t("rooms.create") %></button>
+
+    <div class="room-list">
+          <div class="panel panel-inverse">
+            <div class="panel-heading">
+              <h3 class="panel-title"><%= t('conference.rooms') %></h3>
+            </div>
+            <div class="panel-body">
+              <table class="table table-bordered">
+                <thead>
+                <tr>
+                  <th><%= t('room.name') %></th>
+                  <th>&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% @rooms.each do |room| %>
+                    <%= render 'admin/schedule/room_row', room: room %>
+                <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+    </div>
+
+      <div class="speech-list">
+        <%= render "admin/schedule/speech_list", speech_types: @speech_types %>
+      </div>
 </div>

@@ -292,6 +292,8 @@ $(function(){
 
     $(".create-room-button").click(function(){
         openCreateRoomWindow();
+        $('.create-room-window').find('.k-notification-error').hide();
+        $('#room_name').val('')
     })
 
     var openCreateRoomWindow = function(){

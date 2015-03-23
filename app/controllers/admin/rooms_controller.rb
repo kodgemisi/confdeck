@@ -95,6 +95,7 @@ class Admin::RoomsController < Admin::AdminController
     respond_to do |format|
       format.html { redirect_to conference_rooms_url(@conference) }
       format.json { head :no_content }
+      format.js
     end
   end
 

@@ -14,4 +14,6 @@
 class Room < ActiveRecord::Base
   has_many :slots
   belongs_to :conference
+
+  validates :name, presence: true,length: { minimum: 2 }
 end

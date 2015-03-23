@@ -1,0 +1,4 @@
+<tr id="<%= dom_id(room) %>">
+  <td><%= room.name %></td>
+  <td><%= link_to t('general.delete'), admin_room_url(subdomain: @conference.slug, id: room.id), method: :delete, remote: true %></td>
+</tr>
