@@ -501,6 +501,7 @@ en:
     new_comment_email:
       subject: "[%{conference}] New comment on a speech '%{speech}'"
   speech_types:
+    duration: Duration
     english: English Translation
     turkish: Turkish Translation
   speeches:

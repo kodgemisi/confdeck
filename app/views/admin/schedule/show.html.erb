@@ -20,6 +20,13 @@
   </div>
 </div>
 
+<script id="event-template" type="text/x-kendo-template">
+  <div class="schedule-event-template">
+    <h3>#: title #</h3>
+  </div>
+</script>
+
+
 <div class="create-room-window">
   <%= form_for([:admin, @room], remote: true, html: {class: "form-horizontal pt15"}) do |f| %>
     <%= f.hidden_field :conference_id, value: @conference.id %>

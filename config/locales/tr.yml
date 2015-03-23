@@ -563,6 +563,7 @@ tr:
     new_comment_email:
       subject: "[%{conference}] '%{speech}' başvurusuna yeni yorum yapıldı"
   speech_types:
+    duration: Süre
     english: "İngilizce Çevirisi"
     turkish: Türkçe Çevirisi
   speeches:
