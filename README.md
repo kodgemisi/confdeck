@@ -27,6 +27,14 @@ Configuration
 Contributing
 ------------
 
+**Feedback and Issue Management**
+
+Confdeck's issues are managed on a public kanban board.
+
+You can create an account and open an issue or contribute to an existing one from [https://confdeck.atlassian.net/secure/RapidBoard.jspa?rapidView=6&projectKey=CF](here).
+
+**Running it**
+
 To get Confdeck running follow those commands:
 
 * Fork and clone the project
