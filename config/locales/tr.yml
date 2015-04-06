@@ -40,12 +40,12 @@ tr:
         organization_name: Organization name
         website: Website
       speaker:
-        bio: Bio
+        bio: Kısa Bilgi
         email: Email
         facebook: Facebook
         github: Github
-        name: Name
-        phone: Phone
+        name: İsim
+        phone: Telefon
         twitter: Twitter
       sponsor:
         logo: Logo
@@ -95,13 +95,13 @@ tr:
       appeal: 
       comment: 
       conference: Konferans
-      email_template: Email template
+      email_template: Email Şablonu
       invitation: Invitation
       organization: Organization
-      speaker: Speaker
+      speaker: Konuşmacı
       sponsor: Sponsor
       topic: 
-      user: User
+      user: Kullanıcı
   activities:
     actions:
       speech_accept: "%{user}, %{speech} kabul etti"
@@ -367,9 +367,11 @@ tr:
       expired: süresi sona erdi, lütfen yenisini isteyin
       not_found: bulunamadı
       not_locked: kilitlenmedi
+      blank: boş bırakılamaz
       not_saved:
         one: 'Bu %{resource} kaydedilirken 1 hata yakalandı:'
         other: 'Bu %{resource} kaydedilirken %{count} hata yakalandı:'
+
   general:
     active: Aktif
     add_another: Kaydet ve Yeni Ekle
