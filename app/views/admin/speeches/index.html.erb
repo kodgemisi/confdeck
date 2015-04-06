@@ -17,11 +17,8 @@
   </div>
 </div>
 
-
 <div class="speeches-list">
   <% @speech_types.each do |speech_type| %>
       <%= render "admin/speeches/index/speech_table", speech_type: speech_type %>
   <% end %>
 </div>
-
-<%= link_to 'New Speech', new_admin_speech_path %>

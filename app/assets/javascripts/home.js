@@ -1,6 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 //= require jquery
+//= require jquery.validator
 
 $(document).ready(function(){
 
@@ -15,4 +16,23 @@ $(document).ready(function(){
             window.location.href = $(this).attr("href")
     })
 
+
+    $('.signup-fields .create-conference').click(function(e){
+        if(!isInputsValid()){
+            e.preventDefault();
+        }
+    })
+
+    $('.signup-box input').keyup(function(){
+        if(isInputsValid()){
+            $('.create-conference').addClass('btn-primary').removeClass('btn-disabled')
+        }else{
+            $('.create-conference').addClass('btn-disabled').removeClass('btn-primary')
+        }
+    })
+
+
+    var isInputsValid = function(){
+        return ($('#quick_signup_form_name').val() != '' && $('#quick_signup_form_email').val() != '' && $('#quick_signup_form_password').val() != '' )
+    }
 })
