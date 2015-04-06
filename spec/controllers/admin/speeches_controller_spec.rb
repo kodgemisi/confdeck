@@ -18,17 +18,18 @@ RSpec.describe Admin::SpeechesController do
     }
   end
 
-  before :all do
-    @user = Fabricate(:user)
-    @conference = Fabricate(:conference)
-    @conference.conference_admins << @user
-  end
-
-  before(:each) do
-    @request.host = "#{@conference.slug}.example.com"
+  before :each do
+    Fabricate.create(:email_template_type, type_name: 'accept_notification_email')
+    Fabricate.create(:email_template_type, type_name: 'reject_notification_email')
+    Fabricate.create(:email_template_type, type_name: 'speaker_notification_email')
+    Fabricate.create(:email_template_type, type_name: 'committee_notification_email')
   end
 
   before :each do
+    @user = Fabricate(:user)
+    @conference = Fabricate(:conference)
+    @conference.conference_admins << @user
+    @request.host = "#{@conference.slug}.example.com"
     sign_in @user
   end
 

@@ -135,6 +135,11 @@ class ConferencesController < ApplicationController
   private
 
     def set_locale
+      if ['new', 'create'].include? params[:action]
+        super
+        return
+      end
+
       if params[:locale].present? && I18n.locale_available?(params[:locale])
         I18n.locale = params[:locale].to_sym
       elsif I18n.locale_available? extract_locale.to_sym

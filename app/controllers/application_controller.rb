@@ -43,7 +43,6 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
-  protected
 
   def layout_for_devise
     if devise_controller?
