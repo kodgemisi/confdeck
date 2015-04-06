@@ -69,7 +69,7 @@
                 var templates =[
                     {
                         title: "Subject",
-                        value: "{{topic.title}}"
+                        value: "{{topic.subject}}"
                     },
                     {
                         title: "Detail",
