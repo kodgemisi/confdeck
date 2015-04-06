@@ -4,22 +4,14 @@ Warden.test_mode!
 
 describe "Conference Dashboard", :type => :feature do
 
-  before :all do
+  before :each do
     @user = Fabricate(:user)
-    @user.set!("language", "en")
     login_as(@user, :scope => :user)
     @conference = Fabricate(:conference)
-    I18n.locale = :en
   end
-
-  before :each do
-    sleep 3
-    login_as(@user, :scope => :user)
-  end
-
 
   context "admin" do
-    before :all do
+    before :each do
       @conference.conference_admins << @user
     end
 
@@ -80,7 +72,7 @@ describe "Conference Dashboard", :type => :feature do
   end
 
   context "user" do
-    before :all do
+    before :each do
       @conference.conference_users << @user
     end
 

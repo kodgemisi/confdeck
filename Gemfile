@@ -40,7 +40,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-github'
 gem 'virtus'
 gem "i18n-js", ">= 3.0.0.rc8"
-gem 'bugsnag'
+#gem 'bugsnag'
 # gem 'i18n-tasks', '~> 0.7.7'
 
 group :production do
@@ -53,10 +53,11 @@ end
 
 group :test, :development do
   gem 'faker'
-  gem "rspec-rails"
+  gem "rspec-rails", '3.2.0'
   gem "sqlite3"
   gem "better_errors"
   gem 'simplecov', :require => false
+  gem 'fabrication', '2.12.2'
 end
 
 group :development do
@@ -66,15 +67,15 @@ end
 
 group :test do
   gem 'shoulda-matchers'
-  gem 'fabrication'
   gem "codeclimate-test-reporter"
   gem "capybara"
   gem "capybara-webkit"
   gem 'selenium-webdriver'
   gem 'database_cleaner'
+  gem 'launchy'
+  gem 'connection_pool'
+  gem 'fuubar'
 end
 
 gem 'aws-sdk-v1'
 gem 'traco'
-
-
