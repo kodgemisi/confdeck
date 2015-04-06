@@ -13,11 +13,17 @@ end
 
 
 Confman::Application.routes.draw do
+
   mount RailsAdmin::Engine => '/deck', as: 'rails_admin'
 
   resources :topics
   resources :speakers
   resources :speeches
+  resources :notifications, only: [:index] do
+    collection do
+      get :read_all
+    end
+  end
 
   get "invitations/accept"
   get '/dashboard', to: 'home#dashboard'

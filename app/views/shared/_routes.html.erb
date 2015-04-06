@@ -1,0 +1,8 @@
+<%= javascript_tag do %>
+    ConfDeck.routes = {
+        notifications: {
+            index: '<%= notifications_path %>',
+            read_all: '<%= read_all_notifications_path %>'
+        }
+    }
+<% end %>

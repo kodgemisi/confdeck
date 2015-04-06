@@ -18,6 +18,8 @@
 //= require jquery-ui/datepicker-tr
 //= require jquery-ui/effect-highlight
 //= require jquery.validator
+//= require confdeck
+//= require notifications
 //= require bootstrap
 //= require best_in_place
 //= require core
@@ -30,6 +32,7 @@
 //= require lib/summernote.plugins
 //= require i18n
 //= require i18n/translations
+
 
 $(document).ready(function(){
     $('time[data-time-ago]').timeago();

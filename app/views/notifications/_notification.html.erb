@@ -1,0 +1,28 @@
+<a href="<%= notification_link(notification) %>" class="media <%= notification.read? ? 'read' : 'unread' %> border-dotted">
+    <% if notification.comment? %>
+      <span class="media-object pull-left">
+            <i class="ico-comment bgcolor-success"></i>
+        </span>
+        <span class="media-body">
+            <span class="media-text">
+                <%= notification_text(notification) %>
+                <!-- meta icon -->
+                <span class="media-meta pull-right"><%= timeago_tag notification.created_at.to_time, :lang => I18n.locale %></span>
+                <!--/ meta icon -->
+            </span>
+        </span>
+    <% elsif notification.apply? %>
+        <span class="media-object pull-left">
+            <i class="ico-megaphone bgcolor-success"></i>
+        </span>
+        <span class="media-body">
+            <span class="media-text">
+                <%= notification_text(notification) %>
+              <!-- meta icon -->
+                <span class="media-meta pull-right"><%= timeago_tag notification.created_at.to_time, :lang => I18n.locale %></span>
+                <!--/ meta icon -->
+            </span>
+        </span>
+    <% end %>
+
+</a>

@@ -213,11 +213,18 @@ $(function(){
             return $(tooltipHtml).css("width", 300);
         },
         dragend: function (row) {
-            if (scheduler.view()._slotByPosition(row.x.location, row.y.location)) { //Check whether its dropped to scheduler
-                $(row.currentTarget).remove();
-            }
+            //Removed due to event disappearing bug
 
-        }
+            //if (true || scheduler.view()._slotByPosition(row.x.location, row.y.location)) { //Check whether its dropped to scheduler
+            //    $(row.currentTarget).remove();
+            //
+            //}
+
+        },
+        cursorOffset: {
+            top: -($('.draggable').height() / 2),
+            left: -($('.draggable').width() / 2)
+        },
     };
     $(".draggable").kendoDraggable(draggableConfig);
 
@@ -251,8 +258,10 @@ $(function(){
 
                     scheduler.dataSource.add(newEvent);
                     scheduler.dataSource.sync();
+                    $(e.draggable.element).remove()
 
                 }
+
 
             }
         });
@@ -299,8 +308,6 @@ $(function(){
             e.preventDefault();
         }
     })
-
-
 
 })
 //<td class="clickable-row1" data-hour="07:00" data-day="1" data-room="1">&nbsp;</td>

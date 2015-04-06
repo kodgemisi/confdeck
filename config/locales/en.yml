@@ -403,6 +403,9 @@ en:
       new_speaker_subject: Welcome to Confdeck
   minutes: 
   new_speaker: Add new speaker
+  notifications:
+    apply: New application received for <span class="text-primary semibold">%{conference}</span> with <span class="text-primary semibold">%{speech}</span> title.
+    comment: '<span class="text-primary semibold">%{user}</span> commented on %{speech}: %{comment}'
   organizations:
     conferences: 
     create: 
