@@ -36,6 +36,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  private
+
   def user_not_authorized
     flash[:error] = t("general.not_authorized")
     redirect_to root_path
