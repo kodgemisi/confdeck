@@ -298,6 +298,7 @@ en:
     format: 
     messages:
       already_confirmed: was already confirmed, please try signing in
+      blank: 
       confirmation_period_expired: needs to be confirmed within %{period}, please request a new one
       expired: has expired, please request a new one
       not_found: not found
@@ -386,6 +387,8 @@ en:
         update: 
   home:
     active_conferences: Your Active Conferences
+    dashboard:
+      new_user_info: 'You don''t have any conferences. You can create one in few minutes! '
   js:
     in_use: "%{name} is already in use"
   landing:
@@ -435,6 +438,8 @@ en:
     password_help: 
     save: 
   simple_form:
+    error_notification:
+      default_message: 'Please review the problems below:'
     hints:
       defaults:
         body_html: 
@@ -471,6 +476,7 @@ en:
       email_template_type:
         index:
           subject: 
+    'no': 'No'
     placeholders:
       defaults:
         body_html: 
@@ -489,6 +495,9 @@ en:
           subject: 
     required:
       html: 
+      mark: "*"
+      text: required
+    'yes': 'Yes'
   speaker:
     email: Email
     facebook: Facebook

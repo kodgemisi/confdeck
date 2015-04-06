@@ -44,7 +44,7 @@ tr:
         email: Email
         facebook: Facebook
         github: Github
-        name: İsim
+        name: "İsim"
         phone: Telefon
         twitter: Twitter
       sponsor:
@@ -363,15 +363,14 @@ tr:
     format: "%{attribute} %{message}"
     messages:
       already_confirmed: zaten onaylandı, lütfen tekrar giriş yapmayı deneyin
+      blank: boş bırakılamaz
       confirmation_period_expired: 
       expired: süresi sona erdi, lütfen yenisini isteyin
       not_found: bulunamadı
       not_locked: kilitlenmedi
-      blank: boş bırakılamaz
       not_saved:
         one: 'Bu %{resource} kaydedilirken 1 hata yakalandı:'
         other: 'Bu %{resource} kaydedilirken %{count} hata yakalandı:'
-
   general:
     active: Aktif
     add_another: Kaydet ve Yeni Ekle
@@ -450,6 +449,8 @@ tr:
         update: Update Email template
   home:
     active_conferences: Gelecek Konferanslarınız
+    dashboard:
+      new_user_info: Hiç konferansınız yok. Birkaç dakika içinde yeni bir konferans oluşturabilirsiniz!
   js:
     in_use: "%{name} başkası tarafından kullanılıyor"
   landing:
@@ -499,6 +500,8 @@ tr:
     password_help: Değişiklik yapmak istemiyorsanız boş bırakın
     save: Kaydet
   simple_form:
+    error_notification:
+      default_message: 
     hints:
       defaults:
         body_html: 
@@ -535,6 +538,7 @@ tr:
       email_template_type:
         index:
           subject: 
+    'no': 
     placeholders:
       defaults:
         body_html: 
@@ -553,6 +557,9 @@ tr:
           subject: 
     required:
       html: 
+      mark: 
+      text: 
+    'yes': 
   speaker:
     email: E-posta
     facebook: Facebook
