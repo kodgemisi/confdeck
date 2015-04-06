@@ -157,7 +157,7 @@ $(document).ready(function(){
         $(".validate-me").validate({
             validClass: 'has-success',
             errorElement: 'span',
-            errorClass: 'emptyclass'
+            errorClass: 'emptyclass',
             messages: {
                 "conference[slug]": {
                     remote: $.validator.format(I18n.t("js.in_use", {name: "{0}"}))
