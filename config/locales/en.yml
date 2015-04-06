@@ -309,7 +309,7 @@ en:
   general:
     active: Active
     add_another: Save and Add Another
-    application_received: 'Your application with %{topic} title was received. '
+    application_received: 'Your application with %{topic} was received. '
     are_you_sure: Are You Sure?
     cancel: Cancel
     close: Close
