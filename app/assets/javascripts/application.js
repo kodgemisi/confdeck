@@ -32,7 +32,7 @@
 //= require lib/summernote.plugins
 //= require i18n
 //= require i18n/translations
-
+//= require jquery.validation.tooltip
 
 $(document).ready(function(){
     $('time[data-time-ago]').timeago();

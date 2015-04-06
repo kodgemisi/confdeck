@@ -6,6 +6,7 @@ class Admin::ScheduleController < Admin::AdminController
     @speech_types = @conference.speech_types.includes(:speeches).where("speeches.state" => "accepted")
     @room = Room.new
     @slot = Slot.new
+    @rooms = @conference.rooms
   end
 
   def speech_list

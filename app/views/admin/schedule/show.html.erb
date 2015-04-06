@@ -20,15 +20,31 @@
   </div>
 </div>
 
+<script id="event-template" type="text/x-kendo-template">
+  <div class="schedule-event-template">
+    <h3>#: title #</h3>
+  </div>
+</script>
+
+
 <div class="create-room-window">
-  <%= form_for([:admin, @room], remote: true, html: {class: "form-horizontal"}) do |f| %>
+  <%= form_for([:admin, @room], remote: true, html: {class: "form-horizontal pt15"}) do |f| %>
     <%= f.hidden_field :conference_id, value: @conference.id %>
+      <div class="k-widget k-notification k-notification-error" style="display: none">
+        <div class="k-notification-wrap">
+          <span class="k-icon k-i-note"></span><span class="errors"></span>
+        </div>
+      </div>
+
     <div class="form-group nm">
         <%= f.label :name, t("rooms.name"), class: "col-lg-2 control-label" %>
         <div class="col-lg-7">
           <%= f.text_field :name, class: "form-control" %>
         </div>
     </div>
-        <%= f.submit t("general.create"), :class => "btn btn-primary pull-right" %>
+    <div class="form-actions nm">
+        <%= f.submit t("general.create"), :class => "btn btn-primary pull-right mr50 mt10" %>
+    </div>
+    <div class="clearfix">
   <% end %>
 </div>

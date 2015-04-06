@@ -157,17 +157,7 @@ $(document).ready(function(){
         $(".validate-me").validate({
             validClass: 'has-success',
             errorElement: 'span',
-            errorClass: 'help-block mt10',
-            errorPlacement: function errorPlacement(error, element) {
-                element.after(error);
-            },
-            highlight: function (element, errorClass, validClass) {
-                $(element).closest("div.form-group").addClass("has-error").removeClass("has-success");
-
-            },
-            unhighlight: function (element, errorClass, validClass) {
-                $(element).closest("div.form-group").removeClass("has-error").addClass("has-success");
-            },
+            errorClass: 'emptyclass'
             messages: {
                 "conference[slug]": {
                     remote: $.validator.format(I18n.t("js.in_use", {name: "{0}"}))

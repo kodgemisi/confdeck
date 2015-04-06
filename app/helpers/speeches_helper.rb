@@ -22,4 +22,8 @@ module SpeechesHelper
       "<span class=\"label label-warning\">#{t("speeches.states.waiting_review")}</span>"
     end
   end
+
+  def schedule_desc(speech)
+    ''
+  end
 end

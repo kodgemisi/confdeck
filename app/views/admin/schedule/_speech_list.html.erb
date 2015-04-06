@@ -15,7 +15,7 @@
             <% speech_type.speeches.each do |speech| %>
                 <tr class="draggable"
                     data-subject="<%= speech.topic.subject %>"
-                    data-speech_id="<%= speech.id %>" <%= "style=display:none" if speech.slot.present? %>
+                    data-speech_id="<%= speech.id %>" data-type_id="<%= speech_type.id %>" data-duration="<%= speech_type.duration %>" <%= "style=display:none" if speech.slot.present? %>
                 >
                   <td><%= speech.topic.subject %></td>
                   <td><%= speech.topic.speakers.first.name %></td>

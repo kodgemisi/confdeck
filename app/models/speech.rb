@@ -29,6 +29,7 @@ class Speech < ActiveRecord::Base
 
   scope :accepted, -> { where(state: :accepted) }
   delegate :subject, to: :topic, prefix: true
+  delegate :duration, to: :speech_type
 
 
   state_machine :state, :initial => :waiting_review do

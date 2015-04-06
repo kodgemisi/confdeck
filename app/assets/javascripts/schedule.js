@@ -53,6 +53,7 @@ $(function(){
                 fields: {
                     id: { type: "number" },
                     title: { from: "title", defaultValue: "No title", editable: false},
+                    description: { from: "description", defaultValue: "No title", editable: false},
                     start: { type: "date", from: "start" },
                     end: { type: "date", from: "end" },
                     room_id: { type: "number", from: "room_id", defaultValue: 1 },
@@ -66,6 +67,7 @@ $(function(){
                     var slot = {
                         id: response[i].id,
                         title: response[i].title,
+                        description: response[i].description,
                         room_id: response[i].room_id,
                         type_id: response[i].type_id,
                         speech_id: response[i].speech_id,
@@ -156,6 +158,7 @@ $(function(){
     $("#scheduler").kendoScheduler({
         date: new Date(window.conference.start_date),
         dataSource: dataSource,
+        eventTemplate: $("#event-template").html(),
         majorTick: 30,
         timezone: "UTC",
         group: {
@@ -163,6 +166,7 @@ $(function(){
         },
         allDaySlot: false,
         edit: function (e) { //remove all day check box and recurrence rule editor
+            e.preventDefault()
             e.container
                 .find("[name=isAllDay]") // find the all day checkbox
                 .parent()
@@ -178,6 +182,9 @@ $(function(){
         },
         dataBound: function (e) {
             createDropArea(this);
+        },
+        resize: function(e) {
+            e.preventDefault()
         },
         resources: [
             {
@@ -249,11 +256,13 @@ $(function(){
                     var offsetMiliseconds = new Date().getTimezoneOffset() * 60000;
                     var newEvent = {
                         title: dataItem.data("subject"),
-                        end: new Date(slot.startDate.getTime() + 1800000),
+                        end: new Date(slot.startDate.getTime() + (dataItem.data("duration") * 60 * 1000 )),
+                        description: 'TODO',
                         start: slot.startDate,
                         isAllDay: slot.isDaySlot,
                         room_id: room_id,
-                        speech_id: dataItem.data("speech_id")
+                        speech_id: dataItem.data("speech_id"),
+                        type_id: dataItem.data("type_id"),
                     };
 
                     scheduler.dataSource.add(newEvent);
@@ -292,6 +301,8 @@ $(function(){
 
     $(".create-room-button").click(function(){
         openCreateRoomWindow();
+        $('.create-room-window').find('.k-notification-error').hide();
+        $('#room_name').val('')
     })
 
     var openCreateRoomWindow = function(){

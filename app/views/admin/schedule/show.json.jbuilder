@@ -8,5 +8,7 @@ json.array! @conference.slots do |slot|
    json.room_id slot.room_id
    json.type_id slot.speech_type.id
    json.speech_id slot.speech.id
+   json.description schedule_desc(slot.speech)
+
 end
 

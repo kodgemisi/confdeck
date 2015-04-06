@@ -150,8 +150,13 @@ fieldset[disabled] .btn-github.active,
 .speech-types{
 
   .input-group .form-control {
-    width:50%;
+    width:40%;
   }
+
+  .input-group .form-control.duration {
+    width:20%;
+  }
+
   .input-group .form-control:first-child {
     border-right-width: 0;
   }
@@ -162,8 +167,21 @@ fieldset[disabled] .btn-github.active,
   background: #E8FEFF !important;
 }
 
+.k-notification{
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.schedule-event-template{
+
+  padding-left: 15px;
+
+
+  h3{
+    font-size: 17px;
+  }
+}
 .sidebar.sidebar-left.sidebar-menu {
   position: fixed;
 }
-
 

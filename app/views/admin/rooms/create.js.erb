@@ -1,2 +1,9 @@
-var win = $(".create-room-window").data("kendoWindow");
-win.close();
+<% if @room.errors.any? %>
+    $('.create-room-window').find('.k-notification-error').show();
+    $('.create-room-window').find('.k-notification-error .errors').html('<%= @room.errors.full_messages.join('<br />').html_safe %>');
+<% else %>
+    var win = $(".create-room-window").data("kendoWindow");
+    win.close();
+
+    $('.room-list tbody').append('<%= escape_javascript(render( 'admin/schedule/room_row', room: @room)) %>')
+<% end %>

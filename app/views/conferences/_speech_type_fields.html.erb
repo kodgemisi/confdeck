@@ -1,10 +1,8 @@
 <div class="nested-fields">
   <div class="input-group">
-  </div>
-
-  <div class="input-group">
     <%= f.input :type_name_en, label: false, input_html: {class: "form-control required"}, wrapper: false,  placeholder: t('speech_types.english') %>
     <%= f.input :type_name_tr, label: false, input_html: {class: "form-control required"}, wrapper: false, placeholder: t('speech_types.turkish') %>
+    <%= f.input :duration, as: :string, label: false, input_html: {class: "form-control required duration"}, wrapper: false, placeholder: t('speech_types.duration') %>
 
     <span class="input-group-btn">
        <%= link_to_remove_association t("general.remove"), f, class: "btn btn-danger" %>
