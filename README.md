@@ -66,4 +66,5 @@ $ rails s
 ```
 
 
+
 Special thanks to [john.pozy](www.twitter.com/pampersdry) for contributing the project by giving his [Adminre Admin Theme](http://themeforest.net/item/adminre-responsive-admin-theme/7133307)
