@@ -22,7 +22,7 @@
   <Cell><Data ss:Type="Number"><%= speech.id %></Data></Cell>
   <Cell><Data ss:Type="String"><%= speech.speech_type.type_name %></Data></Cell>
   <Cell><Data ss:Type="String"><%= speech.topic.subject %></Data></Cell>
-  <Cell><Data ss:Type="String"><%= speech.abstract %></Data></Cell>
+  <Cell><Data ss:Type="String"><%= speech.topic.abstract %></Data></Cell>
   <Cell><Data ss:Type="String"><%= speech.state %></Data></Cell>
   <Cell><Data ss:Type="String"><%= speech.topic.speakers.collect(&:name).join(" - ") %></Data></Cell>
   <Cell><Data ss:Type="String"><%= speech.cached_votes_total %></Data></Cell>
