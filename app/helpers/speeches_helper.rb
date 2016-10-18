@@ -24,7 +24,7 @@ module SpeechesHelper
   end
 
   def email_status_label(status)
-    "<span class=\"label\">#{status.humanize}</span>"
+    status.humanize
   end
 
   def schedule_desc(speech)
