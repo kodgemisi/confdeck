@@ -19,6 +19,7 @@ $(document).ready(function(){
             { "bSortable": false },
             null,
             null,
+            null,
             { "bSortable": false }
         ],
         "lengthMenu": [ [ 100, 250, -1], [100, 250, "All"] ],
@@ -46,6 +47,7 @@ $(document).ready(function(){
             { "sortable": false },
             { "sortable": false },
             { "sortable": false },
+            null,
             null,
             { "sortable": false }
         ],
