@@ -23,6 +23,10 @@ module SpeechesHelper
     end
   end
 
+  def email_status_label(status)
+    "<span class=\"label\">#{status.humanize}</span>"
+  end
+
   def schedule_desc(speech)
     ''
   end
