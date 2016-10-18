@@ -42,13 +42,15 @@ $(document).ready(function(){
         "pageLength": 200,
         "aaSorting": [],
         "columns": [
+            { "bSortable": false },
             null,
-            { "sortable": false },
-            { "sortable": false },
-            { "sortable": false },
+            { "bSortable": false },
+            { "bSortable": false },
+            { "bSortable": false },
             null,
             null,
-            { "sortable": false }
+            null,
+            { "bSortable": false }
         ],
         "initComplete": function(){
             $('.tt').tooltip();
