@@ -1,107 +1,107 @@
 en:
-  Close: 
-  Slot: 
-  accepted: 
-  active_conferences: 
+  Close:
+  Slot:
+  accepted:
+  active_conferences:
   activerecord:
     attributes:
       appeal:
-        topic: 
+        topic:
       appeal/topic:
-        abstract: 
-        detail: 
-        subject: 
+        abstract:
+        detail:
+        subject:
       comment:
-        comment: 
+        comment:
       conference:
-        description: 
-        email: 
-        facebook: 
-        from_date: 
-        name: 
-        organization: 
-        organizations: 
-        phone: 
-        slug: 
-        summary: 
-        to_date: 
-        twitter: 
-        website: 
+        description:
+        email:
+        facebook:
+        from_date:
+        name:
+        organization:
+        organizations:
+        phone:
+        slug:
+        summary:
+        to_date:
+        twitter:
+        website:
       email_template:
-        body: 
-        content: 
-        subject: 
-        type_name: 
+        body:
+        content:
+        subject:
+        type_name:
       email_template_type:
-        subject: 
+        subject:
       organization:
-        logo: 
-        name: 
-        organization_name: 
-        website: 
+        logo:
+        name:
+        organization_name:
+        website:
       speaker:
-        bio: 
-        email: 
-        facebook: 
-        github: 
-        name: 
-        phone: 
-        twitter: 
+        bio:
+        email:
+        facebook:
+        github:
+        name:
+        phone:
+        twitter:
       sponsor:
-        logo: 
-        name: 
-        website: 
+        logo:
+        name:
+        website:
       topic:
-        abstract: 
-        detail: 
-        subject: 
+        abstract:
+        detail:
+        subject:
       user:
-        current_password: 
-        email: 
-        password: 
-        password_confirmation: 
+        current_password:
+        email:
+        password:
+        password_confirmation:
     errors:
       models:
         appeal:
           attributes:
             topic:
-              blank: 
+              blank:
         conference:
           attributes:
             organizations:
-              blank: 
+              blank:
         speaker:
           attributes:
             phone:
-              blank: 
+              blank:
         topic:
           attributes:
             abstract:
-              blank: 
+              blank:
             detail:
-              blank: 
+              blank:
             subject:
-              blank: 
+              blank:
         user:
           attributes:
             current_password:
-              blank: 
-              invalid: 
+              blank:
+              invalid:
             password:
-              too_short: 
+              too_short:
             password_confirmation:
-              confirmation: 
+              confirmation:
     models:
-      appeal: 
-      comment: 
-      conference: 
-      email_template: 
-      invitation: 
-      organization: 
-      speaker: 
-      sponsor: 
-      topic: 
-      user: 
+      appeal:
+      comment:
+      conference:
+      email_template:
+      invitation:
+      organization:
+      speaker:
+      sponsor:
+      topic:
+      user:
   activities:
     actions:
       speech_accept: "%{user} accepted %{speech}"
@@ -110,15 +110,15 @@ en:
       speech_new: New speech application received with %{speech} with %{speech_type} type
       speech_reject: "%{user} rejected %{speech}."
       speech_upvote: "%{user} upvoted %{speech}"
-  additional_info: 
+  additional_info:
   address:
     city: City
     info: Info
     location: Location
-  application_received: 
-  are_you_sure: 
-  body: 
-  close: 
+  application_received:
+  are_you_sure:
+  body:
+  close:
   conference:
     wizard:
       map_search_box: Search
@@ -161,7 +161,7 @@ en:
     num_of_sponsors: Sponsors
     organization: Organization
     reset_info: You have an unsaved conference draft. You can clear it and start over by clicking the button below.
-    reset_title: 
+    reset_title:
     reset_wizard: Clear Wizard
     roles: Roles
     schedule: Schedule
@@ -204,46 +204,46 @@ en:
           text: " "
           title: " "
       title: Conference Wizard
-  create: 
-  create_appeal: 
-  create_organization: 
-  create_room: 
+  create:
+  create_appeal:
+  create_organization:
+  create_room:
   create_speaker: Create a new speaker
-  dashboard: 
+  dashboard:
   date:
-    abbr_day_names: 
-    abbr_month_names: 
+    abbr_day_names:
+    abbr_month_names:
     datetime:
       distance_in_words:
-        about_x_hours: 
-        about_x_months: 
-        about_x_years: 
-        almost_x_years: 
-        half_a_minute: 
-        less_than_x_minutes: 
-        less_than_x_seconds: 
-        over_x_years: 
-        x_days: 
-        x_minutes: 
-        x_months: 
-        x_seconds: 
+        about_x_hours:
+        about_x_months:
+        about_x_years:
+        almost_x_years:
+        half_a_minute:
+        less_than_x_minutes:
+        less_than_x_seconds:
+        over_x_years:
+        x_days:
+        x_minutes:
+        x_months:
+        x_seconds:
       prompts:
-        day: 
-        hour: 
-        minute: 
-        month: 
-        second: 
-        year: 
-    day_names: 
+        day:
+        hour:
+        minute:
+        month:
+        second:
+        year:
+    day_names:
     formats:
       default: "%m/%d/%Y"
       jsformat: mm/dd/yy
-      long: 
+      long:
       placeholder: mm/dd/yyyy
       short: "%b %d"
-    month_names: 
-    order: 
-  description: 
+    month_names:
+    order:
+  description:
   devise:
     confirmations:
       confirmed: Your account was successfully confirmed.
@@ -291,14 +291,14 @@ en:
       send_instructions: You will receive an email with instructions about how to unlock your account in a few minutes.
       send_paranoid_instructions: If your account exists, you will receive an email with instructions about how to unlock it in a few minutes.
       unlocked: Your account has been unlocked successfully. Please sign in to continue.
-  error: 
+  error:
   errors:
     date:
-      invalid: 
-    format: 
+      invalid:
+    format:
     messages:
       already_confirmed: was already confirmed, please try signing in
-      blank: 
+      blank:
       confirmation_period_expired: needs to be confirmed within %{period}, please request a new one
       expired: has expired, please request a new one
       not_found: not found
@@ -322,7 +322,7 @@ en:
       one: 1 Error
       other: "%{count} Errors"
       zero: No Error
-    homepage: 
+    homepage:
     inactive: Inactive
     logout: Logout
     management: Management
@@ -337,54 +337,54 @@ en:
   helpers:
     label:
       comment:
-        comment: 
+        comment:
       conference:
-        description: 
-        email: 
-        facebook: 
-        name: 
-        organization: 
-        phone: 
-        slug: 
-        summary: 
-        twitter: 
-        website: 
+        description:
+        email:
+        facebook:
+        name:
+        organization:
+        phone:
+        slug:
+        summary:
+        twitter:
+        website:
       organization:
-        logo: 
-        name: 
-        organization_name: 
-        website: 
+        logo:
+        name:
+        organization_name:
+        website:
       speaker:
-        bio: 
-        email: 
-        facebook: 
-        github: 
-        name: 
-        phone: 
-        twitter: 
+        bio:
+        email:
+        facebook:
+        github:
+        name:
+        phone:
+        twitter:
       sponsor:
-        logo: 
-        name: 
-        website: 
+        logo:
+        name:
+        website:
     submit:
       appeal:
-        create: 
+        create:
       comment:
-        create: 
+        create:
       conference:
-        update: 
+        update:
       email_template:
-        update: 
+        update:
       invitation:
-        create: 
+        create:
       organization:
-        create: 
+        create:
       speaker:
-        create: 
+        create:
       sponsor:
-        create: 
+        create:
       user_horizontal:
-        update: 
+        update:
   home:
     active_conferences: Your Active Conferences
     dashboard:
@@ -404,97 +404,97 @@ en:
       speeches_link_text: 'You can see all speech proposals from the link:'
     speaker_mailer:
       new_speaker_subject: Welcome to Confdeck
-  minutes: 
+  minutes:
   new_speaker: Add new speaker
   notifications:
     apply: New application received for <span class="text-primary semibold">%{conference}</span> with <span class="text-primary semibold">%{speech}</span> title.
     comment: '<span class="text-primary semibold">%{user}</span> commented on %{speech}: %{comment}'
   organizations:
-    conferences: 
-    create: 
-    info: 
-    logo: 
+    conferences:
+    create:
+    info:
+    logo:
     organizations: Organizations
-    page_title: 
-  rejected: 
+    page_title:
+  rejected:
   roles:
     confadmins: Conference Admins
     confusers: Conference Users
     type_to_search: Type to search user...
   room:
-    name: 
+    name:
   rooms:
     create: 'Create a Room '
     name: Room name
   settings:
-    account_settings: 
-    current_password: 
-    current_password_help: 
-    email: 
-    general_settings: 
-    language: 
-    password: 
-    password_confirmation: 
-    password_help: 
-    save: 
+    account_settings:
+    current_password:
+    current_password_help:
+    email:
+    general_settings:
+    language:
+    password:
+    password_confirmation:
+    password_help:
+    save:
   simple_form:
     error_notification:
       default_message: 'Please review the problems below:'
     hints:
       defaults:
-        body_html: 
-        end_time_html: 
-        start_time_html: 
-        subject_html: 
-        type_name_html: 
+        body_html:
+        end_time_html:
+        start_time_html:
+        subject_html:
+        type_name_html:
       email_template:
         index:
-          body: 
-          subject: 
-          type_name: 
+          body:
+          subject:
+          type_name:
     labels:
       defaults:
-        body_html: 
-        description_html: 
-        email_html: 
-        facebook_html: 
-        name_html: 
-        organization_html: 
-        phone_html: 
-        slug_html: 
-        subject_html: 
-        summary_html: 
-        twitter_html: 
-        type_name_html: 
-        website_html: 
+        body_html:
+        description_html:
+        email_html:
+        facebook_html:
+        name_html:
+        organization_html:
+        phone_html:
+        slug_html:
+        subject_html:
+        summary_html:
+        twitter_html:
+        type_name_html:
+        website_html:
       email_template:
         index:
-          body: 
-          content: 
-          subject: 
-          type_name: 
+          body:
+          content:
+          subject:
+          type_name:
       email_template_type:
         index:
-          subject: 
+          subject:
     'no': 'No'
     placeholders:
       defaults:
-        body_html: 
-        end_time_html: 
-        start_time_html: 
-        subject_html: 
-        type_name_html: 
+        body_html:
+        end_time_html:
+        start_time_html:
+        subject_html:
+        type_name_html:
       email_template:
         index:
-          body: 
-          content: 
-          subject: 
-          type_name: 
+          body:
+          content:
+          subject:
+          type_name:
       email_template_type:
         index:
-          subject: 
+          subject:
     required:
-      html: 
+      html:
       mark: "*"
       text: required
     'yes': 'Yes'
@@ -505,7 +505,7 @@ en:
     phone: Phone Number
     twitter: Twitter
   speaker_application_header: Speaker Application To %{conference_name}
-  speakers: 
+  speakers:
   speech_mailer:
     new_comment_email:
       subject: "[%{conference}] New comment on a speech '%{speech}'"
@@ -547,6 +547,7 @@ en:
       accepted: Accepted
       rejected: Rejected
       waiting_review: Waiting Review
+    email_status: Email Status
     subject: Subject
     success: Application Sent Successfully!
     upvote: Upvote
@@ -557,10 +558,10 @@ en:
     name: Name
     new: New Sponsor
     website: Website
-  subject: 
+  subject:
   support:
     array:
-      words_connector: 
+      words_connector:
   time:
     am: am
     formats:
@@ -608,8 +609,8 @@ en:
     outline: Outline
     speakers: Speakers
     subject: Subject
-  update: 
-  updated: 
+  update:
+  updated:
   user:
     change_your_password: Change Your Password
     dont_have_account: Don't have an account?
@@ -623,4 +624,4 @@ en:
     sign_up_to_get_started: Sign up to get started
     signup: Signup
     update_password: Change Password
-  waiting_review: 
+  waiting_review:

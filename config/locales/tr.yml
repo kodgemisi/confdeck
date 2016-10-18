@@ -1,18 +1,18 @@
 tr:
-  Close: 
-  Slot: 
+  Close:
+  Slot:
   accepted: Kabul Edildi
-  active_conferences: 
+  active_conferences:
   activerecord:
     attributes:
       appeal:
-        topic: 
+        topic:
       appeal/topic:
-        abstract: 
-        detail: 
-        subject: 
+        abstract:
+        detail:
+        subject:
       comment:
-        comment: 
+        comment:
       conference:
         description: Açıklama
         email: Email
@@ -52,12 +52,12 @@ tr:
         name: Name
         website: Website
       topic:
-        abstract: 
-        detail: 
-        subject: 
+        abstract:
+        detail:
+        subject:
       user:
         current_password: Current password
-        email: 
+        email:
         password: Password
         password_confirmation: Password confirmation
     errors:
@@ -65,11 +65,11 @@ tr:
         appeal:
           attributes:
             topic:
-              blank: 
+              blank:
         conference:
           attributes:
             organizations:
-              blank: 
+              blank:
         speaker:
           attributes:
             phone:
@@ -77,30 +77,30 @@ tr:
         topic:
           attributes:
             abstract:
-              blank: 
+              blank:
             detail:
-              blank: 
+              blank:
             subject:
-              blank: 
+              blank:
         user:
           attributes:
             current_password:
-              blank: 
-              invalid: 
+              blank:
+              invalid:
             password:
-              too_short: 
+              too_short:
             password_confirmation:
-              confirmation: 
+              confirmation:
     models:
-      appeal: 
-      comment: 
+      appeal:
+      comment:
       conference: Konferans
       email_template: Email Şablonu
       invitation: Invitation
       organization: Organization
       speaker: Konuşmacı
       sponsor: Sponsor
-      topic: 
+      topic:
       user: Kullanıcı
   activities:
     actions:
@@ -116,7 +116,7 @@ tr:
     info: Detay
     location: Konum
   application_received: "%{topic} Başvurunuz alınmıştır"
-  are_you_sure: 
+  are_you_sure:
   body: Posta
   close: Kapat
   conference:
@@ -160,7 +160,7 @@ tr:
     num_of_sponsors: Sponsorlar
     organization: Organizasyon
     reset_info: 'Bir adet yayınlanmamış konferans taslağınız var. Aşağıdaki butona tıklayarak silip baştan başlayabilirsiniz.  '
-    reset_title: 
+    reset_title:
     reset_wizard: Sihirbazı Temizl
     roles: Yetkiler
     schedule: Program
@@ -205,7 +205,7 @@ tr:
   create: Oluştur
   create_appeal: Başvuruyu Oluştur
   create_organization: Yeni Organizasyon Oluştur
-  create_room: 
+  create_room:
   create_speaker: Konuşmacı Oluştur
   dashboard: Anasayfa
   date:
@@ -218,7 +218,7 @@ tr:
     - Fri
     - Sat
     abbr_month_names:
-    - 
+    -
     - Oca
     - "Şub"
     - Mar
@@ -291,7 +291,7 @@ tr:
       placeholder: gg/aa/yyyy
       short: "%b %d"
     month_names:
-    - 
+    -
     - Ocak
     - "Şubat"
     - Mart
@@ -312,7 +312,7 @@ tr:
   devise:
     confirmations:
       confirmed: Hesabınız başarıyla onaylandı. Şu anda giriş yapmış bulunuyorsunuz.
-      confirmed_and_signed_in: 
+      confirmed_and_signed_in:
       send_instructions: Bir kaç dakika içinde hesabınızı onaylama hakkında bir email alacaksınız.
       send_paranoid_instructions: Email adresiniz veritabanımızda kayıtlı ise email adresinize hesabınızı onaylama hakkında bir email göndereceğiz.
     failure:
@@ -321,7 +321,7 @@ tr:
       invalid: Geçersiz email veya parola.
       invalid_token: Geçesiz onaylama kodu.
       locked: Hesabınız kilitlendi.
-      not_found_in_database: 
+      not_found_in_database:
       timeout: Oturumunuz sona erdi. Devam etmek için lütfen giriş yapın.
       unauthenticated: Devam etmeden önce kayıt olmanız veya giriş yapmanız gerekmektedir.
       unconfirmed: Devam etmeden önce hesabınızı onaylamalısınız.
@@ -336,7 +336,7 @@ tr:
       failure: '"%{reason}" olmasından dolayı %{kind} hesabından onaylama yapamazsınız.'
       success: "%{kind} hesabından başarıyla onaylandı."
     passwords:
-      no_token: 
+      no_token:
       send_instructions: Bir kaç dakika içinde parolanızı nasıl sıfırlayacağız hakkında bir email alacaksınız.
       send_paranoid_instructions: Email adresiniz veritabanımızda kayıtlı ise email adresinize parola kurtarma linki göndereceğiz.
       updated: Parolanız başarıyla değiştirildi. Şu anda giriş yapmış bulunuyorsunuz.
@@ -364,7 +364,7 @@ tr:
     messages:
       already_confirmed: zaten onaylandı, lütfen tekrar giriş yapmayı deneyin
       blank: boş bırakılamaz
-      confirmation_period_expired: 
+      confirmation_period_expired:
       expired: süresi sona erdi, lütfen yenisini isteyin
       not_found: bulunamadı
       not_locked: kilitlenmedi
@@ -399,40 +399,40 @@ tr:
   helpers:
     label:
       comment:
-        comment: 
+        comment:
       conference:
-        description: 
-        email: 
-        facebook: 
-        name: 
-        organization: 
-        phone: 
-        slug: 
-        summary: 
-        twitter: 
-        website: 
+        description:
+        email:
+        facebook:
+        name:
+        organization:
+        phone:
+        slug:
+        summary:
+        twitter:
+        website:
       organization:
-        logo: 
-        name: 
-        organization_name: 
-        website: 
+        logo:
+        name:
+        organization_name:
+        website:
       speaker:
-        bio: 
-        email: 
-        facebook: 
-        github: 
-        name: 
-        phone: 
-        twitter: 
+        bio:
+        email:
+        facebook:
+        github:
+        name:
+        phone:
+        twitter:
       sponsor:
-        logo: 
-        name: 
-        website: 
+        logo:
+        name:
+        website:
     submit:
       appeal:
-        create: 
+        create:
       comment:
-        create: 
+        create:
       conference:
         update: Update Konferans
       email_template:
@@ -466,7 +466,7 @@ tr:
       speeches_link_text: 'Tüm başvurulara şu bağlantıdan ulaşabilirsiniz:'
     speaker_mailer:
       new_speaker_subject: Confdeck'e Hoşgeldiniz
-  minutes: 
+  minutes:
   new_speaker: Yeni Konuşmacı Ekle
   notifications:
     apply: <span class="text-primary semibold">%{conference}</span> için <span class="text-primary semibold">%{speech}</span> başlıklı bir başvuru alındı.
@@ -501,65 +501,65 @@ tr:
     save: Kaydet
   simple_form:
     error_notification:
-      default_message: 
+      default_message:
     hints:
       defaults:
-        body_html: 
-        end_time_html: 
-        start_time_html: 
-        subject_html: 
-        type_name_html: 
+        body_html:
+        end_time_html:
+        start_time_html:
+        subject_html:
+        type_name_html:
       email_template:
         index:
-          body: 
-          subject: 
-          type_name: 
+          body:
+          subject:
+          type_name:
     labels:
       defaults:
-        body_html: 
-        description_html: 
-        email_html: 
-        facebook_html: 
-        name_html: 
-        organization_html: 
-        phone_html: 
-        slug_html: 
-        subject_html: 
-        summary_html: 
-        twitter_html: 
-        type_name_html: 
-        website_html: 
+        body_html:
+        description_html:
+        email_html:
+        facebook_html:
+        name_html:
+        organization_html:
+        phone_html:
+        slug_html:
+        subject_html:
+        summary_html:
+        twitter_html:
+        type_name_html:
+        website_html:
       email_template:
         index:
-          body: 
-          content: 
-          subject: 
-          type_name: 
+          body:
+          content:
+          subject:
+          type_name:
       email_template_type:
         index:
-          subject: 
-    'no': 
+          subject:
+    'no':
     placeholders:
       defaults:
-        body_html: 
-        end_time_html: 
-        start_time_html: 
-        subject_html: 
-        type_name_html: 
+        body_html:
+        end_time_html:
+        start_time_html:
+        subject_html:
+        type_name_html:
       email_template:
         index:
-          body: 
-          content: 
-          subject: 
-          type_name: 
+          body:
+          content:
+          subject:
+          type_name:
       email_template_type:
         index:
-          subject: 
+          subject:
     required:
-      html: 
-      mark: 
-      text: 
-    'yes': 
+      html:
+      mark:
+      text:
+    'yes':
   speaker:
     email: E-posta
     facebook: Facebook
@@ -609,20 +609,21 @@ tr:
       accepted: Kabul Edildi
       rejected: Reddedildi
       waiting_review: "İnceleniyor"
+    email_status: Email Durumu
     subject: Konu Başlığı
     success: Başvuru Başarıyla Gönderildi!
     upvote: Upvote
     write_comment: Yorum Yaz
   sponsors:
     actions: "İşlemler"
-    logo: 
-    name: 
+    logo:
+    name:
     new: Yeni Sponsor Oluştur
-    website: 
+    website:
   subject: Başlık
   support:
     array:
-      words_connector: 
+      words_connector:
   time:
     am: "öğleden önce"
     formats:
@@ -671,7 +672,7 @@ tr:
     speakers: Konuşmacılar
     subject: Konu Başlığı
   update: Güncelle
-  updated: 
+  updated:
   user:
     change_your_password: Parolanızı Değiştirin
     dont_have_account: Hesabınız yok mu?
