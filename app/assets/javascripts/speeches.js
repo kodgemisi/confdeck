@@ -42,7 +42,6 @@ $(document).ready(function(){
         "pageLength": 200,
         "aaSorting": [],
         "columns": [
-            { "sortable": false },
             null,
             { "sortable": false },
             { "sortable": false },
